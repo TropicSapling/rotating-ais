@@ -6,6 +6,5 @@
   left: 50%;
   margin-left: -300px;
   margin-top: -300px;
-  border-left: 2px solid black;
-  border-top: 2px solid black;
+  border: 2px solid black;
 }
