@@ -21,7 +21,9 @@ function randomBetween(min, max) {
 }
 
 function genRandAI() {
-  ai.push([Math.floor(Math.random() * 256), Math.floor(Math.random() * 256), Math.floor(Math.random() * 256), Math.floor(Math.random() * 600), Math.floor(Math.random() * 600), randomBetween(35, 55), randomBetween(35, 55), []]);
+  var width = randomBetween(35, 55);
+  var height = randomBetween(35, 55);
+  ai.push([Math.floor(Math.random() * 256), Math.floor(Math.random() * 256), Math.floor(Math.random() * 256), Math.floor(Math.random() * (600 - width)), Math.floor(Math.random() * (600 - height)), width, height, []]);
 }
 
 function renderAIs(game) {
@@ -46,7 +48,7 @@ $(function() {
     game.fillRect(0, 0, 600, 600); // Background
     
     if(ai.length < 10) {
-      genRandAI();
+      genRandAI(game);
     }
 
     checkCollisions(game);
