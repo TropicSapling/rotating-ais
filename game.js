@@ -18,8 +18,8 @@ function interval(func, wait, times){
 
 function renderAIs(game) {
   // Examples, will be changed later
-  game.fillStyle = "#999";
-  game.fillRect(275, 275, 50, 50);
+  game.fillStyle = "rgb(" + ai[0][0] + ", " + ai[0][1] + ", " + ai[0][2] + ")";
+  game.fillRect(ai[0][3], ai[0][4], ai[0][5], ai[0][6]);
 }
 
 $(function() {
