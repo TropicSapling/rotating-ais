@@ -36,6 +36,8 @@ function renderAIs(game) {
       ai[i][4] += Math.cos(ai[i][7]);
     }
     
+    ai[i][7] += 1; // Testing
+    
     game.fillStyle = "rgb(" + ai[i][0] + ", " + ai[i][1] + ", " + ai[i][2] + ")";
     game.fillRect(ai[i][3], ai[i][4], ai[i][5], ai[i][6]);
   }
@@ -58,7 +60,7 @@ $(function() {
     if(ai.length < 10) {
       genRandAI(game);
     }
-
+    
     checkCollisions(game);
     
     renderAIs(game);
