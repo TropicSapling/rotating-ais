@@ -16,8 +16,12 @@ function interval(func, wait, times){
   setTimeout(interv, wait);
 };
 
+function randomBetween(min, max) {
+  return Math.floor(Math.random()*(max-min+1)+min);
+}
+
 function genRandAI() {
-  ai.push([[Math.floor(Math.random() * 256), Math.floor(Math.random() * 256), Math.floor(Math.random() * 256), Math.floor(Math.random() * 600), Math.floor(Math.random() * 600), 50, 50, []]]);
+  ai.push([[Math.floor(Math.random() * 256), Math.floor(Math.random() * 256), Math.floor(Math.random() * 256), Math.floor(Math.random() * 600), Math.floor(Math.random() * 600), randomBetween(35, 55), randomBetween(35, 55), []]]);
 }
 
 function renderAIs(game) {
