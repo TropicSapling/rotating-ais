@@ -17,7 +17,7 @@ function interval(func, wait, times){
 };
 
 function genRandAI() {
-  ai.push([]);
+  ai.push([[Math.floor(Math.random() * 256), Math.floor(Math.random() * 256), Math.floor(Math.random() * 256), Math.floor(Math.random() * 600), Math.floor(Math.random() * 600), 50, 50, []]]);
 }
 
 function renderAIs(game) {
