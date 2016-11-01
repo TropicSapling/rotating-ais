@@ -6,7 +6,7 @@ function randomBetween(min, max) {
 }
 
 function genRandGenes() {
-  return []; // WIP, will be changed
+  return []; // WIP, will be changed later
 }
 
 function genRandAI() {
