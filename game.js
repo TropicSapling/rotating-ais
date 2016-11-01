@@ -16,7 +16,7 @@ function interval(func, wait, times){
   setTimeout(interv, wait);
 };
 
-function renderAIs() {
+function renderAIs(game) {
   var r = Math.floor(Math.random() * 256);
   var g = Math.floor(Math.random() * 256);
   var b = Math.floor(Math.random() * 256);
@@ -35,6 +35,6 @@ $(function() {
     game.fillStyle = "#333";
     game.fillRect(0, 0, 600, 600); // Background
     
-    renderAIs();
+    renderAIs(game);
   }, 0);
 });
