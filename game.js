@@ -16,11 +16,25 @@ function interval(func, wait, times){
   setTimeout(interv, wait);
 };
 
+function renderAIs() {
+  var r = Math.floor(Math.random() * 256);
+  var g = Math.floor(Math.random() * 256);
+  var b = Math.floor(Math.random() * 256);
+  
+  game.fillStyle = "rgb(" + r + ", " + g + ", " + b + ")";
+  game.fillRect(275, 275, 50, 50); // Example, will be changed
+}
+
 $(function() {
   var canvas = document.getElementById("game");
   var game = canvas.getContext("2d");
   
   interval(function() {
-    // Render
+    game.clearRect(0, 0, 600, 600);
+    
+    game.fillStyle = "#333";
+    game.fillRect(0, 0, 600, 600); // Background
+    
+    renderAIs();
   }, 0);
 });
