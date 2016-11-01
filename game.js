@@ -28,6 +28,9 @@ function genRandAI() {
 
 function renderAIs(game) {
   for(i = 0; i < ai.length; i++) {
+    ai[i][3] += Math.sin(ai[i][7]);
+    ai[i][4] += Math.cos(ai[i][7]);
+    
     game.fillStyle = "rgb(" + ai[i][0] + ", " + ai[i][1] + ", " + ai[i][2] + ")";
     game.fillRect(ai[i][3], ai[i][4], ai[i][5], ai[i][6]);
   }
