@@ -17,12 +17,9 @@ function interval(func, wait, times){
 };
 
 function renderAIs(game) {
-  var r = Math.floor(Math.random() * 256);
-  var g = Math.floor(Math.random() * 256);
-  var b = Math.floor(Math.random() * 256);
-  
-  game.fillStyle = "rgb(" + r + ", " + g + ", " + b + ")";
-  game.fillRect(275, 275, 50, 50); // Example, will be changed
+  // Examples, will be changed later
+  game.fillStyle = "#999";
+  game.fillRect(275, 275, 50, 50);
 }
 
 $(function() {
