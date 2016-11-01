@@ -38,7 +38,7 @@ $(function() {
   interval(function() {
     game.clearRect(0, 0, 600, 600);
     
-    game.fillStyle = "#f5f5f5";
+    game.fillStyle = "#eee";
     game.fillRect(0, 0, 600, 600); // Background
     
     if(ai.length < 10) {
