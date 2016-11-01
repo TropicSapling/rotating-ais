@@ -31,6 +31,10 @@ function renderAIs(game) {
   }
 }
 
+function checkCollisions(game) {
+  
+}
+
 $(function() {
   var canvas = document.getElementById("game");
   var game = canvas.getContext("2d");
@@ -45,6 +49,8 @@ $(function() {
       genRandAI();
     }
 
+    checkCollisions(game);
+    
     renderAIs(game);
   }, 0);
 });
