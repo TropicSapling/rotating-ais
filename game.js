@@ -21,7 +21,7 @@ function randomBetween(min, max) {
 }
 
 function genRandAI() {
-  ai.push([[Math.floor(Math.random() * 256), Math.floor(Math.random() * 256), Math.floor(Math.random() * 256), Math.floor(Math.random() * 600), Math.floor(Math.random() * 600), randomBetween(35, 55), randomBetween(35, 55), []]]);
+  ai.push([Math.floor(Math.random() * 256), Math.floor(Math.random() * 256), Math.floor(Math.random() * 256), Math.floor(Math.random() * 600), Math.floor(Math.random() * 600), randomBetween(35, 55), randomBetween(35, 55), []]);
 }
 
 function renderAIs(game) {
