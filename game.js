@@ -16,10 +16,15 @@ function interval(func, wait, times){
   setTimeout(interv, wait);
 };
 
+function genRandAI() {
+  ai.push([]);
+}
+
 function renderAIs(game) {
-  // Examples, will be changed later
-  game.fillStyle = "rgb(" + ai[0][0] + ", " + ai[0][1] + ", " + ai[0][2] + ")";
-  game.fillRect(ai[0][3], ai[0][4], ai[0][5], ai[0][6]);
+  for(i = 0; i < ai.length; i++) {
+    game.fillStyle = "rgb(" + ai[i][0] + ", " + ai[i][1] + ", " + ai[i][2] + ")";
+    game.fillRect(ai[i][3], ai[i][4], ai[i][5], ai[i][6]);
+  }
 }
 
 $(function() {
@@ -32,6 +37,10 @@ $(function() {
     game.fillStyle = "#333";
     game.fillRect(0, 0, 600, 600); // Background
     
+    if(ai.length < 10) {
+      genRandAI();
+    }
+
     renderAIs(game);
   }, 0);
 });
