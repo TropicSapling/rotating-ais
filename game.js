@@ -18,11 +18,11 @@ function interval(func, wait, times){
 
 function renderAIs(game) {
   for(i = 0; i < ai.length; i++) {
-    if(ai[i][3] < 600 - ai[i][5]) {
+    if(ai[i][3] < 600 - ai[i][5] && ai[i][3] > 0) {
       ai[i][3] += Math.sin(ai[i][7]);
     }
     
-    if(ai[i][4] < 600 - ai[i][6]) {
+    if(ai[i][4] < 600 - ai[i][6] && ai[i][4] > 0) {
       ai[i][4] += Math.cos(ai[i][7]);
     }
     
