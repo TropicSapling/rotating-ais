@@ -30,8 +30,8 @@ function checkCond(id) {
     ai[id].splice(8, 2);
     genRandCond(id);
     checkCond(id);
-  }
-} */
+  } */
+}
 
 function renderAIs(game) {
   for(i = 0; i < ai.length; i++) {
