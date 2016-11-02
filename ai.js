@@ -42,11 +42,11 @@ function genRandGenes() {
     ai.push([Math.floor(Math.random() * 256), Math.floor(Math.random() * 256), Math.floor(Math.random() * 256), Math.floor(Math.random() * (600 - width)), Math.floor(Math.random() * (600 - height)), 1.2, 1.2, Math.floor(Math.random() * 360)]);
     genRandCond(ai.length - 1);
     
-    ai[ai.length - 1].push(true);
+    ai[ai.length - 1].push([width, height]);
   } else {
     ai[placeAvailable] = [Math.floor(Math.random() * 256), Math.floor(Math.random() * 256), Math.floor(Math.random() * 256), Math.floor(Math.random() * (600 - width)), Math.floor(Math.random() * (600 - height)), 1.2, 1.2, Math.floor(Math.random() * 360)];
     genRandCond(placeAvailable);
     
-    ai[placeAvailable].push(true);
+    ai[placeAvailable].push([width, height]);
   }
 }
