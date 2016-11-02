@@ -1,14 +1,36 @@
 var ais_alive = 0;
 
 var ai = [];
-var inputs = [["+", "-", "*", "/", "<", "<=", ">=", ">", "&&", "||"], "ai[", ["[", "(", ")", "]"]];
+var inputs = [["+", "-", "*", "/", "<", "<=", ">=", ">", "&&", "||"], "ai[", ["(", ")"]];
 
 function randomBetween(min, max) {
   return Math.floor(Math.random()*(max-min+1)+min);
 }
 
 function findInput(op, paranthesis) {
+  var randParanthesis = Math.round(Math.random());
   
+  if(op % 2) {
+    var randOp = Math.round(Math.random() * (inputs[0].length - 1));
+    if(parenthesis > 0 && randParanthesis == inputs[2].indexOf(")") && Math.round(Math.random())) {
+      genes.push(inputs[2][randParanthesis]);
+    } else {
+      genes.push(inputs[2][randOp]);
+    }
+  } else {
+    var randVar = Math.round(Math.random() * (inputs[1].length - 1));
+    
+    if(randParanthesis == inputs[2].indexOf("(") && Math.round(Math.random())) {
+      genes.push(inputs[2][randParanthesis]);
+    } else {
+      if(Math.round(Math.random())) {
+        randVar = Math.round(Math.random() * 100)
+        genes.push(randVar);
+      } else {
+        genes.push(inputs[1][randVar]);
+      }
+    }
+  }
 }
 
 function genRandCond(id) {
