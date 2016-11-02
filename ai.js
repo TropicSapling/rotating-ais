@@ -39,12 +39,12 @@ function genRandGenes() {
   var placeAvailable = ai.indexOf("dead");
   
   if(placeAvailable == -1) {
-    ai.push([Math.floor(Math.random() * 256), Math.floor(Math.random() * 256), Math.floor(Math.random() * 256), Math.floor(Math.random() * (600 - width * 1.5)), Math.floor(Math.random() * (600 - height * 1.5)), 1.1, 1.1, Math.floor(Math.random() * 360)]);
+    ai.push([Math.floor(Math.random() * 256), Math.floor(Math.random() * 256), Math.floor(Math.random() * 256), Math.floor(Math.random() * (600 - width * 1.5) + width / 2), Math.floor(Math.random() * (600 - height * 1.5) + height / 2), 1.1, 1.1, Math.floor(Math.random() * 360)]);
     genRandCond(ai.length - 1);
     
     ai[ai.length - 1].push([width, height]);
   } else {
-    ai[placeAvailable] = [Math.floor(Math.random() * 256), Math.floor(Math.random() * 256), Math.floor(Math.random() * 256), Math.floor(Math.random() * (600 - width * 1.5)), Math.floor(Math.random() * (600 - height * 1.5)), 1.1, 1.1, Math.floor(Math.random() * 360)];
+    ai[placeAvailable] = [Math.floor(Math.random() * 256), Math.floor(Math.random() * 256), Math.floor(Math.random() * 256), Math.floor(Math.random() * (600 - width * 1.5) + width / 2), Math.floor(Math.random() * (600 - height * 1.5) + height / 2), 1.1, 1.1, Math.floor(Math.random() * 360)];
     genRandCond(placeAvailable);
     
     ai[placeAvailable].push([width, height]);
