@@ -40,9 +40,9 @@ function genRandGenes() {
   
   if(placeAvailable == -1) {
     ai.push([Math.floor(Math.random() * 256), Math.floor(Math.random() * 256), Math.floor(Math.random() * 256), Math.floor(Math.random() * (600 - width)), Math.floor(Math.random() * (600 - height)), width, height, Math.floor(Math.random() * 360)]);
-    genRandCond();
+    genRandCond(ai.length - 1);
   } else {
     ai[placeAvailable] = [Math.floor(Math.random() * 256), Math.floor(Math.random() * 256), Math.floor(Math.random() * 256), Math.floor(Math.random() * (600 - width)), Math.floor(Math.random() * (600 - height)), width, height, Math.floor(Math.random() * 360)];
-    genRandCond();
+    genRandCond(placeAvailable);
   }
 }
