@@ -16,7 +16,7 @@ function findInput(id) {
   if(op % 2) {
     var randOp = Math.round(Math.random() * (inputs[0].length - 1));
     if(parenthesis > 0 && randParenthesis == inputs[1].indexOf(")") && Math.round(Math.random())) {
-      ai[id][8].push(inputs[1][randParenthesis]); // [8] = genes
+      ai[id][8].push(inputs[1][randParenthesis]); // [8] = condition gene
       parenthesis--;
       op--;
     } else {
