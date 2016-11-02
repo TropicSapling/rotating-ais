@@ -32,7 +32,7 @@ function renderAIs(game) {
       
       if(ai[i][5] + ai[i][6] < 60) {
         ai[i] = "dead";
-        total_ais--;
+        ais_alive--;
       } else {
         game.fillStyle = "rgb(" + ai[i][0] + ", " + ai[i][1] + ", " + ai[i][2] + ")";
         game.fillRect(ai[i][3], ai[i][4], ai[i][5], ai[i][6]);
@@ -55,7 +55,7 @@ $(function() {
     game.fillStyle = "#eee";
     game.fillRect(0, 0, 600, 600); // Background
     
-    if(total_ais < 10) {
+    if(ais_alive < 10) {
       genRandAI();
     }
     
