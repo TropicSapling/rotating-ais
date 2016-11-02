@@ -19,7 +19,7 @@ function findInput(id) {
       parenthesis--;
       op--;
     } else {
-      ai[id][8].push(inputs[1][randOp]);
+      ai[id][8].push(inputs[0][randOp]);
     }
   } else {
     if(randParenthesis == inputs[1].indexOf("(") && Math.round(Math.random())) {
