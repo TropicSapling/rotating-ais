@@ -1,3 +1,5 @@
+var rotating = false;
+
 function interval(func, wait, times){
   var interv = function(w, t){
     return function(){
