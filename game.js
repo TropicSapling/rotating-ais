@@ -27,7 +27,8 @@ function checkCond(id) {
       rotating = true;
     }
   } catch(e) {
-    genRandGenes(id);
+    ai[id].splice(8, 2);
+    genRandCond(id);
     checkCond();
   }
 }
