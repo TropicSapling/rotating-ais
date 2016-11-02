@@ -11,7 +11,7 @@ function findInput(op, paranthesis) {
   
 }
 
-function genRandCond() {
+function genRandCond(id) {
   var parenthesis = 0;
   var op = 0;
   
