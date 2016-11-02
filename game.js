@@ -29,7 +29,7 @@ function renderAIs(game) {
             changeY = changeY * (ai[i][10][1] / ai[i][10][0]);
             ai[i][6] += changeY;
           } else {
-            changeX = changeX * (ai[i][10][1] / ai[i][10][0]);
+            changeX = changeX * (ai[i][10][0] / ai[i][10][1]);
             ai[i][5] += changeX;
             ai[i][6] += changeY;
           }
