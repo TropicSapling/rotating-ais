@@ -112,6 +112,10 @@ $(function() {
     
     for(i = 0; i < ai.length; i++) {
       checkCond(i);
+      
+      if(rotating) {
+        ai[i][7] += 1;
+      }
     }
     
     renderAIs(game);
