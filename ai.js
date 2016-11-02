@@ -41,9 +41,11 @@ function genRandCond(id) {
   ai[id].push([]); // Add base for condition gene
   ai[id].push(1); // Add base for the gene controlling the length of the condition gene
   
-  do {
-    ai[id][9] = ai[id][9] + randomBetween(-3, 3); // [9] = where the length of condition gene is stored
-  } while(ai[id][9] % 2 == 0 && ai[id][9] > 0);
+  if(Math.round(Math.random())) {
+    ai[id][9] += 2; // [9] = where the length of condition gene is stored
+  } else if(ai[id][9] > 2) {
+    ai[id][9] -= 2;
+  }
   
   for(i = 0; i < ai[id][9]; i++) {
     findInput(id);
