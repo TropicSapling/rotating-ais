@@ -32,8 +32,10 @@ function renderAIs(game) {
         ai[i] = "dead";
         ais_alive--;
       }
-    } else if(ai[i] != "dead") {
-      if(ai[i][10]) {
+    }
+    
+    if(ai[i] != "dead") {
+      if(ai[i][10] && ai[i][10][0] != "dying") {
         if(ai[i][5] < ai[i][10][0] || ai[i][6] < ai[i][10][1]) { // [10][0] = full width, [10][1] = full height
           var changeX = ai[i][5] * 1.1 - ai[i][5];
           var changeY = ai[i][6] * 1.1 - ai[i][6];
@@ -48,7 +50,7 @@ function renderAIs(game) {
           ai[i][6] = ai[i][10][1];
           ai[i].splice(10, 1);
         }
-      } else {
+      } else if(!ai[i][10]) {
         if(ai[i][3] < 600 - ai[i][5] && ai[i][3] > 0) { // [3] = x position, [5] = width
           ai[i][3] += Math.sin(ai[i][7]); // [7] = rotation
         }
@@ -62,7 +64,7 @@ function renderAIs(game) {
       }
       
       if(ai[i][5] + ai[i][6] < 60 && !(ai[i][10])) {
-        ai[i].push(["dying", 0.001]);
+        ai[i].push(["dying", 1.1]);
       } else {
         game.fillStyle = "rgb(" + ai[i][0] + ", " + ai[i][1] + ", " + ai[i][2] + ")"; // [0], [1] and [2] are colour values
         game.fillRect(ai[i][3], ai[i][4], ai[i][5], ai[i][6]);
