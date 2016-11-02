@@ -7,6 +7,10 @@ function randomBetween(min, max) {
   return Math.floor(Math.random()*(max-min+1)+min);
 }
 
+function findInput(op, paranthesis) {
+  
+}
+
 function genRandCond() {
   var parenthesis = 0;
   var op = 0;
@@ -19,7 +23,7 @@ function genRandCond() {
   } while(ai[id][9] % 2 == 0 && ai[id][9] > 0);
   
   for(i = 0; i < ai[id][9]; i++) {
-    findVal(op, parenthesis);
+    findInput(op, parenthesis);
     op++;
   }
   
