@@ -29,7 +29,7 @@ function genRandCond() {
   }
 }
 
-function genRandAI() {
+function genRandGenes() {
   var width = randomBetween(35, 55);
   var height = randomBetween(35, 55);
   var placeAvailable = ai.indexOf("dead");
@@ -41,6 +41,4 @@ function genRandAI() {
     ai[placeAvailable] = [Math.floor(Math.random() * 256), Math.floor(Math.random() * 256), Math.floor(Math.random() * 256), Math.floor(Math.random() * (600 - width)), Math.floor(Math.random() * (600 - height)), width, height, Math.floor(Math.random() * 360)];
     genRandCond();
   }
-
-  ais_alive++;
 }
