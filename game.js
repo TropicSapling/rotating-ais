@@ -19,7 +19,16 @@ function interval(func, wait, times){
 function renderAIs(game) {
   for(i = 0; i < ai.length; i++) {
     if(ai[i] != "dead") {
-      if(!(ai[i][10])) {
+      if(ai[i][10]) {
+        if(ai[i][5] < width || ai[i][6] < height) {
+          ai[i][5] = ai[i][5] * 1.2;
+          ai[i][6] = ai[i][6] * 1.2;
+        } else {
+          ai[i][5] = width;
+          ai[i][6] = height;
+          ai[i].splice(10, 1);
+        }
+      } else {
         if(ai[i][3] < 600 - ai[i][5] && ai[i][3] > 0) { // [3] = x position, [5] = width
           ai[i][3] += Math.sin(ai[i][7]); // [7] = rotation
         }
