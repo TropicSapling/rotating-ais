@@ -1,11 +1,11 @@
 var ai = [];
-var inputs = [["+", "-", "*", "/", "<", "<=", ">=", ">", "&&", "||"], "ai[", ["[", "(", ")", "]"]];
+var inputs = [["+", "-", "*", "/", "<", "<=", ">=", ">", "&&", "||"], "ai[id][", ["[", "(", ")", "]"]];
 
 function randomBetween(min, max) {
   return Math.floor(Math.random()*(max-min+1)+min);
 }
 
-function genRandGenes() {
+function genRandGenes(id) {
   return []; // WIP, will be changed later
 }
 
