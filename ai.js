@@ -1,3 +1,5 @@
+var total_ais = 0;
+
 var ai = [];
 var inputs = [["+", "-", "*", "/", "<", "<=", ">=", ">", "&&", "||"], "ai[", ["[", "(", ")", "]"]];
 
@@ -12,5 +14,8 @@ function genRandGenes(id) {
 function genRandAI() {
   var width = randomBetween(35, 55);
   var height = randomBetween(35, 55);
+  
   ai.push([Math.floor(Math.random() * 256), Math.floor(Math.random() * 256), Math.floor(Math.random() * 256), Math.floor(Math.random() * (600 - width)), Math.floor(Math.random() * (600 - height)), width, height, Math.floor(Math.random() * 360), genRandGenes(ai.length)]);
+
+  total_ais++;
 }
