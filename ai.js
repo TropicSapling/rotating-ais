@@ -7,27 +7,27 @@ function randomBetween(min, max) {
   return Math.floor(Math.random()*(max-min+1)+min);
 }
 
-function findInput(op, paranthesis) {
+function findInput(id, op, paranthesis) {
   var randParanthesis = Math.round(Math.random());
   
   if(op % 2) {
     var randOp = Math.round(Math.random() * (inputs[0].length - 1));
     if(parenthesis > 0 && randParanthesis == inputs[2].indexOf(")") && Math.round(Math.random())) {
-      genes.push(inputs[2][randParanthesis]);
+      ai[id][8].push(inputs[2][randParanthesis]); // [8] = genes
     } else {
-      genes.push(inputs[2][randOp]);
+      ai[id][8].push(inputs[2][randOp]);
     }
   } else {
     var randVar = Math.round(Math.random() * (inputs[1].length - 1));
     
     if(randParanthesis == inputs[2].indexOf("(") && Math.round(Math.random())) {
-      genes.push(inputs[2][randParanthesis]);
+      ai[id][8].push(inputs[2][randParanthesis]);
     } else {
       if(Math.round(Math.random())) {
         randVar = Math.round(Math.random() * 100)
-        genes.push(randVar);
+        ai[id][8].push(randVar);
       } else {
-        genes.push(inputs[1][randVar]);
+        ai[id][8].push(inputs[1][randVar]);
       }
     }
   }
@@ -45,7 +45,7 @@ function genRandCond(id) {
   } while(ai[id][9] % 2 == 0 && ai[id][9] > 0);
   
   for(i = 0; i < ai[id][9]; i++) {
-    findInput(op, parenthesis);
+    findInput(id, op, parenthesis);
     op++;
   }
   
