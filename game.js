@@ -61,7 +61,7 @@ function renderAIs(game) {
         ai[i][6] -= 0.02;
       }
       
-      if(ai[i][5] + ai[i][6] < 60 && !(ai[i][10])) {
+      if(ai[i][5] + ai[i][6] < 60 && typeof ai[i][10] === "undefined")) {
         ai[i].push(["dying", ai[i][5], ai[i][6]]);
       } else {
         game.fillStyle = "rgb(" + ai[i][0] + ", " + ai[i][1] + ", " + ai[i][2] + ")"; // [0], [1] and [2] are colour values
