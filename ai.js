@@ -45,6 +45,7 @@ function genRandGenes() {
     genRandCond(i);
     
     var repeats = 2;
+    ai[i].push(true);
     interval(function() {
       if(ai[i][5] < width || ai[i][6] < height) {
         ai[i][5] = ai[i][5] * 1.2;
@@ -53,6 +54,7 @@ function genRandGenes() {
       } else {
         ai[i][5] = width;
         ai[i][6] = height;
+        ai[i].splice(10, 1);
         repeats = 1;
       }
     }, 1, repeats);
@@ -63,10 +65,12 @@ function genRandGenes() {
     genRandCond(i);
     
     var repeats = 2;
+    ai[i].push(true);
     interval(function() {
       if(ai[i][5] < width || ai[i][6] < height) {
         ai[i][5] = ai[i][5] * 1.2;
         ai[i][6] = ai[i][6] * 1.2;
+        ai[i].splice(10, 1);
         repeats = 2;
       } else {
         ai[i][5] = width;
