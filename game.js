@@ -16,6 +16,20 @@ function interval(func, wait, times){
   setTimeout(interv, wait);
 };
 
+function checkCond(id) {
+  try {
+    func = new Function("return " + ai[id][8].join(" "));
+    action = func();
+    
+    if(action == true) {
+      rotating = true;
+    }
+  } catch(e) {
+    genRandGenes();
+    checkCond();
+  }
+}
+
 function renderAIs(game) {
   for(i = 0; i < ai.length; i++) {
     if(ai[i][10] && ai[i][10][0] == "dying") {
