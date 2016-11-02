@@ -18,8 +18,22 @@ function interval(func, wait, times){
 
 function renderAIs(game) {
   for(i = 0; i < ai.length; i++) {
-    if(ai[i] != "dead") {
-      if(ai[i][10]) { // If [10] exists then do the spawning animation
+    if(ai[i][10] == "dying") {
+      if(ai[i][5] > 0 && ai[i][6] > 0) {
+        var changeX = ai[i][5] * 1.1 - ai[i][5];
+        var changeY = ai[i][6] * 1.1 - ai[i][6];
+        
+        ai[i][5] -= changeX;
+        ai[i][6] -= changeY;
+        
+        ai[i][3] += changeX / 2;
+        ai[i][4] += changeY / 2;
+      } else {
+        ai[i] == "dead";
+        ais_alive--;
+      }
+    } else if(ai[i] != "dead") {
+      if(ai[i][10]) {
         if(ai[i][5] < ai[i][10][0] || ai[i][6] < ai[i][10][1]) { // [10][0] = full width, [10][1] = full height
           var changeX = ai[i][5] * 1.1 - ai[i][5];
           var changeY = ai[i][6] * 1.1 - ai[i][6];
@@ -48,8 +62,7 @@ function renderAIs(game) {
       }
       
       if(ai[i][5] + ai[i][6] < 60 && !(ai[i][10])) {
-        ai[i] = "dead";
-        ais_alive--;
+        ai[i].push("dying");
       } else {
         game.fillStyle = "rgb(" + ai[i][0] + ", " + ai[i][1] + ", " + ai[i][2] + ")"; // [0], [1] and [2] are colour values
         game.fillRect(ai[i][3], ai[i][4], ai[i][5], ai[i][6]);
