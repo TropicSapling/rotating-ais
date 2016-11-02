@@ -9,6 +9,7 @@ function interval(func, wait, times){
           func.call(null);
         } catch(e){
           t = 0;
+          console.log(e.toString() + " on line " + e.lineNumber);
           throw e.toString();
         }
       }
@@ -27,7 +28,6 @@ function checkCond(id) {
       rotating = true;
     }
   } catch(e) {
-    console.log(e.toString() + " on " + e.lineNumber);
     ai[id].splice(8, 2);
     genRandCond(id);
     checkCond(id);
