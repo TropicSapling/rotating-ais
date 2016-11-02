@@ -27,7 +27,6 @@ function checkCond(id) {
       rotating = true;
     }
   } catch(e) {
-    alert(e.toString() + " on line " + e.lineNumber);
     ai[id].splice(8, 2);
     genRandCond(id);
     checkCond(id);
@@ -125,3 +124,9 @@ $(function() {
     renderAIs(game);
   }, 0);
 });
+
+window.onerror = function (msg, url, line) {
+   alert("Message : " + msg );
+   alert("url : " + url );
+   alert("Line number : " + line );
+}
