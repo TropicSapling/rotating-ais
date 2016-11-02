@@ -18,10 +18,10 @@ function interval(func, wait, times){
 
 function renderAIs(game) {
   for(i = 0; i < ai.length; i++) {
-    if(ai[i][10] == "dying") {
+    if(ai[i][10][0] == "dying") {
       if(ai[i][5] > 1 && ai[i][6] > 1) {
-        var changeX = ai[i][5] * 1.1 - ai[i][5];
-        var changeY = ai[i][6] * 1.1 - ai[i][6];
+        var changeX = (ai[i][10][1] - ai[i][5]) * 1.1 - ai[i][5];
+        var changeY = (ai[i][10][2] - ai[i][6]) * 1.1 - ai[i][6];
         
         ai[i][5] -= changeX;
         ai[i][6] -= changeY;
@@ -62,7 +62,7 @@ function renderAIs(game) {
       }
       
       if(ai[i][5] + ai[i][6] < 60 && !(ai[i][10])) {
-        ai[i].push("dying");
+        ai[i].push(["dying", ai[i][5], ai[i][6]]);
       } else {
         game.fillStyle = "rgb(" + ai[i][0] + ", " + ai[i][1] + ", " + ai[i][2] + ")"; // [0], [1] and [2] are colour values
         game.fillRect(ai[i][3], ai[i][4], ai[i][5], ai[i][6]);
