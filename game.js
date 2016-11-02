@@ -20,7 +20,7 @@ function interval(func, wait, times){
 
 function checkCond(id) {
   try {
-    func = new Function("return " + ai[id][8].join(" "));
+    func = new Function("return " + ai[id][8].join(" ") + ";");
     action = func();
     
     if(action == true) {
