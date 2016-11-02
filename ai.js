@@ -22,10 +22,10 @@ function findInput(id, op, paranthesis) {
       ai[id][8].push(inputs[1][randParanthesis]);
     } else {
       if(Math.round(Math.random())) {
-        var randNumber = Math.round(Math.random() * 100)
+        var randNumber = Math.floor(Math.random() * 100)
         ai[id][8].push(randNumber);
       } else {
-        ai[id][8].push("ai[");
+        ai[id][8].push("ai[" + id + "][" + Math.floor(Math.random() * 100) + "]");
       }
     }
   }
