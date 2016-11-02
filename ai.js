@@ -25,7 +25,7 @@ function findInput(id, op, paranthesis) {
         var randNumber = Math.floor(Math.random() * 100)
         ai[id][8].push(randNumber);
       } else {
-        ai[id][8].push("ai[" + id + "][" + Math.floor(Math.random() * 100) + "]");
+        ai[id][8].push("ai[" + id + "][" + Math.floor(Math.random() * 8) + "]");
       }
     }
   }
