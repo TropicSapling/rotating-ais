@@ -40,7 +40,9 @@ function genRandGenes() {
   
   if(placeAvailable == -1) {
     ai.push([Math.floor(Math.random() * 256), Math.floor(Math.random() * 256), Math.floor(Math.random() * 256), Math.floor(Math.random() * (600 - width)), Math.floor(Math.random() * (600 - height)), 1.2, 1.2, Math.floor(Math.random() * 360)]);
-    genRandCond(ai.length - 1);
+    
+    var i = ai.length - 1;
+    genRandCond(i);
     
     var repeats = 2;
     interval(function() {
@@ -56,7 +58,9 @@ function genRandGenes() {
     }, 1, repeats);
   } else {
     ai[placeAvailable] = [Math.floor(Math.random() * 256), Math.floor(Math.random() * 256), Math.floor(Math.random() * 256), Math.floor(Math.random() * (600 - width)), Math.floor(Math.random() * (600 - height)), 1.2, 1.2, Math.floor(Math.random() * 360)];
-    genRandCond(placeAvailable);
+    
+    var i = placeAvailable;
+    genRandCond(i);
     
     var repeats = 2;
     interval(function() {
