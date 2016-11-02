@@ -27,7 +27,7 @@ function checkCond(id) {
       rotating = true;
     }
   } catch(e) {
-    alert(e.toString() + " on line " + e.lineNumber());
+    alert(e.toString() + " on line " + e.lineNumber);
     ai[id].splice(8, 2);
     genRandCond(id);
     checkCond(id);
