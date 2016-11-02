@@ -27,6 +27,7 @@ function checkCond(id) {
       rotating = true;
     }
   } catch(e) {
+    alert(e.toString());
     ai[id].splice(8, 2);
     genRandCond(id);
     checkCond(id);
