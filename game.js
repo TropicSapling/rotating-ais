@@ -19,7 +19,7 @@ function interval(func, wait, times){
 };
 
 function checkCond(id) {
-  try {
+/*  try {
     func = new Function("return " + ai[id][8].join(" "));
     action = func();
     
@@ -27,11 +27,10 @@ function checkCond(id) {
       rotating = true;
     }
   } catch(e) {
-    console.log(e.toString());
     ai[id].splice(8, 2);
     genRandCond(id);
     checkCond();
-  }
+  } */
 }
 
 function renderAIs(game) {
