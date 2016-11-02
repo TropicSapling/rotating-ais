@@ -27,8 +27,8 @@ function renderAIs(game) {
           ai[i][5] = ai[i][5] * 1.1;
           ai[i][6] = ai[i][6] * 1.1;
           
-          ai[i][3] -= changeX;
-          ai[i][4] -= changeY;
+          ai[i][3] -= changeX / 2;
+          ai[i][4] -= changeY / 2;
         } else {
           ai[i][5] = ai[i][10][0];
           ai[i][6] = ai[i][10][1];
