@@ -7,19 +7,19 @@ function randomBetween(min, max) {
   return Math.floor(Math.random()*(max-min+1)+min);
 }
 
-function findInput(id, op, paranthesis) {
-  var randParanthesis = Math.round(Math.random());
+function findInput(id, op, parenthesis) {
+  var randParenthesis = Math.round(Math.random());
   
   if(op % 2) {
     var randOp = Math.round(Math.random() * (inputs[0].length - 1));
-    if(parenthesis > 0 && randParanthesis == inputs[1].indexOf(")") && Math.round(Math.random())) {
-      ai[id][8].push(inputs[1][randParanthesis]); // [8] = genes
+    if(parenthesis > 0 && randParenthesis == inputs[1].indexOf(")") && Math.round(Math.random())) {
+      ai[id][8].push(inputs[1][randParenthesis]); // [8] = genes
     } else {
       ai[id][8].push(inputs[1][randOp]);
     }
   } else {
-    if(randParanthesis == inputs[1].indexOf("(") && Math.round(Math.random())) {
-      ai[id][8].push(inputs[1][randParanthesis]);
+    if(randParenthesis == inputs[1].indexOf("(") && Math.round(Math.random())) {
+      ai[id][8].push(inputs[1][randParenthesis]);
     } else {
       if(Math.round(Math.random())) {
         var randNumber = Math.floor(Math.random() * 100)
