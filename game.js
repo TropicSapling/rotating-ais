@@ -26,8 +26,15 @@ function renderAIs(game) {
       ai[i][4] += Math.cos(ai[i][7]);
     }
     
-    game.fillStyle = "rgb(" + ai[i][0] + ", " + ai[i][1] + ", " + ai[i][2] + ")";
-    game.fillRect(ai[i][3], ai[i][4], ai[i][5], ai[i][6]);
+    ai[i][5] -= 0.01;
+    ai[i][6] -= 0.01;
+    
+    if(ai[i][5] + ai[i][6] < 60) {
+      ai.splice(i, 1);
+    } else {
+      game.fillStyle = "rgb(" + ai[i][0] + ", " + ai[i][1] + ", " + ai[i][2] + ")";
+      game.fillRect(ai[i][3], ai[i][4], ai[i][5], ai[i][6]);
+    }
   }
 }
 
