@@ -18,23 +18,25 @@ function interval(func, wait, times){
 
 function renderAIs(game) {
   for(i = 0; i < ai.length; i++) {
-    if(ai[i][3] < 600 - ai[i][5] && ai[i][3] > 0) {
-      ai[i][3] += Math.sin(ai[i][7]);
-    }
-    
-    if(ai[i][4] < 600 - ai[i][6] && ai[i][4] > 0) {
-      ai[i][4] += Math.cos(ai[i][7]);
-    }
-    
-    ai[i][5] -= 0.01;
-    ai[i][6] -= 0.01;
-    
-    if(ai[i][5] + ai[i][6] < 60) {
-      ai[i] = [];
-      total_ais--;
-    } else {
-      game.fillStyle = "rgb(" + ai[i][0] + ", " + ai[i][1] + ", " + ai[i][2] + ")";
-      game.fillRect(ai[i][3], ai[i][4], ai[i][5], ai[i][6]);
+    if(ai[i] != "dead") {
+      if(ai[i][3] < 600 - ai[i][5] && ai[i][3] > 0) {
+        ai[i][3] += Math.sin(ai[i][7]);
+      }
+      
+      if(ai[i][4] < 600 - ai[i][6] && ai[i][4] > 0) {
+        ai[i][4] += Math.cos(ai[i][7]);
+      }
+      
+      ai[i][5] -= 0.01;
+      ai[i][6] -= 0.01;
+      
+      if(ai[i][5] + ai[i][6] < 60) {
+        ai[i] = "dead";
+        total_ais--;
+      } else {
+        game.fillStyle = "rgb(" + ai[i][0] + ", " + ai[i][1] + ", " + ai[i][2] + ")";
+        game.fillRect(ai[i][3], ai[i][4], ai[i][5], ai[i][6]);
+      }
     }
   }
 }
