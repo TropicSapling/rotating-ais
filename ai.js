@@ -44,7 +44,7 @@ function genRandGenes() {
     
     var repeats = 2;
     interval(function() {
-      if() {
+      if(ai[i][5] < width || ai[i][6] < height) {
         ai[i][5] = ai[i][5] * 1.2;
         ai[i][6] = ai[i][6] * 1.2;
         repeats = 2;
@@ -60,7 +60,7 @@ function genRandGenes() {
     
     var repeats = 2;
     interval(function() {
-      if() {
+      if(ai[i][5] < width || ai[i][6] < height) {
         ai[i][5] = ai[i][5] * 1.2;
         ai[i][6] = ai[i][6] * 1.2;
         repeats = 2;
