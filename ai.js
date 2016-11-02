@@ -1,5 +1,6 @@
 var ais_alive = 0;
 var op = 0;
+var parenthesis = 0;
 
 var ai = [];
 var inputs = [["+", "-", "*", "/", "<", "<=", ">=", ">", "&&", "||"], ["(", ")"]];
@@ -8,19 +9,23 @@ function randomBetween(min, max) {
   return Math.floor(Math.random()*(max-min+1)+min);
 }
 
-function findInput(id, parenthesis) {
+function findInput(id) {
   var randParenthesis = Math.round(Math.random());
   
   if(op % 2) {
     var randOp = Math.round(Math.random() * (inputs[0].length - 1));
     if(parenthesis > 0 && randParenthesis == inputs[1].indexOf(")") && Math.round(Math.random())) {
       ai[id][8].push(inputs[1][randParenthesis]); // [8] = genes
+      parenthesis--;
+      op--;
     } else {
       ai[id][8].push(inputs[1][randOp]);
     }
   } else {
     if(randParenthesis == inputs[1].indexOf("(") && Math.round(Math.random())) {
       ai[id][8].push(inputs[1][randParenthesis]);
+      parenthesis++;
+      op--;
     } else {
       if(Math.round(Math.random())) {
         var randNumber = Math.floor(Math.random() * 100)
@@ -33,8 +38,6 @@ function findInput(id, parenthesis) {
 }
 
 function genRandCond(id) {
-  var parenthesis = 0;
-  
   ai[id].push([]); // Add base for condition gene
   ai[id].push(1); // Add base for the gene controlling the length of the condition gene
   
@@ -43,7 +46,7 @@ function genRandCond(id) {
   } while(ai[id][9] % 2 == 0 && ai[id][9] > 0);
   
   for(i = 0; i < ai[id][9]; i++) {
-    findInput(id, op, parenthesis);
+    findInput(id);
     op++;
   }
   
