@@ -22,7 +22,7 @@ function findInput(id, op, paranthesis) {
       ai[id][8].push(inputs[1][randParanthesis]);
     } else {
       if(Math.round(Math.random())) {
-        randNumber = Math.round(Math.random() * 100)
+        var randNumber = Math.round(Math.random() * 100)
         ai[id][8].push(randNumber);
       } else {
         ai[id][8].push("ai[");
