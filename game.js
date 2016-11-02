@@ -19,13 +19,13 @@ function interval(func, wait, times){
 function renderAIs(game) {
   for(i = 0; i < ai.length; i++) {
     if(ai[i] != "dead") {
-      if(ai[i][10]) {
-        if(ai[i][5] < width || ai[i][6] < height) {
+      if(ai[i][10]) { // If [10] exists then do the spawning animation
+        if(ai[i][5] < ai[i][10][0] || ai[i][6] < ai[i][10][1]) { // [10][0] = full width, [10][1] = full height
           ai[i][5] = ai[i][5] * 1.2;
           ai[i][6] = ai[i][6] * 1.2;
         } else {
-          ai[i][5] = width;
-          ai[i][6] = height;
+          ai[i][5] = ai[i][10][0];
+          ai[i][6] = ai[i][10][1];
           ai[i].splice(10, 1);
         }
       } else {
@@ -41,7 +41,7 @@ function renderAIs(game) {
         ai[i][6] -= 0.01;
       }
       
-      if(ai[i][5] + ai[i][6] < 60 && !(ai[i][10])) { // [10] = Is spawning? true or false
+      if(ai[i][5] + ai[i][6] < 60 && !(ai[i][10])) {
         ai[i] = "dead";
         ais_alive--;
       } else {
