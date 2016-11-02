@@ -62,7 +62,7 @@ function renderAIs(game) {
       }
       
       if(ai[i][5] + ai[i][6] < 60 && !(ai[i][10])) {
-        ai[i].push(["dying", 0.1]);
+        ai[i].push(["dying", 0.001]);
       } else {
         game.fillStyle = "rgb(" + ai[i][0] + ", " + ai[i][1] + ", " + ai[i][2] + ")"; // [0], [1] and [2] are colour values
         game.fillRect(ai[i][3], ai[i][4], ai[i][5], ai[i][6]);
