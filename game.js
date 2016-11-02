@@ -29,7 +29,7 @@ function renderAIs(game) {
         ai[i][3] += changeX / 2;
         ai[i][4] += changeY / 2;
       } else {
-        ai[i] == "dead";
+        ai[i] = "dead";
         ais_alive--;
       }
     } else if(ai[i] != "dead") {
