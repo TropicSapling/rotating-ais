@@ -46,7 +46,7 @@ $(function() {
     game.fillRect(0, 0, 600, 600); // Background
     
     if(ai.length < 10) {
-      genRandAI(game);
+      genRandAI();
     }
     
     checkCollisions(game);
