@@ -18,7 +18,7 @@ function interval(func, wait, times){
 
 function renderAIs(game) {
   for(i = 0; i < ai.length; i++) {
-    if(ai[i][10][0] == "dying") {
+    if(ai[i][10] && ai[i][10][0] == "dying") {
       if(ai[i][5] > 1 && ai[i][6] > 1) {
         var changeX = (ai[i][10][1] - ai[i][5] + 1.1) * 1.1;
         var changeY = (ai[i][10][2] - ai[i][6] + 1.1) * 1.1;
