@@ -110,6 +110,10 @@ $(function() {
     
     checkCollisions(game);
     
+    for(i = 0; i < ai.length; i++) {
+      checkCond(i);
+    }
+    
     renderAIs(game);
   }, 0);
 });
