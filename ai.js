@@ -1,7 +1,7 @@
 var ais_alive = 0;
 
 var ai = [];
-var inputs = [["+", "-", "*", "/", "<", "<=", ">=", ">", "&&", "||"], "ai[", ["(", ")"]];
+var inputs = [["+", "-", "*", "/", "<", "<=", ">=", ">", "&&", "||"], ["(", ")"]];
 
 function randomBetween(min, max) {
   return Math.floor(Math.random()*(max-min+1)+min);
@@ -12,22 +12,20 @@ function findInput(id, op, paranthesis) {
   
   if(op % 2) {
     var randOp = Math.round(Math.random() * (inputs[0].length - 1));
-    if(parenthesis > 0 && randParanthesis == inputs[2].indexOf(")") && Math.round(Math.random())) {
-      ai[id][8].push(inputs[2][randParanthesis]); // [8] = genes
+    if(parenthesis > 0 && randParanthesis == inputs[1].indexOf(")") && Math.round(Math.random())) {
+      ai[id][8].push(inputs[1][randParanthesis]); // [8] = genes
     } else {
-      ai[id][8].push(inputs[2][randOp]);
+      ai[id][8].push(inputs[1][randOp]);
     }
   } else {
-    var randVar = Math.round(Math.random() * (inputs[1].length - 1));
-    
-    if(randParanthesis == inputs[2].indexOf("(") && Math.round(Math.random())) {
-      ai[id][8].push(inputs[2][randParanthesis]);
+    if(randParanthesis == inputs[1].indexOf("(") && Math.round(Math.random())) {
+      ai[id][8].push(inputs[1][randParanthesis]);
     } else {
       if(Math.round(Math.random())) {
-        randVar = Math.round(Math.random() * 100)
-        ai[id][8].push(randVar);
+        randNumber = Math.round(Math.random() * 100)
+        ai[id][8].push(randNumber);
       } else {
-        ai[id][8].push(inputs[1][randVar]);
+        ai[id][8].push("ai[");
       }
     }
   }
