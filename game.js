@@ -112,10 +112,12 @@ $(function() {
     checkCollisions(game);
     
     for(i = 0; i < ai.length; i++) {
-      checkCond(i);
-      
-      if(rotating) {
-        ai[i][7] += 1;
+      if(ai[i] != "dead") {
+        checkCond(i);
+        
+        if(rotating) {
+          ai[i][7] += 1;
+        }
       }
     }
     
