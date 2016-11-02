@@ -39,10 +39,36 @@ function genRandGenes() {
   var placeAvailable = ai.indexOf("dead");
   
   if(placeAvailable == -1) {
-    ai.push([Math.floor(Math.random() * 256), Math.floor(Math.random() * 256), Math.floor(Math.random() * 256), Math.floor(Math.random() * (600 - width)), Math.floor(Math.random() * (600 - height)), width, height, Math.floor(Math.random() * 360)]);
+    ai.push([Math.floor(Math.random() * 256), Math.floor(Math.random() * 256), Math.floor(Math.random() * 256), Math.floor(Math.random() * (600 - width)), Math.floor(Math.random() * (600 - height)), 1.2, 1.2, Math.floor(Math.random() * 360)]);
     genRandCond(ai.length - 1);
+    
+    var repeats = 2;
+    interval(function() {
+      if() {
+        ai[i][5] = ai[i][5] * 1.2;
+        ai[i][6] = ai[i][6] * 1.2;
+        repeats = 2;
+      } else {
+        ai[i][5] = width;
+        ai[i][6] = height;
+        repeats = 1;
+      }
+    }, 1, repeats);
   } else {
-    ai[placeAvailable] = [Math.floor(Math.random() * 256), Math.floor(Math.random() * 256), Math.floor(Math.random() * 256), Math.floor(Math.random() * (600 - width)), Math.floor(Math.random() * (600 - height)), width, height, Math.floor(Math.random() * 360)];
+    ai[placeAvailable] = [Math.floor(Math.random() * 256), Math.floor(Math.random() * 256), Math.floor(Math.random() * 256), Math.floor(Math.random() * (600 - width)), Math.floor(Math.random() * (600 - height)), 1.2, 1.2, Math.floor(Math.random() * 360)];
     genRandCond(placeAvailable);
+    
+    var repeats = 2;
+    interval(function() {
+      if() {
+        ai[i][5] = ai[i][5] * 1.2;
+        ai[i][6] = ai[i][6] * 1.2;
+        repeats = 2;
+      } else {
+        ai[i][5] = width;
+        ai[i][6] = height;
+        repeats = 1;
+      }
+    }, 1, repeats);
   }
 }
