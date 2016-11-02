@@ -33,7 +33,7 @@ function renderAIs(game) {
         ais_alive--;
       }
     } else if(ai[i] != "dead") {
-      if(ai[i][10]) {
+      if(ai[i][10].isArray()) {
         if(ai[i][5] < ai[i][10][0] || ai[i][6] < ai[i][10][1]) { // [10][0] = full width, [10][1] = full height
           var changeX = ai[i][5] * 1.1 - ai[i][5];
           var changeY = ai[i][6] * 1.1 - ai[i][6];
