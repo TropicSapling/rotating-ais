@@ -43,8 +43,8 @@ function renderAIs(game) {
           ai[i][4] += Math.cos(ai[i][7]);
         }
         
-        ai[i][5] -= 0.01;
-        ai[i][6] -= 0.01;
+        ai[i][5] -= 0.02;
+        ai[i][6] -= 0.02;
       }
       
       if(ai[i][5] + ai[i][6] < 60 && !(ai[i][10])) {
