@@ -11,7 +11,6 @@ function randomBetween(min, max) {
 
 function findInput(id) {
   var randParenthesis = Math.round(Math.random());
-  console.log(id);
   
   if(op % 2) {
     var randOp = Math.round(Math.random() * (inputs[0].length - 1));
