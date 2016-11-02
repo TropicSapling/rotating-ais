@@ -27,7 +27,7 @@ function checkCond(id) {
       rotating = true;
     }
   } catch(e) {
-    genRandGenes();
+    genRandGenes(id);
     checkCond();
   }
 }
