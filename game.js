@@ -56,7 +56,8 @@ $(function() {
     game.fillRect(0, 0, 600, 600); // Background
     
     if(ais_alive < 10) {
-      genRandAI();
+      genRandGenes();
+      ais_alive++;
     }
     
     checkCollisions(game);
