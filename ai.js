@@ -3,6 +3,7 @@ var op = 0;
 var parenthesis = 0;
 
 var ai = [];
+var ai_sorted = [];
 var inputs = [["+", "-", "*", "/", "<", "<=", ">=", ">", "&&", "||"], ["(", ")"]];
 
 function randomBetween(min, max) {
@@ -38,16 +39,16 @@ function findInput(id) {
 }
 
 function genRandCond(id) {
-  ai[id].push([]); // Add base for condition gene
-  ai[id].push(1); // Add base for the gene controlling the length of the condition gene
+  ai_sorted[id].push([]); // Add base for condition gene
+  ai_sorted[id].push(1); // Add base for the gene controlling the length of the condition gene
   
   if(Math.round(Math.random())) {
-    ai[id][9] += 2; // [9] = where the length of condition gene is stored
-  } else if(ai[id][9] > 2) {
-    ai[id][9] -= 2;
+    ai_sorted[id][9] += 2; // [9] = where the length of condition gene is stored
+  } else if(ai_sorted[id][9] > 2) {
+    ai_sorted[id][9] -= 2;
   }
   
-  for(i = 0; i < ai[id][9]; i++) {
+  for(i = 0; i < ai_sorted[id][9]; i++) {
     findInput(id);
     op++;
   }
@@ -55,7 +56,7 @@ function genRandCond(id) {
   op = 0;
   
   while(parenthesis > 0) {
-    ai[id][8].push(")"); // [8] = where the condition gene is stored
+    ai_sorted[id][8].push(")"); // [8] = where the condition gene is stored
     parenthesis--;
   }
 }
