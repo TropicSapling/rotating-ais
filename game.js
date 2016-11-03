@@ -22,7 +22,7 @@ function checkCond(id) {
     action = func();
     
     if(action == true) {
-      ai[id][7] += 1;
+      ai[id][7] += 0.25;
     }
   } catch(e) {
     ai[id].splice(8, 2);
