@@ -7,6 +7,7 @@ function interval(func, wait, times){
           func.call(null);
         } catch(e){
           t = 0;
+          alert(e.toString + " on line " + e.lineNumber);
           throw e.toString();
         }
       }
