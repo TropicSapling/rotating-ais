@@ -1,5 +1,3 @@
-var rotating = false;
-
 function interval(func, wait, times){
   var interv = function(w, t){
     return function(){
@@ -24,10 +22,9 @@ function checkCond(id) {
     action = func();
     
     if(action == true) {
-      rotating = true;
+      ai[id][7] += 1;
     }
   } catch(e) {
-    alert(ai[id][8].join(" "));
     ai[id].splice(8, 2);
     genRandCond(id);
     checkCond(id);
@@ -115,10 +112,6 @@ $(function() {
     for(i = 0; i < ai.length; i++) {
       if(ai[i] != "dead" && !(ai[i][10])) {
         checkCond(i);
-        
-        if(rotating) {
-          ai[i][7] += 1;
-        }
       }
     }
     
