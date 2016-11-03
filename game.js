@@ -16,7 +16,12 @@ function interval(func, wait, times){
   setTimeout(interv, wait);
 };
 
-function checkCond(id) {
+function checkCond(id, ai_sorted) {
+  var ai = ai;
+  if(sorted) {
+    ai = ai_sorted;
+  }
+  
   try {
     func = new Function("return " + ai[id][8].join(" "));
     action = func();
@@ -109,9 +114,10 @@ $(function() {
     
     checkCollisions(game);
     
-    for(i = 0; i < ai.length; i++) {
-      if(ai[i] != "dead" && !(ai[i][10])) {
-        checkCond(i);
+    var ai_sorted = ai.sort(function(a,b){return a - b});
+    for(i = 0; i < ai_sorted.length; i++) {
+      if(ai_sorted[i] != "dead" && !(ai_sorted[i][10])) {
+        checkCond(i, ai_sorted);
       }
     }
     
