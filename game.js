@@ -23,6 +23,7 @@ function checkCond(id) {
     func = new Function("return " + ai[id][8].join(" "));
     action = func();
     
+    alert(ai[id][8]);
     if(action == true) {
       rotating = true;
     }
