@@ -40,8 +40,12 @@ function renderAIs(game) {
   ai_copy = ai_copy.sort(function(a,b){return a - b});
   
   var ai_sorted = [];
-  for(i = 0; i < ai.length; i++) {
-    
+  for(i = 0; i < ai_copy.length; i++) {
+    for(j = 0; j < ai.length; j++) {
+      if(ai[j][5] * ai[j][6] == ai_copy[i]) {
+        ai_sorted.push(ai[j]);
+      }
+    }
   }
   
   for(i = 0; i < ai_sorted.length; i++) {
