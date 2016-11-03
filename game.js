@@ -18,14 +18,14 @@ function interval(func, wait, times){
 
 function checkCond(id) {
   try {
-    func = new Function("return " + ai_sorted[id][8].join(" "));
+    func = new Function("return " + ai[id][8].join(" "));
     action = func();
     
     if(action == true) {
-      ai_sorted[id][7] += 0.1;
+      ai[id][7] += 0.1;
     }
   } catch(e) {
-    ai_sorted[id].splice(8, 2);
+    ai[id].splice(8, 2);
     genRandCond(id);
     checkCond(id);
   }
@@ -109,9 +109,9 @@ $(function() {
     
     checkCollisions(game);
     
-    ai_sorted = ai.sort(function(a,b){return a - b});
-    for(i = 0; i < ai_sorted.length; i++) {
-      if(ai_sorted[i] != "dead" && !(ai_sorted[i][10])) {
+    ai = ai.sort(function(a,b){return a - b});
+    for(i = 0; i < ai.length; i++) {
+      if(ai[i] != "dead" && !(ai[i][10])) {
         checkCond(i);
       }
     }
