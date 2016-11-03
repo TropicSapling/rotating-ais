@@ -1,3 +1,5 @@
+var ai_sorted;
+
 function interval(func, wait, times){
   var interv = function(w, t){
     return function(){
@@ -16,21 +18,16 @@ function interval(func, wait, times){
   setTimeout(interv, wait);
 };
 
-function checkCond(id, ai_sorted) {
-  var ai = ai;
-  if(sorted) {
-    ai = ai_sorted;
-  }
-  
+function checkCond(id) {
   try {
-    func = new Function("return " + ai[id][8].join(" "));
+    func = new Function("return " + ai_sorted[id][8].join(" "));
     action = func();
     
     if(action == true) {
-      ai[id][7] += 0.1;
+      ai_sorted[id][7] += 0.1;
     }
   } catch(e) {
-    ai[id].splice(8, 2);
+    ai_sorted[id].splice(8, 2);
     genRandCond(id);
     checkCond(id);
   }
@@ -114,10 +111,10 @@ $(function() {
     
     checkCollisions(game);
     
-    var ai_sorted = ai.sort(function(a,b){return a - b});
+    ai_sorted = ai.sort(function(a,b){return a - b});
     for(i = 0; i < ai_sorted.length; i++) {
       if(ai_sorted[i] != "dead" && !(ai_sorted[i][10])) {
-        checkCond(i, ai_sorted);
+        checkCond(i);
       }
     }
     
