@@ -19,7 +19,7 @@ function interval(func, wait, times){
 };
 
 function checkCond(id) {
-/*  try {
+  try {
     func = new Function("return " + ai[id][8].join(" "));
     action = func();
     
@@ -30,7 +30,7 @@ function checkCond(id) {
     ai[id].splice(8, 2);
     genRandCond(id);
     checkCond(id);
-  } */
+  }
 }
 
 function renderAIs(game) {
@@ -112,7 +112,7 @@ $(function() {
     checkCollisions(game);
     
     for(i = 0; i < ai.length; i++) {
-      if(ai[i] != "dead") {
+      if(ai[i] != "dead" && !(ai[i][10])) {
         checkCond(i);
         
         if(rotating) {
