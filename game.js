@@ -1,3 +1,7 @@
+window.onerror = function (msg, url, lineNo, columnNo) {
+  alert(msg + "\n\nIn file: " + url + "\nLine: " + lineNo + ", column: " + columnNo);
+}
+
 function interval(func, wait, times){
   var interv = function(w, t){
     return function(){
@@ -7,7 +11,6 @@ function interval(func, wait, times){
           func.call(null);
         } catch(e){
           t = 0;
-          alert(e.toString() + " on line " + e.lineNumber);
           throw e.toString();
         }
       }
