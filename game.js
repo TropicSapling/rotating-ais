@@ -23,11 +23,11 @@ function checkCond(id) {
     func = new Function("return " + ai[id][8].join(" "));
     action = func();
     
-    alert(ai[id][8]);
     if(action == true) {
       rotating = true;
     }
   } catch(e) {
+    alert(ai[id][8].join(" "));
     ai[id].splice(8, 2);
     genRandCond(id);
     checkCond(id);
