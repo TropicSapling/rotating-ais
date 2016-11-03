@@ -1,5 +1,3 @@
-var ai_sorted;
-
 function interval(func, wait, times){
   var interv = function(w, t){
     return function(){
