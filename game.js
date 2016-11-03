@@ -32,12 +32,17 @@ function checkCond(id) {
 }
 
 function renderAIs(game) {
-  var ai_sorted = [];
+  var ai_copy = [];
   for(i = 0; i < ai.length; i++) {
-    ai_sorted.push(ai[i][5] * ai[i][6]);
+    ai_copy.push(ai[i][5] * ai[i][6]);
   }
   
-  ai_sorted = ai_sorted.sort(function(a,b){return a - b});
+  ai_copy = ai_copy.sort(function(a,b){return a - b});
+  
+  var ai_sorted = [];
+  for(i = 0; i < ai.length; i++) {
+    
+  }
   
   for(i = 0; i < ai_sorted.length; i++) {
     if(ai_sorted[i][10] && ai_sorted[i][10][0] == "dying") {
