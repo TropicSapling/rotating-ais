@@ -32,6 +32,13 @@ function checkCond(id) {
 }
 
 function renderAIs(game) {
+  var ai_sorted = [];
+  for(i = 0; i < ai.length; i++) {
+    ai_sorted.push(ai[i][5] * ai[i][6]);
+  }
+  
+  ai_sorted = ai_sorted.sort(function(a,b){return a - b});
+  
   for(i = 0; i < ai.length; i++) {
     if(ai[i][10] && ai[i][10][0] == "dying") {
       if(ai[i][5] > 1 && ai[i][6] > 1) {
