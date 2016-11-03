@@ -1,5 +1,5 @@
-window.onerror = function (msg, url, lineNo, columnNo) {
-  alert(msg + "\n\nIn file: " + url + "\nLine: " + lineNo + ", column: " + columnNo);
+window.onerror = function (msg, url, lineNo, columnNo, error) {
+  alert(msg + "\n\nIn file: " + url + "\nLine: " + lineNo + ", column: " + columnNo + "\n\nStack Trace: " + error);
 }
 
 function interval(func, wait, times){
