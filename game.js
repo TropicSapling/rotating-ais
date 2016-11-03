@@ -109,7 +109,6 @@ $(function() {
     
     checkCollisions(game);
     
-    ai = ai.sort(function(a,b){return a - b});
     for(i = 0; i < ai.length; i++) {
       if(ai[i] != "dead" && !(ai[i][10])) {
         checkCond(i);
