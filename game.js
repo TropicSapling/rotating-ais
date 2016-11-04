@@ -38,7 +38,9 @@ function checkCond(id) {
 function renderAIs(game) {
   var ai_copy = [];
   for(i = 0; i < ai.length; i++) {
-    ai_copy.push(ai[i][5] * ai[i][6]);
+    if(ai[i].length > 5) {
+      ai_copy.push(ai[i][5] * ai[i][6]);
+    }
   }
   
   ai_copy = ai_copy.sort(function(a,b){return a - b});
@@ -46,7 +48,7 @@ function renderAIs(game) {
   var ai_sorted = [];
   for(i = 0; i < ai_copy.length; i++) {
     for(j = 0; j < ai.length; j++) {
-      if(ai[j][5] * ai[j][6] == ai_copy[i]) {
+      if(ai[j].length > 5 && ai[j][5] * ai[j][6] == ai_copy[i]) {
         ai_sorted.push(ai[j]);
       }
     }
