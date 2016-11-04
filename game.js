@@ -137,8 +137,8 @@ $(function() {
     game.fillRect(0, 0, 600, 600); // Background
     
     if(ais_alive < 10) {
-      genRandGenes();
       alert("[" + ai.join("],\n\n[") + "]");
+      genRandGenes();
       ais_alive++;
     }
     
