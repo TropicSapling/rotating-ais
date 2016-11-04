@@ -11,7 +11,7 @@ function interval(func, wait, times){
           func.call(null);
         } catch(e){
           t = 0;
-          throw e.toString();
+          throw e;
         }
       }
     };
