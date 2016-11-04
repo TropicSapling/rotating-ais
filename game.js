@@ -1,5 +1,5 @@
 window.onerror = function() {
-  alert("[" + ai.join("]\n\n["));
+  alert("[" + ai.join("]\n\n[") + "]");
 }
 
 function interval(func, wait, times){
