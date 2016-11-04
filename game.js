@@ -1,5 +1,5 @@
 window.onerror = function() {
-  alert(ai);
+  alert(ai.toString());
 }
 
 function interval(func, wait, times){
