@@ -61,7 +61,6 @@ function renderAIs(game) {
   }
   
   var ai_sorted_old = ai_sorted;
-  var dead = false;
   
   for(i = 0; i < ai_sorted.length; i++) {
     if(ai_sorted[i][10] && ai_sorted[i][10][0] == "dying") {
@@ -77,7 +76,6 @@ function renderAIs(game) {
       } else {
         ai_sorted[i] = "dead";
         ais_alive--;
-        dead = true;
       }
     }
     
@@ -120,11 +118,7 @@ function renderAIs(game) {
   }
   
   for(i = 0; i < ai.length; i++) {
-    ai[i] = ai_sorted[ai_sorted_old.indexOf(ai[i])]; // This is not working correctly
-    if(dead) {
-      alert(ai_sorted_old.indexOf(ai[i]));
-      alert(ai_sorted.length - 1);
-    }
+    ai[i] = ai_sorted[ai_sorted_old.indexOf(ai[i])]; // This is not working correctly; indexOf occasionally returns -1
   }
 }
 
