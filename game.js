@@ -74,7 +74,7 @@ function renderAIs(game) {
         ai_sorted[i][3] += change / 2;
         ai_sorted[i][4] += change / 2;
       } else {
-        ai_sorted[i] = "dead";
+        ai_sorted[i] = "dead"; // Not working?
         ais_alive--;
         alert("[" + ai.join("],\n\n[") + "]");
       }
