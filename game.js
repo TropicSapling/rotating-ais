@@ -4,8 +4,6 @@ window.onerror = function(msg, url, line, column, error) {
   } else {
     alert(msg + " in file " + url + "\n\nLine: " + line + ", column: " + column);
   }
-  
-  alert("[" + ai.join("],\n\n[") + "]");
 }
 
 function interval(func, wait, times){
