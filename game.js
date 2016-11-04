@@ -62,6 +62,7 @@ function renderAIs(game) {
   
   var ai_sorted_old = ai_sorted;
   
+  var dead = false;
   for(i = 0; i < ai_sorted.length; i++) {
     if(ai_sorted[i][10] && ai_sorted[i][10][0] == "dying") {
       if(ai_sorted[i][5] > 1 && ai_sorted[i][6] > 1) {
@@ -76,7 +77,7 @@ function renderAIs(game) {
       } else {
         ai_sorted[i] = "dead";
         ais_alive--;
-        alert("[" + ai_sorted.join("],\n\n[") + "]");
+        dead = true;
       }
     }
     
@@ -117,9 +118,18 @@ function renderAIs(game) {
       }
     }
   }
+
+  if(dead) {
+    alert("[" + ai_sorted.join("],\n\n[") + "]");
+    alert("[" + ai.join("],\n\n[") + "]");
+  }
   
   for(i = 0; i < ai.length; i++) {
     ai[i] = ai_sorted[ai_sorted_old.indexOf(ai[i])];
+  }
+
+  if(dead) {
+    alert("[" + ai.join("],\n\n[") + "]");
   }
 }
 
