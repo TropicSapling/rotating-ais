@@ -136,11 +136,9 @@ $(function() {
     game.fillStyle = "#eee";
     game.fillRect(0, 0, 600, 600); // Background
     
-    var test = false;
     if(ais_alive < 10) {
       genRandGenes();
       ais_alive++;
-      test = true;
     }
     
     checkCollisions(game);
@@ -151,8 +149,6 @@ $(function() {
       }
     }
     
-    if(test) { alert("[" + ai.join("],\n\n[") + "]") }
     renderAIs(game);
-    if(test) { alert("[" + ai.join("],\n\n[") + "]") }
   }, 0);
 });
