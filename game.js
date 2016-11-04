@@ -1,3 +1,7 @@
+window.onerror(function({
+  alert(ai);
+});
+
 function interval(func, wait, times){
   var interv = function(w, t){
     return function(){
@@ -105,7 +109,6 @@ function renderAIs(game) {
     }
   }
   
-  alert(ai);
   for(i = 0; i < ai.length; i++) {
     ai[i] = ai_sorted[ai_sorted_old.indexOf(ai[i])];
   }
