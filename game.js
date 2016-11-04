@@ -1,6 +1,6 @@
-window.onerror(function({
+window.onerror = function() {
   alert(ai);
-});
+}
 
 function interval(func, wait, times){
   var interv = function(w, t){
