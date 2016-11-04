@@ -7,7 +7,7 @@ function interval(func, wait, times){
           func.call(null);
         } catch(e){
           t = 0;
-          alert(e.msg + "\n\nIn file: " + e.url + "\nLine: " + e.lineNo + ", e.column: " + e.columnNo + "\n\nStack Trace: " + e.error);
+          alert(e.toString() + "\n\nIn file: " + e.url + "\nLine: " + e.lineNumber + ", column: " + e.columnNumber + "\n\nStack Trace: " + e.error);
           throw e.toString();
         }
       }
