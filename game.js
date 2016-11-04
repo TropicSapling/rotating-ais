@@ -140,7 +140,7 @@ $(function() {
     checkCollisions(game);
     
     for(i = 0; i < ai.length; i++) {
-      if(ai[i] && ai[i] != "dead" && !(ai[i][10])) {
+      if(ai[i] != "dead" && !(ai[i][10])) {
         checkCond(i);
       }
     }
