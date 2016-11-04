@@ -1,5 +1,5 @@
-window.onerror = function() {
-  alert("[" + ai.join("]\n\n[") + "]");
+window.onerror = function(msg, line, column) {
+  alert(msg + " on line " + line + ", column " + column);
 }
 
 function interval(func, wait, times){
