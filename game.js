@@ -1,5 +1,5 @@
-window.onerror = function(msg, line, column) {
-  alert(msg + " on line " + line + ", column " + column);
+window.onerror = function(msg, url, line) {
+  alert(msg + " in file " + url + ", line " + line);
 }
 
 function interval(func, wait, times){
