@@ -144,15 +144,16 @@ function findCollision(id) {
 
 function checkCollisions(game) {
   var collidingAIs = [];
+  var biggestAIs = [];
+  
   for(i = 0; i < ai.length; i++) {
     if(collidingAIs.indexOf(i) == -1) {
-      var collisions = findCollision(i);
-      for(j = 0; j < collisions.length; j++) {
-        collidingAIs.push(collisions[j]);
-      }
-    } else {
-      
+      collidingAIs.push(findCollision(i));
     }
+  }
+  
+  for(i = 0; i < collidingAIs.length; i++) {
+    
   }
 }
 
