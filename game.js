@@ -74,6 +74,9 @@ function renderAIs(game) {
       } else {
         ai_sorted[i] = "dead";
         ais_alive--;
+        alert("[" + ai.join("]\n\n[") + "]");
+        alert("[" + ai_sorted.join("]\n\n[") + "]");
+        alert("[" + ai_sorted_old.join("]\n\n[") + "]");
       }
     }
     
@@ -137,9 +140,7 @@ $(function() {
     game.fillRect(0, 0, 600, 600); // Background
     
     if(ais_alive < 10) {
-      alert("[" + ai.join("]\n\n[") + "]");
       genRandGenes();
-      alert("[" + ai.join("]\n\n[") + "]");
       ais_alive++;
     }
     
