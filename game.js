@@ -192,7 +192,9 @@ function checkCollisions(game) {
           
           while(ai[collidingAIs[i][biggestAI]][5] * ai[collidingAIs[i][biggestAI]][6] < size2 + size) {
             ai[collidingAIs[i][biggestAI]][5] += 1;
+            ai[collidingAIs[i][biggestAI]][3] -= 0.5;
             ai[collidingAIs[i][biggestAI]][6] += 1;
+            ai[collidingAIs[i][biggestAI]][4] -= 0.5;
           }
         }
       }
