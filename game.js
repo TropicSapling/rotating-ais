@@ -145,7 +145,9 @@ function findCollision(id, taken) {
     
     if(taken.indexOf(i) == -1 && (id == i || ((x1 <= x2 + w2 && x1 + w1 >= x2 && y1 <= y2 + h2 && y1 + h1 >= y2) && (x1 - x2 < 15 && x1 + w1 - x2 - w2 > -15 && y1 - y2 < 15 && y1 + h1 - y2 - h2 > -15)))) {
       collisions.push(i);
-      alert("Collision!");
+      if(id != i) {
+        alert("Collision!");
+      }
     }
   }
   
