@@ -134,7 +134,7 @@ function findCollision(id) {
   var collisions = [];
   
   for(i = 0; i < ai.length; i++) {
-    if(id != i && Math.round(ai[id][3] / 10) == Math.round(ai[i][3] / 10) && Math.round(ai[id][4] / 10) == Math.round(ai[i][4] / 10)) {
+    if(Math.round(ai[id][3] / 10) == Math.round(ai[i][3] / 10) && Math.round(ai[id][4] / 10) == Math.round(ai[i][4] / 10)) {
       collisions.push(i);
     }
   }
@@ -166,6 +166,14 @@ function checkCollisions(game) {
         biggestAI = j;
       } else if(size == biggest) {
         sameAIs[i].push(j);
+      }
+    }
+    
+    for(j = 0; j < collidingAIs[i].length; j++) {
+      var size = Math.round(ai[j][5] * ai[j][6] / 1000);
+      
+      if(size < biggest) {
+        ai[
       }
     }
   }
