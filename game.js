@@ -134,7 +134,7 @@ function findCollision(id) {
   var collisions = [];
   
   for(i = 0; i < ai.length; i++) {
-    if(Math.round(ai[id][3] / 10) == Math.round(ai[i][3] / 10) && Math.round(ai[id][4] / 10) == Math.round(ai[i][4] / 10)) {
+    if(id != i && Math.round(ai[id][3] / 10) == Math.round(ai[i][3] / 10) && Math.round(ai[id][4] / 10) == Math.round(ai[i][4] / 10)) {
       collisions.push(i);
     }
   }
@@ -145,12 +145,14 @@ function findCollision(id) {
 function checkCollisions(game) {
   var skipIDs = [];
   for(i = 0; i < ai.length; i++) {
-      if(skipIDs.indexOf(i) == -1) {
-        var checkedIDs = findCollision(i);
-        for(j = 0; j < checkedIDs.length; j++) {
-          skipIDs.push(checkedIDs[j]);
-        }
+    if(skipIDs.indexOf(i) == -1) {
+      var checkedIDs = findCollision(i);
+      for(j = 0; j < checkedIDs.length; j++) {
+        skipIDs.push(checkedIDs[j]);
       }
+    } else {
+      
+    }
   }
 }
 
