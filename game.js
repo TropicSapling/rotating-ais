@@ -144,6 +144,7 @@ function renderAIs(game) {
 
 function findCollision(id, taken) {
   var collisions = [];
+  alert(id);
   
   for(i = id; i < ai.length; i++) {
     var x1 = ai[id][3];
