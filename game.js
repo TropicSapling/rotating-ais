@@ -113,7 +113,19 @@ function renderAIs(game) {
         }
         
         ai_sorted[i][5] -= 0.02;
+        ai_sorted[i][3] += 0.01;
         ai_sorted[i][6] -= 0.02;
+        ai_sorted[i][4] += 0.01;
+      }
+      
+      if(ai_sorted[i][3] < 0) {
+        ai_sorted[i][3] = 0;
+      } else if(ai_sorted[i][3] > 600) {
+        ai_sorted[i][3] = 600;
+      } else if(ai_sorted[i][4] < 0) {
+        ai_sorted[i][4] = 0;
+      } else if(ai_sorted[i][4] > 600) {
+        ai_sorted[i][4] = 600;
       }
       
       if(ai_sorted[i][5] + ai_sorted[i][6] < 60 && !(ai_sorted[i][10])) {
