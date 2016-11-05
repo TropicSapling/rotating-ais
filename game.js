@@ -202,6 +202,7 @@ function checkCollisions(game) {
         
           ai[collidingAIs[i][j]] = "dead";
           ais_alive--;
+          alert(collidingAIs[i][biggestAI]);
           
           while(ai[collidingAIs[i][biggestAI]][5] * ai[collidingAIs[i][biggestAI]][6] < size2 + size) {
             ai[collidingAIs[i][biggestAI]][5] += 1;
