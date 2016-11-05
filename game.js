@@ -74,9 +74,6 @@ function renderAIs(game) {
       } else {
         ai_sorted[i] = "dead";
         ais_alive--;
-        alert("[" + ai.join("]\n\n[") + "]");
-        alert("[" + ai_sorted.join("]\n\n[") + "]");
-        alert("[" + ai_sorted_old.join("]\n\n[") + "]");
       }
     }
     
@@ -119,9 +116,7 @@ function renderAIs(game) {
   }
   
   for(i = 0; i < ai.length; i++) {
-    if(ai_sorted_old.indexOf(ai[i]) != -1) {
-      ai[i] = ai_sorted[ai_sorted_old.indexOf(ai[i])];
-    }
+    ai[i] = ai_sorted[ai_sorted_old.indexOf(ai[i])];
   }
 }
 
