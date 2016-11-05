@@ -143,12 +143,12 @@ function findCollision(id) {
 }
 
 function checkCollisions(game) {
-  var skipIDs = [];
+  var collidingAIs = [];
   for(i = 0; i < ai.length; i++) {
-    if(skipIDs.indexOf(i) == -1) {
-      var checkedIDs = findCollision(i);
-      for(j = 0; j < checkedIDs.length; j++) {
-        skipIDs.push(checkedIDs[j]);
+    if(collidingAIs.indexOf(i) == -1) {
+      var collisions = findCollision(i);
+      for(j = 0; j < collisions.length; j++) {
+        collidingAIs.push(collisions[j]);
       }
     } else {
       
