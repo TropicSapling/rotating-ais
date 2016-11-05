@@ -189,6 +189,7 @@ function checkCollisions(game) {
           var size2 = ai[collidingAIs[i][biggestAI]][5] * ai[collidingAIs[i][biggestAI]][6];
         
           ai[collidingAIs[i][j]] = "dead";
+          ais_alive--;
           
           while(ai[collidingAIs[i][biggestAI]][5] * ai[collidingAIs[i][biggestAI]][6] < size2 + size) {
             ai[collidingAIs[i][biggestAI]][5] += 1;
@@ -215,12 +216,6 @@ $(function() {
     if(ais_alive < 10) {
       genRandGenes();
       ais_alive++;
-    }
-    
-    for(i = 0; i < ai.length; i++) {
-      if(!(ai[i])) {
-        ai[i] = "dead"; // Temp fix
-      }
     }
     
     checkCollisions(game);
