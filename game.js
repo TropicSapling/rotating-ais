@@ -147,6 +147,8 @@ function checkCollisions(game) {
   var sameAIs = [];
   var takenIDs = [];
   
+  console.log(ai);
+  
   for(i = 0; i < ai.length; i++) {
     collidingAIs.push(findCollision(i, takenIDs));
     
