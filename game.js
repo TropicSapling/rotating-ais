@@ -150,5 +150,8 @@ $(function() {
     }
     
     renderAIs(game);
+    if(ai.indexOf(undefined)) {
+       alert(ai);
+    }
   }, 0);
 });
