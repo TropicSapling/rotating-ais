@@ -173,10 +173,8 @@ function checkCollisions(game) {
     }
     
     for(j = 0; j < collidingAIs[i].length; j++) {
-      var size = Math.round(ai[j][5] * ai[j][6] / 1000);
-      
-      if(size < biggest) {
-        ai[
+      if(j != biggestAI) {
+        ai[] = "dead";
       }
     }
   }
