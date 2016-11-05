@@ -143,7 +143,7 @@ function findCollision(id, taken) {
     var h1 = ai[id][6];
     var h2 = ai[i][6];
     
-    if(taken.indexOf(i) == -1 && (id == i || (x1 <= x2 + w2 && x1 + w1 >= x2 && y1 <= y2 + h2 && y1 + h1 >= y2))) {
+    if(taken.indexOf(i) == -1 && (id == i || (Math.round(x1 / 10) == Math.round(x2 / 10) && Math.round((x1 + w1) / 10) == Math.round((x2 + w2) / 10) && Math.round(y1 / 10) == Math.round(y2 / 10) && Math.round((y1 + h1) / 10) == Math.round((y2 + h2) / 10)))) {
       collisions.push(i);
     }
   }
