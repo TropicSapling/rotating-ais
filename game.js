@@ -176,7 +176,6 @@ function checkCollisions(game) {
         takenIDs.push(collidingAIs[collidingAIs.length - 1][j]);
       }
     }
-    alert(i + " (" + ai.length + ")");
   }
   
   for(i = 0; i < collidingAIs.length; i++) {
