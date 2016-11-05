@@ -134,9 +134,7 @@ function renderAIs(game) {
   }
   
   for(i = 0; i < ai.length; i++) {
-    if(ai_sorted_old.indexOf(ai[i]) != -1) {
-      ai[i] = ai_sorted[ai_sorted_old.indexOf(ai[i])];
-    }
+    ai[i] = ai_sorted[ai_sorted_old.indexOf(ai[i])];
   }
 }
 
