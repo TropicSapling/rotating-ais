@@ -134,7 +134,7 @@ function findCollision(id) {
   var collisions = [];
   
   for(i = 0; i < ai.length; i++) {
-    if() {
+    if(Math.round(ai[id][3] / 10) == Math.round(ai[i][3] / 10) && Math.round(ai[id][4] / 10) == Math.round(ai[i][4] / 10)) {
       collisions.push(i);
     }
   }
