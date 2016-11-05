@@ -130,11 +130,11 @@ function renderAIs(game) {
   }
 }
 
-function findCollision(id) {
+function findCollision(id, taken) {
   var collisions = [];
   
   for(i = id; i < ai.length; i++) {
-    if(id == i || (Math.round(ai[id][3] / 10) == Math.round(ai[i][3] / 10) && Math.round(ai[id][4] / 10) == Math.round(ai[i][4] / 10))) {
+    if(taken.indexOf(i) == -1 && (id == i || (Math.round(ai[id][3] / 10) == Math.round(ai[i][3] / 10) && Math.round(ai[id][4] / 10) == Math.round(ai[i][4] / 10)))) {
       collisions.push(i);
     }
   }
@@ -145,9 +145,14 @@ function findCollision(id) {
 function checkCollisions(game) {
   var collidingAIs = [];
   var sameAIs = [];
+  var takenIDs = [];
   
   for(i = 0; i < ai.length; i++) {
-    collidingAIs.push(findCollision(i));
+    collidingAIs.push(findCollision(i, takenIDs));
+    
+    for(j = 0; j < collidingAIs[collidingAIs.length - 1].length; j++) {
+      takenIDs.push(collidingAIs[collidingAIs.length - 1][j]);
+    }
   }
   
   for(i = 0; i < collidingAIs.length; i++) {
