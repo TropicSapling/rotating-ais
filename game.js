@@ -178,6 +178,8 @@ function checkCollisions(game) {
     }
   }
   
+  alert("[" + collidingAIs.join("]\n\n[") + "]");
+  
   for(i = 0; i < collidingAIs.length; i++) {
     if(collidingAIs[i].length > 1) {
       var biggest = 0;
