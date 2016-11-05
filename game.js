@@ -44,8 +44,6 @@ function renderAIs(game) {
   for(i = 0; i < ai.length; i++) {
     if(ai[i].length > 5) {
       ai_copy.push(ai[i][5] * ai[i][6]);
-    } else {
-      alert(ai);
     }
   }
   
@@ -118,7 +116,11 @@ function renderAIs(game) {
   }
   
   for(i = 0; i < ai.length; i++) {
-    ai[i] = ai_sorted[ai_sorted_old.indexOf(ai[i])]; // This is not working correctly; indexOf occasionally returns -1
+    if(ai[i]) {
+      ai[i] = ai_sorted[ai_sorted_old.indexOf(ai[i])]; // This is not working correctly; indexOf occasionally returns -1
+    } else {
+      alert(ai);
+    }
   }
 }
 
