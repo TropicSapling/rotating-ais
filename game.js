@@ -151,7 +151,7 @@ $(function() {
     
     renderAIs(game);
     if(ai.indexOf()) {
-       alert(ai);
+       alert("[" + ai.join("]\n\n[") + "]");
     }
   }, 0);
 });
