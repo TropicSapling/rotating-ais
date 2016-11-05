@@ -150,7 +150,7 @@ $(function() {
     }
     
     renderAIs(game);
-    if(ai.indexOf()) {
+    if(ai.indexOf() !== -1) {
        alert("[" + ai.join("]\n\n[") + "]");
     }
   }, 0);
