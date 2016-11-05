@@ -119,8 +119,8 @@ function renderAIs(game) {
     if(ai_sorted_old.indexOf(ai[i]) != -1) {
       ai[i] = ai_sorted[ai_sorted_old.indexOf(ai[i])]; // This is not working correctly; indexOf occasionally returns -1
     } else {
-      alert(ai_sorted_old);
-      alert(ai);
+      alert("[" + ai_sorted_old.join("],\n\n[") + "]");
+      alert("[" + ai.join("],\n\n[") + "]");
     }
   }
 }
