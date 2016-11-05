@@ -133,7 +133,7 @@ function renderAIs(game) {
 function findCollision(id) {
   var collisions = [];
   
-  for(i = 0; i < ai.length; i++) {
+  for(i = id; i < ai.length; i++) {
     if(id == i || (Math.round(ai[id][3] / 10) == Math.round(ai[i][3] / 10) && Math.round(ai[id][4] / 10) == Math.round(ai[i][4] / 10))) {
       collisions.push(i);
     }
@@ -147,9 +147,7 @@ function checkCollisions(game) {
   var sameAIs = [];
   
   for(i = 0; i < ai.length; i++) {
-    if(collidingAIs.indexOf(i) == -1) {
-      collidingAIs.push(findCollision(i));
-    }
+    collidingAIs.push(findCollision(i));
   }
   
   for(i = 0; i < collidingAIs.length; i++) {
