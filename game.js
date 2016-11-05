@@ -6,6 +6,24 @@ window.onerror = function(msg, url, line, column, error) {
   }
 }
 
+function deepCopy(obj) { // Because JS hates me and is just that annoying
+    if (Object.prototype.toString.call(obj) === '[object Array]') {
+        var out = [], i = 0, len = obj.length;
+        for ( ; i < len; i++ ) {
+            out[i] = arguments.callee(obj[i]);
+        }
+        return out;
+    }
+    if (typeof obj === 'object') {
+        var out = {}, i;
+        for ( i in obj ) {
+            out[i] = arguments.callee(obj[i]);
+        }
+        return out;
+    }
+    return obj;
+}
+
 function interval(func, wait, times){
   var interv = function(w, t){
     return function(){
@@ -58,7 +76,7 @@ function renderAIs(game) {
     }
   }
   
-  var ai_sorted_old = ai_sorted;
+  var ai_sorted_old = deepCopy(ai_sorted);
   
   for(i = 0; i < ai_sorted.length; i++) {
     if(ai_sorted[i][10] && ai_sorted[i][10][0] == "dying") {
