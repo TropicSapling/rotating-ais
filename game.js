@@ -131,7 +131,12 @@ function renderAIs(game) {
 }
 
 function checkCollisions(game) {
-  
+  var skipIDs = [];
+  for(i = 0; i < ai.length; i++) {
+      if(skipIDs.indexOf(i) == -1) {
+        // WIP
+      }
+  }
 }
 
 $(function() {
