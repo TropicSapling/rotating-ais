@@ -154,7 +154,6 @@ function findCollision(id, taken) {
     var w2 = ai[i][5];
     var h1 = ai[id][6];
     var h2 = ai[i][6];
-    alert(i + " (" + id + ")");
     
     if(taken.indexOf(i) == -1 && (id == i || ((x1 <= x2 + w2 && x1 + w1 >= x2 && y1 <= y2 + h2 && y1 + h1 >= y2) && (x1 - x2 < 20 && x1 + w1 - x2 - w2 > -20 && y1 - y2 < 20 && y1 + h1 - y2 - h2 > -20)))) {
       collisions.push(i);
@@ -177,6 +176,7 @@ function checkCollisions(game) {
         takenIDs.push(collidingAIs[collidingAIs.length - 1][j]);
       }
     }
+    alert(i + " (" + ai.length + ")");
   }
   
   for(i = 0; i < collidingAIs.length; i++) {
