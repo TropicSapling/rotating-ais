@@ -134,17 +134,19 @@ function findCollision(id, taken) {
   var collisions = [];
   
   for(i = id; i < ai.length; i++) {
-    var x1 = ai[id][3];
-    var x2 = ai[i][3];
-    var y1 = ai[id][4];
-    var y2 = ai[i][4];
-    var w1 = ai[id][5];
-    var w2 = ai[i][5];
-    var h1 = ai[id][6];
-    var h2 = ai[i][6];
+    if(ai[i]) {
+      var x1 = ai[id][3];
+      var x2 = ai[i][3];
+      var y1 = ai[id][4];
+      var y2 = ai[i][4];
+      var w1 = ai[id][5];
+      var w2 = ai[i][5];
+      var h1 = ai[id][6];
+      var h2 = ai[i][6];
     
-    if(taken.indexOf(i) == -1 && (id == i || ((x1 <= x2 + w2 && x1 + w1 >= x2 && y1 <= y2 + h2 && y1 + h1 >= y2) && (x1 - x2 < 20 && x1 + w1 - x2 - w2 > -20 && y1 - y2 < 20 && y1 + h1 - y2 - h2 > -20)))) {
-      collisions.push(i);
+      if(taken.indexOf(i) == -1 && (id == i || ((x1 <= x2 + w2 && x1 + w1 >= x2 && y1 <= y2 + h2 && y1 + h1 >= y2) && (x1 - x2 < 20 && x1 + w1 - x2 - w2 > -20 && y1 - y2 < 20 && y1 + h1 - y2 - h2 > -20)))) {
+        collisions.push(i);
+      }
     }
   }
   
