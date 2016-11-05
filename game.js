@@ -44,6 +44,8 @@ function renderAIs(game) {
   for(i = 0; i < ai.length; i++) {
     if(ai[i].length > 5) {
       ai_copy.push(ai[i][5] * ai[i][6]);
+    } else {
+      alert(ai);
     }
   }
   
