@@ -9,8 +9,8 @@ window.onerror = function(msg, url, line, column, error) {
 function deepCopy(arr) { // Because JS hates me and is just that annoying
   var out = [];
   
-  for (i = 0; i < arr.length; i++ ) {
-    out.push(arguments.callee(arr[i]));
+  for (i = 0; i < arr.length; i++) {
+    out[i] = arguments.callee(arr[i]);
   }
   
   return out;
