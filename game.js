@@ -190,7 +190,8 @@ function checkCollisions(game) {
           ai[collidingAIs[i][j]] = "dead";
           ai[collidingAIs[i][biggestAI]][5] += Math.sqrt(size);
           ai[collidingAIs[i][biggestAI]][6] += Math.sqrt(size);
-          alert("eaten!");
+          alert("[" + ai.join("],\n\n[") + "]");
+          alert(collidingAIs[i][biggestAI]);
         }
       }
     }
