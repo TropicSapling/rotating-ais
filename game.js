@@ -153,7 +153,7 @@ function checkCollisions(game) {
   }
   
   for(i = 0; i < collidingAIs.length; i++) {
-    
+    biggestAIs.push(Math.max(collidingAIs[i]));
   }
 }
 
