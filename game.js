@@ -74,9 +74,6 @@ function renderAIs(game) {
       } else {
         ai_sorted[i] = "dead";
         ais_alive--;
-        alert("[" + ai.join("]\n\n[") + "]");
-        alert("[" + ai_sorted.join("]\n\n[") + "]");
-        alert("[" + ai_sorted_old.join("]\n\n[") + "]");
       }
     }
     
