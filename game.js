@@ -147,8 +147,6 @@ function checkCollisions(game) {
   var sameAIs = [];
   var takenIDs = [];
   
-  console.log(ai);
-  
   for(i = 0; i < ai.length; i++) {
     collidingAIs.push(findCollision(i, takenIDs));
     
@@ -157,36 +155,31 @@ function checkCollisions(game) {
     }
   }
   
-  console.log(collidingAIs);
-  console.log(takenIDs);
-  
   for(i = 0; i < collidingAIs.length; i++) {
-    var biggest = 0;
-    var biggestAI;
-    
-    sameAIs.push([]);
-    
-    for(j = 0; j < collidingAIs[i].length; j++) {
-      var size = Math.round(ai[j][5] * ai[j][6] / 1000);
+    if(collidingAIs[i].length > 1) {
+      var biggest = 0;
+      var biggestAI;
       
-      if(size > biggest) {
-        biggest = size;
-        biggestAI = j;
-      } else if(size == biggest) {
-        sameAIs[i].push(j);
-      }
-    }
-    
-    console.log(biggest);
-    console.log(biggestAI);
-    
-    for(j = 0; j < collidingAIs[i].length; j++) {
-      if(j != biggestAI) {
-        var size = ai[collidingAIs[i][j]][5] * ai[collidingAIs[i][j]][6];
+      sameAIs.push([]);
+      for(j = 0; j < collidingAIs[i].length; j++) {
+        var size = Math.round(ai[j][5] * ai[j][6] / 1000);
         
-        ai[collidingAIs[i][j]] = "dead";
-        ai[collidingAIs[i][biggestAI]][5] += Math.sqrt(size);
-        ai[collidingAIs[i][biggestAI]][6] += Math.sqrt(size);
+        if(size > biggest) {
+          biggest = size;
+          biggestAI = j;
+        } else if(size == biggest) {
+          sameAIs[i].push(j);
+        }
+      }
+      
+      for(j = 0; j < collidingAIs[i].length; j++) {
+        if(j != biggestAI) {
+          var size = ai[collidingAIs[i][j]][5] * ai[collidingAIs[i][j]][6];
+        
+          ai[collidingAIs[i][j]] = "dead";
+          ai[collidingAIs[i][biggestAI]][5] += Math.sqrt(size);
+          ai[collidingAIs[i][biggestAI]][6] += Math.sqrt(size);
+        }
       }
     }
   }
