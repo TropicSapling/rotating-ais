@@ -131,7 +131,15 @@ function renderAIs(game) {
 }
 
 function findCollision(id) {
-  return []; // WIP
+  var collisions = [];
+  
+  for(i = 0; i < ai.length; i++) {
+    if() {
+      collisions.push(i);
+    }
+  }
+  
+  return collisions;
 }
 
 function checkCollisions(game) {
