@@ -10,7 +10,11 @@ function deepCopy(arr) { // Because JS hates me and is just that annoying
   var out = [];
   
   for (i = 0; i < arr.length; i++) {
-    out[i] = arguments.callee(arr[i]);
+    if(typeof arr[i] === 'object') {
+      out.push(deepCopy(arr[i]));
+    } else {
+      out.push(arr[i]);
+    }
   }
   
   return out;
