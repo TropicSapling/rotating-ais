@@ -155,6 +155,9 @@ function checkCollisions(game) {
     }
   }
   
+  console.log(collidingAIs);
+  console.log(takenIDs);
+  
   for(i = 0; i < collidingAIs.length; i++) {
     var biggest = 0;
     var biggestAI;
@@ -171,6 +174,9 @@ function checkCollisions(game) {
         sameAIs[i].push(j);
       }
     }
+    
+    console.log(biggest);
+    console.log(biggestAI);
     
     for(j = 0; j < collidingAIs[i].length; j++) {
       if(j != biggestAI) {
