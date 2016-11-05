@@ -174,7 +174,7 @@ function checkCollisions(game) {
     
     for(j = 0; j < collidingAIs[i].length; j++) {
       if(j != biggestAI) {
-        ai[] = "dead";
+        ai[collidingAIs[i][j]] = "dead";
       }
     }
   }
