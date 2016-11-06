@@ -156,6 +156,9 @@ function checkCollisions(game) {
   var sameAIs = [];
   var takenIDs = [];
   
+  console.log("AI.length = " + ai.length);
+  console.log(ai);
+  
   for(i = 0; i < ai.length; i++) {
     console.log("OUTSIDE: " + i);
     if(ai[i] !== "dead" && !(ai[i][10])) {
@@ -166,6 +169,7 @@ function checkCollisions(game) {
         takenIDs.push(collidingAIs[collidingAIs.length - 1][j]);
       }
     }
+    console.log("OUTSIDE 2: " + i);
   }
   
   for(i = 0; i < collidingAIs.length; i++) {
