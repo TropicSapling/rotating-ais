@@ -16,22 +16,26 @@ function deepCopy(arr) { // Because JS hates me and is just that annoying
   return out;
 }
 
-function interval(func, wait, times){
+function interval(func, wait){
   var interv = function(w, t){
     return function(){
-      if(typeof t === "undefined" || t-- > 0){
-        setTimeout(interv, w);
-        try {
-          func.call(null);
-        } catch(e){
-          t = 0;
-          throw e;
+      var before = performance.now();
+      
+      try {
+        func.call(null);
+        
+        var now = performance.now();
+        var time_taken = now - before;
+        
+        if(time_taken < w) {
+          setTimeout(interv, w - (time2 - time));
         }
+      } catch(e){
+        t = 0;
+        throw e;
       }
     };
-  }(wait, times);
-  
-  setTimeout(interv, wait);
+  }(wait);
 };
 
 function checkCond(id) {
@@ -245,5 +249,5 @@ $(function() {
     }
     
     renderAIs(game);
-  }, 0);
+  }, 1);
 });
