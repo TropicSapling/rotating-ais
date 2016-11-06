@@ -124,7 +124,9 @@ function renderAIs(game) {
   }
   
   for(i = 0; i < ai.length; i++) {
-    ai[i] = ai_sorted[ai_sorted_old.indexOf(ai[i])];
+    if(ai[i].length >= 5) {
+      ai[i] = ai_sorted[ai_sorted_old.indexOf(ai[i])];
+    }
   }
 }
 
@@ -218,11 +220,11 @@ $(function() {
       ais_alive++;
     }
     
-    for(i = 0; i < ai.length; i++) {
+/*    for(i = 0; i < ai.length; i++) {
       if(!(ai[i])) {
         ai[i] = "dead"; // Temp fix
       }
-    }
+    } */
     
     checkCollisions(game);
     
