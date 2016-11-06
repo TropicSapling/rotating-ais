@@ -232,6 +232,8 @@ $(function() {
     }
     
     renderAIs(game);
-    alert(performance.now() - test);
+    if(performance.now() - test > 4) {
+      alert(performance.now() - test);
+    }
   }, 4);
 });
