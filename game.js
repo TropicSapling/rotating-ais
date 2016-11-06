@@ -170,6 +170,7 @@ function checkCollisions(game) {
   
   for(i = 0; i < ai.length; i++) {
     if(ai[i] != "dead" && !(ai[i][10])) {
+      alert(i);
       collidingAIs.push(findCollision(i, takenIDs));
       
       for(j = 0; j < collidingAIs[collidingAIs.length - 1].length; j++) {
