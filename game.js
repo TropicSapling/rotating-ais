@@ -218,11 +218,11 @@ $(function() {
       ais_alive++;
     }
     
-/*    for(i = 0; i < ai.length; i++) {
+    for(i = 0; i < ai.length; i++) {
       if(!(ai[i])) {
         ai[i] = "dead"; // Temp fix
       }
-    } */
+    }
     
     checkCollisions(game);
     
