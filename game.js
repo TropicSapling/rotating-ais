@@ -133,7 +133,6 @@ function findCollision(id, taken) {
   var i = 0;
   
   for(i = id; i < ai.length; i++) {
-    console.log("INSIDE 2: " + id + " and " + i);
     var x1 = ai[id][3];
     var x2 = ai[i][3];
     var y1 = ai[id][4];
@@ -144,7 +143,6 @@ function findCollision(id, taken) {
     var h2 = ai[i][6];
     
     if(taken.indexOf(i) == -1 && (id == i || ((x1 <= x2 + w2 && x1 + w1 >= x2 && y1 <= y2 + h2 && y1 + h1 >= y2) && (x1 - x2 < 20 && x1 + w1 - x2 - w2 > -20 && y1 - y2 < 20 && y1 + h1 - y2 - h2 > -20)))) {
-      console.log("INSIDE 3: " + id + " and " + i);
       collisions.push(i);
     }
   }
@@ -157,20 +155,14 @@ function checkCollisions(game) {
   var sameAIs = [];
   var takenIDs = [];
   
-  console.log("AI.length = " + ai.length);
-  console.log(ai);
-  
   for(i = 0; i < ai.length; i++) {
-    console.log("OUTSIDE: " + i);
     if(ai[i] !== "dead" && !(ai[i][10])) {
-      console.log("INSIDE: " + i);
       collidingAIs.push(findCollision(i, takenIDs));
          
       for(j = 0; j < collidingAIs[collidingAIs.length - 1].length; j++) {
         takenIDs.push(collidingAIs[collidingAIs.length - 1][j]);
       }
     }
-    console.log("OUTSIDE 2: " + i);
   }
   
   for(i = 0; i < collidingAIs.length; i++) {
