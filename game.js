@@ -182,10 +182,13 @@ function checkCollisions(game) {
           biggestAI = j;
         } else if(size === biggest) {
           sameAIs[i].push(j);
+          if(sameAIs[i].indexOf(biggestAI) == -1) {
+            sameAIs[i].push(biggestAI);
+          }
         }
       }
       
-      if(sameAIs[i].length > 0) {
+      if(sameAIs[i].indexOf(biggestAI) != -1) {
         biggestAI = -1;
       }
       
