@@ -206,7 +206,6 @@ $(function() {
   var game = canvas.getContext("2d");
   
   gameLoop = setInterval(function() {
-    var test = performance.now();
     game.clearRect(0, 0, 600, 600);
     
     game.fillStyle = "#eee";
@@ -232,8 +231,5 @@ $(function() {
     }
     
     renderAIs(game);
-    if(performance.now() - test > 4) {
-      alert(performance.now() - test);
-    }
-  }, 4);
+  }, 8);
 });
