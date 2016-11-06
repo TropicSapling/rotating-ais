@@ -249,5 +249,5 @@ $(function() {
     }
     
     renderAIs(game);
-  }, 1);
+  }, 2);
 });
