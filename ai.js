@@ -60,6 +60,10 @@ function genRandCond(id) {
   }
 }
 
+function combineConditions(cond1, cond2) {
+  // WIP
+}
+
 function genRandGenes() {
   var width = randomBetween(35, 55);
   var height = randomBetween(35, 55);
@@ -76,4 +80,8 @@ function genRandGenes() {
     
     ai[placeAvailable].push([width, height]);
   }
+}
+
+function combineGenes(par1, par2) {
+  // WIP
 }
