@@ -17,7 +17,7 @@ function deepCopy(arr) { // Because JS hates me and is just that annoying
 }
 
 function interval(func, wait){
-  var interv = function(w, t){
+  var interv = function(w){
     return function(){
       var before = performance.now();
       
