@@ -1,9 +1,13 @@
+var gameLoop;
+
 window.onerror = function(msg, url, line, column, error) {
   if(error) {
     alert(msg + " in file " + url + "\n\nLine: " + line + ", column: " + column + "\n\nStack Trace:\n" + error.stack);
   } else {
     alert(msg + " in file " + url + "\n\nLine: " + line + ", column: " + column);
   }
+  
+  clearInterval(gameLoop);
 }
 
 function deepCopy(arr) { // Because JS hates me and is just that annoying
@@ -201,7 +205,8 @@ $(function() {
   var canvas = document.getElementById("game");
   var game = canvas.getContext("2d");
   
-  setInterval(function() {
+  gameLoop = setInterval(function() {
+    var test = performance.now();
     game.clearRect(0, 0, 600, 600);
     
     game.fillStyle = "#eee";
@@ -227,5 +232,6 @@ $(function() {
     }
     
     renderAIs(game);
+    alert(performance.now() - test);
   }, 4);
 });
