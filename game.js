@@ -185,7 +185,7 @@ function checkCollisions(game) {
         }
       }
       
-      if(sameAIs[i].indexOf(biggestAI) != -1) {
+      if(sameAIs[i].length > 0) {
         biggestAI = -1;
       }
       
