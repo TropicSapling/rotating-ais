@@ -71,7 +71,7 @@ function renderAIs(game) {
   var ai_sorted_old = deepCopy(ai_sorted);
   
   for(i = 0; i < ai_sorted.length; i++) {
-    if(ai_sorted[i][10] && ai_sorted[i][10][0] == "dying") {
+    if(ai_sorted[i][10] && ai_sorted[i][10][0] === "dying") {
       if(ai_sorted[i][5] > 1 && ai_sorted[i][6] > 1) {
         ai_sorted[i][10][1] = ai_sorted[i][10][1] * 1.1;
         var change = ai_sorted[i][10][1];
@@ -87,8 +87,8 @@ function renderAIs(game) {
       }
     }
     
-    if(ai_sorted[i] != "dead") {
-      if(ai_sorted[i][10] && ai_sorted[i][10][0] != "dying") {
+    if(ai_sorted[i] !== "dead") {
+      if(ai_sorted[i][10] && ai_sorted[i][10][0] !== "dying") {
         if(ai_sorted[i][5] < ai_sorted[i][10][0] || ai_sorted[i][6] < ai_sorted[i][10][1]) { // [10][0] = full width, [10][1] = full height
           var changeX = ai_sorted[i][5] * 1.1 - ai_sorted[i][5];
           var changeY = ai_sorted[i][6] * 1.1 - ai_sorted[i][6];
@@ -190,13 +190,13 @@ function checkCollisions(game) {
         if(size > biggest) {
           biggest = size;
           biggestAI = j;
-        } else if(size == biggest) {
+        } else if(size === biggest) {
           sameAIs[i].push(j);
         }
       }
       
       for(j = 0; j < collidingAIs[i].length; j++) {
-        if(j != biggestAI) {
+        if(j !== biggestAI) {
           var size = ai[collidingAIs[i][j]][5] * ai[collidingAIs[i][j]][6];
           var size2 = ai[collidingAIs[i][biggestAI]][5] * ai[collidingAIs[i][biggestAI]][6];
         
@@ -239,7 +239,7 @@ $(function() {
     checkCollisions(game);
     
     for(i = 0; i < ai.length; i++) {
-      if(ai[i] != "dead" && !(ai[i][10])) {
+      if(ai[i] !== "dead" && !(ai[i][10])) {
         checkCond(i);
       }
     }
