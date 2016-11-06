@@ -144,7 +144,7 @@ function findCollision(id, taken) {
     var h1 = ai[id][6];
     var h2 = ai[i][6];
     
-    if(taken.indexOf(i) == -1 && (id == i || ((x1 <= x2 + w2 && x1 + w1 >= x2 && y1 <= y2 + h2 && y1 + h1 >= y2) && (x1 - x2 < 15 && x1 + w1 - x2 - w2 > -15 && y1 - y2 < 15 && y1 + h1 - y2 - h2 > -15)))) {
+    if(taken.indexOf(i) == -1 && (id == i || ((x1 <= x2 + w2 && x1 + w1 >= x2 && y1 <= y2 + h2 && y1 + h1 >= y2) && (x1 - x2 < 10 && x1 + w1 - x2 - w2 > -10 && y1 - y2 < 10 && y1 + h1 - y2 - h2 > -10)))) {
       collisions.push(i);
     }
   }
