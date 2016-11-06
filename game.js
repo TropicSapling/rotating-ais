@@ -169,10 +169,10 @@ function checkCollisions(game) {
   var takenIDs = [];
   
   for(i = 0; i < ai.length; i++) {
-    if(ai[i] !== "dead" && typeof ai[i][10] === 'undefined') {
-      alert(i);
+    alert(ai[i]);
+    if(ai[i] !== "dead" && !(ai[i][10])) {
       collidingAIs.push(findCollision(i, takenIDs));
-      
+         
       for(j = 0; j < collidingAIs[collidingAIs.length - 1].length; j++) {
         takenIDs.push(collidingAIs[collidingAIs.length - 1][j]);
       }
