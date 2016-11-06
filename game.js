@@ -185,6 +185,10 @@ function checkCollisions(game) {
         }
       }
       
+      alert(collidingAIs[i].join(", "));
+      alert(biggestAI);
+      alert(sameAIs[i].join(", "));
+      
       for(j = 0; j < collidingAIs[i].length; j++) {
         if(j !== biggestAI && biggestAI != -1) {
           var size = ai[collidingAIs[i][j]][5] * ai[collidingAIs[i][j]][6];
