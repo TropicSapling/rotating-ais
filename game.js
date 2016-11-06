@@ -130,6 +130,7 @@ function renderAIs(game) {
 
 function findCollision(id, taken) {
   var collisions = [];
+  var i = 0;
   
   for(i = id; i < ai.length; i++) {
     console.log("INSIDE 2: " + id + " and " + i);
