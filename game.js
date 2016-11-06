@@ -190,7 +190,7 @@ function checkCollisions(game) {
       }
       
       alert("Colliding: " + collidingAIs[i].join(", "));
-      alert("Biggest: " + collidingAIs[i][biggestAI]);
+      alert("Biggest: " + collidingAIs[i][biggestAI] + "(" + biggestAI + ")");
       alert("Same sizes: " + sameAIs[i].join(", "));
       
       for(j = 0; j < collidingAIs[i].length; j++) {
