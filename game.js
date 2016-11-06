@@ -184,7 +184,7 @@ function checkCollisions(game) {
       }
       
       for(j = 0; j < collidingAIs[i].length; j++) {
-        if(j !== biggestAI) {
+        if(j !== biggestAI && biggestAI != -1) {
           var size = ai[collidingAIs[i][j]][5] * ai[collidingAIs[i][j]][6];
           var size2 = ai[collidingAIs[i][biggestAI]][5] * ai[collidingAIs[i][biggestAI]][6];
         
