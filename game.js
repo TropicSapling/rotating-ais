@@ -16,28 +16,6 @@ function deepCopy(arr) { // Because JS hates me and is just that annoying
   return out;
 }
 
-function interval(func, wait){
-  var interv = function(w){
-    return function(){
-      var before = performance.now();
-      
-      try {
-        func.call(null);
-        
-        var now = performance.now();
-        var time_taken = now - before;
-        
-        if(time_taken < w) {
-          setTimeout(interv, w - (time2 - time));
-        }
-      } catch(e){
-        t = 0;
-        throw e;
-      }
-    };
-  }(wait);
-};
-
 function checkCond(id) {
   try {
     func = new Function("return " + ai[id][8].join(" "));
@@ -223,7 +201,7 @@ $(function() {
   var canvas = document.getElementById("game");
   var game = canvas.getContext("2d");
   
-  interval(function() {
+  setInterval(function() {
     game.clearRect(0, 0, 600, 600);
     
     game.fillStyle = "#eee";
@@ -249,5 +227,5 @@ $(function() {
     }
     
     renderAIs(game);
-  }, 2);
+  }, 4);
 });
