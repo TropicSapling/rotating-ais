@@ -194,7 +194,7 @@ function checkCollisions(game) {
       
       if(biggestAI == -1) {
         if(Math.floor(Math.random() * 10) == 4) {
-          combineGenes(ai[collidingAIs[sameAIs[i][Math.floor(Math.random() * sameAIs[i].length)]]], ai[collidingAIs[sameAIs[i][Math.floor(Math.random() * sameAIs[i].length)]]]);
+          combineGenes(collidingAIs[sameAIs[i][Math.floor(Math.random() * sameAIs[i].length)]], collidingAIs[sameAIs[i][Math.floor(Math.random() * sameAIs[i].length)]]);
           ais_alive++;
         }
       } else {
