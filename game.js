@@ -192,6 +192,8 @@ function checkCollisions(game) {
             }
             
             collidingAIs[i].splice(k);
+            k--;
+            
             if(k < j) {
               j--;
             }
