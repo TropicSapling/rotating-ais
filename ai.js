@@ -166,10 +166,29 @@ function combineGenes(par1, par2) {
     while(width > 0) {
       if(ai[par1][5] + ai[par1][6] >= 60 && ai[par2][5] + ai[par2][6] >= 60) {
         ai[par1][5]--;
-        ai[par1][6]--;
         ai[par2][5]--;
+        width--;
+      } else if(ai[par1][5] + ai[par1][6] >= 60) {
+        ai[par1][5]--;
+      } else {
+        ai[par2][5]--;
+      }
+      
+      width--;
+    }
+    
+    while(height > 0) {
+      if(ai[par1][5] + ai[par1][6] >= 60 && ai[par2][5] + ai[par2][6] >= 60) {
+        ai[par1][6]--;
+        ai[par2][6]--;
+        height--;
+      } else if(ai[par1][5] + ai[par1][6] >= 60) {
+        ai[par1][6]--;
+      } else {
         ai[par2][6]--;
       }
+      
+      height--;
     }
   }
 }
