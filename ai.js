@@ -110,4 +110,14 @@ function combineGenes(par1, par2) {
       ai[placeAvailable] = [];
     }
   }
+  
+  if(placeAvailable == -1) {
+    for(i = 0; i < ai[ai.length - 1].length; i++) {
+      // WIP
+    }
+  } else {
+    for(i = 0; i < ai[placeAvailable].length; i++) {
+      // WIP
+    }
+  }
 }
