@@ -180,6 +180,7 @@ function checkCollisions(game) {
           
           if(size2 < size) {
             ai[collidingAIs[i][k]] = "dead";
+            collidingAIs[i].splice(k);
             ais_alive--;
             
             while(ai[collidingAIs[i][j]][5] * ai[collidingAIs[i][j]][6] < size + size2) {
