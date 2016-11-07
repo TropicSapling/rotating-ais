@@ -197,6 +197,10 @@ function checkCollisions(game) {
             sameAIs[i].push(k);
           }
         }
+        
+        if(sameAIs[i].length < 1) {
+          sameAIs[i] = [];
+        }
       }
       
       if(sameAIs[i].length > 1) {
