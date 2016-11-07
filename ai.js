@@ -113,11 +113,15 @@ function combineGenes(par1, par2) {
   
   if(placeAvailable == -1) {
     for(i = 0; i < ai[ai.length - 1].length; i++) {
-      // WIP
+      if(typeof ai[ai.length - 1][i] === 'number') {
+        // WIP
+      }
     }
   } else {
     for(i = 0; i < ai[placeAvailable].length; i++) {
-      // WIP
+      if(typeof ai[placeAvailable][i] === 'number') {
+        // WIP
+      }
     }
   }
 }
