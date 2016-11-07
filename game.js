@@ -196,7 +196,7 @@ function checkCollisions(game) {
               j--;
             }
           } else if(size === size2) {
-            sameAIs[i].push(k);
+            sameAIs[i][j].push(k);
           }
         }
       }
