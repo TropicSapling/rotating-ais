@@ -88,7 +88,7 @@ function renderAIs(game) {
         } else {
           ai_sorted[i][5] = ai_sorted[i][10][0];
           ai_sorted[i][6] = ai_sorted[i][10][1];
-          ai_sorted[i].splice(10, 1);
+          ai_sorted[i].splice(10);
         }
       } else if(!ai_sorted[i][10]) {
         if(ai_sorted[i][3] < 600 - ai_sorted[i][5] && ai_sorted[i][3] > 0) { // [3] = x position, [5] = width
