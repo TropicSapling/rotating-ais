@@ -192,19 +192,25 @@ function checkCollisions(game) {
         biggestAI = -1;
       }
       
-      for(j = 0; j < collidingAIs[i].length; j++) {
-        if(j !== biggestAI && biggestAI != -1) {
-          var size = ai[collidingAIs[i][j]][5] * ai[collidingAIs[i][j]][6];
-          var size2 = ai[collidingAIs[i][biggestAI]][5] * ai[collidingAIs[i][biggestAI]][6];
-        
-          ai[collidingAIs[i][j]] = "dead";
-          ais_alive--;
-          
-          while(ai[collidingAIs[i][biggestAI]][5] * ai[collidingAIs[i][biggestAI]][6] < size2 + size) {
-            ai[collidingAIs[i][biggestAI]][5] += 1;
-            ai[collidingAIs[i][biggestAI]][3] -= 0.5;
-            ai[collidingAIs[i][biggestAI]][6] += 1;
-            ai[collidingAIs[i][biggestAI]][4] -= 0.5;
+      if(biggestAI == -1) {
+        if(Math.floor(Math.random() * 10) == 4) {
+          mergeGenes(ai[collidingAIs[sameAIs[i][Math.floor(Math.random() * sameAIs[i].length)]]], ai[collidingAIs[sameAIs[i][Math.floor(Math.random() * sameAIs[i].length)]]]);
+        }
+      } else {
+        for(j = 0; j < collidingAIs[i].length; j++) {
+          if(j !== biggestAI) {
+            var size = ai[collidingAIs[i][j]][5] * ai[collidingAIs[i][j]][6];
+            var size2 = ai[collidingAIs[i][biggestAI]][5] * ai[collidingAIs[i][biggestAI]][6];
+            
+            ai[collidingAIs[i][j]] = "dead";
+            ais_alive--;
+            
+            while(ai[collidingAIs[i][biggestAI]][5] * ai[collidingAIs[i][biggestAI]][6] < size2 + size) {
+              ai[collidingAIs[i][biggestAI]][5] += 1;
+              ai[collidingAIs[i][biggestAI]][3] -= 0.5;
+              ai[collidingAIs[i][biggestAI]][6] += 1;
+              ai[collidingAIs[i][biggestAI]][4] -= 0.5;
+            }
           }
         }
       }
