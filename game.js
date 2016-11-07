@@ -169,9 +169,9 @@ function checkCollisions(game) {
   }
   
   for(i = 0; i < collidingAIs.length; i++) {
+    sameAIs.push([]);
+    
     if(collidingAIs[i].length > 1) {
-      sameAIs.push([]);
-      
       for(j = 0; j < collidingAIs[i].length; j++) {
         var size = Math.round(ai[collidingAIs[i][j]][5] * ai[collidingAIs[i][j]][6] / 1000);
         
