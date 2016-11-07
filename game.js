@@ -1,4 +1,5 @@
 var gameLoop;
+var spawn_chance = 0.1; // MIN: >0, MAX: 1.
 
 window.onerror = function(msg, url, line, column, error) {
   if(error) {
@@ -193,7 +194,7 @@ function checkCollisions(game) {
       }
       
       if(biggestAI == -1) {
-        if(Math.floor(Math.random() * 10) == 4) {
+        if(Math.floor(Math.random() * (1 / spawn_chance)) == 0) {
           combineGenes(collidingAIs[sameAIs[i][Math.floor(Math.random() * sameAIs[i].length)]], collidingAIs[sameAIs[i][Math.floor(Math.random() * sameAIs[i].length)]]);
           ais_alive++;
         }
