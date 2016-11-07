@@ -201,14 +201,14 @@ function checkCollisions(game) {
             sameAIs[i][j].push(k);
           }
         }
-      }
-      
-      if(sameAIs[i][j].length > 1) {
-        if(Math.floor(Math.random() * (1 / spawn_chance)) == 0) {
-          setTimeout(function() {
-            combineGenes(collidingAIs[i][sameAIs[i][j][Math.floor(Math.random() * sameAIs[i][j].length)]], collidingAIs[i][sameAIs[i][j][Math.floor(Math.random() * sameAIs[i][j].length)]]);
-            ais_alive++;
-          }, 500);
+        
+        if(sameAIs[i][j].length > 1) {
+          if(Math.floor(Math.random() * (1 / spawn_chance)) == 0) {
+            setTimeout(function() {
+              combineGenes(collidingAIs[i][sameAIs[i][j][Math.floor(Math.random() * sameAIs[i][j].length)]], collidingAIs[i][sameAIs[i][j][Math.floor(Math.random() * sameAIs[i][j].length)]]);
+              ais_alive++;
+            }, 500);
+          }
         }
       }
     }
