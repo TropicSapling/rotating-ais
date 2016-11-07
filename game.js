@@ -190,6 +190,9 @@ function checkCollisions(game) {
             }
             
             collidingAIs[i].splice(k);
+            if(k < j) {
+              j--;
+            }
           } else if(size === size2) {
             sameAIs[i].push(k);
           }
