@@ -115,11 +115,19 @@ function combineGenes(par1, par2) {
     for(i = 0; i < ai[ai.length - 1].length; i++) {
       if(typeof ai[ai.length - 1][i] === 'number') {
         // WIP
+      } else if(typeof ai[ai.length - 1][i] === 'string') {
+        // WIP
+      } else if(typeof ai[ai.length - 1][i] === 'object') {
+        // WIP
       }
     }
   } else {
     for(i = 0; i < ai[placeAvailable].length; i++) {
       if(typeof ai[placeAvailable][i] === 'number') {
+        // WIP
+      } else if(typeof ai[placeAvailable][i] === 'string') {
+        // WIP
+      } else if(typeof ai[placeAvailable][i] === 'object') {
         // WIP
       }
     }
