@@ -169,11 +169,11 @@ function checkCollisions(game) {
   }
   
   for(i = 0; i < collidingAIs.length; i++) {
-    sameAIs.push([]);
-    
     if(collidingAIs[i].length > 1) {
       for(j = 0; j < collidingAIs[i].length; j++) {
         var size = Math.round(ai[collidingAIs[i][j]][5] * ai[collidingAIs[i][j]][6] / 1000);
+        
+        sameAIs[i].push([]);
         
         for(k = 0; k < collidingAIs[i].length; k++) {
           var size2 = Math.round(ai[collidingAIs[i][k]][5] * ai[collidingAIs[i][k]][6] / 1000);
@@ -196,10 +196,6 @@ function checkCollisions(game) {
           } else if(size === size2) {
             sameAIs[i].push(k);
           }
-        }
-        
-        if(sameAIs[i].length < 1) {
-          sameAIs[i] = [];
         }
       }
       
