@@ -9,6 +9,25 @@ function randomBetween(min, max) {
   return Math.floor(Math.random()*(max-min+1)+min);
 }
 
+Array.prototype.equals = function (array) {
+    if (!array)
+        return false;
+
+    if (this.length != array.length)
+        return false;
+
+    for (var i = 0, l=this.length; i < l; i++) {
+        if (this[i] instanceof Array && array[i] instanceof Array) {
+            if (!this[i].equals(array[i]))
+                return false;       
+        }           
+        else if (this[i] != array[i]) { 
+            return false;   
+        }           
+    }       
+    return true;
+}
+
 function findInput(id) {
   var randParenthesis = Math.round(Math.random());
   
@@ -83,5 +102,7 @@ function genRandGenes() {
 }
 
 function combineGenes(par1, par2) {
-  // WIP
+  if(par1.equals(par2)) {
+    // WIP
+  }
 }
