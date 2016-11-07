@@ -139,11 +139,29 @@ function combineGenes(par1, par2) {
       }
     }
     
-    var width = 0;
-    var height = 0;
+    var size = ai[ai.length - 1][5] + ai[ai.length - 1][6];
     
-    width = ai[ai.length - 1][5];
-    height = ai[ai.length - 1][6];
+    while(size > 0) {
+      if(ai[par1][5] + ai[par1][6] >= 60 && ai[par2][5] + ai[par2][6] >= 60) {
+        size -= ai[par1][5] * 0.02 + ai[par1][6] * 0.02;
+        size -= ai[par2][5] * 0.02 + ai[par2][6] * 0.02;
+        
+        ai[par1][5] = ai[par1][5] * 0.98;
+        ai[par2][5] = ai[par1][5] * 0.98;
+        ai[par1][6] = ai[par1][6] * 0.98;
+        ai[par2][6] = ai[par1][6] * 0.98;
+      } else if(ai[par1][5] + ai[par1][6] >= 60) {
+        size -= ai[par1][5] * 0.02 + ai[par1][6] * 0.02;
+        
+        ai[par1][5] = ai[par1][5] * 0.98;
+        ai[par1][6] = ai[par1][6] * 0.98;
+      } else {
+        size -= ai[par2][5] * 0.02 + ai[par2][6] * 0.02;
+        
+        ai[par2][5] = ai[par1][5] * 0.98;
+        ai[par2][6] = ai[par1][6] * 0.98;
+      }
+    }
   } else {
     for(i = 0; i < ai[placeAvailable].length; i++) {
       if(Math.floor(Math.random() * (1 / mutation_rate)) == 0) {
@@ -161,20 +179,24 @@ function combineGenes(par1, par2) {
     
     while(size > 0) {
       if(ai[par1][5] + ai[par1][6] >= 60 && ai[par2][5] + ai[par2][6] >= 60) {
-        ai[par1][5]--;
-        ai[par2][5]--;
-        ai[par1][6]--;
-        ai[par2][6]--;
-        size -= 2;
+        size -= ai[par1][5] * 0.02 + ai[par1][6] * 0.02;
+        size -= ai[par2][5] * 0.02 + ai[par2][6] * 0.02;
+        
+        ai[par1][5] = ai[par1][5] * 0.98;
+        ai[par2][5] = ai[par1][5] * 0.98;
+        ai[par1][6] = ai[par1][6] * 0.98;
+        ai[par2][6] = ai[par1][6] * 0.98;
       } else if(ai[par1][5] + ai[par1][6] >= 60) {
-        ai[par1][5]--;
-        ai[par1][6]--;
+        size -= ai[par1][5] * 0.02 + ai[par1][6] * 0.02;
+        
+        ai[par1][5] = ai[par1][5] * 0.98;
+        ai[par1][6] = ai[par1][6] * 0.98;
       } else {
-        ai[par2][5]--;
-        ai[par2][6]--;
+        size -= ai[par2][5] * 0.02 + ai[par2][6] * 0.02;
+        
+        ai[par2][5] = ai[par1][5] * 0.98;
+        ai[par2][6] = ai[par1][6] * 0.98;
       }
-      
-      size -= 2;
     }
   }
 }
