@@ -94,14 +94,26 @@ function combineGenes(par1, par2) {
       ai.push([]);
       
       for(i = 0; i < ai[par1].length; i++) {
-        ai[ai.length - 1].push(ai[par1][i]);
+        if(i == 5 || i == 6) {
+          ai[ai.length - 1].push(1.1);
+        } else {
+          ai[ai.length - 1].push(ai[par1][i]);
+        }
       }
+      
+      ai[ai.length - 1].push([width, height]);
     } else {
       ai[placeAvailable] = [];
       
       for(i = 0; i < ai[par1].length; i++) {
-        ai[placeAvailable].push(ai[par1][i]);
+        if(i == 5 || i == 6) {
+          ai[placeAvailable].push(1.1);
+        } else {
+          ai[placeAvailable].push(ai[par1][i]);
+        }
       }
+      
+      ai[placeAvailable].push([width, height]);
     }
   } else {
     var width = randomBetween(Math.min(ai[par1][5], ai[par2][5]), Math.max(ai[par1][5], ai[par2][5]));
