@@ -86,7 +86,7 @@ function genRandGenes() {
 function combineGenes(par1, par2) {
   var placeAvailable = ai.indexOf("dead");
   
-  if(par1 == par2) {
+  if(par1 == par2 || true) { // Obviously "|| true" will be removed later, just there now because I'm not done with the "else" part
     var width = ai[par1][5];
     var height = ai[par1][6];
     
