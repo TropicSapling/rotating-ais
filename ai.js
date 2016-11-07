@@ -1,6 +1,7 @@
 var ais_alive = 0;
 var op = 0;
 var parenthesis = 0;
+var mutation_chance = 0.25; // MIN: >0, MAX: 1.
 
 var ai = [];
 var inputs = [["+", "-", "*", "/", "<", "<=", ">=", ">", "&&", "||", "!"], ["(", ")"], ["aiInRangeProp"]];
