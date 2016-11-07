@@ -192,6 +192,7 @@ function checkCollisions(game) {
             }
             
             collidingAIs[i].splice(k);
+            sameAIs[i][j].splice(k);
             k--;
             
             if(k < j) {
