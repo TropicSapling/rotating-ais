@@ -83,7 +83,30 @@ function genRandGenes() {
 }
 
 function combineGenes(par1, par2) {
+  var placeAvailable = ai.indexOf("dead");
+  
   if(par1 == par2) {
-    // WIP
+    if(placeAvailable == -1) {
+      ai.push([]);
+      
+      for(i = 0; i < ai[par1].length; i++) {
+        ai[ai.length - 1].push(ai[par1][i]);
+      }
+    } else {
+      ai[placeAvailable] = [];
+      
+      for(i = 0; i < ai[par1].length; i++) {
+        ai[placeAvailable].push(ai[par1][i]);
+      }
+    }
+  } else {
+    var width = randomBetween(35, 55);
+    var height = randomBetween(35, 55);
+    
+    if(placeAvailable == -1) {
+      ai.push();
+    } else {
+      ai[placeAvailable] = [];
+    }
   }
 }
