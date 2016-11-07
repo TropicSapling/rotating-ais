@@ -139,8 +139,11 @@ function combineGenes(par1, par2) {
       }
     }
     
-    var width = ai[ai.length - 1][5];
-    var height = ai[ai.length - 1][6];
+    var width = 0;
+    var height = 0;
+    
+    width = ai[ai.length - 1][5];
+    height = ai[ai.length - 1][6];
   } else {
     for(i = 0; i < ai[placeAvailable].length; i++) {
       if(Math.floor(Math.random() * (1 / mutation_rate)) == 0) {
@@ -154,7 +157,19 @@ function combineGenes(par1, par2) {
       }
     }
     
-    var width = ai[placeAvailable][5];
-    var height = ai[placeAvailable][6];
+    var width = 0;
+    var height = 0;
+    
+    width = ai[placeAvailable][5];
+    height = ai[placeAvailable][6];
+    
+    while(width > 0) {
+      if(ai[par1][5] + ai[par1][6] >= 60 && ai[par2][5] + ai[par2][6] >= 60) {
+        ai[par1][5]--;
+        ai[par1][6]--;
+        ai[par2][5]--;
+        ai[par2][6]--;
+      }
+    }
   }
 }
