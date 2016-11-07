@@ -138,6 +138,9 @@ function combineGenes(par1, par2) {
         }
       }
     }
+    
+    var width = ai[ai.length - 1][5];
+    var height = ai[ai.length - 1][6];
   } else {
     for(i = 0; i < ai[placeAvailable].length; i++) {
       if(Math.floor(Math.random() * (1 / mutation_rate)) == 0) {
@@ -150,5 +153,8 @@ function combineGenes(par1, par2) {
         }
       }
     }
+    
+    var width = ai[placeAvailable][5];
+    var height = ai[placeAvailable][6];
   }
 }
