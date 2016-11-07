@@ -183,9 +183,9 @@ function combineGenes(par1, par2) {
         size -= ai[par2][5] * 0.02 + ai[par2][6] * 0.02;
         
         ai[par1][5] = ai[par1][5] * 0.98;
-        ai[par2][5] = ai[par1][5] * 0.98;
+        ai[par2][5] = ai[par2][5] * 0.98;
         ai[par1][6] = ai[par1][6] * 0.98;
-        ai[par2][6] = ai[par1][6] * 0.98;
+        ai[par2][6] = ai[par2][6] * 0.98;
       } else if(ai[par1][5] + ai[par1][6] >= 60) {
         size -= ai[par1][5] * 0.02 + ai[par1][6] * 0.02;
         
@@ -194,8 +194,8 @@ function combineGenes(par1, par2) {
       } else {
         size -= ai[par2][5] * 0.02 + ai[par2][6] * 0.02;
         
-        ai[par2][5] = ai[par1][5] * 0.98;
-        ai[par2][6] = ai[par1][6] * 0.98;
+        ai[par2][5] = ai[par2][5] * 0.98;
+        ai[par2][6] = ai[par2][6] * 0.98;
       }
     }
   }
