@@ -87,6 +87,9 @@ function combineGenes(par1, par2) {
   var placeAvailable = ai.indexOf("dead");
   
   if(par1 == par2) {
+    var width = ai[par1][5];
+    var height = ai[par1][6];
+    
     if(placeAvailable == -1) {
       ai.push([]);
       
