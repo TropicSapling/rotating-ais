@@ -101,8 +101,8 @@ function combineGenes(par1, par2) {
       }
     }
   } else {
-    var width = randomBetween(35, 55);
-    var height = randomBetween(35, 55);
+    var width = randomBetween(Math.min(ai[par1][5], ai[par2][5]), Math.max(ai[par1][5], ai[par2][5]));
+    var height = randomBetween(Math.min(ai[par1][6], ai[par2][6]), Math.max(ai[par1][6], ai[par2][6]));
     
     if(placeAvailable == -1) {
       ai.push();
