@@ -203,6 +203,8 @@ function checkCollisions(game) {
           }
         }
         
+        console.log(sameAIs[i][j]);
+        
         if(sameAIs[i][j].length > 1) {
           if(Math.floor(Math.random() * (1 / spawn_chance)) == 0) {
             setTimeout(function() {
