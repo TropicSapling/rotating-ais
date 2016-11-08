@@ -203,11 +203,10 @@ function checkCollisions(game) {
           }
         }
         
-        console.log(sameAIs[i][j]);
-        
         if(sameAIs[i][j].length > 1) {
           if(Math.floor(Math.random() * (1 / spawn_chance)) == 0) {
             setTimeout(function() {
+              console.log(sameAIs[i][j]);
               combineGenes(collidingAIs[i][sameAIs[i][j][Math.floor(Math.random() * sameAIs[i][j].length)]], collidingAIs[i][sameAIs[i][j][Math.floor(Math.random() * sameAIs[i][j].length)]]);
               ais_alive++;
             }, 500);
