@@ -192,7 +192,12 @@ function checkCollisions(game) {
             }
             
             collidingAIs[i].splice(k);
-            sameAIs[i][j].splice(k);
+            
+            var ai_eaten = sameAIs[i][j].indexOf(k);
+            if(ai_eaten != -1) {
+              sameAIs[i][j].splice(ai_eaten);
+            }
+            
             k--;
             
             if(k < j) {
