@@ -10,8 +10,8 @@ function randomBetween(min, max) {
   return Math.floor(Math.random()*(max-min+1)+min);
 }
 
-function spliceStr(str, index, count) {
-  return str.slice(0, index) + str.slice(index + count);
+function spliceStr(str, index, pos) {
+  return str.slice(0, index) + str.slice(pos);
 }
 
 function findInput(id) {
