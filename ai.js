@@ -44,14 +44,17 @@ function findInput(id) {
           var pos = index + 9; // 9 = "__EXENOW(".length
           
           inputs[2][randVar] = spliceStr(inputs[2][randVar], index, pos); // Removes "__EXENOW("
+          pos -= 9;
           
           var codeToExec = "";
-          while(inputs[2][randVar][pos] != ")") {
+          while(!(inputs[2][randVar][pos] == "_" && inputs[2][randVar][pos + 1] == "_")) {
             codeToExec += inputs[2][randVar][pos];
             pos++;
           }
+          codeToExec.slice(codeToExec.length - 1); // Removes ")"
+          pos--;
           
-          inputs[2][randVar] = spliceStr(inputs[2][randVar], pos, pos + 3); // Removes remaining ")__"
+          inputs[2][randVar] = spliceStr(inputs[2][randVar], pos, pos + 3); // Removes remaining "__"
           
           try {
             inputs[2][randVar].replace(codeToExec, new Function("return " + codeToExec));
