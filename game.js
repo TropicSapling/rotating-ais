@@ -184,11 +184,15 @@ function checkCollisions(game) {
             ai[collidingAIs[i][k]] = "dead";
             ais_alive--;
             
+            console.log(size);
+            console.log(size2);
+            
             while(ai[collidingAIs[i][j]][5] * ai[collidingAIs[i][j]][6] < size + size2) {
               ai[collidingAIs[i][j]][5] += 1;
               ai[collidingAIs[i][j]][3] -= 0.5;
               ai[collidingAIs[i][j]][6] += 1;
               ai[collidingAIs[i][j]][4] -= 0.5;
+              alert("executing");
             }
             
             collidingAIs[i].splice(k);
