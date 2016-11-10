@@ -11,7 +11,7 @@ function randomBetween(min, max) {
 }
 
 function spliceStr(str, index, pos) {
-  return str.slice(0, index) + str.slice(pos);
+  return str.slice(0, index) + str.slice(pos + 1);
 }
 
 function findInput(id) {
