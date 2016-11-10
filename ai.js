@@ -4,7 +4,7 @@ var parenthesis = 0;
 var mutation_chance = 0.25; // MIN: >0, MAX: 1.
 
 var ai = [];
-var inputs = [["+", "-", "*", "/", "<", "<=", ">=", ">", "&&", "||", "!"], ["(", ")"], ["ai[__THIS__][__RAND(ai.length)__]", "getAIsInRange(__THIS__)"]];
+var inputs = [["+", "-", "*", "/", "<", "<=", ">=", ">", "&&", "||", "!"], ["(", ")"], ["__EXENOW(ai[id][Math.floor(Math.random() * (ai.length - 1)))__]", "getAIsInRange(__EXENOW(id)__)"]];
 
 function randomBetween(min, max) {
   return Math.floor(Math.random()*(max-min+1)+min);
@@ -35,8 +35,26 @@ function findInput(id) {
         var randNumber = Math.floor(Math.random() * 100)
         ai[id][8].push(randNumber);
       } else {
-        randVar.replace("__THIS__", id);
-        randVar.replace("__RAND(ai.length)__", Math.floor(Math.random() * ai.length));
+        while(inputs[2][randVar].indexOf("__EXENOW(") != -1) {
+          var index = inputs[2][randVar].indexOf("__EXENOW(");
+          var pos = index + 9; // 9 = "__EXENOW(".length
+          
+          inputs[2][randVar].substring(index, pos); // Removes "__EXENOW("
+          
+          var codeToExec = "";
+          while(inputs[2][randVar][pos] != ")") {
+            codeToExec += inputs[2][randVar][pos];
+            pos++;
+          }
+          
+          inputs[2][randVar].substring(pos, pos + 3); // Removes remaining ")__"
+          
+          try {
+            func = new Function("return " + codeToExec);
+          } catch(e) {
+           console.log("[!] ERROR: Invalid input usage of '__EXENOW()__'.");
+          }
+        }
         
         ai[id][8].push(randVar);
       }
