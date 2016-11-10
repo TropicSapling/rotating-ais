@@ -43,7 +43,7 @@ function findInput(id) {
           var index = inputs[2][randVar].indexOf("__EXENOW(");
           var pos = index + 9; // 9 = "__EXENOW(".length
           
-          spliceString(inputs[2][randVar], index, pos); // Removes "__EXENOW("
+          spliceStr(inputs[2][randVar], index, pos); // Removes "__EXENOW("
           
           var codeToExec = "";
           while(inputs[2][randVar][pos] != ")") {
@@ -51,7 +51,7 @@ function findInput(id) {
             pos++;
           }
           
-          spliceString(inputs[2][randVar], pos, pos + 3); // Removes remaining ")__"
+          spliceStr(inputs[2][randVar], pos, pos + 3); // Removes remaining ")__"
           
           try {
             func = new Function("return " + codeToExec);
