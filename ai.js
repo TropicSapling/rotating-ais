@@ -10,6 +10,10 @@ function randomBetween(min, max) {
   return Math.floor(Math.random()*(max-min+1)+min);
 }
 
+function spliceStr(str, index, count) {
+  return str.slice(0, index) + str.slice(index + count);
+}
+
 function findInput(id) {
   var randParenthesis = Math.round(Math.random());
   
@@ -39,7 +43,7 @@ function findInput(id) {
           var index = inputs[2][randVar].indexOf("__EXENOW(");
           var pos = index + 9; // 9 = "__EXENOW(".length
           
-          inputs[2][randVar].substring(index, pos); // Removes "__EXENOW("
+          spliceString(inputs[2][randVar], index, pos); // Removes "__EXENOW("
           
           var codeToExec = "";
           while(inputs[2][randVar][pos] != ")") {
@@ -47,7 +51,7 @@ function findInput(id) {
             pos++;
           }
           
-          inputs[2][randVar].substring(pos, pos + 3); // Removes remaining ")__"
+          spliceString(inputs[2][randVar], pos, pos + 3); // Removes remaining ")__"
           
           try {
             func = new Function("return " + codeToExec);
