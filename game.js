@@ -174,15 +174,13 @@ function checkCollisions(game) {
     if(collidingAIs[i].length > 1) {
       for(j = 0; j < collidingAIs[i].length; j++) {
         var size = ai[collidingAIs[i][j]][5] * ai[collidingAIs[i][j]][6];
-        var size_rounded = Math.round(size / 1000);
         
         sameAIs[i].push([]);
         
         for(k = 0; k < collidingAIs[i].length; k++) {
           var size2 = ai[collidingAIs[i][k]][5] * ai[collidingAIs[i][k]][6];
-          var size2_rounded = Math.round(size2 / 1000);
           
-          if(size2_rounded < size_rounded) {
+          if(Math.sqrt(size2) / Math.sqrt(size) < 0.8) {
             ai[collidingAIs[i][k]] = "dead";
             ais_alive--;
             
