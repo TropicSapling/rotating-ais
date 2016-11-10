@@ -4,7 +4,7 @@ var parenthesis = 0;
 var mutation_chance = 0.25; // MIN: >0, MAX: 1.
 
 var ai = [];
-var inputs = [["+", "-", "*", "/", "<", "<=", ">=", ">", "&&", "||", "!"], ["(", ")"], ["__EXENOW(ai[id][Math.floor(Math.random() * (ai.length - 1)))__]", "getAIsInRange(__EXENOW(id)__)"]];
+var inputs = [["+", "-", "*", "/", "<", "<=", ">=", ">", "&&", "||", "!"], ["(", ")"], ["__EXENOW(ai[id][Math.floor(Math.random() * (ai.length - 1))])__", "getAIsInRange(__EXENOW(id)__)"]];
 
 function randomBetween(min, max) {
   return Math.floor(Math.random()*(max-min+1)+min);
@@ -51,7 +51,7 @@ function findInput(id) {
             codeToExec += inputs[2][randVar][pos];
             pos++;
           }
-          codeToExec.slice(codeToExec.length - 1); // Removes ")" from code to execute
+          codeToExec = codeToExec.slice(0, codeToExec.length - 1); // Removes ")" from code to execute
           pos--;
           
           inputs[2][randVar] = spliceStr(inputs[2][randVar], pos, pos + 3); // Removes remaining ")__"
@@ -59,7 +59,7 @@ function findInput(id) {
           try {
             inputs[2][randVar].replace(codeToExec, new Function("return " + codeToExec));
           } catch(e) {
-            alert("[!] ERROR: Invalid input usage of '__EXENOW()__'.\n\nReason: " + e.toString() + "\n\nCode failing to execute: " + codeToExec);
+            alert("ERROR: Invalid input usage of '__EXENOW()__'.\n\nReason: " + e.toString() + "\n\nCode failing to execute: " + codeToExec);
           }
         }
         
