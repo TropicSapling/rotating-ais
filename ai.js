@@ -59,8 +59,7 @@ function findInput(id) {
           try {
             inputs[2][randVar].replace(codeToExec, new Function("return " + codeToExec));
           } catch(e) {
-            alert("[!] ERROR: Invalid input usage of '__EXENOW()__'. Check console for details.");
-            console.log(e);
+            alert("[!] ERROR: Invalid input usage of '__EXENOW()__'.\n\nReason: " + e.toString() + "\n\nCode failing to execute: " + codeToExec);
           }
         }
         
