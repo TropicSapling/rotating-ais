@@ -43,7 +43,7 @@ function findInput(id) {
           var index = inputs[2][randVar].indexOf("__EXENOW(");
           var pos = index + 9; // 9 = "__EXENOW(".length
           
-          spliceStr(inputs[2][randVar], index, pos); // Removes "__EXENOW("
+          inputs[2][randVar] = spliceStr(inputs[2][randVar], index, pos); // Removes "__EXENOW("
           
           var codeToExec = "";
           while(inputs[2][randVar][pos] != ")") {
@@ -51,12 +51,13 @@ function findInput(id) {
             pos++;
           }
           
-          spliceStr(inputs[2][randVar], pos, pos + 3); // Removes remaining ")__"
+          inputs[2][randVar] = spliceStr(inputs[2][randVar], pos, pos + 3); // Removes remaining ")__"
           
           try {
             func = new Function("return " + codeToExec);
           } catch(e) {
-           console.log("[!] ERROR: Invalid input usage of '__EXENOW()__'.");
+            alert("[!] ERROR: Invalid input usage of '__EXENOW()__'. Check console for details.");
+            console.log(e);
           }
         }
         
