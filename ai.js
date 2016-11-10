@@ -4,7 +4,7 @@ var parenthesis = 0;
 var mutation_chance = 0.25; // MIN: >0, MAX: 1.
 
 var ai = [];
-var inputs = [["+", "-", "*", "/", "<", "<=", ">=", ">", "&&", "||", "!"], ["(", ")"], ["aiInRangeProp"]];
+var inputs = [["+", "-", "*", "/", "<", "<=", ">=", ">", "&&", "||", "!"], ["(", ")"], ["ai[__THIS__][__RAND(ai.length)__]", "getAIsInRange(__THIS__)"]];
 
 function randomBetween(min, max) {
   return Math.floor(Math.random()*(max-min+1)+min);
@@ -14,7 +14,8 @@ function findInput(id) {
   var randParenthesis = Math.round(Math.random());
   
   if(op % 2) {
-    var randOp = Math.round(Math.random() * (inputs[0].length - 1));
+    var randOp = Math.floor(Math.random() * (inputs[0].length));
+    
     if(parenthesis > 0 && randParenthesis == inputs[1].indexOf(")") && Math.round(Math.random())) {
       ai[id][8].push(inputs[1][randParenthesis]); // [8] = condition gene
       parenthesis--;
@@ -23,6 +24,8 @@ function findInput(id) {
       ai[id][8].push(inputs[0][randOp]);
     }
   } else {
+    var randVar = Math.floor(Math.random() * (inputs[2].length));
+    
     if(randParenthesis == inputs[1].indexOf("(") && Math.round(Math.random())) {
       ai[id][8].push(inputs[1][randParenthesis]);
       parenthesis++;
@@ -32,7 +35,10 @@ function findInput(id) {
         var randNumber = Math.floor(Math.random() * 100)
         ai[id][8].push(randNumber);
       } else {
-        ai[id][8].push("ai[" + id + "][" + Math.floor(Math.random() * 8) + "]");
+        randVar.replace("__THIS__", id);
+        randVar.replace("__RAND(ai.length)__", Math.floor(Math.random() * ai.length));
+        
+        ai[id][8].push(randVar);
       }
     }
   }
