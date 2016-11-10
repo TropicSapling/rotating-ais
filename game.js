@@ -173,26 +173,24 @@ function checkCollisions(game) {
     
     if(collidingAIs[i].length > 1) {
       for(j = 0; j < collidingAIs[i].length; j++) {
-        var size = Math.round(ai[collidingAIs[i][j]][5] * ai[collidingAIs[i][j]][6] / 1000);
+        var size = ai[collidingAIs[i][j]][5] * ai[collidingAIs[i][j]][6];
+        var size_rounded = Math.round(size / 1000);
         
         sameAIs[i].push([]);
         
         for(k = 0; k < collidingAIs[i].length; k++) {
-          var size2 = Math.round(ai[collidingAIs[i][k]][5] * ai[collidingAIs[i][k]][6] / 1000);
+          var size2 = ai[collidingAIs[i][k]][5] * ai[collidingAIs[i][k]][6];
+          var size2_rounded = Math.round(size2 / 1000);
           
           if(size2 < size) {
             ai[collidingAIs[i][k]] = "dead";
             ais_alive--;
-            
-            console.log(size);
-            console.log(size2);
             
             while(ai[collidingAIs[i][j]][5] * ai[collidingAIs[i][j]][6] < size + size2) {
               ai[collidingAIs[i][j]][5] += 1;
               ai[collidingAIs[i][j]][3] -= 0.5;
               ai[collidingAIs[i][j]][6] += 1;
               ai[collidingAIs[i][j]][4] -= 0.5;
-              alert("executing");
             }
             
             collidingAIs[i].splice(k);
