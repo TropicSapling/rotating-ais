@@ -180,7 +180,7 @@ function checkCollisions(game) {
         for(k = 0; k < collidingAIs[i].length; k++) {
           var size2 = ai[collidingAIs[i][k]][5] * ai[collidingAIs[i][k]][6];
           
-          if(Math.sqrt(size2) / Math.sqrt(size) < 0.8) {
+          if(Math.sqrt(size2) / Math.sqrt(size) < 0.9) {
             ai[collidingAIs[i][k]] = "dead";
             ais_alive--;
             
