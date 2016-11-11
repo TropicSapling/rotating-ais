@@ -211,7 +211,7 @@ function checkCollisions(game) {
             if(k < j) {
               j--;
             }
-          } else if(size === size2) {
+          } else if(Math.sqrt(size2) / Math.sqrt(size) >= 0.9) {
             sameAIs[i][j].push(k);
           }
         }
