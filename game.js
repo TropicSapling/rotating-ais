@@ -209,7 +209,6 @@ function checkCollisions(game) {
         }
         
         if(sameAIs[i][j].length > 1) {
-          alert("Possible child!");
           if(Math.floor(Math.random() * (1 / spawn_chance)) == 0) {
             (function() {
               setTimeout(function() {
