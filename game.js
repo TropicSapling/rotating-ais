@@ -209,9 +209,13 @@ function checkCollisions(game) {
         }
         
         if(sameAIs[i][j].length > 1) {
+          alert("Possible child!");
           if(Math.floor(Math.random() * (1 / spawn_chance)) == 0) {
+            alert("Child 1");
             (function() {
+              alert("Child 2");
               setTimeout(function() {
+                alert("Child 3");
                 combineGenes(collidingAIs[i][sameAIs[i][j][Math.floor(Math.random() * sameAIs[i][j].length)]], collidingAIs[i][sameAIs[i][j][Math.floor(Math.random() * sameAIs[i][j].length)]]);
                 ais_alive++;
               }, 500);
