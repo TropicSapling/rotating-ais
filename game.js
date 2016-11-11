@@ -226,7 +226,7 @@ function checkCollisions(game) {
 function getRandAIInRange(id) {
   var ais_in_range = [];
   for(i = 0; i < ai.length; i++) {
-    if(!(ai[i][10]) && false) {
+    if(!(ai[i][10]) && ai[i][3] + ai[i][5] > ai[id][3] - 200 && ai[i][3] < ai[id][3] + ai[id][5] + 200 && ai[i][4] + ai[i][6] > ai[id][4] - 200 && ai[i][4] < ai[id][4] + ai[id][6] + 200) {
       ais_in_range.push(ai[i]);
     }
   }
