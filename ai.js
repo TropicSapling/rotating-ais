@@ -175,7 +175,7 @@ function combineGenes(par1, par2) {
       }
     }
     
-    var size = ai[ai.length - 1][5] + ai[ai.length - 1][6];
+    var size = ai[ai.length - 1][10][0] + ai[ai.length - 1][10][1];
     
     while(size > 0) {
       if(ai[par1][5] + ai[par1][6] >= 60 && ai[par2][5] + ai[par2][6] >= 60) {
