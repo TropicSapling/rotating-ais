@@ -162,7 +162,11 @@ function combineGenes(par1, par2) {
     for(i = 0; i < ai[ai.length - 1].length; i++) {
       if(Math.floor(Math.random() * (1 / mutation_chance)) == 0) {
         if(typeof ai[ai.length - 1][i] === 'number') {
-          // WIP
+          if(Math.round(Math.random())) {
+            ai[ai.length - 1][i] += 2;
+          } else {
+            ai[ai.length - 1][i] -= 2;
+          }
         } else if(typeof ai[ai.length - 1][i] === 'string') {
           // WIP
         } else if(typeof ai[ai.length - 1][i] === 'object') {
@@ -198,7 +202,11 @@ function combineGenes(par1, par2) {
     for(i = 0; i < ai[placeAvailable].length; i++) {
       if(Math.floor(Math.random() * (1 / mutation_chance)) == 0) {
         if(typeof ai[placeAvailable][i] === 'number') {
-          // WIP
+          if(Math.round(Math.random())) {
+            ai[placeAvailable][i] += 2;
+          } else {
+            ai[placeAvailable][i] -= 2;
+          }
         } else if(typeof ai[placeAvailable][i] === 'string') {
           // WIP
         } else if(typeof ai[placeAvailable][i] === 'object') {
