@@ -223,7 +223,7 @@ function checkCollisions(game) {
   }
 }
 
-function getAIsInRange(id) {
+function getRandAIInRange(id) {
   
 }
 
