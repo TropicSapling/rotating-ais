@@ -217,14 +217,13 @@ function checkCollisions(game) {
         }
         
         if(sameAIs[i][j].length > 1) {
-          alert("Possible child!");
           if(Math.floor(Math.random() * (1 / spawn_chance)) == 0) {
-            alert("Child 1");
             (function() {
-              alert("Child 2");
+              var i2 = i;
+              var j2 = j;
+              
               setTimeout(function() {
-                alert("Child 3");
-                combineGenes(collidingAIs[i][sameAIs[i][j][Math.floor(Math.random() * sameAIs[i][j].length)]], collidingAIs[i][sameAIs[i][j][Math.floor(Math.random() * sameAIs[i][j].length)]]);
+                combineGenes(collidingAIs[i2][sameAIs[i2][j2][Math.floor(Math.random() * sameAIs[i2][j2].length)]], collidingAIs[i2][sameAIs[i2][j2][Math.floor(Math.random() * sameAIs[i2][j2].length)]]);
                 ais_alive++;
               }, 500);
             })();
