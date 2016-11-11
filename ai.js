@@ -2,9 +2,10 @@ var ais_alive = 0;
 var op = 0;
 var parenthesis = 0;
 var mutation_chance = 0.25; // MIN: >0, MAX: 1.
+var max_genes = 8; // So that AI doesn't have access to genes #8+
 
 var ai = [];
-var inputs = [["+", "-", "*", "/", "<", "<=", ">=", ">", "&&", "||", "!"], ["(", ")"], ["__EXENOW(ai[id][Math.floor(Math.random() * (ai.length - 1))])__", "getAIsInRange(__EXENOW(id)__)"]];
+var inputs = [["+", "-", "*", "/", "<", "<=", ">=", ">", "&&", "||", "!"], ["(", ")"], ["ai[__EXENOW(id)__][__EXENOW(Math.floor(Math.random() * max_genes))__]", "getAIsInRange(__EXENOW(id)__)"]];
 
 function randomBetween(min, max) {
   return Math.floor(Math.random()*(max-min+1)+min);
