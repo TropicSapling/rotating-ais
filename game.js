@@ -224,7 +224,14 @@ function checkCollisions(game) {
 }
 
 function getRandAIInRange(id) {
+  var ais_in_range = [];
+  for(i = 0; i < ai.length; i++) {
+    if(!(ai[i][10]) && false) {
+      ais_in_range.push(ai[i]);
+    }
+  }
   
+  return ais_in_range[Math.floor(Math.random() * ais_in_range.length)];
 }
 
 $(function() {
