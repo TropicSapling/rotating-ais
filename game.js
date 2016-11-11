@@ -183,10 +183,10 @@ function checkCollisions(game) {
         
         for(k = 0; k < collidingAIs[i].length; k++) {
           var size2 = ai[collidingAIs[i][k]][5] * ai[collidingAIs[i][k]][6];
-          var x1 = ai[collidingAIs[i][k]][3];
-          var y1 = ai[collidingAIs[i][k]][4];
-          var w1 = ai[collidingAIs[i][k]][5];
-          var h1 = ai[collidingAIs[i][k]][6];
+          var x2 = ai[collidingAIs[i][k]][3];
+          var y2 = ai[collidingAIs[i][k]][4];
+          var w2 = ai[collidingAIs[i][k]][5];
+          var h2 = ai[collidingAIs[i][k]][6];
           
           if((x1 - x2 < 10 && x1 + w1 - x2 - w2 > -10 && y1 - y2 < 10 && y1 + h1 - y2 - h2 > -10) && Math.sqrt(size2) / Math.sqrt(size) < 0.9) {
             ai[collidingAIs[i][k]] = "dead";
