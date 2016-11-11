@@ -225,7 +225,7 @@ function checkCollisions(game) {
               setTimeout(function() {
                 combineGenes(collidingAIs[i2][sameAIs[i2][j2][Math.floor(Math.random() * sameAIs[i2][j2].length)]], collidingAIs[i2][sameAIs[i2][j2][Math.floor(Math.random() * sameAIs[i2][j2].length)]]);
                 ais_alive++;
-              }, 500);
+              }, 1000);
             })();
           }
         }
