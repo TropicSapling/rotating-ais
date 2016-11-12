@@ -215,7 +215,6 @@ function combineGenes(par1, par2) {
       }
     }
     
-    alert("[" + ai[placeAvailable].join("], [") + "]");
     var size = ai[placeAvailable][10][0] + ai[placeAvailable][10][1];
     
     while(size > 0) {
