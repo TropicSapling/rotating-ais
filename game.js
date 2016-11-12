@@ -220,26 +220,32 @@ function checkCollisions(game) {
         
         if(sameAIs[i][j].length > 1) {
           if(Math.floor(Math.random() * (1 / spawn_chance)) == 0) {
-            (function() {
-              var pars1 = collidingAIs[i];
-              var pars2 = sameAIs[i][j];
+            var pars1 = collidingAIs[i];
+            var pars2 = sameAIs[i][j];
+            
+            var biggestAI;
+            var next_biggestAI;
+            var biggest = -Infinity,
+            var next_biggest = -Infinity;
+            
+            for (var i = 0, n = pars2.length; i < n; ++i) {
+              var nr = pars1[pars2[i]][5] * pars1[pars2[i]][6];
               
-              var par1 = pars1[pars2[Math.floor(Math.random() * pars2.length)]];
-              var par2 = pars1[pars2[Math.floor(Math.random() * pars2.length)]];
-              
-              setTimeout(function() {
-                while(par1 === "dead" || par1[10]) {
-                  par1 = pars1[pars2[Math.floor(Math.random() * pars2.length)]];
-                }
-                
-                while(par2 === "dead" || par2[10]) {
-                  par2 = pars1[pars2[Math.floor(Math.random() * pars2.length)]];
-                }
-                
-                combineGenes(par1, par2);
-                ais_alive++;
-              }, 1000);
-            })();
+              if (nr > biggest) {
+                next_biggest = biggest;
+                biggest = nr;
+                biggestAI = pars2[i];
+              } else if (nr > next_biggest) {
+                next_biggest = nr;
+                next_biggestAI = pars2[i];
+              }
+            }
+            
+            var par1 = pars1[biggestAI];
+            var par2 = pars1[next_biggestAI];
+            
+            combineGenes(par1, par2);
+            ais_alive++;
           }
         }
       }
