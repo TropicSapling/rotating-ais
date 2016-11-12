@@ -110,7 +110,7 @@ function combineConditions(id, cond1, cond2, cond_len1, cond_len2) {
 
 function genRandGenes() {
   var width = randomBetween(10, 50);
-  var height = randomBetween(10, 50);
+  var height = width * randomBetween(0.5, 2);
   var placeAvailable = ai.indexOf("dead");
   
   if(placeAvailable == -1) {
@@ -130,7 +130,7 @@ function combineGenes(par1, par2) {
   var placeAvailable = ai.indexOf("dead");
       
   var width = randomBetween(20, 30);
-  var height = randomBetween(20, 30);
+  var height = width * randomBetween(0.5, 2);
   
   if(placeAvailable == -1) {
     ai.push([]);
