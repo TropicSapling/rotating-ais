@@ -1,5 +1,5 @@
 var gameLoop;
-var spawn_chance = 0.1; // MIN: >0, MAX: 1.
+var spawn_chance = 0.01; // MIN: >0, MAX: 1.
 
 window.onerror = function(msg, url, line, column, error) {
   if(error) {
