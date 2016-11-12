@@ -94,7 +94,7 @@ function genRandCond(id) {
 }
 
 function combineConditions(id, cond1, cond2) {
-  ai[id].splice(8, 0, [123, "+", 456]); // WIP, will be changed
+  ai[id].splice(8, 0, [123, "<", 456]); // WIP, will be changed
   ai[id].splice(9, 0, 3); // WIP, will be changed
 }
 
