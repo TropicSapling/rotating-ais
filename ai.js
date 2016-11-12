@@ -72,7 +72,7 @@ function findInput(id) {
 
 function genRandCond(id) {
   ai[id].push([]); // Add base for condition gene
-  ai[id].push(3); // Add base for the gene controlling the length of the condition gene
+  ai[id].push(9); // Add base for the gene controlling the length of the condition gene
   
   if(Math.round(Math.random())) {
     ai[id][9] += 2; // [9] = where the length of condition gene is stored
