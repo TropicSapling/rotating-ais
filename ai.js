@@ -181,10 +181,10 @@ function combineGenes(par1, par2) {
         } else if(i == 3) {
           ai[ai.length - 1].push(ai[par1][i]);
         } else if(i == 8) {
-		  combineConditions(ai.length - 1, par1[8], par2[8]);
-		} else if(typeof ai[par1][i] === 'number') {
-		  ai[ai.length - 1].push(randomBetween(Math.min(ai[par1][i], ai[par2][i]), Math.max(ai[par1][i], ai[par2][i])));
-		}
+          combineConditions(ai.length - 1, par1[8], par2[8]);
+		    } else if(typeof ai[par1][i] === 'number') {
+		      ai[ai.length - 1].push(randomBetween(Math.min(ai[par1][i], ai[par2][i]), Math.max(ai[par1][i], ai[par2][i])));
+		    }
       }
       
       ai[ai.length - 1].push([width, height]);
@@ -204,10 +204,10 @@ function combineGenes(par1, par2) {
         } else if(i == 3) {
           ai[placeAvailable].push(ai[par1][i]);
         } else if(i == 8) {
-		  combineConditions(placeAvailable, par1[8], par2[8]);
-		} else if(typeof ai[par1][i] === 'number') {
-		  ai[placeAvailable].push(randomBetween(Math.min(ai[par1][i], ai[par2][i]), Math.max(ai[par1][i], ai[par2][i])));
-		}
+		      combineConditions(placeAvailable, par1[8], par2[8]);
+		    } else if(typeof ai[par1][i] === 'number') {
+		      ai[placeAvailable].push(randomBetween(Math.min(ai[par1][i], ai[par2][i]), Math.max(ai[par1][i], ai[par2][i])));
+		    }
       }
       
       ai[placeAvailable].push([width, height]);
