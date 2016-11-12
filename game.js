@@ -228,15 +228,12 @@ function checkCollisions(game) {
             var biggest = -Infinity;
             var next_biggest = -Infinity;
             
-            console.log(pars1);
-            console.log(pars2);
-            console.log(ai);
-            
             for (var k = 0, n = pars2.length; k < n; ++k) {
               var nr = ai[pars1[pars2[k]]][5] * ai[pars1[pars2[k]]][6];
               
               if (nr > biggest) {
                 next_biggest = biggest;
+                next_biggestAI = biggestAI;
                 biggest = nr;
                 biggestAI = pars2[k];
               } else if (nr > next_biggest) {
