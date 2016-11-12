@@ -247,9 +247,6 @@ function checkCollisions(game) {
             
             combineGenes(par1, par2);
             ais_alive++;
-            
-            console.log(collidingAIs);
-            console.log(i);
           }
         }
       }
