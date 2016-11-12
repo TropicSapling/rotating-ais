@@ -120,7 +120,11 @@ function renderAIs(game) {
       }
       
       if(ai_sorted[i][5] + ai_sorted[i][6] < 60 && (!(ai_sorted[i][10]) || (ai_sorted[i][10] && typeof ai_sorted[i][10][0] === 'object'))) {
-        ai_sorted[i].push(["dying", 1.1]);
+        if(ai_sorted[i][10]) {
+          ai_sorted[i].splice(10, 0, ["dying", 1.1]);
+        } else {
+          ai_sorted[i].push(["dying", 1.1]);
+        }
       } else {
         game.fillStyle = "rgb(" + ai_sorted[i][0] + ", " + ai_sorted[i][1] + ", " + ai_sorted[i][2] + ")"; // [0], [1] and [2] are colour values
         game.fillRect(ai_sorted[i][3], ai_sorted[i][4], ai_sorted[i][5], ai_sorted[i][6]);
