@@ -119,7 +119,7 @@ function renderAIs(game) {
         ai_sorted[i][4] = 600;
       }
       
-      if(ai_sorted[i][5] + ai_sorted[i][6] < 50 && (!(ai_sorted[i][10]) || (ai_sorted[i][10] && typeof ai_sorted[i][10][0] === 'object'))) {
+      if(ai_sorted[i][5] + ai_sorted[i][6] < 40 && (!(ai_sorted[i][10]) || (ai_sorted[i][10] && typeof ai_sorted[i][10][0] === 'object'))) {
         if(ai_sorted[i][10]) {
           ai_sorted[i].splice(10, 0, ["dying", 1.1]);
         } else {
