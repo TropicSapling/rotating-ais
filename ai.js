@@ -109,8 +109,8 @@ function combineConditions(id, cond1, cond2, cond_len1, cond_len2) {
 }
 
 function genRandGenes() {
-  var width = randomBetween(35, 70);
-  var height = randomBetween(35, 70);
+  var width = randomBetween(40, 80);
+  var height = randomBetween(40, 80);
   var placeAvailable = ai.indexOf("dead");
   
   if(placeAvailable == -1) {
@@ -245,7 +245,7 @@ function combineGenes(par1, par2) {
     var size = ai[ai.length - 1][10][0] + ai[ai.length - 1][10][1];
     
     while(size > 0) {
-      if((ai[par1][5] + ai[par1][6] >= 50 && ai[par2][5] + ai[par2][6] >= 50) || (ai[par1][5] + ai[par1][6] < 50 && ai[par2][5] + ai[par2][6] < 50)) {
+      if((ai[par1][5] + ai[par1][6] >= 40 && ai[par2][5] + ai[par2][6] >= 40) || (ai[par1][5] + ai[par1][6] < 40 && ai[par2][5] + ai[par2][6] < 40)) {
         size -= ai[par1][5] * 0.02 + ai[par1][6] * 0.02;
         size -= ai[par2][5] * 0.02 + ai[par2][6] * 0.02;
         
@@ -253,7 +253,7 @@ function combineGenes(par1, par2) {
         ai[par2][5] = ai[par1][5] * 0.98;
         ai[par1][6] = ai[par1][6] * 0.98;
         ai[par2][6] = ai[par1][6] * 0.98;
-      } else if(ai[par1][5] + ai[par1][6] >= 50) {
+      } else if(ai[par1][5] + ai[par1][6] >= 40) {
         size -= ai[par1][5] * 0.02 + ai[par1][6] * 0.02;
         
         ai[par1][5] = ai[par1][5] * 0.98;
@@ -285,7 +285,7 @@ function combineGenes(par1, par2) {
     var size = ai[placeAvailable][10][0] + ai[placeAvailable][10][1];
     
     while(size > 0) {
-      if((ai[par1][5] + ai[par1][6] >= 50 && ai[par2][5] + ai[par2][6] >= 50) || (ai[par1][5] + ai[par1][6] < 50 && ai[par2][5] + ai[par2][6] < 50)) {
+      if((ai[par1][5] + ai[par1][6] >= 40 && ai[par2][5] + ai[par2][6] >= 40) || (ai[par1][5] + ai[par1][6] < 40 && ai[par2][5] + ai[par2][6] < 40)) {
         size -= ai[par1][5] * 0.02 + ai[par1][6] * 0.02;
         size -= ai[par2][5] * 0.02 + ai[par2][6] * 0.02;
         
@@ -293,7 +293,7 @@ function combineGenes(par1, par2) {
         ai[par2][5] = ai[par2][5] * 0.98;
         ai[par1][6] = ai[par1][6] * 0.98;
         ai[par2][6] = ai[par2][6] * 0.98;
-      } else if(ai[par1][5] + ai[par1][6] >= 50) {
+      } else if(ai[par1][5] + ai[par1][6] >= 40) {
         size -= ai[par1][5] * 0.02 + ai[par1][6] * 0.02;
         
         ai[par1][5] = ai[par1][5] * 0.98;
