@@ -31,7 +31,11 @@ function checkCond(id) {
     }
   } catch(e) {
     ai[id].splice(8, 2);
-    genRandCond(id);
+    if(ai[id][8]) {
+      combineConditions(id, ai[id][8][0], ai[id][8][1]);
+    } else {
+      genRandCond(id);
+    }
     checkCond(id);
   }
 }
@@ -257,7 +261,7 @@ function checkCollisions(game) {
 function getRandAIInRange(id) {
   var ais_in_range = [];
   for(i = 0; i < ai.length; i++) {
-    if(!(ai[i][10]) && ai[i][3] + ai[i][5] > ai[id][3] - 200 && ai[i][3] < ai[id][3] + ai[id][5] + 200 && ai[i][4] + ai[i][6] > ai[id][4] - 200 && ai[i][4] < ai[id][4] + ai[id][6] + 200) {
+    if((!(ai[i][10]) || (ai[i][10] && typeof ai[i][10][0] === 'object')) && ai[i][3] + ai[i][5] > ai[id][3] - 200 && ai[i][3] < ai[id][3] + ai[id][5] + 200 && ai[i][4] + ai[i][6] > ai[id][4] - 200 && ai[i][4] < ai[id][4] + ai[id][6] + 200) {
       ais_in_range.push(ai[i]);
     }
   }
@@ -283,7 +287,7 @@ $(function() {
     checkCollisions(game);
     
     for(i = 0; i < ai.length; i++) {
-      if(ai[i] !== "dead" && !(ai[i][10])) {
+      if(ai[i] !== "dead" && (!(ai[i][10]) || (ai[i][10] && typeof ai[i][10][0] === 'object'))) {
         checkCond(i);
       }
     }
