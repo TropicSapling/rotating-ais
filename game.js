@@ -225,7 +225,7 @@ function checkCollisions(game) {
             
             var biggestAI;
             var next_biggestAI;
-            var biggest = -Infinity,
+            var biggest = -Infinity;
             var next_biggest = -Infinity;
             
             for (var i = 0, n = pars2.length; i < n; ++i) {
