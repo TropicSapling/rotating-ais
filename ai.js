@@ -128,6 +128,12 @@ function combineGenes(par1, par2) {
       for(i = 0; i < ai[par1].length; i++) {
         if(i == 5 || i == 6) {
           ai[ai.length - 1].push(1.1);
+        } else if(i == 4) {
+          if(ai[par1][4] < 300) {
+            ai[ai.length - 1].push(ai[par1][4] - 100);
+          } else {
+            ai[ai.length - 1].push(ai[par1][4] + 100);
+          }
         } else {
           ai[ai.length - 1].push(ai[par1][i]);
         }
@@ -140,6 +146,12 @@ function combineGenes(par1, par2) {
       for(i = 0; i < ai[par1].length; i++) {
         if(i == 5 || i == 6) {
           ai[placeAvailable].push(1.1);
+        } else if(i == 4) {
+          if(ai[par1][4] < 300) {
+            ai[placeAvailable].push(ai[par1][4] - 100);
+          } else {
+            ai[placeAvailable].push(ai[par1][4] + 100);
+          }
         } else {
           ai[placeAvailable].push(ai[par1][i]);
         }
