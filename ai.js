@@ -135,7 +135,7 @@ function combineGenes(par1, par2) {
           } else {
             ai[ai.length - 1].push(ai[par1][4] - 100);
           }
-        } else {
+        } else if(i != 10) {
           ai[ai.length - 1].push(ai[par1][i]);
         }
       }
@@ -154,7 +154,7 @@ function combineGenes(par1, par2) {
           } else {
             ai[placeAvailable].push(ai[par1][4] - 100);
           }
-        } else {
+        } else if(i != 10) {
           ai[placeAvailable].push(ai[par1][i]);
         }
       }
