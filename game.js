@@ -75,7 +75,7 @@ function renderAIs(game) {
     }
     
     if(ai_sorted[i] !== "dead") {
-      if(ai_sorted[i][10] && ai_sorted[i][10][0] !== "dying") {
+      if(ai_sorted[i][10] && typeof ai_sorted[i][10][0] === 'number') {
         if(ai_sorted[i][5] < ai_sorted[i][10][0] || ai_sorted[i][6] < ai_sorted[i][10][1]) { // [10][0] = full width, [10][1] = full height
           var changeX = ai_sorted[i][5] * 1.1 - ai_sorted[i][5];
           var changeY = ai_sorted[i][6] * 1.1 - ai_sorted[i][6];
@@ -90,7 +90,7 @@ function renderAIs(game) {
           ai_sorted[i][6] = ai_sorted[i][10][1];
           ai_sorted[i].splice(10);
         }
-      } else if(!ai_sorted[i][10]) {
+      } else if(!ai_sorted[i][10] || (ai_sorted[i][10] && typeof ai_sorted[i][10][0] === 'object')) {
         if(ai_sorted[i][3] < 600 - ai_sorted[i][5] && ai_sorted[i][3] > 0) { // [3] = x position, [5] = width
           ai_sorted[i][3] += Math.sin(ai_sorted[i][7]); // [7] = rotation
         }
@@ -115,7 +115,7 @@ function renderAIs(game) {
         ai_sorted[i][4] = 600;
       }
       
-      if(ai_sorted[i][5] + ai_sorted[i][6] < 60 && !(ai_sorted[i][10])) {
+      if(ai_sorted[i][5] + ai_sorted[i][6] < 60 && (!(ai_sorted[i][10]) || (ai_sorted[i][10] && typeof ai_sorted[i][10][0] === 'object'))) {
         ai_sorted[i].push(["dying", 1.1]);
       } else {
         game.fillStyle = "rgb(" + ai_sorted[i][0] + ", " + ai_sorted[i][1] + ", " + ai_sorted[i][2] + ")"; // [0], [1] and [2] are colour values
@@ -136,7 +136,7 @@ function findCollision(id, taken) {
   var i = 0;
   
   for(i = id; i < ai.length; i++) {
-    if(ai[i] !== "dead" && !(ai[i][10])) {
+    if(ai[i] !== "dead" && (!(ai[i][10]) || (ai[i][10] && typeof ai[i][10][0] === 'object'))) {
       var x1 = ai[id][3];
       var x2 = ai[i][3];
       var y1 = ai[id][4];
@@ -161,7 +161,7 @@ function checkCollisions(game) {
   var takenIDs = [];
   
   for(i = 0; i < ai.length; i++) {
-    if(ai[i] !== "dead" && !(ai[i][10])) {
+    if(ai[i] !== "dead" && (!(ai[i][10]) || (ai[i][10] && typeof ai[i][10][0] === 'object'))) {
       collidingAIs.push(findCollision(i, takenIDs));
          
       for(j = 0; j < collidingAIs[collidingAIs.length - 1].length; j++) {
