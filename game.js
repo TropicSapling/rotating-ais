@@ -223,8 +223,8 @@ function checkCollisions(game) {
             var pars1 = collidingAIs[i];
             var pars2 = sameAIs[i][j];
             
-            var biggestAI;
-            var next_biggestAI;
+            var biggestAI = 0;
+            var next_biggestAI = 0;
             var biggest = -Infinity;
             var next_biggest = -Infinity;
             
