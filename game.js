@@ -238,8 +238,11 @@ function checkCollisions(game) {
               } else if (nr > next_biggest) {
                 next_biggest = nr;
                 next_biggestAI = pars2[k];
+                console.log("Yup");
               }
             }
+            
+            console.log(pars2);
             
             var par1 = pars1[biggestAI];
             var par2 = pars1[next_biggestAI];
