@@ -215,7 +215,7 @@ function combineGenes(par1, par2) {
     }
   } else {
     for(var i = 0; i < ai[placeAvailable].length; i++) {
-      if(Math.floor(Math.random() * (1 / mutation_chance)) == 0) {
+      if(i != 5 && i != 6 && Math.floor(Math.random() * (1 / mutation_chance)) == 0) {
         if(typeof ai[placeAvailable][i] === 'number') {
           if(Math.round(Math.random())) {
             ai[placeAvailable][i] += 2;
