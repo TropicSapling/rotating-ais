@@ -94,10 +94,18 @@ function genRandCond(id) {
 }
 
 function combineConditions(id, cond1, cond2, cond_len1, cond_len2) {
-  ai[id].splice(8, 0, [1, ">", 2]); // WIP, will be changed
+  ai[id].splice(8, 0, []);
   do {
     ai[id].splice(9, 0, randomBetween(Math.min(cond_len1, cond_len2), Math.max(cond_len1, cond_len2)));
   } while(ai[id][9] % 2 == 0);
+  
+  for(var i = 0; i < ai[id][9]; i++) {
+    if(Math.round(Math.random())) {
+      ai[id][9].push(cond1[i]);
+    } else {
+      ai[id][9].push(cond2[i]);
+    }
+  }
 }
 
 function genRandGenes() {
