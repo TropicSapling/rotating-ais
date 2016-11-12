@@ -93,9 +93,9 @@ function genRandCond(id) {
   }
 }
 
-function combineConditions(id, cond1, cond2) {
-  ai[id].splice(8, 0, [123, ">", 456]); // WIP, will be changed
-  ai[id].splice(9, 0, 3); // WIP, will be changed
+function combineConditions(id, cond1, cond2, cond_len1, cond_len2) {
+  ai[id].splice(8, 0, [1, ">", 2]); // WIP, will be changed
+  ai[id].splice(9, 0, randomBetween(Math.min(cond_len1, cond_len2), Math.max(cond_len1, cond_len2)));
 }
 
 function genRandGenes() {
@@ -181,7 +181,7 @@ function combineGenes(par1, par2) {
         } else if(i == 3) {
           ai[ai.length - 1].push(ai[par1][i]);
         } else if(i == 8) {
-          combineConditions(ai.length - 1, par1[8], par2[8]);
+          combineConditions(ai.length - 1, par1[8], par2[8], par1[9], par2[9]);
         } else if(typeof ai[par1][i] === 'number' && i != 9) {
           ai[ai.length - 1].push(randomBetween(Math.min(ai[par1][i], ai[par2][i]), Math.max(ai[par1][i], ai[par2][i])));
         }
@@ -204,7 +204,7 @@ function combineGenes(par1, par2) {
         } else if(i == 3) {
           ai[placeAvailable].push(ai[par1][i]);
         } else if(i == 8) {
-          combineConditions(placeAvailable, par1[8], par2[8]);
+          combineConditions(placeAvailable, par1[8], par2[8], par1[9], par2[9]);
         } else if(typeof ai[par1][i] === 'number' && i != 9) {
 	  ai[placeAvailable].push(randomBetween(Math.min(ai[par1][i], ai[par2][i]), Math.max(ai[par1][i], ai[par2][i])));
         }
