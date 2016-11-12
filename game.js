@@ -221,10 +221,21 @@ function checkCollisions(game) {
         if(sameAIs[i][j].length > 1) {
           if(Math.floor(Math.random() * (1 / spawn_chance)) == 0) {
             (function() {
-              var par1 = collidingAIs[i][sameAIs[i][j][Math.floor(Math.random() * sameAIs[i][j].length)]];
-              var par2 = collidingAIs[i][sameAIs[i][j][Math.floor(Math.random() * sameAIs[i][j].length)]];
+              var pars1 = collidingAIs[i];
+              var pars2 = sameAIs[i][j];
+              
+              var par1 = pars1[pars2[Math.floor(Math.random() * pars2.length)]];
+              var par2 = pars1[pars2[Math.floor(Math.random() * pars2.length)]];
               
               setTimeout(function() {
+                while(par1 === "dead" || par1[10]) {
+                  par1 = pars1[pars2[Math.floor(Math.random() * pars2.length)]];
+                }
+                
+                while(par2 === "dead" || par2[10]) {
+                  par2 = pars1[pars2[Math.floor(Math.random() * pars2.length)]];
+                }
+                
                 combineGenes(par1, par2);
                 ais_alive++;
               }, 1000);
