@@ -94,7 +94,7 @@ function genRandCond(id) {
 }
 
 function combineConditions(id, cond1, cond2) {
-  ai[id].splice(8, 0, [123, "<", 456]); // WIP, will be changed
+  ai[id].splice(8, 0, [123, ">", 456]); // WIP, will be changed
   ai[id].splice(9, 0, 3); // WIP, will be changed
 }
 
@@ -119,7 +119,7 @@ function genRandGenes() {
 function combineGenes(par1, par2) {
   var placeAvailable = ai.indexOf("dead");
   
-  if(par1 == par2 || true) { // Obviously "|| true" will be removed later, just there now because I'm not done with the "else" part
+  if(par1 == par2) {
     var width = ai[par1][5];
     var height = ai[par1][6];
     
@@ -169,14 +169,46 @@ function combineGenes(par1, par2) {
     if(placeAvailable == -1) {
       ai.push([]);
       
-      // WIP
+      for(var i = 0; i < ai[par1].length; i++) {
+        if(i == 5 || i == 6) {
+          ai[ai.length - 1].push(1.1);
+        } else if(i == 4) {
+          if(ai[par1][4] < 300) {
+            ai[ai.length - 1].push(ai[par1][4] + 100);
+          } else {
+            ai[ai.length - 1].push(ai[par1][4] - 100);
+          }
+        } else if(i == 3) {
+          ai[ai.length - 1].push(ai[par1][i]);
+        } else if(i == 8) {
+		  combineConditions(ai.length - 1, par1[8], par2[8]);
+		} else if(typeof ai[par1][i] === 'number') {
+		  ai[ai.length - 1].push(randomBetween(Math.min(ai[par1][i], ai[par2][i]), Math.max(ai[par1][i], ai[par2][i])));
+		}
+      }
       
       ai[ai.length - 1].push([width, height]);
       ai[ai.length - 1].push([ai[par1][8], ai[par2][8]]);
     } else {
       ai[placeAvailable] = [];
       
-      // WIP
+      for(var i = 0; i < ai[par1].length; i++) {
+        if(i == 5 || i == 6) {
+          ai[placeAvailable].push(1.1);
+        } else if(i == 4) {
+          if(ai[par1][4] < 300) {
+            ai[placeAvailable].push(ai[par1][4] + 100);
+          } else {
+            ai[placeAvailable].push(ai[par1][4] - 100);
+          }
+        } else if(i == 3) {
+          ai[placeAvailable].push(ai[par1][i]);
+        } else if(i == 8) {
+		  combineConditions(placeAvailable, par1[8], par2[8]);
+		} else if(typeof ai[par1][i] === 'number') {
+		  ai[placeAvailable].push(randomBetween(Math.min(ai[par1][i], ai[par2][i]), Math.max(ai[par1][i], ai[par2][i])));
+		}
+      }
       
       ai[placeAvailable].push([width, height]);
       ai[placeAvailable].push([ai[par1][8], ai[par2][8]]);
