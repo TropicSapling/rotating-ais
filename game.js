@@ -253,8 +253,10 @@ function checkCollisions(game) {
             var par1 = pars1[biggestAI];
             var par2 = pars1[next_biggestAI];
             
-            combineGenes(par1, par2);
-            ais_alive++;
+            if(par1[5] + par1[6] > 50) {
+              combineGenes(par1, par2);
+              ais_alive++;
+            }
           }
         }
       }
