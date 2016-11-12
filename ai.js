@@ -140,6 +140,7 @@ function combineGenes(par1, par2) {
       }
       
       ai[ai.length - 1].push([width, height]);
+      ai[ai.length - 1].push([ai[par1][8], ai[par2][8]]);
     } else {
       ai[placeAvailable] = [];
       
@@ -158,6 +159,7 @@ function combineGenes(par1, par2) {
       }
       
       ai[placeAvailable].push([width, height]);
+      ai[placeAvailable].push([ai[par1][8], ai[par2][8]]);
     }
   } else {
     var width = randomBetween(Math.min(ai[par1][5], ai[par2][5]), Math.max(ai[par1][5], ai[par2][5]));
