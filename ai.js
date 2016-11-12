@@ -130,9 +130,9 @@ function combineGenes(par1, par2) {
           ai[ai.length - 1].push(1.1);
         } else if(i == 4) {
           if(ai[par1][4] < 300) {
-            ai[ai.length - 1].push(ai[par1][4] - 100);
-          } else {
             ai[ai.length - 1].push(ai[par1][4] + 100);
+          } else {
+            ai[ai.length - 1].push(ai[par1][4] - 100);
           }
         } else {
           ai[ai.length - 1].push(ai[par1][i]);
@@ -148,9 +148,9 @@ function combineGenes(par1, par2) {
           ai[placeAvailable].push(1.1);
         } else if(i == 4) {
           if(ai[par1][4] < 300) {
-            ai[placeAvailable].push(ai[par1][4] - 100);
-          } else {
             ai[placeAvailable].push(ai[par1][4] + 100);
+          } else {
+            ai[placeAvailable].push(ai[par1][4] - 100);
           }
         } else {
           ai[placeAvailable].push(ai[par1][i]);
