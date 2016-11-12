@@ -229,7 +229,7 @@ function checkCollisions(game) {
             var next_biggest = -Infinity;
             
             for (var k = 0, n = pars2.length; k < n; ++k) {
-              var nr = ai[pars1[pars2[k]][5]] * ai[pars1[pars2[k]][6]];
+              var nr = ai[pars1[pars2[k]]][5] * ai[pars1[pars2[k]]][6];
               
               if (nr > biggest) {
                 next_biggest = biggest;
