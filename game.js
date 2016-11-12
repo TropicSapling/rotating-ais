@@ -285,7 +285,7 @@ $(function() {
     game.fillStyle = "#eee";
     game.fillRect(0, 0, 600, 600); // Background
     
-    if(ais_alive < 10) {
+    if(ais_alive < 15) {
       genRandGenes();
       ais_alive++;
     }
