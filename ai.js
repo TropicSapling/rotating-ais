@@ -167,9 +167,19 @@ function combineGenes(par1, par2) {
     var height = randomBetween(Math.min(ai[par1][6], ai[par2][6]), Math.max(ai[par1][6], ai[par2][6]));
     
     if(placeAvailable == -1) {
-      ai.push();
+      ai.push([]);
+      
+      // WIP
+      
+      ai[ai.length - 1].push([width, height]);
+      ai[ai.length - 1].push([ai[par1][8], ai[par2][8]]);
     } else {
       ai[placeAvailable] = [];
+      
+      // WIP
+      
+      ai[placeAvailable].push([width, height]);
+      ai[placeAvailable].push([ai[par1][8], ai[par2][8]]);
     }
   }
   
