@@ -230,7 +230,9 @@ function combineGenes(par1, par2) {
       }
     }
     
+    console.log(ai[placeAvailable]);
     var size = ai[placeAvailable][10][0] + ai[placeAvailable][10][1];
+    console.log(size);
     
     while(size > 0) {
       if(ai[par1][5] + ai[par1][6] >= 60 && ai[par2][5] + ai[par2][6] >= 60) {
