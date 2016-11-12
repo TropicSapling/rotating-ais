@@ -233,7 +233,7 @@ function combineGenes(par1, par2) {
     var size = ai[placeAvailable][10][0] + ai[placeAvailable][10][1];
     
     while(size > 0) {
-      if(ai[par1][5] + ai[par1][6] >= 50 && ai[par2][5] + ai[par2][6] >= 50) {
+      if((ai[par1][5] + ai[par1][6] >= 50 && ai[par2][5] + ai[par2][6] >= 50) || (ai[par1][5] + ai[par1][6] < 50 && ai[par2][5] + ai[par2][6] < 50)) {
         size -= ai[par1][5] * 0.02 + ai[par1][6] * 0.02;
         size -= ai[par2][5] * 0.02 + ai[par2][6] * 0.02;
         
