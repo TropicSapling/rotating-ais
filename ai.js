@@ -130,8 +130,8 @@ function combineGenes(par1, par2) {
   var placeAvailable = ai.indexOf("dead");
   
   if(par1 == par2) {
-    var width = ai[par1][5] / 2;
-    var height = ai[par1][6] / 2;
+    var width = ai[par1][5] / 1.5;
+    var height = ai[par1][6] / 1.5;
     
     if(placeAvailable == -1) {
       ai.push([]);
@@ -173,8 +173,8 @@ function combineGenes(par1, par2) {
       ai[placeAvailable].push([ai[par1][8], ai[par2][8]]);
     }
   } else {
-    var width = randomBetween(Math.min(ai[par1][5], ai[par2][5]), Math.max(ai[par1][5], ai[par2][5])) / 2;
-    var height = randomBetween(Math.min(ai[par1][6], ai[par2][6]), Math.max(ai[par1][6], ai[par2][6])) / 2;
+    var width = randomBetween(Math.min(ai[par1][5], ai[par2][5]), Math.max(ai[par1][5], ai[par2][5])) / 1.5;
+    var height = randomBetween(Math.min(ai[par1][6], ai[par2][6]), Math.max(ai[par1][6], ai[par2][6])) / 1.5;
     
     if(placeAvailable == -1) {
       ai.push([]);
