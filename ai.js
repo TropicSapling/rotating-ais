@@ -293,7 +293,7 @@ function combineGenes(par1, par2) {
         
         ai[par2][5] = ai[par2][5] * 0.98;
         ai[par2][6] = ai[par2][6] * 0.98;
-      } 
+      }
     }
   }
 }
