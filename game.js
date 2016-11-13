@@ -29,30 +29,6 @@ function checkCond2(id) {
   } else {
     genRandCond(id);
   }
-  
-  func = new Function("return " + ai[id][8].join(" "));
-  
-  var before_x = ai[id][3];
-  var before_y = ai[id][4];
-  var action;
-  var last_action;
-  for(var i = 0; i < 10; i++) {
-    ai[id][3] = Math.floor(Math.random() * 600);
-    ai[id][4] = Math.floor(Math.random() * 600);
-    
-    action = func();
-    if(i > 0 && action != last_action) {
-      break;
-    }
-    last_action = action;
-  }
-  
-  ai[id][3] = before_x;
-  ai[id][4] = before_y;
-  
-  if(action == last_action) {
-    checkCond2(id);
-  }
 }
 
 function checkCond(id) {
