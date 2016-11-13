@@ -46,7 +46,11 @@ function renderAIs(game) {
   for(i = 0; i < ai.length; i++) {
     if(ai[i].length > 5) {
       ai_copy.push(ai[i][5] * ai[i][6]);
-      total_mass += ai[i][5] * ai[i][6];
+      if(ai[i][10] && typeof ai[i][10][0] === 'number') {
+        total_mass += ai[i][10][0] * ai[i][10][1];
+      } else {
+        total_mass += ai[i][5] * ai[i][6];
+      }
     }
   }
   
