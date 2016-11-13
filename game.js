@@ -1,5 +1,4 @@
 var gameLoop;
-var total_mass = 0;
 var spawn_chance = 0.01; // MIN: >0, MAX: 1.
 
 window.onerror = function(msg, url, line, column, error) {
@@ -129,7 +128,7 @@ function renderAIs(game) {
         ai_sorted[i][7] = Math.floor(Math.random() * 365);
       }
       
-      if(ai_sorted[i][5] + ai_sorted[i][6] < 20 && (!(ai_sorted[i][10]) || (ai_sorted[i][10] && typeof ai_sorted[i][10][0] === 'object'))) {
+      if(ai_sorted[i][5] * ai_sorted[i][6] < 100 && (!(ai_sorted[i][10]) || (ai_sorted[i][10] && typeof ai_sorted[i][10][0] === 'object'))) {
         if(ai_sorted[i][10]) {
           ai_sorted[i].splice(10, 0, ["dying", 1.1]);
         } else {
@@ -273,7 +272,7 @@ function checkCollisions(game) {
             var par1 = pars1[biggestAI];
             var par2 = pars1[next_biggestAI];
             
-            if(ai[par2][5] + ai[par2][6] > 40) {
+            if(ai[par2][5] * ai[par2][6] > 500) {
               combineGenes(par1, par2);
             }
           }
