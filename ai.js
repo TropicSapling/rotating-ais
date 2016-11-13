@@ -15,6 +15,7 @@ function spliceStr(str, index, pos) {
 }
 
 function checkCond3(id) {
+  try {
   func = new Function("return " + ai[id][8].join(" "));
   
   var before_x = 0;
@@ -38,6 +39,9 @@ function checkCond3(id) {
   ai[id][4] = before_y;
   
   if(action == last_action) {
+    checkCond2(id);
+  }
+  } catch(e) {
     checkCond2(id);
   }
 }
