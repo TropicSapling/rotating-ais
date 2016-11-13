@@ -124,8 +124,6 @@ function genRandGenes() {
     
     ai[placeAvailable].push([width, height]);
   }
-  
-  total_mass += width * height;
 }
 
 function combineGenes(par1, par2) {
