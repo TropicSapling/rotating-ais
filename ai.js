@@ -95,7 +95,7 @@ function genRandCond(id) {
 function combineConditions(id, cond1, cond2, cond_len1, cond_len2) {
   ai[id].splice(8, 0, []);
   do {
-    ai[id].splice(9, 0, randomBetween(Math.min(cond_len1, cond_len2), Math.max(cond_len1, cond_len2)));
+    ai[id].splice(9, 0, randomBetween(Math.min(cond_len1, cond_len2) - 1, Math.max(cond_len1, cond_len2) + 1));
   } while(ai[id][9] % 2 == 0);
   
   for(var i = 0; i < ai[id][9]; i++) {
@@ -108,7 +108,7 @@ function combineConditions(id, cond1, cond2, cond_len1, cond_len2) {
 }
 
 function genRandGenes() {
-  var width = randomBetween(10, 21);
+  var width = randomBetween(9, 22);
   var height = width;
   var placeAvailable = ai.indexOf("dead");
   
@@ -148,7 +148,7 @@ function combineGenes(par1, par2) {
       } else if(i == 8) {
         combineConditions(ai.length - 1, par1[8], par2[8], par1[9], par2[9]);
       } else if(typeof ai[par1][i] === 'number' && i != 9) {
-        ai[ai.length - 1].push(randomBetween(Math.min(ai[par1][i], ai[par2][i]), Math.max(ai[par1][i], ai[par2][i])));
+        ai[ai.length - 1].push(randomBetween(Math.min(ai[par1][i], ai[par2][i]) - 1, Math.max(ai[par1][i], ai[par2][i]) + 1));
       }
     }
     
@@ -171,7 +171,7 @@ function combineGenes(par1, par2) {
       } else if(i == 8) {
         combineConditions(placeAvailable, par1[8], par2[8], par1[9], par2[9]);
       } else if(typeof ai[par1][i] === 'number' && i != 9) {
-	  ai[placeAvailable].push(randomBetween(Math.min(ai[par1][i], ai[par2][i]), Math.max(ai[par1][i], ai[par2][i])));
+	  ai[placeAvailable].push(randomBetween(Math.min(ai[par1][i], ai[par2][i]) - 1, Math.max(ai[par1][i], ai[par2][i]) + 1));
       }
     }
        
