@@ -101,17 +101,17 @@ function renderAIs(game) {
         }
       } else if(!ai_sorted[i][10] || (ai_sorted[i][10] && typeof ai_sorted[i][10][0] === 'object')) {
         if(ai_sorted[i][3] < 600 - ai_sorted[i][5] && ai_sorted[i][3] > 0) { // [3] = x position, [5] = width
-          ai_sorted[i][3] += Math.sin(ai_sorted[i][7]) / ((ai_sorted[i][5] * ai_sorted[i][6] / 5000) + 1); // [7] = rotation
+          ai_sorted[i][3] += Math.sin(ai_sorted[i][7]); // [7] = rotation
         }
         
         if(ai_sorted[i][4] < 600 - ai_sorted[i][6] && ai_sorted[i][4] > 0) { // [4] = y position, [6] = height
-          ai_sorted[i][4] += Math.cos(ai_sorted[i][7]) / ((ai_sorted[i][5] * ai_sorted[i][6] / 5000) + 1);
+          ai_sorted[i][4] += Math.cos(ai_sorted[i][7]);
         }
         
-        ai_sorted[i][5] -= ai_sorted[i][5] * 0.0004 * ((ai_sorted[i][5] * ai_sorted[i][6] / 5000) + 1);
-        ai_sorted[i][3] += ai_sorted[i][5] * 0.0002 * ((ai_sorted[i][5] * ai_sorted[i][6] / 5000) + 1);
-        ai_sorted[i][6] -= ai_sorted[i][6] * 0.0004 * ((ai_sorted[i][5] * ai_sorted[i][6] / 5000) + 1);
-        ai_sorted[i][4] += ai_sorted[i][6] * 0.0002 * ((ai_sorted[i][5] * ai_sorted[i][6] / 5000) + 1);
+        ai_sorted[i][5] -= ai_sorted[i][5] * 0.0004;
+        ai_sorted[i][3] += ai_sorted[i][5] * 0.0002;
+        ai_sorted[i][6] -= ai_sorted[i][6] * 0.0004;
+        ai_sorted[i][4] += ai_sorted[i][6] * 0.0002;
       }
       
       if(ai_sorted[i][3] < 0) {
