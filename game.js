@@ -1,4 +1,5 @@
 var gameLoop;
+var total_mass = 0;
 var spawn_chance = 0.01; // MIN: >0, MAX: 1.
 
 window.onerror = function(msg, url, line, column, error) {
@@ -74,7 +75,6 @@ function renderAIs(game) {
         ai_sorted[i][4] += change / 2;
       } else {
         ai_sorted[i] = "dead";
-        ais_alive--;
       }
     }
     
@@ -103,10 +103,16 @@ function renderAIs(game) {
           ai_sorted[i][4] += Math.cos(ai_sorted[i][7]);
         }
         
+        var last_size = ai_sorted[i][5] * ai_sorted[i][6];
+        
         ai_sorted[i][5] -= ai_sorted[i][5] * 0.0004;
         ai_sorted[i][3] += ai_sorted[i][5] * 0.0002;
         ai_sorted[i][6] -= ai_sorted[i][6] * 0.0004;
         ai_sorted[i][4] += ai_sorted[i][6] * 0.0002;
+        
+        var new_size = ai_sorted[i][5] * ai_sorted[i][6];
+        
+        total_mass -= last_size - new_size;
       }
       
       if(ai_sorted[i][3] < 0) {
@@ -128,6 +134,7 @@ function renderAIs(game) {
           ai_sorted[i].splice(10, 0, ["dying", 1.1]);
         } else {
           ai_sorted[i].push(["dying", 1.1]);
+          total_mass -= ai_sorted[i][5] * ai_sorted[i][6];
         }
       } else {
         game.fillStyle = "rgb(" + ai_sorted[i][0] + ", " + ai_sorted[i][1] + ", " + ai_sorted[i][2] + ")"; // [0], [1] and [2] are colour values
@@ -204,7 +211,6 @@ function checkCollisions(game) {
           
           if((x1 - x2 < 10 && x1 + w1 - x2 - w2 > -10 && y1 - y2 < 10 && y1 + h1 - y2 - h2 > -10) && Math.sqrt(size2) / Math.sqrt(size) < 0.9) {
             ai[collidingAIs[i][k]] = "dead";
-            ais_alive--;
             
             while(ai[collidingAIs[i][j]][5] * ai[collidingAIs[i][j]][6] < size + size2) {
               ai[collidingAIs[i][j]][5] += 1;
@@ -269,7 +275,6 @@ function checkCollisions(game) {
             
             if(ai[par2][5] + ai[par2][6] > 40) {
               combineGenes(par1, par2);
-              ais_alive++;
             }
           }
         }
@@ -299,9 +304,8 @@ $(function() {
     game.fillStyle = "#eee";
     game.fillRect(0, 0, 600, 600); // Background
     
-    if(ais_alive < 20) {
+    if(total_mass < 10000) {
       genRandGenes();
-      ais_alive++;
     }
     
     checkCollisions(game);
