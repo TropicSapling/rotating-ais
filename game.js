@@ -22,41 +22,49 @@ function deepCopy(arr) { // Because JS hates me and is just that annoying
   return out;
 }
 
+function checkCond2(id) {
+  ai[id].splice(8, 2);
+  if(ai[id][8]) {
+    combineConditions(id, ai[id][8][0][8], ai[id][8][1][8], ai[id][8][0][9], ai[id][8][1][9]);
+  } else {
+    genRandCond(id);
+  }
+  
+  func = new Function("return " + ai[id][8].join(" "));
+  
+  var before_x = ai[id][3];
+  var before_y = ai[id][4];
+  var action;
+  var last_action;
+  for(var i = 0; i < 10; i++) {
+    ai[id][3] = Math.floor(Math.random() * 600);
+    ai[id][4] = Math.floor(Math.random() * 600);
+    
+    action = func();
+    if(i > 0 && action != last_action) {
+      break;
+    }
+    last_action = action;
+  }
+  
+  ai[id][3] = before_x;
+  ai[id][4] = before_y;
+  
+  if(action == last_action) {
+    checkCond2(id);
+  }
+}
+
 function checkCond(id) {
   try {
     func = new Function("return " + ai[id][8].join(" "));
-    action = func();
+    var action = func();
     
     if(action == true) {
       ai[id][7] += 0.1;
     }
   } catch(e) {
-    ai[id].splice(8, 2);
-    if(ai[id][8]) {
-      combineConditions(id, ai[id][8][0][8], ai[id][8][1][8], ai[id][8][0][9], ai[id][8][1][9]);
-    } else {
-      genRandCond(id);
-    }
-    
-    func = new Function("return " + ai[id][8].join(" "));
-    
-    var before_x = ai[id][3];
-    var before_y = ai[id][4];
-    var last_action;
-    for(var i = 0; i < 10; i++) {
-      ai[id][3] = Math.floor(Math.random() * 600);
-      ai[id][4] = Math.floor(Math.random() * 600);
-      
-      action = func();
-      if(i > 0 && action != last_action) {
-        break;
-      }
-      last_action = action;
-    }
-    
-    ai[id][3] = before_x;
-    ai[id][4] = before_y;
-    
+    checkCond2(id);
     checkCond(id);
   }
 }
