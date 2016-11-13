@@ -48,6 +48,7 @@ function checkCond3(id) {
        
       action = func();
       if(i > 0 && action != last_action) {
+        alert("yep");
         break;
       }
       last_action = action;
