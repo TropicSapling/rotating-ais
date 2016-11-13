@@ -133,8 +133,9 @@ function renderAIs(game) {
           ai_sorted[i].splice(10, 0, ["dying", 1.1]);
         } else {
           ai_sorted[i].push(["dying", 1.1]);
-          total_mass -= ai_sorted[i][5] * ai_sorted[i][6];
         }
+        
+        total_mass -= ai_sorted[i][5] * ai_sorted[i][6];
       } else {
         game.fillStyle = "rgb(" + ai_sorted[i][0] + ", " + ai_sorted[i][1] + ", " + ai_sorted[i][2] + ")"; // [0], [1] and [2] are colour values
         game.fillRect(ai_sorted[i][3], ai_sorted[i][4], ai_sorted[i][5], ai_sorted[i][6]);
