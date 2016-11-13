@@ -108,7 +108,7 @@ function combineConditions(id, cond1, cond2, cond_len1, cond_len2) {
 }
 
 function genRandGenes() {
-  var width = randomBetween(10, 25);
+  var width = randomBetween(10, 21);
   var height = width;
   var placeAvailable = ai.indexOf("dead");
   
