@@ -14,6 +14,32 @@ function spliceStr(str, index, pos) {
   return str.slice(0, index) + str.slice(pos);
 }
 
+function checkCond3(id) {
+  func = new Function("return " + ai[id][8].join(" "));
+  
+  var before_x = ai[id][3];
+  var before_y = ai[id][4];
+  var action;
+  var last_action;
+  for(var i = 0; i < 10; i++) {
+    ai[id][3] = Math.floor(Math.random() * 600);
+    ai[id][4] = Math.floor(Math.random() * 600);
+    
+    action = func();
+    if(i > 0 && action != last_action) {
+      break;
+    }
+    last_action = action;
+  }
+  
+  ai[id][3] = before_x;
+  ai[id][4] = before_y;
+  
+  if(action == last_action) {
+    checkCond2(id);
+  }
+}
+
 function findInput(id) {
   var randParenthesis = Math.round(Math.random());
   
@@ -90,6 +116,8 @@ function genRandCond(id) {
     ai[id][8].push(")"); // [8] = where the condition gene is stored
     parenthesis--;
   }
+  
+  checkCond3(id);
 }
 
 function combineConditions(id, cond1, cond2, cond_len1, cond_len2) {
@@ -105,6 +133,8 @@ function combineConditions(id, cond1, cond2, cond_len1, cond_len2) {
       ai[id][8].push(cond2[i]);
     }
   }
+  
+  checkCond3(id);
 }
 
 function genRandGenes() {
