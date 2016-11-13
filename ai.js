@@ -128,7 +128,7 @@ function genRandGenes() {
 function combineGenes(par1, par2) {
   var placeAvailable = ai.indexOf("dead");
       
-  var width = Math.sqrt(randomBetween(Math.min(ai[par1][5] * ai[par1][6] / 4, ai[par2][5] * ai[par2][6] / 4), Math.max(ai[par1][5] * ai[par1][6] / 4, ai[par2][5] * ai[par2][6] / 4)));
+  var width = Math.sqrt(randomBetween(Math.min(ai[par1][5] * ai[par1][6] / 3, ai[par2][5] * ai[par2][6] / 3), Math.max(ai[par1][5] * ai[par1][6] / 3, ai[par2][5] * ai[par2][6] / 3)));
   var height = width;
   
   if(placeAvailable == -1) {
