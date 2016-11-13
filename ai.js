@@ -17,8 +17,10 @@ function spliceStr(str, index, pos) {
 function checkCond3(id) {
   func = new Function("return " + ai[id][8].join(" "));
   
-  var before_x = ai[id][3];
-  var before_y = ai[id][4];
+  var before_x = 0;
+  var before_y = 0;
+  before_x = ai[id][3];
+  before_y = ai[id][4];
   var action;
   var last_action;
   for(var i = 0; i < 10; i++) {
