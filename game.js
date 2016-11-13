@@ -226,7 +226,17 @@ function checkCollisions(game) {
               j--;
             }
           } else if(Math.sqrt(size2) / Math.sqrt(size) >= 0.9 && Math.sqrt(size2) / Math.sqrt(size) <= 1.1) {
-            sameAIs[i][j].push(k);
+            var found = false;
+            for(l = 0; l < sameAIs[i].length; l++) {
+              if(sameAIs[i][l].indexOf(k) != -1) {
+                found = true
+                break;
+              }
+            }
+            
+            if(!found) {
+              sameAIs[i][j].push(k);
+            }
           }
         }
         
