@@ -195,9 +195,6 @@ function combineGenes(par1, par2) {
         }
       }
     }
-	  
-	  console.log("NEW CHILD:");
-    console.log(ai[ai.length - 1]);
     
     var size = width * height;
     
@@ -252,9 +249,6 @@ function combineGenes(par1, par2) {
         }
       }
     }
-    
-    console.log("NEW CHILD:");
-    console.log(ai[placeAvailable]);
     
     var size = ai[placeAvailable][10][0] * ai[placeAvailable][10][1];
     
