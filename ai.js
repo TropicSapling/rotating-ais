@@ -1,4 +1,4 @@
-var ais_alive = 0;
+var total_mass = 0;
 var op = 0;
 var parenthesis = 0;
 var mutation_chance = 0.25; // MIN: >0, MAX: 1.
@@ -124,6 +124,8 @@ function genRandGenes() {
     
     ai[placeAvailable].push([width, height]);
   }
+  
+  total_mass += width * height;
 }
 
 function combineGenes(par1, par2) {
@@ -197,27 +199,41 @@ function combineGenes(par1, par2) {
       }
     }
     
-    var size = ai[ai.length - 1][10][0] + ai[ai.length - 1][10][1];
+    var size = ai[ai.length - 1][10][0] * ai[ai.length - 1][10][1];
     
     while(size > 0) {
-      if((ai[par1][5] + ai[par1][6] >= 20 && ai[par2][5] + ai[par2][6] >= 20) || (ai[par1][5] + ai[par1][6] < 20 && ai[par2][5] + ai[par2][6] < 20)) {
-        size -= ai[par1][5] * 0.02 + ai[par1][6] * 0.02;
-        size -= ai[par2][5] * 0.02 + ai[par2][6] * 0.02;
+      if((ai[par1][5] * ai[par1][6] >= 100 && ai[par2][5] * ai[par2][6] >= 100) || (ai[par1][5] * ai[par1][6] < 100 && ai[par2][5] * ai[par2][6] < 100)) {
+        var old_size = ai[par1][5] * ai[par1][6];
+        var old_size2 = ai[par2][5] * ai[par2][6];
         
         ai[par1][5] = ai[par1][5] * 0.98;
-        ai[par2][5] = ai[par1][5] * 0.98;
+        ai[par2][5] = ai[par2][5] * 0.98;
         ai[par1][6] = ai[par1][6] * 0.98;
-        ai[par2][6] = ai[par1][6] * 0.98;
-      } else if(ai[par1][5] + ai[par1][6] >= 20) {
-        size -= ai[par1][5] * 0.02 + ai[par1][6] * 0.02;
+        ai[par2][6] = ai[par2][6] * 0.98;
+        
+        var new_size = ai[par1][5] * ai[par1][6];
+        var new_size2 = ai[par2][5] * ai[par2][6];
+        
+        size -= old_size - new_size;
+        size -= old_size2 - new_size2;
+      } else if(ai[par1][5] * ai[par1][6] >= 100) {
+        var old_size = ai[par1][5] * ai[par1][6];
         
         ai[par1][5] = ai[par1][5] * 0.98;
         ai[par1][6] = ai[par1][6] * 0.98;
+        
+        var new_size = ai[par1][5] * ai[par1][6];
+        
+        size -= old_size - new_size;
       } else {
-        size -= ai[par2][5] * 0.02 + ai[par2][6] * 0.02;
+        var old_size2 = ai[par2][5] * ai[par2][6];
         
-        ai[par2][5] = ai[par1][5] * 0.98;
-        ai[par2][6] = ai[par1][6] * 0.98;
+        ai[par2][5] = ai[par2][5] * 0.98;
+        ai[par2][6] = ai[par2][6] * 0.98;
+        
+        var new_size2 = ai[par2][5] * ai[par2][6];
+        
+        size -= old_size2 - new_size2;
       }
     }
   } else {
@@ -237,27 +253,41 @@ function combineGenes(par1, par2) {
       }
     }
     
-    var size = ai[placeAvailable][10][0] + ai[placeAvailable][10][1];
+    var size = ai[placeAvailable][10][0] * ai[placeAvailable][10][1];
     
     while(size > 0) {
-      if((ai[par1][5] + ai[par1][6] >= 20 && ai[par2][5] + ai[par2][6] >= 20) || (ai[par1][5] + ai[par1][6] < 20 && ai[par2][5] + ai[par2][6] < 20)) {
-        size -= ai[par1][5] * 0.02 + ai[par1][6] * 0.02;
-        size -= ai[par2][5] * 0.02 + ai[par2][6] * 0.02;
+      if((ai[par1][5] * ai[par1][6] >= 100 && ai[par2][5] * ai[par2][6] >= 100) || (ai[par1][5] * ai[par1][6] < 100 && ai[par2][5] * ai[par2][6] < 100)) {
+        var old_size = ai[par1][5] * ai[par1][6];
+        var old_size2 = ai[par2][5] * ai[par2][6];
         
         ai[par1][5] = ai[par1][5] * 0.98;
         ai[par2][5] = ai[par2][5] * 0.98;
         ai[par1][6] = ai[par1][6] * 0.98;
         ai[par2][6] = ai[par2][6] * 0.98;
-      } else if(ai[par1][5] + ai[par1][6] >= 20) {
-        size -= ai[par1][5] * 0.02 + ai[par1][6] * 0.02;
+        
+        var new_size = ai[par1][5] * ai[par1][6];
+        var new_size2 = ai[par2][5] * ai[par2][6];
+        
+        size -= old_size - new_size;
+        size -= old_size2 - new_size2;
+      } else if(ai[par1][5] * ai[par1][6] >= 100) {
+        var old_size = ai[par1][5] * ai[par1][6];
         
         ai[par1][5] = ai[par1][5] * 0.98;
         ai[par1][6] = ai[par1][6] * 0.98;
+        
+        var new_size = ai[par1][5] * ai[par1][6];
+        
+        size -= old_size - new_size;
       } else {
-        size -= ai[par2][5] * 0.02 + ai[par2][6] * 0.02;
+        var old_size2 = ai[par2][5] * ai[par2][6];
         
         ai[par2][5] = ai[par2][5] * 0.98;
         ai[par2][6] = ai[par2][6] * 0.98;
+        
+        var new_size2 = ai[par2][5] * ai[par2][6];
+        
+        size -= old_size2 - new_size2;
       }
     }
   }
