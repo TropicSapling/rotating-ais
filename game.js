@@ -72,7 +72,6 @@ function checkCond(id) {
     var action = func();
     
     if(checked_ais.indexOf(id) == -1) {
-      checkCond2();
       checkCond3();
       checked_ais.push(id);
       checkCond();
