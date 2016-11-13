@@ -302,7 +302,7 @@ $(function() {
     game.fillStyle = "#eee";
     game.fillRect(0, 0, 600, 600); // Background
     
-    if(total_mass < 10000) {
+    if(total_mass < 20000) {
       genRandGenes();
     }
     
