@@ -1,4 +1,5 @@
 var gameLoop;
+var checked_ais = [];
 var total_mass = 0;
 var spawn_chance = 0.1; // MIN: >0, MAX: 1.
 
@@ -31,16 +32,56 @@ function checkCond2(id) {
   }
 }
 
+function checkCond3(id) {
+  try {
+    func = new Function("return " + ai[id][8].join(" "));
+    
+    var before_x = 0;
+    var before_y = 0;
+    before_x = ai[id][3];
+    before_y = ai[id][4];
+    var action;
+    var last_action;
+    for(var i = 0; i < 10; i++) {
+      ai[id][3] = Math.floor(Math.random() * 600);
+      ai[id][4] = Math.floor(Math.random() * 600);
+       
+      action = func();
+      if(i > 0 && action != last_action) {
+        break;
+      }
+      last_action = action;
+    }
+    
+    ai[id][3] = before_x;
+    ai[id][4] = before_y;
+    
+    if(action == last_action) {
+      checkCond2(id);
+      checkCond3(id);
+    }
+  } catch(e) {
+    checkCond2(id);
+    checkCond3(id);
+  }
+}
+
 function checkCond(id) {
   try {
     func = new Function("return " + ai[id][8].join(" "));
     var action = func();
     
-    if(action == true) {
+    if(checked_ais.indexOf(id) == -1) {
+      checkCond2();
+      checkCond3();
+      checked_ais.push(id);
+      checkCond();
+    } else if(action == true) {
       ai[id][7] += 0.1;
     }
   } catch(e) {
     checkCond2(id);
+    checkCond3(id);
     checkCond(id);
   }
 }
@@ -84,6 +125,7 @@ function renderAIs(game) {
         ai_sorted[i][4] += change / 2;
       } else {
         ai_sorted[i] = "dead";
+        ais_checked.splice(ais_checked.indexOf(i));
       }
     }
     
