@@ -144,7 +144,11 @@ function combineGenes(par1, par2) {
           ai[ai.length - 1].push(ai[par1][4] - randomBetween(75, 125));
         }
       } else if(i == 3) {
-        ai[ai.length - 1].push(ai[par1][i]);
+        if(ai[par1][3] < 300) {
+          ai[ai.length - 1].push(ai[par1][3] + randomBetween(75, 125));
+        } else {
+          ai[ai.length - 1].push(ai[par1][3] - randomBetween(75, 125));
+        }
       } else if(i == 8) {
         combineConditions(ai.length - 1, par1[8], par2[8], par1[9], par2[9]);
       } else if(typeof ai[par1][i] === 'number' && i != 9) {
@@ -167,7 +171,11 @@ function combineGenes(par1, par2) {
           ai[placeAvailable].push(ai[par1][4] - randomBetween(75, 125));
         }
       } else if(i == 3) {
-        ai[placeAvailable].push(ai[par1][i]);
+        if(ai[par1][3] < 300) {
+          ai[placeAvailable].push(ai[par1][3] + randomBetween(75, 125));
+        } else {
+          ai[placeAvailable].push(ai[par1][3] - randomBetween(75, 125));
+        }
       } else if(i == 8) {
         combineConditions(placeAvailable, par1[8], par2[8], par1[9], par2[9]);
       } else if(typeof ai[par1][i] === 'number' && i != 9) {
