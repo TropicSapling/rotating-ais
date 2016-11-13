@@ -108,10 +108,10 @@ function renderAIs(game) {
           ai_sorted[i][4] += Math.cos(ai_sorted[i][7]) / ((ai_sorted[i][5] * ai_sorted[i][6] / 2000) + 1);
         }
         
-        ai_sorted[i][5] -= ai_sorted[i][5] * 0.0004;
-        ai_sorted[i][3] += ai_sorted[i][5] * 0.0002;
-        ai_sorted[i][6] -= ai_sorted[i][6] * 0.0004;
-        ai_sorted[i][4] += ai_sorted[i][6] * 0.0002;
+        ai_sorted[i][5] -= ai_sorted[i][5] * 0.0004 * ((ai_sorted[i][5] * ai_sorted[i][6] / 2000) + 1);
+        ai_sorted[i][3] += ai_sorted[i][5] * 0.0002 * ((ai_sorted[i][5] * ai_sorted[i][6] / 2000) + 1);
+        ai_sorted[i][6] -= ai_sorted[i][6] * 0.0004 * ((ai_sorted[i][5] * ai_sorted[i][6] / 2000) + 1);
+        ai_sorted[i][4] += ai_sorted[i][6] * 0.0002 * ((ai_sorted[i][5] * ai_sorted[i][6] / 2000) + 1);
       }
       
       if(ai_sorted[i][3] < 0) {
