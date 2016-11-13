@@ -1,4 +1,3 @@
-var total_mass = 0;
 var op = 0;
 var parenthesis = 0;
 var mutation_chance = 0.25; // MIN: >0, MAX: 1.
