@@ -42,7 +42,7 @@ function findInput(id) {
 	var raw_code = "";
         raw_code = inputs[2][randVar];
         while(raw_code.indexOf("__EXENOW(") != -1) {
-          var index = inputs[2][randVar].indexOf("__EXENOW(");
+          var index = raw_code.indexOf("__EXENOW(");
           var pos = index + 9; // 9 = "__EXENOW(".length
           
           raw_code = spliceStr(raw_code, index, pos); // Removes "__EXENOW("
