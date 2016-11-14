@@ -59,8 +59,8 @@ function findInput(id) {
           raw_code = spliceStr(raw_code, pos, pos + 3); // Removes remaining ")__"
           
           try {
-            var new_code = new Function(id, "return " + codeToExec);
-            var new_code_ret = new_code();
+            var new_code = new Function("id", "return " + codeToExec);
+            var new_code_ret = new_code(id);
             alert(new_code);
             alert(new_code_ret);
             alert(raw_code);
