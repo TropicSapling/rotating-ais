@@ -335,7 +335,11 @@ function getRandAIInRange(id) {
     }
   }
   
-  return ais_in_range[Math.floor(Math.random() * ais_in_range.length)];
+  if(ais_in_range.length > 0) {
+    return ais_in_range[Math.floor(Math.random() * ais_in_range.length)];
+  } else {
+    return 0;
+  }
 }
 
 $(function() {
