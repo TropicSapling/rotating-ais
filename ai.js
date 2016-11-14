@@ -67,6 +67,7 @@ function findInput(id) {
           }
         }
         
+        alert(raw_code);
         ai[id][8].push(raw_code);
       }
     }
