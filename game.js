@@ -30,6 +30,7 @@ function checkCond2(id) {
   } else {
     genRandCond(id);
   }
+  alert(ai[id][8].join(" "));
 }
 
 function checkCond3(id) {
