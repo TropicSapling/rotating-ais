@@ -76,9 +76,9 @@ function findInput(id) {
 
 function genRandCond(id) {
   ai[id].push([]); // Add base for condition gene
-  ai[id].push(randomBetween(2, 10)); // Add base for the gene controlling the length of the condition gene
+  ai[id].push(randomBetween(2, 16)); // Add base for the gene controlling the length of the condition gene
   while(ai[id][9] % 2 == 0) {
-    ai[id][9] = randomBetween(2, 10);
+    ai[id][9] = randomBetween(2, 16);
   }
   
   if(Math.round(Math.random())) {
