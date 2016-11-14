@@ -23,63 +23,46 @@ function deepCopy(arr) { // Because JS hates me and is just that annoying
   return out;
 }
 
-function checkCond2(id) {
+function regenCond(id) {
   ai[id].splice(8, 2);
   if(ai[id][8]) {
     combineConditions(id, ai[id][8][0][8], ai[id][8][1][8], ai[id][8][0][9], ai[id][8][1][9]);
   } else {
     genRandCond(id);
   }
-  
-  console.log(ai[id][8]);
-}
-
-function checkCond3(id) {
-  try {
-    func = new Function("id", "return " + ai[id][8].join(" "));
-    
-    var before_ai = deepCopy(ai[id]);
-    var action;
-    var last_action;
-    for(var i = 0; i < 10; i++) {
-      for(var j = 0; j < 6; j++) {
-        ai[id][j] = Math.floor(Math.random() * 500);
-      }
-       
-      action = func(id);
-      if(i > 0 && action != last_action) {
-        break;
-      }
-      last_action = action;
-    }
-    
-    ai[id] = before_ai;
-    
-    if(action == last_action) {
-      checkCond2(id);
-      checkCond3(id);
-    }
-  } catch(e) {
-    checkCond2(id);
-    checkCond3(id);
-  }
 }
 
 function checkCond(id) {
   try {
-    func = new Function("id", "return " + ai[id][8].join(" "));
-    var action = func(id);
+    func = new Function("return " + ai[id][8].join(" "));
+    var action = func();
     
     if(checked_ais.indexOf(id) == -1) {
-      checkCond3();
+      var condIsConst = true;
+      var cond = ai[id][8].join(" ");
+      for(var i = 0; i < changing_inputs.length; i++) {
+        if(cond.indexOf(changing_inputs[i]) != -1) {
+          condIsConst = false;
+        }
+      }
+      
+      while(condIsConst) {
+        regenCond(id);
+        
+        for(var i = 0; i < changing_inputs.length; i++) {
+          if(cond.indexOf(changing_inputs[i]) != -1) {
+            condIsConst = false;
+          }
+        }
+      }
+      
       checked_ais.push(id);
       checkCond();
     } else if(action == true) {
       ai[id][7] += 0.1;
     }
   } catch(e) {
-    checkCond2(id);
-    checkCond3(id);
+    regenCond(id);
     checkCond(id);
   }
 }
@@ -344,8 +327,6 @@ $(function() {
   var canvas = document.getElementById("game");
   var game = canvas.getContext("2d");
   
-  var start_time = performance.now();
-  
   gameLoop = setInterval(function() {
     game.clearRect(0, 0, 600, 600);
     
@@ -358,11 +339,9 @@ $(function() {
     
     checkCollisions(game);
     
-    if(performance.now() > start_time + 1000) {
-      for(i = 0; i < ai.length; i++) {
-        if(ai[i] !== "dead" && (!(ai[i][10]) || (ai[i][10] && typeof ai[i][10][0] === 'object'))) {
-          checkCond(i);
-        }
+    for(i = 0; i < ai.length; i++) {
+      if(ai[i] !== "dead" && (!(ai[i][10]) || (ai[i][10] && typeof ai[i][10][0] === 'object'))) {
+        checkCond(i);
       }
     }
     
