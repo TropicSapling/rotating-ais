@@ -347,6 +347,8 @@ $(function() {
   var canvas = document.getElementById("game");
   var game = canvas.getContext("2d");
   
+  var start_time = performance.now();
+  
   gameLoop = setInterval(function() {
     game.clearRect(0, 0, 600, 600);
     
@@ -359,7 +361,7 @@ $(function() {
     
     checkCollisions(game);
     
-    if(total_mass > 15000) {
+    if(performance.now() > start_time + 1000) {
       for(i = 0; i < ai.length; i++) {
         if(ai[i] !== "dead" && (!(ai[i][10]) || (ai[i][10] && typeof ai[i][10][0] === 'object'))) {
           checkCond(i);
