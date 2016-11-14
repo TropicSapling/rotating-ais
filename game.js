@@ -48,6 +48,7 @@ function checkCond(id) {
       
       while(condIsConst) {
         regenCond(id);
+        cond = ai[id][8].join(" ");
         
         for(var i = 0; i < changing_inputs.length; i++) {
           if(cond.indexOf(changing_inputs[i]) != -1) {
