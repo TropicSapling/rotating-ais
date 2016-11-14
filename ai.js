@@ -61,17 +61,12 @@ function findInput(id) {
           try {
             var new_code = new Function("id", "return " + codeToExec);
             var new_code_ret = new_code(id);
-            alert(new_code);
-            alert(new_code_ret);
-            alert(raw_code);
             raw_code = raw_code.replace(codeToExec, new_code_ret);
-            alert(raw_code);
           } catch(e) {
             throw e;
           }
         }
         
-        alert(raw_code);
         ai[id][8].push(raw_code);
       }
     }
