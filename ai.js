@@ -57,7 +57,7 @@ function findInput(id) {
           inputs[2][randVar] = spliceStr(inputs[2][randVar], pos, pos + 3); // Removes remaining ")__"
           
           try {
-            inputs[2][randVar].replace(codeToExec, new Function("id", "return " + codeToExec));
+            inputs[2][randVar].replace(codeToExec, (new Function("id", "return " + codeToExec))());
           } catch(e) {
             throw e;
           }
