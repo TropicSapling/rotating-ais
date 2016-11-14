@@ -43,31 +43,32 @@ function findInput(id) {
           var index = inputs[2][randVar].indexOf("__EXENOW(");
           var pos = index + 9; // 9 = "__EXENOW(".length
           
-          inputs[2][randVar] = spliceStr(inputs[2][randVar], index, pos); // Removes "__EXENOW("
+          var raw_code = spliceStr(inputs[2][randVar], index, pos); // Removes "__EXENOW("
           pos -= 9;
           
           var codeToExec = "";
-          while(!(inputs[2][randVar][pos] == "_" && inputs[2][randVar][pos + 1] == "_")) {
-            codeToExec += inputs[2][randVar][pos];
+          while(!(raw_code[pos] == "_" && raw_code[pos + 1] == "_")) {
+            codeToExec += raw_code[pos];
             pos++;
           }
           codeToExec = codeToExec.slice(0, codeToExec.length - 1); // Removes ")" from code to execute
           pos--;
           
-          inputs[2][randVar] = spliceStr(inputs[2][randVar], pos, pos + 3); // Removes remaining ")__"
+          raw_code = spliceStr(raw_code, pos, pos + 3); // Removes remaining ")__"
           
           try {
             var new_code = new Function("id", "return " + codeToExec);
             var new_code_ret = new_code();
             alert(codeToExec);
             alert(new_code);
-            inputs[2][randVar].replace(codeToExec, new_code_ret);
+            alert(new_code_ret);
+            raw_code.replace(codeToExec, new_code_ret);
           } catch(e) {
             throw e;
           }
         }
         
-        ai[id][8].push(inputs[2][randVar]);
+        ai[id][8].push(raw_code);
       }
     }
   }
