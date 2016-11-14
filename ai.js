@@ -59,7 +59,8 @@ function findInput(id) {
           try {
             var new_code = new Function("id", "return " + codeToExec);
             var new_code_ret = new_code();
-            alert(new_code_ret);
+            alert(codeToExec);
+            alert(new_code);
             inputs[2][randVar].replace(codeToExec, new_code_ret);
           } catch(e) {
             throw e;
