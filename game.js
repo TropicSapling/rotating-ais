@@ -359,9 +359,11 @@ $(function() {
     
     checkCollisions(game);
     
-    for(i = 0; i < ai.length; i++) {
-      if(ai[i] !== "dead" && (!(ai[i][10]) || (ai[i][10] && typeof ai[i][10][0] === 'object'))) {
-        checkCond(i);
+    if(total_mass > 15000) {
+      for(i = 0; i < ai.length; i++) {
+        if(ai[i] !== "dead" && (!(ai[i][10]) || (ai[i][10] && typeof ai[i][10][0] === 'object'))) {
+          checkCond(i);
+        }
       }
     }
     
