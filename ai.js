@@ -39,11 +39,12 @@ function findInput(id) {
         var randNumber = Math.floor(Math.random() * 100)
         ai[id][8].push(randNumber);
       } else {
+	      var raw_code;
         while(inputs[2][randVar].indexOf("__EXENOW(") != -1) {
           var index = inputs[2][randVar].indexOf("__EXENOW(");
           var pos = index + 9; // 9 = "__EXENOW(".length
           
-          var raw_code = spliceStr(inputs[2][randVar], index, pos); // Removes "__EXENOW("
+          raw_code = spliceStr(inputs[2][randVar], index, pos); // Removes "__EXENOW("
           pos -= 9;
           
           var codeToExec = "";
@@ -59,9 +60,6 @@ function findInput(id) {
           try {
             var new_code = new Function("id", "return " + codeToExec);
             var new_code_ret = new_code();
-            alert(codeToExec);
-            alert(new_code);
-            alert(new_code_ret);
             raw_code.replace(codeToExec, new_code_ret);
           } catch(e) {
             throw e;
