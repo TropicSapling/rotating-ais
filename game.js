@@ -38,15 +38,13 @@ function checkCond3(id) {
   try {
     func = new Function("return " + ai[id][8].join(" "));
     
-    var before_x = 0;
-    var before_y = 0;
-    before_x = ai[id][3];
-    before_y = ai[id][4];
+    var before_ai = deepCopy(ai[id]);
     var action;
     var last_action;
     for(var i = 0; i < 10; i++) {
-      ai[id][3] = Math.floor(Math.random() * 600);
-      ai[id][4] = Math.floor(Math.random() * 600);
+      for(var j = 0; j < 6; j++) {
+        ai[id][j] = Math.floor(Math.random() * 500);
+      }
        
       action = func();
       if(i > 0 && action != last_action) {
@@ -55,8 +53,7 @@ function checkCond3(id) {
       last_action = action;
     }
     
-    ai[id][3] = before_x;
-    ai[id][4] = before_y;
+    ai[id] = before_ai;
     
     if(action == last_action) {
       checkCond2(id);
