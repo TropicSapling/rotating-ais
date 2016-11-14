@@ -5,12 +5,14 @@ var spawn_chance = 0.1; // MIN: >0, MAX: 1.
 
 window.onerror = function(msg, url, line, column, error) {
   if(error) {
-    alert(msg + " in file " + url + "\n\nLine: " + line + ", column: " + column + "\n\nStack Trace:\n" + error.stack);
+    console.log("[!] Error: " + msg + " in file " + url);
+    console.log("Line: " + line + ", column: " + column);
+    console.log("Stack Trace:");
+    console.log(error.stack);
   } else {
-    alert(msg + " in file " + url + "\n\nLine: " + line + ", column: " + column);
+    console.log("[!] Error: " + msg + " in file " + url);
+    console.log("Line: " + line + ", column: " + column);
   }
-  
-  clearInterval(gameLoop);
 }
 
 function deepCopy(arr) { // Because JS hates me and is just that annoying
