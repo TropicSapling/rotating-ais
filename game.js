@@ -30,6 +30,8 @@ function checkCond2(id) {
   } else {
     genRandCond(id);
   }
+  
+  console.log(ai[id][8]);
 }
 
 function checkCond3(id) {
