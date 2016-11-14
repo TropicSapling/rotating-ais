@@ -36,7 +36,7 @@ function checkCond2(id) {
 
 function checkCond3(id) {
   try {
-    func = new Function("return " + ai[id][8].join(" "));
+    func = new Function("id", "return " + ai[id][8].join(" "));
     
     var before_ai = deepCopy(ai[id]);
     var action;
@@ -46,7 +46,7 @@ function checkCond3(id) {
         ai[id][j] = Math.floor(Math.random() * 500);
       }
        
-      action = func();
+      action = func(id);
       if(i > 0 && action != last_action) {
         break;
       }
@@ -67,8 +67,8 @@ function checkCond3(id) {
 
 function checkCond(id) {
   try {
-    func = new Function("return " + ai[id][8].join(" "));
-    var action = func();
+    func = new Function("id", "return " + ai[id][8].join(" "));
+    var action = func(id);
     
     if(checked_ais.indexOf(id) == -1) {
       checkCond3();
