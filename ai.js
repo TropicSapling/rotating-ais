@@ -39,7 +39,8 @@ function findInput(id) {
         var randNumber = Math.floor(Math.random() * 100)
         ai[id][8].push(randNumber);
       } else {
-	var raw_code = inputs[2][randVar];
+	var raw_code = "";
+        raw_code = inputs[2][randVar];
         while(raw_code.indexOf("__EXENOW(") != -1) {
           var index = inputs[2][randVar].indexOf("__EXENOW(");
           var pos = index + 9; // 9 = "__EXENOW(".length
