@@ -142,7 +142,7 @@ function renderAIs(game) {
         ai_sorted[i][4] += ai_sorted[i][6] * 0.0002;
       }
       
-/*      if(ai_sorted[i][3] < 0) {
+      if(ai_sorted[i][3] < 0) {
         ai_sorted[i][3] = 0;
         ai_sorted[i][7] = Math.floor(Math.random() * 365);
       } else if(ai_sorted[i][3] > 600 - ai_sorted[i][5]) {
@@ -154,7 +154,7 @@ function renderAIs(game) {
       } else if(ai_sorted[i][4] > 600 - ai_sorted[i][6]) {
         ai_sorted[i][4] = 600 - ai_sorted[i][6];
         ai_sorted[i][7] = Math.floor(Math.random() * 365);
-      } */
+      }
       
       if(ai_sorted[i][5] * ai_sorted[i][6] < 100 && (!(ai_sorted[i][10]) || (ai_sorted[i][10] && typeof ai_sorted[i][10][0] === 'object'))) {
         if(ai_sorted[i][10]) {
