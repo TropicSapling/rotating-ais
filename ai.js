@@ -63,7 +63,7 @@ function findInput(id) {
           }
         }
         
-        ai[id][8].push(randVar);
+        ai[id][8].push(inputs[2][randVar]);
       }
     }
   }
