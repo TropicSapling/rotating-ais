@@ -138,10 +138,10 @@ function renderAIs(game) {
           ai_sorted[i][4] += Math.cos(ai_sorted[i][7]);
         }
         
-/*        ai_sorted[i][5] -= ai_sorted[i][5] * 0.0008;
+        ai_sorted[i][5] -= ai_sorted[i][5] * 0.0008;
         ai_sorted[i][3] += ai_sorted[i][5] * 0.0004;
         ai_sorted[i][6] -= ai_sorted[i][6] * 0.0008;
-        ai_sorted[i][4] += ai_sorted[i][6] * 0.0004; */
+        ai_sorted[i][4] += ai_sorted[i][6] * 0.0004;
       }
       
       if(ai_sorted[i][3] < 0) {
@@ -321,7 +321,7 @@ function checkCollisions(game) {
             var par1 = pars1[biggestAI];
             var par2 = pars1[next_biggestAI];
             
-            if(ai[par2][5] * ai[par2][6] > 500) {
+            if(ai[par2][5] * ai[par2][6] > 1000) {
               combineGenes(par1, par2);
             }
           }
