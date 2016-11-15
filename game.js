@@ -301,7 +301,7 @@ function checkCollisions(game) {
             var par1 = pars1[biggestAI];
             var par2 = pars1[next_biggestAI];
             
-            if(ai[par2][5] * ai[par2][6] > 2000) {
+            if(ai[par2][5] * ai[par2][6] > 500) {
               combineGenes(par1, par2);
             }
           }
