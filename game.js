@@ -63,6 +63,10 @@ function checkCond(id) {
       checkCond();
     } else if(action == true) {
       ai[id][7] += 0.1;
+      ai[id][5] += ai[id][5] * 0.0008;
+      ai[id][3] -= ai[id][5] * 0.0004;
+      ai[id][6] += ai[id][6] * 0.0008;
+      ai[id][4] -= ai[id][6] * 0.0004;
     }
   } catch(e) {
     regenCond(id);
