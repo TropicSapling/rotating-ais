@@ -1,5 +1,8 @@
 var gameLoop;
 var checked_ais = [];
+var longest_alive = [0, 0];
+var longest_alive_2nd = [0, 0];
+var time_alive = [];
 var total_mass = 0;
 var rand_spawn_chance = 0.1; // MIN: >0, MAX: 1.
 
@@ -110,6 +113,7 @@ function renderAIs(game) {
 			} else {
 				ai_sorted[i] = "dead";
 				checked_ais.splice(checked_ais.indexOf(i));
+				time_alive.splice(i);
 			}
 		}
 		
@@ -283,26 +287,7 @@ $(function() {
 		
 		if(total_mass < 20000) {
 			if(ai.length > 1 && Math.floor(Math.random() * (1 / rand_spawn_chance)) > 0) {
-				var biggestAI = 0;
-				var next_biggestAI = 0;
-				var biggest = -Infinity;
-				var next_biggest = -Infinity;
-				
-				for (var i = 0, l = ai.length; i < l; i++) {
-					var nr = ai[i][5] * ai[i][6];
-					
-					if (nr > biggest) {
-						next_biggest = biggest;
-						next_biggestAI = biggestAI;
-						biggest = nr;
-						biggestAI = i;
-					} else if (nr > next_biggest) {
-						next_biggest = nr;
-						next_biggestAI = i;
-					}
-				}
-				
-				combineGenes(biggestAI, next_biggestAI);
+				combineGenes(longest_alive[1], longest_alive_2nd[1]);
 			} else {
 				genRandGenes();
 			}
@@ -313,6 +298,13 @@ $(function() {
 		for(i = 0; i < ai.length; i++) {
 			if(ai[i] !== "dead" && (!(ai[i][10]) || (ai[i][10] && typeof ai[i][10][0] === 'object'))) {
 				checkCond(i);
+			}
+			
+			time_alive[i] += 1;
+			if(time_alive[i] > longest_alive[0]) {
+				longest_alive = [time_alive[i], ai[i]];
+			} else if(time_alive[i] > longest_alive_2nd[0]) {
+				longest_alive_2nd = [time_alive[i], ai[i]];
 			}
 		}
 		
