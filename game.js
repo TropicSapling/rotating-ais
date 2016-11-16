@@ -7,7 +7,7 @@ var rand_spawn_chance = 0.1; // MIN: >0, MAX: 1.
 
 window.onerror = function(msg, url, line, column, error) {
 	if(error) {
-		console.log("[!] Error: " + msg + " in file " + url);
+		console.log("[!] " + msg + " in file " + url);
 		console.log("Line: " + line + ", column: " + column);
 		console.log("Stack Trace:");
 		console.log(error.stack);
@@ -285,11 +285,7 @@ $(function() {
 		
 		if(total_mass < 20000) {
 			if(ai.length > 1 && Math.floor(Math.random() * (1 / rand_spawn_chance)) > 0) {
-				console.log("BEFORE:");
-				console.log(ai);
 				combineGenes(longest_alive[1], longest_alive_2nd[1]);
-				console.log("AFTER:");
-				console.log(ai);
 			} else {
 				genRandGenes();
 			}
