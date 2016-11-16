@@ -6,6 +6,8 @@ var total_mass = 0;
 var rand_spawn_chance = 0.1; // MIN: >0, MAX: 1.
 
 window.onerror = function(msg, url, line, column, error) {
+	alert("An error has occurred. Check console for details.");
+	
 	if(error) {
 		console.log("[!] " + msg + " in file " + url);
 		console.log("Line: " + line + ", column: " + column);
