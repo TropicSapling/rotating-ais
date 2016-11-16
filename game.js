@@ -15,7 +15,6 @@ window.onerror = function(msg, url, line, column, error) {
 		console.log(error.stack);
 	} else {
 		alert("[!] Error: " + msg + " in file " + url + "\n\nLine: " + line + ", column: " + column);
-                alert("[" + ai.join("],\n\n[") + "]");
 	}
 	
 	clearInterval(gameLoop);
