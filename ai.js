@@ -209,7 +209,7 @@ function combineGenes(par1, par2) {
 				}
 			} else if(i == 8) {
 				combineConditions(placeAvailable, par1[8], par2[8], par1[9], par2[9]);
-			} else if(typeof ai[par1][i] === 'number' && i != 9) {
+			} else if(typeof par1[i] === 'number' && i != 9) {
 				ai[placeAvailable].push(randomBetween(Math.min(par1[i], par2[i]) - 1, Math.max(par1[i], par2[i]) + 1));
 			}
 		}
