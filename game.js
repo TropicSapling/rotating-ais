@@ -299,10 +299,12 @@ $(function() {
 			}
 			
 			time_alive[i] += 1;
+			var this_time_alive = 0;
+			this_time_alive = time_alive[i];
 			if(time_alive[i] > longest_alive[0]) {
-				longest_alive = [time_alive[i], ai[i]];
+				longest_alive = [this_time_alive, deepCopy(ai[i])];
 			} else if(time_alive[i] > longest_alive_2nd[0]) {
-				longest_alive_2nd = [time_alive[i], ai[i]];
+				longest_alive_2nd = [this_time_alive, deepCopy(ai[i])];
 			}
 		}
 		
