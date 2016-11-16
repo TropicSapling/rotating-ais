@@ -300,6 +300,10 @@ $(function() {
 		checkCollisions(game);
 		
 		for(i = 0; i < ai.length; i++) {
+                        if(ai[i].length < 1) {
+                                ai[i] = "dead";
+                        }
+                        
 			if(ai[i] !== "dead" && (!(ai[i][10]) || (ai[i][10] && typeof ai[i][10][0] === 'object'))) {
 				checkCond(i);
 				
