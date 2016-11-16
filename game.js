@@ -15,6 +15,8 @@ window.onerror = function(msg, url, line, column, error) {
 		console.log("[!] Error: " + msg + " in file " + url);
 		console.log("Line: " + line + ", column: " + column);
 	}
+	
+	clearInterval(gameLoop);
 }
 
 function deepCopy(arr) { // Because JS hates me and is just that annoying
