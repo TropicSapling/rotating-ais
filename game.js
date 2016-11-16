@@ -308,7 +308,9 @@ $(function() {
 				} else if(time_alive[i] > longest_alive_2nd[0]) {
 					longest_alive_2nd = [time_alive[i], ai[i]];
 				}
-			} else if(ai[i] !== "dead") {
+			}
+			
+			if(ai[i] !== "dead") {
 				time_alive[i] += 1;
 			}
 		}
