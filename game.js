@@ -285,8 +285,6 @@ $(function() {
 		
 		if(total_mass < 20000) {
 			if(ai.length > 1 && Math.floor(Math.random() * (1 / rand_spawn_chance)) > 0) {
-				alert(longest_alive[1]);
-				alert(longest_alive_2nd[1]);
 				combineGenes(longest_alive[1], longest_alive_2nd[1]);
 			} else {
 				genRandGenes();
