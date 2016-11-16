@@ -4,6 +4,7 @@ var mutation_chance = 0.25; // MIN: >0, MAX: 1.
 var max_genes = 8; // So that AI doesn't have access to genes #8+
 
 var ai = [];
+var time_alive = [];
 var inputs = [["+", "-", "*", "/", "<", "<=", ">=", ">", "&&", "||"], ["(", ")"], ["ai[__EXENOW(id)__][__EXENOW(Math.floor(Math.random() * max_genes))__]", "getRandAIInRange(__EXENOW(id)__)[__EXENOW(Math.floor(Math.random() * max_genes))__]"]];
 var changing_inputs = ["ai[", "getRandAIInRange("]; // Used in game.js to speed up evolution, the first parts of inputs[2] before the '__EXENOW(...)__'
 
