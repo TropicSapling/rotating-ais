@@ -1,7 +1,7 @@
 var gameLoop;
 var checked_ais = [];
-var longest_alive = [0, 0];
-var longest_alive_2nd = [0, 0];
+var longest_alive = [0, []];
+var longest_alive_2nd = [0, []];
 var total_mass = 0;
 var rand_spawn_chance = 0.1; // MIN: >0, MAX: 1.
 
