@@ -113,7 +113,6 @@ function renderAIs(game) {
 			} else {
 				ai_sorted[i] = "dead";
 				checked_ais.splice(checked_ais.indexOf(i));
-				time_alive.splice(i);
 			}
 		}
 		
