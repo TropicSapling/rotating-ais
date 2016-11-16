@@ -296,15 +296,13 @@ $(function() {
 		for(i = 0; i < ai.length; i++) {
 			if(ai[i] !== "dead" && (!(ai[i][10]) || (ai[i][10] && typeof ai[i][10][0] === 'object'))) {
 				checkCond(i);
-			}
-			
-			time_alive[i] += 1;
-			var this_time_alive = 0;
-			this_time_alive = time_alive[i];
-			if(time_alive[i] > longest_alive[0]) {
-				longest_alive = [this_time_alive, deepCopy(ai[i])];
-			} else if(time_alive[i] > longest_alive_2nd[0]) {
-				longest_alive_2nd = [this_time_alive, deepCopy(ai[i])];
+				
+				time_alive[i] += 1;
+				if(time_alive[i] > longest_alive[0]) {
+					longest_alive = [time_alive[i], ai[i]];
+				} else if(time_alive[i] > longest_alive_2nd[0]) {
+					longest_alive_2nd = [time_alive[i], ai[i]];
+				}
 			}
 		}
 		
