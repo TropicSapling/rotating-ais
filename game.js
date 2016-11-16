@@ -297,13 +297,14 @@ $(function() {
 		for(i = 0; i < ai.length; i++) {
 			if(ai[i] !== "dead" && (!(ai[i][10]) || (ai[i][10] && typeof ai[i][10][0] === 'object'))) {
 				checkCond(i);
-			} else if(ai[i] !== "dead") {
-				time_alive[i] += 1;
+				
 				if(time_alive[i] > longest_alive[0]) {
 					longest_alive = [time_alive[i], ai[i]];
 				} else if(time_alive[i] > longest_alive_2nd[0]) {
 					longest_alive_2nd = [time_alive[i], ai[i]];
 				}
+			} else if(ai[i] !== "dead") {
+				time_alive[i] += 1;
 			}
 		}
 		
