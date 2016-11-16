@@ -157,7 +157,7 @@ function combineGenes(par1, par2) {
 					ai[ai.length - 1].push(par1[4] - randomBetween(75, 125));
 				}
 			} else if(i == 3) {
-				if(ai[par1][3] < 300) {
+				if(par1[3] < 300) {
 					ai[ai.length - 1].push(par1[3] + randomBetween(75, 125));
 				} else {
 					ai[ai.length - 1].push(par1[3] - randomBetween(75, 125));
