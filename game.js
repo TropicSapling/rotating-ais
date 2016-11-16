@@ -282,7 +282,7 @@ $(function() {
 		game.fillRect(0, 0, 600, 600); // Background
 		
 		if(total_mass < 20000) {
-			if(ai.length > 1 && Math.floor(Math.random() * (1 / spawn_chance)) > 0) {
+			if(ai.length > 1 && Math.floor(Math.random() * (1 / rand_spawn_chance)) > 0) {
 				var biggestAI = 0;
 				var next_biggestAI = 0;
 				var biggest = -Infinity;
