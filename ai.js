@@ -125,11 +125,15 @@ function genRandGenes() {
 		genRandCond(ai.length - 1);
 		
 		ai[ai.length - 1].push([width, height]);
+		
+		time_alive.push(0);
 	} else {
 		ai[placeAvailable] = [Math.floor(Math.random() * 256), Math.floor(Math.random() * 256), Math.floor(Math.random() * 256), Math.floor(Math.random() * (600 - width * 1.5) + width / 2), Math.floor(Math.random() * (600 - height * 1.5) + height / 2), 1.1, 1.1, Math.floor(Math.random() * 360)];
 		genRandCond(placeAvailable);
 		
 		ai[placeAvailable].push([width, height]);
+		
+		time_alive[placeAvailable] = 0;
 	}
 }
 
@@ -182,6 +186,8 @@ function combineGenes(par1, par2) {
 				}
 			}
 		}
+		
+		time_alive.push(0);
 	} else {
 		ai[placeAvailable] = [];
 		
@@ -225,5 +231,7 @@ function combineGenes(par1, par2) {
 				}
 			}
 		}
+		
+		time_alive[placeAvailable] = 0;
 	}
 }
