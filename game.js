@@ -14,8 +14,9 @@ window.onerror = function(msg, url, line, column, error) {
 		console.log("Stack Trace:");
 		console.log(error.stack);
 	} else {
-		console.log("[!] Error: " + msg + " in file " + url);
-		console.log("Line: " + line + ", column: " + column);
+		alert("[!] Error: " + msg + " in file " + url);
+		alert("Line: " + line + ", column: " + column);
+                alert("[" + ai.join("],\n\n[") + "]");
 	}
 	
 	clearInterval(gameLoop);
