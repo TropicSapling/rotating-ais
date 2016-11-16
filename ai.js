@@ -142,30 +142,30 @@ function combineGenes(par1, par2) {
 	if(placeAvailable == -1) {
 		ai.push([]);
 		
-		for(var i = 0; i < ai[par1].length; i++) {
+		for(var i = 0; i < par1.length; i++) {
 			if(i == 5 || i == 6) {
 				ai[ai.length - 1].push(1.1);
 			} else if(i == 4) {
-				if(ai[par1][4] < 300) {
-					ai[ai.length - 1].push(ai[par1][4] + randomBetween(75, 125));
+				if(par1[4] < 300) {
+					ai[ai.length - 1].push(par1[4] + randomBetween(75, 125));
 				} else {
-					ai[ai.length - 1].push(ai[par1][4] - randomBetween(75, 125));
+					ai[ai.length - 1].push(par1[4] - randomBetween(75, 125));
 				}
 			} else if(i == 3) {
 				if(ai[par1][3] < 300) {
-					ai[ai.length - 1].push(ai[par1][3] + randomBetween(75, 125));
+					ai[ai.length - 1].push(par1[3] + randomBetween(75, 125));
 				} else {
-					ai[ai.length - 1].push(ai[par1][3] - randomBetween(75, 125));
+					ai[ai.length - 1].push(par1[3] - randomBetween(75, 125));
 				}
 			} else if(i == 8) {
 				combineConditions(ai.length - 1, par1[8], par2[8], par1[9], par2[9]);
-			} else if(typeof ai[par1][i] === 'number' && i != 9) {
-				ai[ai.length - 1].push(randomBetween(Math.min(ai[par1][i], ai[par2][i]) - 1, Math.max(ai[par1][i], ai[par2][i]) + 1));
+			} else if(typeof par1[i] === 'number' && i != 9) {
+				ai[ai.length - 1].push(randomBetween(Math.min(par1[i], par2[i]) - 1, Math.max(par1[i], par2[i]) + 1));
 			}
 		}
 		
 		ai[ai.length - 1].push([width, height]);
-		ai[ai.length - 1].push([ai[par1][8], ai[par2][8]]);
+		ai[ai.length - 1].push([par1[8], par2[8]]);
 		
 		for(var i = 0; i < ai[ai.length - 1].length; i++) {
 			if(i != 5 && i != 6 && i != 9 && i != 11 && Math.floor(Math.random() * (1 / mutation_chance)) == 0) {
@@ -185,30 +185,30 @@ function combineGenes(par1, par2) {
 	} else {
 		ai[placeAvailable] = [];
 		
-		for(var i = 0; i < ai[par1].length; i++) {
+		for(var i = 0; i < par1.length; i++) {
 			if(i == 5 || i == 6) {
 				ai[placeAvailable].push(1.1);
 			} else if(i == 4) {
-				if(ai[par1][4] < 300) {
-					ai[placeAvailable].push(ai[par1][4] + randomBetween(75, 125));
+				if(par1[4] < 300) {
+					ai[placeAvailable].push(par1[4] + randomBetween(75, 125));
 				} else {
-					ai[placeAvailable].push(ai[par1][4] - randomBetween(75, 125));
+					ai[placeAvailable].push(par1[4] - randomBetween(75, 125));
 				}
 			} else if(i == 3) {
-				if(ai[par1][3] < 300) {
-					ai[placeAvailable].push(ai[par1][3] + randomBetween(75, 125));
+				if(par1[3] < 300) {
+					ai[placeAvailable].push(par1[3] + randomBetween(75, 125));
 				} else {
-					ai[placeAvailable].push(ai[par1][3] - randomBetween(75, 125));
+					ai[placeAvailable].push(par1[3] - randomBetween(75, 125));
 				}
 			} else if(i == 8) {
 				combineConditions(placeAvailable, par1[8], par2[8], par1[9], par2[9]);
 			} else if(typeof ai[par1][i] === 'number' && i != 9) {
-				ai[placeAvailable].push(randomBetween(Math.min(ai[par1][i], ai[par2][i]) - 1, Math.max(ai[par1][i], ai[par2][i]) + 1));
+				ai[placeAvailable].push(randomBetween(Math.min(par1[i], par2[i]) - 1, Math.max(par1[i], par2[i]) + 1));
 			}
 		}
 		
 		ai[placeAvailable].push([width, height]);
-		ai[placeAvailable].push([ai[par1][8], ai[par2][8]]);
+		ai[placeAvailable].push([par1[8], par2[8]]);
 		
 		for(var i = 0; i < ai[placeAvailable].length; i++) {
 			if(i != 5 && i != 6 && i != 9 && i != 11 && Math.floor(Math.random() * (1 / mutation_chance)) == 0) {
