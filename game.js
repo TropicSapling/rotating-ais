@@ -67,6 +67,7 @@ function checkCond(id) {
 			ai[id][7] += 0.1;
 		}
 	} catch(e) {
+		alert(ai[id]);
 		regenCond(id);
 		checkCond(id);
 	}
