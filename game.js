@@ -38,7 +38,7 @@ function regenCond(id) {
 		genRandCond(id);
 	}
 	
-	if(!ai) {
+	if(!ai[id]) {
 		console.log(id);
 	}
 }
