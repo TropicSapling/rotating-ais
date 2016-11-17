@@ -38,7 +38,7 @@ function regenCond(id) {
 		genRandCond(id);
 	}
 	
-	if(!ai[id]) {
+	if(ai[id].length < 1) {
 		console.log(id);
 	}
 }
