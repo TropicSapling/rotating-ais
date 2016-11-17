@@ -247,7 +247,7 @@ function checkCollisions(game) {
 							ai[collidingAIs[i][j]][4] -= 0.5;
 						}
 						
-						collidingAIs[i].splice(k);
+						collidingAIs[i].splice(k, 1);
 						
 						k--;
 						
