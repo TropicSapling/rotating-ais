@@ -37,10 +37,6 @@ function regenCond(id) {
 	} else {
 		genRandCond(id);
 	}
-	
-	if(ai[id].length < 1) {
-		console.log(id);
-	}
 }
 
 function checkCond(id) {
@@ -69,7 +65,7 @@ function checkCond(id) {
 			}
 			
 			checked_ais.push(id);
-			checkCond();
+			checkCond(id);
 		} else if(action == true) {
 			ai[id][7] += 0.1;
 		}
