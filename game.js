@@ -40,6 +40,7 @@ function regenCond(id) {
 }
 
 function checkCond(id) {
+	console.log("BEFORE: " + id);
 	try {
 		func = new Function("return " + ai[id][8].join(" "));
 		var action = func();
@@ -54,9 +55,7 @@ function checkCond(id) {
 			}
 			
 			while(condIsConst) {
-				console.log("Before regen: " + id);
 				regenCond(id);
-				console.log("After regen: " + id);
 				cond = ai[id][8].join(" ");
 				
 				for(var i = 0; i < changing_inputs.length; i++) {
@@ -67,16 +66,17 @@ function checkCond(id) {
 			}
 			
 			checked_ais.push(id);
-			console.log("Before cond: " + id);
 			checkCond(id);
-			console.log("After cond: " + id);
 		} else if(action == true) {
 			ai[id][7] += 0.1;
 		}
 	} catch(e) {
+		console.log("BEFORE err: " + id);
 		regenCond(id);
 		checkCond(id);
+		console.log("AFTER err: " + id);
 	}
+	console.log("AFTER: " + id);
 }
 
 function renderAIs(game) {
