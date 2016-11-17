@@ -300,9 +300,9 @@ $(function() {
 		
 		for(i = 0; i < ai.length; i++) {
 			if(ai[i] !== "dead" && (!(ai[i][10]) || (ai[i][10] && typeof ai[i][10][0] === 'object'))) {
-				console.log(ai[i][10]);
+				console.log(ai[i]);
 				checkCond(i);
-				console.log(ai[i][10]);
+				console.log(ai[i]);
 				
 				if(time_alive[i] > longest_alive[0]) {
 					longest_alive = [time_alive[i], ai[i]];
