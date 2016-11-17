@@ -175,9 +175,11 @@ function combineGenes(par1, par2) {
 					} else {
 						ai[ai.length - 1][i] -= 2;
 					}
-				} else if(typeof ai[ai.length - 1][i] === 'object') {
+				} else if(i == 8) {
 					// WIP
-				}
+				} else if(i == 10 && typeof ai[ai.length - 1][10][0] === 'number') {
+                                        // WIP
+                                }
 			}
 		}
 		
@@ -210,9 +212,11 @@ function combineGenes(par1, par2) {
 					} else {
 						ai[placeAvailable][i] -= 2;
 					}
-				} else if(typeof ai[placeAvailable][i] === 'object') {
+				} else if(i == 8) {
 					// WIP
-				}
+				} else if(i == 10 && typeof ai[placeAvailable][10][0] === 'number') {
+                                        // WIP
+                                }
 			}
 		}
 		
