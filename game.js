@@ -70,10 +70,10 @@ function checkCond(id) {
 			        checked_ais.push(id);
 			        checkCond(id);
                         } else {
-                                if(ai[i][10]) {
-					ai[i].splice(10, 0, ["dying", 1.1]);
+                                if(ai[id][10]) {
+					ai[id].splice(10, 0, ["dying", 1.1]);
 				} else {
-					ai[i].push(["dying", 1.1]);
+					ai[id].push(["dying", 1.1]);
 				}
                         }
 		} else if(action == true) {
