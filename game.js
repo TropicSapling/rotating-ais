@@ -53,7 +53,8 @@ function checkCond(id) {
 				}
 			}
 			
-			while(condIsConst) {
+                        var repeats = 0;
+			while(condIsConst && repeats < 1000) {
 				regenCond(id);
 				cond = ai[id][8].join(" ");
 				
@@ -62,10 +63,19 @@ function checkCond(id) {
 						condIsConst = false;
 					}
 				}
+                                repeats++;
 			}
-			
-			checked_ais.push(id);
-			checkCond(id);
+                        
+			if(repeats < 1000) {
+			        checked_ais.push(id);
+			        checkCond(id);
+                        } else {
+                                if(ai[i][10]) {
+					ai[i].splice(10, 0, ["dying", 1.1]);
+				} else {
+					ai[i].push(["dying", 1.1]);
+				}
+                        }
 		} else if(action == true) {
 			ai[id][7] += 0.1;
 		}
