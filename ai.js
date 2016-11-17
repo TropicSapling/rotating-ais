@@ -175,8 +175,6 @@ function combineGenes(par1, par2) {
 					} else {
 						ai[ai.length - 1][i] -= 2;
 					}
-				} else if(typeof ai[ai.length - 1][i] === 'string') {
-					// WIP
 				} else if(typeof ai[ai.length - 1][i] === 'object') {
 					// WIP
 				}
@@ -212,8 +210,6 @@ function combineGenes(par1, par2) {
 					} else {
 						ai[placeAvailable][i] -= 2;
 					}
-				} else if(typeof ai[placeAvailable][i] === 'string') {
-					// WIP
 				} else if(typeof ai[placeAvailable][i] === 'object') {
 					// WIP
 				}
