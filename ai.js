@@ -106,7 +106,7 @@ function combineConditions(id, cond1, cond2, cond_len1, cond_len2) {
 	do {
 		ai[id].splice(9, 0, randomBetween(Math.min(cond_len1, cond_len2) - 1, Math.max(cond_len1, cond_len2) + 1));
 		if(ai[id][9] % 2 == 0) {
-			ai[id].splice(9);
+			ai[id].splice(9, 1);
 		}
 	} while(ai[id][9] % 2 == 0);
 	
