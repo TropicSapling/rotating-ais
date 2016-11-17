@@ -304,8 +304,14 @@ $(function() {
 				
 				if(time_alive[i] > longest_alive[0]) {
 					longest_alive = [time_alive[i], ai[i]];
+					console.log("WHOLE: " + !(ai[i][10]) || (ai[i][10] && typeof ai[i][10][0] === 'object'));
+					console.log("FIRST: " + !(ai[i][10]));
+					console.log("SECOND: " + ai[i][10] && typeof ai[i][10][0] === 'object');
 				} else if(time_alive[i] > longest_alive_2nd[0]) {
 					longest_alive_2nd = [time_alive[i], ai[i]];
+					console.log("WHOLE: " + !(ai[i][10]) || (ai[i][10] && typeof ai[i][10][0] === 'object'));
+					console.log("FIRST: " + !(ai[i][10]));
+					console.log("SECOND: " + ai[i][10] && typeof ai[i][10][0] === 'object');
 				}
 			}
 			
