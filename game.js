@@ -325,6 +325,8 @@ $(function() {
 		}
 		
 		total_mass = 0;
+                longest_alive[0] -= 0.1;
+                longest_alive_2nd[0] -= 0.1;
 		
 		renderAIs(game);
 	}, 10);
