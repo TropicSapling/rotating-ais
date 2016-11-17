@@ -54,7 +54,9 @@ function checkCond(id) {
 			}
 			
 			while(condIsConst) {
+				console.log("Before regen: " + id);
 				regenCond(id);
+				console.log("After regen: " + id);
 				cond = ai[id][8].join(" ");
 				
 				for(var i = 0; i < changing_inputs.length; i++) {
@@ -65,7 +67,9 @@ function checkCond(id) {
 			}
 			
 			checked_ais.push(id);
+			console.log("Before cond: " + id);
 			checkCond(id);
+			console.log("After cond: " + id);
 		} else if(action == true) {
 			ai[id][7] += 0.1;
 		}
