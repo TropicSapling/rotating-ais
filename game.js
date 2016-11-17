@@ -303,8 +303,10 @@ $(function() {
 				checkCond(i);
 				
 				if(time_alive[i] > longest_alive[0]) {
+					console.log(ai[i]);
 					longest_alive = [time_alive[i], ai[i]];
 				} else if(time_alive[i] > longest_alive_2nd[0]) {
+					console.log(ai[i]);
 					longest_alive_2nd = [time_alive[i], ai[i]];
 				}
 			}
