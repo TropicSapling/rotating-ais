@@ -37,6 +37,10 @@ function regenCond(id) {
 	} else {
 		genRandCond(id);
 	}
+	
+	if(!ai) {
+		console.log(id);
+	}
 }
 
 function checkCond(id) {
