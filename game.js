@@ -40,6 +40,7 @@ function regenCond(id) {
 }
 
 function checkCond(id) {
+	if(ai[id].length < 0) { console.log(id) }
 	try {
 		func = new Function("return " + ai[id][8].join(" "));
 		var action = func();
