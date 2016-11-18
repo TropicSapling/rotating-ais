@@ -23,23 +23,23 @@ function findInput(id) {
 		var randOp = Math.floor(Math.random() * (inputs[0].length));
 		
 		if(parenthesis > 0 && randParenthesis == inputs[1].indexOf(")") && Math.round(Math.random())) {
-			ai[id][8].push(inputs[1][randParenthesis]); // [8] = condition gene
 			parenthesis--;
 			op--;
+			return inputs[1][randParenthesis];
 		} else {
-			ai[id][8].push(inputs[0][randOp]);
+			return inputs[0][randOp];
 		}
 	} else {
 		var randVar = Math.floor(Math.random() * (inputs[2].length));
 		
 		if(randParenthesis == inputs[1].indexOf("(") && Math.round(Math.random())) {
-			ai[id][8].push(inputs[1][randParenthesis]);
 			parenthesis++;
 			op--;
+			return inputs[1][randParenthesis];
 		} else {
 			if(Math.round(Math.random())) {
 				var randNumber = Math.floor(Math.random() * 100)
-				ai[id][8].push(randNumber);
+				return randNumber;
 			} else {
 				var raw_code = "";
 				raw_code = inputs[2][randVar];
@@ -69,7 +69,7 @@ function findInput(id) {
 					}
 				}
 				
-				ai[id][8].push(raw_code);
+				return raw_code;
 			}
 		}
 	}
@@ -89,7 +89,7 @@ function genRandCond(id) {
 	}
 	
 	for(i = 0; i < ai[id][9]; i++) {
-		findInput(id);
+		ai[id][8].push(findInput(id));
 		op++;
 	}
 	
@@ -176,7 +176,23 @@ function combineGenes(par1, par2) {
 						ai[ai.length - 1][i] -= 2;
 					}
 				} else if(i == 8) {
-					// WIP
+					for(item = 0; item < ai[ai.length - 1][8].length; item++) {
+						if(Math.round(Math.random())) {
+							if(Math.floor(Math.random() * (1 / mutation_chance)) == 0) {
+								if(Math.round(Math.random())) {
+									ai[ai.length - 1][8][item] = par1[8][Math.floor(Math.random() * par1[8].length)];
+								} else {
+									ai[ai.length - 1][8][item] = par2[8][Math.floor(Math.random() * par2[8].length)];
+								}
+							}
+						} else if(Math.floor(Math.random() * (1 / mutation_chance)) == 0) {
+							ai[ai.length - 1][8][item] = findInput(ai.length - 1);
+						}
+						
+						op++;
+					}
+					
+					op = 0;
 				}
 			}
 		}
@@ -211,7 +227,23 @@ function combineGenes(par1, par2) {
 						ai[placeAvailable][i] -= 2;
 					}
 				} else if(i == 8) {
-					// WIP
+					for(item = 0; item < ai[placeAvailable][8].length; item++) {
+						if(Math.round(Math.random())) {
+							if(Math.floor(Math.random() * (1 / mutation_chance)) == 0) {
+								if(Math.round(Math.random())) {
+									ai[placeAvailable][8][item] = par1[8][Math.floor(Math.random() * par1[8].length)];
+								} else {
+									ai[placeAvailable][8][item] = par2[8][Math.floor(Math.random() * par2[8].length)];
+								}
+							}
+						} else if(Math.floor(Math.random() * (1 / mutation_chance)) == 0) {
+							ai[placeAvailable][8][item] = findInput(placeAvailable);
+						}
+						
+						op++;
+					}
+					
+					op = 0;
 				}
 			}
 		}
