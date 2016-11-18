@@ -9,10 +9,7 @@
   border: 2px solid black;
 }
 
-#best-thoughts {
+#best-thought {
   position: absolute;
-  left: 10px;
-  top: 10px;
-  margin: 0;
-  padding: 0;
+  margin-top: 10px;
 }
