@@ -8,3 +8,9 @@
   margin-top: -300px;
   border: 2px solid black;
 }
+
+#best-thoughts {
+  position: absolute;
+  left: 10px;
+  top: 10px;
+}
