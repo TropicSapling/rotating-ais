@@ -119,8 +119,18 @@ function combineConditions(id, cond1, cond2, cond_len1, cond_len2) {
 	for(var i = 0; i < ai[id][9]; i++) {
 		if(i < cond1.length && (i >= cond2.length || Math.round(Math.random()))) {
 			ai[id][8].push(cond1[i]);
-		} else {
+		} else if(i < cond2.length) {
 			ai[id][8].push(cond2[i]);
+		} else {
+                        if(Math.round(Math.random())) {
+				if(Math.round(Math.random())) {
+					ai[id][8].push(cond1[Math.floor(Math.random() * cond1.length)]);
+				} else {
+					ai[id][8].push(cond2[Math.floor(Math.random() * cond2.length)]);
+				}
+			}
+		} else {
+			ai[id][8].push(findInput(id));
 		}
 	}
 }
