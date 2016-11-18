@@ -128,10 +128,10 @@ function combineConditions(id, cond1, cond2, cond_len1, cond_len2) {
 				} else {
 					ai[id][8].push(cond2[Math.floor(Math.random() * cond2.length)]);
 				}
-			}
-		} else {
-			ai[id][8].push(findInput(id));
-		}
+			} else {
+			        ai[id][8].push(findInput(id));
+		        }
+                }
 	}
 }
 
