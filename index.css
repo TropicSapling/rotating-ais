@@ -12,6 +12,6 @@
 #best-thought {
   position: absolute;
   margin: 0;
+  margin-top: -10px;
   padding: 0;
-  top: 5px;
 }
