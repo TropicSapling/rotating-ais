@@ -109,6 +109,12 @@ function combineConditions(id, cond1, cond2, cond_len1, cond_len2) {
 			ai[id].splice(9, 1);
 		}
 	} while(ai[id][9] % 2 == 0);
+        
+        if(Math.round(Math.random())) {
+		ai[id][9] += 2;
+	} else if(ai[id][9] > 2) {
+		ai[id][9] -= 2;
+	}
 	
 	for(var i = 0; i < ai[id][9]; i++) {
 		if(i < cond1.length && (i >= cond2.length || Math.round(Math.random()))) {
