@@ -339,5 +339,7 @@ $(function() {
 		total_mass = 0;
 		
 		renderAIs(game);
+                
+                $('#best-thought').text("Thoughts of the longest survivor: " + longest_alive[1].join(" "));
 	}, 10);
 });
