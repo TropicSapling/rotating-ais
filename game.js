@@ -340,6 +340,6 @@ $(function() {
 		
 		renderAIs(game);
                 
-                $('#best-thought').text("Thoughts of the longest survivor: " + longest_alive[1].join(" "));
+                $('#best-thought').html("<strong>Thoughts of the longest survivor:</strong> " + longest_alive[1].join(" "));
 	}, 10);
 });
