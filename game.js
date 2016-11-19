@@ -349,10 +349,10 @@ $(function() {
 				
 				if(!(ai[id][10]) || (ai[id][10] && typeof ai[id][10][0] === 'object')) {
 					checkCond(id);
-					
-					time_alive_copy.push(time_alive[id][0]);
 				}
 			}
+			
+			time_alive_copy.push(time_alive[id][0]);
 		}
 		
 		if(performance.now() - start_time > 4000) {
@@ -366,6 +366,10 @@ $(function() {
 						break;
 					}
 				}
+			}
+			
+			if(time_alive_sorted.length > 20) {
+				// WIP
 			}
 		}
 		
