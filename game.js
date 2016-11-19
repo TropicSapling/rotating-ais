@@ -327,6 +327,8 @@ $(function() {
 			if(ai.length > 1 && performance.now() - start_time > 5000 && Math.floor(Math.random() * (1 / rand_spawn_chance)) > 0) {
 				var par1 = findPar(0);
 				var par2 = findPar(0);
+				console.log(par1);
+				console.log(par2);
 				
 				combineGenes(par1, par2);
 			} else {
