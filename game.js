@@ -307,7 +307,7 @@ function findPar(n) {
 	if(n == time_alive_sorted.length - 1 || Math.round(Math.random())) {
 		return time_alive_sorted[n][1];
 	} else {
-		findPar(n + 1);
+		return findPar(n + 1);
 	}
 }
 
