@@ -305,6 +305,7 @@ function getRandAIInRange(id) {
 
 function findPar(id) {
 	if(id == time_alive_sorted.length - 1 || Math.round(Math.random())) {
+		console.log(id);
 		return time_alive_sorted[id][1];
 	} else {
 		findPar(id + 1);
@@ -327,8 +328,6 @@ $(function() {
 			if(ai.length > 1 && performance.now() - start_time > 5000 && Math.floor(Math.random() * (1 / rand_spawn_chance)) > 0) {
 				var par1 = findPar(0);
 				var par2 = findPar(0);
-				console.log(par1);
-				console.log(par2);
 				
 				combineGenes(par1, par2);
 			} else {
