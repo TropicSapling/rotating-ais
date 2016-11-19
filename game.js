@@ -372,7 +372,7 @@ $(function() {
 			
 			var pos = 0;
 			if(time_alive_sorted.length > 20) {
-				while(time_alive[pos][2] || time_alive[pos][2] > 10000) {
+				while(time_alive[pos][2] || time_alive[pos][0] > 10000) {
 					pos++;
 				}
 				
