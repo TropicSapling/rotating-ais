@@ -1,7 +1,6 @@
 var gameLoop;
 var checked_ais = [];
-var longest_alive = [0, []];
-var longest_alive_2nd = [0, []];
+var time_alive_sorted = [];
 var total_mass = 0;
 var rand_spawn_chance = 0.1; // MIN: >0, MAX: 1.
 
@@ -125,6 +124,12 @@ function renderAIs(game) {
 			} else {
 				ai_sorted[i] = "dead";
 				checked_ais.splice(checked_ais.indexOf(i), 1);
+				for(j = 0; j < time_alive.length; j++) {
+					if(time_alive[j][2] == i) {
+						time_alive[j].splice(2, 1);
+						break;
+					}
+				}
 			}
 		}
 		
@@ -298,6 +303,14 @@ function getRandAIInRange(id) {
 	}
 }
 
+function findPar(id) {
+	if(Math.round(Math.random())) {
+		return time_alive_sorted[id][1];
+	} else {
+		findPar(id + 1);
+	}
+}
+
 $(function() {
 	var canvas = document.getElementById("game");
 	var game = canvas.getContext("2d");
@@ -312,7 +325,10 @@ $(function() {
 		
 		if(total_mass < 20000) {
 			if(ai.length > 1 && performance.now() - start_time > 5000 && Math.floor(Math.random() * (1 / rand_spawn_chance)) > 0) {
-				combineGenes(longest_alive[1], longest_alive_2nd[1]);
+				var par1 = findPar(0);
+				var par2 = findPar(0);
+				
+				combineGenes(par1, par2);
 			} else {
 				genRandGenes();
 			}
@@ -320,28 +336,43 @@ $(function() {
 		
 		checkCollisions(game);
 		
+		var time_alive_copy = [];
+		
 		for(id = 0; id < ai.length; id++) {
-			if(ai[id] !== "dead" && (!(ai[id][10]) || (ai[id][10] && typeof ai[id][10][0] === 'object'))) {
-				checkCond(id);
+			if(ai[id] !== "dead") {
+				for(i = 0; i < time_alive.length; i++) {
+					if(time_alive[i][2] == id) {
+						time_alive[i][0] += 1;
+						break;
+					}
+				}
 				
-				if(time_alive[id] > longest_alive[0]) {
-					longest_alive = [time_alive[id], ai[id]];
-				} else if(time_alive[id] > longest_alive_2nd[0]) {
-					longest_alive_2nd = [time_alive[id], ai[id]];
+				if(!(ai[id][10]) || (ai[id][10] && typeof ai[id][10][0] === 'object')) {
+					checkCond(id);
+					
+					time_alive_copy.push(time_alive[id][0]);
 				}
 			}
-			
-			if(ai[id] !== "dead") {
-				time_alive[id] += 1;
+		}
+		
+		time_alive_copy = time_alive_copy.sort(function(a,b){return b - a});
+		
+		time_alive_sorted = [];
+		for(i = 0; i < time_alive_copy.length; i++) {
+			for(j = 0; j < time_alive.length; j++) {
+				if(time_alive[j][0] > 4000 && time_alive[j][0] == time_alive_copy[i]) {
+					time_alive_sorted.push(time_alive[j]);
+					break;
+				}
 			}
 		}
 		
 		total_mass = 0;
 		
 		renderAIs(game);
-                
-                if(longest_alive[1][8]) {
-                        $('#best-thought').html("<strong>Thoughts of the longest survivor:</strong> " + longest_alive[1][8].join(" "));
-                }
+		
+		if(time_alive_sorted.length > 0) {
+			$('#best-thought').html("<strong>Thoughts of the longest survivor:</strong> " + time_alive_sorted[0][1][8].join(" "));
+		}
 	}, 10);
 });
