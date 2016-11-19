@@ -373,7 +373,15 @@ $(function() {
 				while(!time_alive_sorted[pos][2]) {
 					pos--;
 				}
-				time_alive.splice(time_alive_sorted[pos][2], 1);
+				
+				var worst_ai = 0;
+				for(i = 0; i < time_alive.length; i++) {
+					if(time_alive[i][2] == time_alive_sorted[pos][2]) {
+						worst_ai = i;
+					}
+				}
+				
+				time_alive.splice(worst_ai, 1);
 			}
 		}
 		
