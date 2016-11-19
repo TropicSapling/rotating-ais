@@ -370,25 +370,14 @@ $(function() {
 				}
 			}
 			
-/*			var pos = time_alive_sorted.length - 1;
+			var pos = 0;
 			if(time_alive_sorted.length > 20) {
-				while(!time_alive_sorted[pos][2]) {
-					pos--;
+				while(time_alive[pos][2] || time_alive[pos][2] > 10000) {
+					pos++;
 				}
 				
-				var worst_ai = 0;
-				var i = 0;
-				for( ; i < time_alive.length / 4; i++) {
-					if(time_alive[i][2] == time_alive_sorted[pos][2]) {
-						worst_ai = i;
-						break;
-					}
-				}
-				
-				if(i < time_alive.length / 4) {
-					time_alive.splice(worst_ai, 1);
-				}
-			} */
+				time_alive.splice(pos, 1);
+			}
 		}
 		
 		total_mass = 0;
