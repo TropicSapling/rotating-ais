@@ -134,7 +134,7 @@ function renderAIs(game) {
 							}
 						}
 						
-						if(time_alive.length < 20 || posInTop < 10) {
+						if(time_alive.length < 10 || posInTop < 10) {
 							time_alive[j].splice(2, 1);
 						} else {
 							time_alive.splice(j, 1);
