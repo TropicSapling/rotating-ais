@@ -370,7 +370,7 @@ $(function() {
 				}
 			}
 			
-			var pos = 0;
+/*			var pos = 0;
 			if(time_alive.length > 20) {
 				while(pos < time_alive.length && (typeof time_alive[pos][2] === 'number' || time_alive[pos][0] > 5000)) {
 					pos++;
@@ -379,7 +379,7 @@ $(function() {
 				if(pos < time_alive.length) {
 					time_alive.splice(pos, 1);
 				}
-			}
+			} */
 		}
 		
 		total_mass = 0;
