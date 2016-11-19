@@ -109,8 +109,8 @@ function combineConditions(id, cond1, cond2, cond_len1, cond_len2) {
 			ai[id].splice(9, 1);
 		}
 	} while(ai[id][9] % 2 == 0);
-        
-        if(Math.round(Math.random())) {
+		
+		if(Math.round(Math.random())) {
 		ai[id][9] += 2;
 	} else if(ai[id][9] > 2) {
 		ai[id][9] -= 2;
@@ -122,16 +122,16 @@ function combineConditions(id, cond1, cond2, cond_len1, cond_len2) {
 		} else if(i < cond2.length) {
 			ai[id][8].push(cond2[i]);
 		} else {
-                        if(Math.round(Math.random())) {
+			if(Math.round(Math.random())) {
 				if(Math.round(Math.random())) {
 					ai[id][8].push(cond1[Math.floor(Math.random() * cond1.length)]);
 				} else {
 					ai[id][8].push(cond2[Math.floor(Math.random() * cond2.length)]);
 				}
 			} else {
-			        ai[id][8].push(findInput(id));
-		        }
-                }
+				ai[id][8].push(findInput(id));
+			}
+		}
 	}
 }
 
@@ -146,14 +146,14 @@ function genRandGenes() {
 		
 		ai[ai.length - 1].push([width, height]);
 		
-		time_alive.push(0);
+		time_alive.push([0, ai[ai.length - 1], ai.length - 1]);
 	} else {
 		ai[placeAvailable] = [Math.floor(Math.random() * 256), Math.floor(Math.random() * 256), Math.floor(Math.random() * 256), Math.floor(Math.random() * (600 - width * 1.5) + width / 2), Math.floor(Math.random() * (600 - height * 1.5) + height / 2), 1.1, 1.1, Math.floor(Math.random() * 360)];
 		genRandCond(placeAvailable);
 		
 		ai[placeAvailable].push([width, height]);
 		
-		time_alive[placeAvailable] = 0;
+		time_alive.push([0, ai[placeAvailable], placeAvailable]);
 	}
 }
 
@@ -213,7 +213,7 @@ function combineGenes(par1, par2) {
 			}
 		}
 		
-		time_alive.push(0);
+		time_alive.push([0, ai[ai.length - 1], ai.length - 1]);
 	} else {
 		ai[placeAvailable] = [];
 		
@@ -264,6 +264,6 @@ function combineGenes(par1, par2) {
 			}
 		}
 		
-		time_alive[placeAvailable] = 0;
+		time_alive.push([0, ai[placeAvailable], placeAvailable]);
 	}
 }
