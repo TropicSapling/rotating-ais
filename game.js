@@ -370,7 +370,7 @@ $(function() {
 				}
 			}
 			
-			var pos = time_alive_sorted.length - 1;
+/*			var pos = time_alive_sorted.length - 1;
 			if(time_alive_sorted.length > 20) {
 				while(!time_alive_sorted[pos][2]) {
 					pos--;
@@ -388,7 +388,7 @@ $(function() {
 				if(i < time_alive.length / 4) {
 					time_alive.splice(worst_ai, 1);
 				}
-			}
+			} */
 		}
 		
 		total_mass = 0;
