@@ -376,7 +376,9 @@ $(function() {
 					pos++;
 				}
 				
-				time_alive.splice(pos, 1);
+				if(pos < time_alive.length) {
+					time_alive.splice(pos, 1);
+				}
 			}
 		}
 		
