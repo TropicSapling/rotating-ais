@@ -303,12 +303,11 @@ function getRandAIInRange(id) {
 	}
 }
 
-function findPar(id) {
-	if(id == time_alive_sorted.length - 1 || Math.round(Math.random())) {
-		console.log(time_alive_sorted[id]);
-		return time_alive_sorted[id][1];
+function findPar(n) {
+	if(n == time_alive_sorted.length - 1 || Math.round(Math.random())) {
+		return time_alive_sorted[n][1];
 	} else {
-		findPar(id + 1);
+		findPar(n + 1);
 	}
 }
 
