@@ -355,14 +355,16 @@ $(function() {
 			}
 		}
 		
-		time_alive_copy = time_alive_copy.sort(function(a,b){return b - a});
-		
-		time_alive_sorted = [];
-		for(i = 0; i < time_alive_copy.length; i++) {
-			for(j = 0; j < time_alive.length; j++) {
-				if(time_alive[j][0] > 4000 && time_alive[j][0] == time_alive_copy[i]) {
-					time_alive_sorted.push(time_alive[j]);
-					break;
+		if(performance.now() - start_time > 4000) {
+			time_alive_copy = time_alive_copy.sort(function(a,b){return b - a});
+			
+			time_alive_sorted = [];
+			for(i = 0; i < time_alive_copy.length; i++) {
+				for(j = 0; j < time_alive.length; j++) {
+					if(time_alive[j][0] == time_alive_copy[i]) {
+						time_alive_sorted.push(time_alive[j]);
+						break;
+					}
 				}
 			}
 		}
