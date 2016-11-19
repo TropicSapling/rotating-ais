@@ -305,7 +305,7 @@ function getRandAIInRange(id) {
 
 function findPar(id) {
 	if(id == time_alive_sorted.length - 1 || Math.round(Math.random())) {
-		console.log(id);
+		console.log(time_alive_sorted[id]);
 		return time_alive_sorted[id][1];
 	} else {
 		findPar(id + 1);
