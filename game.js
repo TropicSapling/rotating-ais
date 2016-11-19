@@ -368,8 +368,12 @@ $(function() {
 				}
 			}
 			
+                var pos = time_alive_sorted.length - 1;
 			if(time_alive_sorted.length > 20) {
-				// WIP
+				while(!time_alive_sorted[pos][2]) {
+                    pos--;
+                }
+                time_alive.splice(time_alive_sorted[pos][2], 1);
 			}
 		}
 		
