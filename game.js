@@ -377,13 +377,16 @@ $(function() {
 				}
 				
 				var worst_ai = 0;
-				for(i = 0; i < time_alive.length; i++) {
+				var i = 0;
+				for( ; i < time_alive.length / 4; i++) {
 					if(time_alive[i][2] == time_alive_sorted[pos][2]) {
 						worst_ai = i;
 					}
 				}
 				
-				time_alive.splice(worst_ai, 1);
+				if(i < time_alive.length / 4) {
+					time_alive.splice(worst_ai, 1);
+				}
 			}
 		}
 		
