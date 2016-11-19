@@ -126,7 +126,20 @@ function renderAIs(game) {
 				checked_ais.splice(checked_ais.indexOf(i), 1);
 				for(j = 0; j < time_alive.length; j++) {
 					if(time_alive[j][2] == i) {
-						time_alive[j].splice(2, 1);
+						var posInTop = 10;
+						for(k = 0; k < time_alive_sorted.length; k++) {
+							if(time_alive_sorted[k][2] == i) {
+								posInTop = k;
+								break;
+							}
+						}
+						
+						if(time_alive.length < 20 || posInTop < 10) {
+							time_alive[j].splice(2, 1);
+						} else {
+							time_alive.splice(j, 1);
+						}
+						
 						break;
 					}
 				}
@@ -369,17 +382,6 @@ $(function() {
 					}
 				}
 			}
-			
-/*			var pos = 0;
-			if(time_alive.length > 20) {
-				while(pos < time_alive.length && (typeof time_alive[pos][2] === 'number' || time_alive[pos][0] > 5000)) {
-					pos++;
-				}
-				
-				if(pos < time_alive.length) {
-					time_alive.splice(pos, 1);
-				}
-			} */
 		}
 		
 		total_mass = 0;
