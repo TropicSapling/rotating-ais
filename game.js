@@ -381,6 +381,7 @@ $(function() {
 				for( ; i < time_alive.length / 4; i++) {
 					if(time_alive[i][2] == time_alive_sorted[pos][2]) {
 						worst_ai = i;
+						break;
 					}
 				}
 				
