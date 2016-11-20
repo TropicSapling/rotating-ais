@@ -365,9 +365,7 @@ $(function() {
 				}
 			}
 			
-			if(time_alive[id]) {
-				time_alive_copy.push(time_alive[id][0]);
-			}
+			time_alive_copy.push(time_alive[id][0]);
 		}
 		
 		if(performance.now() - start_time > 4000) {
