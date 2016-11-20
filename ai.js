@@ -16,7 +16,7 @@ function spliceStr(str, index, pos) {
 	return str.slice(0, index) + str.slice(pos);
 }
 
-function execNow(raw_code) {
+function execNow(raw_code, id) {
 	while(raw_code.indexOf("__EXENOW(") != -1) {
 		var index = raw_code.indexOf("__EXENOW(");
 		var pos = index + 9; // 9 = "__EXENOW(".length
@@ -74,7 +74,7 @@ function findInput(id) {
 				var raw_code = "";
 				raw_code = inputs[2][randVar];
 				
-				return [execNow(raw_code), raw_code];
+				return [execNow(raw_code, id), raw_code];
 			}
 		}
 	}
@@ -127,7 +127,7 @@ function combineConditions(id, cond1, cond2, cond_len1, cond_len2) {
 				var raw_code = "";
 				raw_code = cond1[i][1];
 				
-				ai[id][8].push([execNow(raw_code), raw_code]);
+				ai[id][8].push([execNow(raw_code, id), raw_code]);
 			} else {
 				ai[id][8].push(cond1[i]);
 			}
@@ -136,7 +136,7 @@ function combineConditions(id, cond1, cond2, cond_len1, cond_len2) {
 				var raw_code = "";
 				raw_code = cond2[i][1];
 				
-				ai[id][8].push([execNow(raw_code), raw_code]);
+				ai[id][8].push([execNow(raw_code, id), raw_code]);
 			} else {
 				ai[id][8].push(cond2[i]);
 			}
@@ -148,7 +148,7 @@ function combineConditions(id, cond1, cond2, cond_len1, cond_len2) {
 						var raw_code = "";
 						raw_code = code[1];
 						
-						ai[id][8].push([execNow(raw_code), raw_code]);
+						ai[id][8].push([execNow(raw_code, id), raw_code]);
 					} else {
 						ai[id][8].push(code);
 					}
@@ -158,7 +158,7 @@ function combineConditions(id, cond1, cond2, cond_len1, cond_len2) {
 						var raw_code = "";
 						raw_code = code[1];
 						
-						ai[id][8].push([execNow(raw_code), raw_code]);
+						ai[id][8].push([execNow(raw_code, id), raw_code]);
 					} else {
 						ai[id][8].push(code);
 					}
@@ -236,7 +236,7 @@ function combineGenes(par1, par2) {
 										var raw_code = "";
 										raw_code = code[1];
 										
-										ai[ai.length - 1][8][item] = [execNow(raw_code), raw_code];
+										ai[ai.length - 1][8][item] = [execNow(raw_code, ai.length - 1), raw_code];
 									} else {
 										ai[ai.length - 1][8][item] = code;
 									}
@@ -246,7 +246,7 @@ function combineGenes(par1, par2) {
 										var raw_code = "";
 										raw_code = code[1];
 										
-										ai[ai.length - 1][8][item] = [execNow(raw_code), raw_code];
+										ai[ai.length - 1][8][item] = [execNow(raw_code, ai.length - 1), raw_code];
 									} else {
 										ai[ai.length - 1][8][item] = code;
 									}
@@ -303,7 +303,7 @@ function combineGenes(par1, par2) {
 										var raw_code = "";
 										raw_code = code[1];
 										
-										ai[placeAvailable][8][item] = [execNow(raw_code), raw_code];
+										ai[placeAvailable][8][item] = [execNow(raw_code, placeAvailable), raw_code];
 									} else {
 										ai[placeAvailable][8][item] = code;
 									}
@@ -313,7 +313,7 @@ function combineGenes(par1, par2) {
 										var raw_code = "";
 										raw_code = code[1];
 										
-										ai[placeAvailable][8][item] = [execNow(raw_code), raw_code];
+										ai[placeAvailable][8][item] = [execNow(raw_code, placeAvailable), raw_code];
 									} else {
 										ai[placeAvailable][8][item] = code;
 									}
