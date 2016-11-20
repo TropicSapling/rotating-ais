@@ -366,11 +366,11 @@ $(function() {
 			}
 		}
 		
-		for(i = 0; i < time_alive.length; i++) {
-			time_alive_copy.push(time_alive[i][0]);
-		}
-		
 		if(performance.now() - start_time > 4000) {
+			for(i = 0; i < time_alive.length; i++) {
+				time_alive_copy.push(time_alive[i][0]);
+			}
+			
 			time_alive_copy = time_alive_copy.sort(function(a,b){return b - a});
 			
 			time_alive_sorted = [];
