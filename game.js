@@ -364,9 +364,9 @@ $(function() {
 					checkCond(id);
 				}
 			}
-			
-			time_alive_copy.push(time_alive[id][0]);
 		}
+		
+		time_alive_copy = deepCopy(time_alive);
 		
 		if(performance.now() - start_time > 4000) {
 			time_alive_copy = time_alive_copy.sort(function(a,b){return b - a});
