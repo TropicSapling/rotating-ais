@@ -55,6 +55,8 @@ function getCondGene(cond) {
 function checkCond(id) {
 	try {
 		var condGene = getCondGene(ai[id][8]);
+		console.log(ai[id][8]);
+		console.log(condGene);
 		func = new Function("return " + condGene.join(" "));
 		var action = func();
 		
@@ -68,7 +70,7 @@ function checkCond(id) {
 			}
 			
 			var repeats = 0;
-			while(condIsConst && repeats < 50) {
+			while(condIsConst && repeats < 100) {
 				regenCond(id);
 				cond = getCondGene(ai[id][8]).join(" ");
 				
@@ -80,7 +82,7 @@ function checkCond(id) {
 				repeats++;
 			}
                         
-			if(repeats < 50) {
+			if(repeats < 100) {
 				checked_ais.push(id);
 				checkCond(id);
 			} else {
