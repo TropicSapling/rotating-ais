@@ -68,7 +68,7 @@ function checkCond(id) {
 			}
 			
 			var repeats = 0;
-			while(condIsConst && repeats < 100) {
+			while(condIsConst && repeats < 50) {
 				regenCond(id);
 				cond = getCondGene(ai[id][8]).join(" ");
 				
@@ -80,7 +80,7 @@ function checkCond(id) {
 				repeats++;
 			}
                         
-			if(repeats < 100) {
+			if(repeats < 50) {
 				checked_ais.push(id);
 				checkCond(id);
 			} else {
