@@ -39,13 +39,13 @@ function regenCond(id) {
 }
 
 function getCondGene(cond) {
-	var processed_cond = "";
+	var processed_cond = [];
 	for(part = 0; part < cond.length; part++) {
 		var code = cond[part];
 		if(typeof code === 'object') {
-			processed_cond += code[0];
+			processed_cond.push(code[0]);
 		} else {
-			processed_cond += code;
+			processed_cond.push(code);
 		}
 	}
 	
@@ -55,8 +55,6 @@ function getCondGene(cond) {
 function checkCond(id) {
 	try {
 		var condGene = getCondGene(ai[id][8]);
-		console.log(ai[id][8]);
-		console.log(condGene);
 		func = new Function("return " + condGene.join(" "));
 		var action = func();
 		
