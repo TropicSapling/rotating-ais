@@ -113,7 +113,7 @@ function renderAIs(game) {
 	for(i = 0; i < ai_sorted.length; i++) {
 		if(ai_sorted[i][10] && ai_sorted[i][10][0] === "dying") {
 			if(ai_sorted[i][5] > 1 && ai_sorted[i][6] > 1) {
-				ai_sorted[i][10][1] = ai_sorted[i][10][1] * 1.1;
+				ai_sorted[i][10][1] = ai_sorted[i][10][1] * 1.15;
 				var change = ai_sorted[i][10][1];
 				
 				ai_sorted[i][5] -= change;
@@ -149,8 +149,8 @@ function renderAIs(game) {
 		if(ai_sorted[i] !== "dead") {
 			if(ai_sorted[i][10] && typeof ai_sorted[i][10][0] === 'number') {
 				if(ai_sorted[i][5] < ai_sorted[i][10][0] || ai_sorted[i][6] < ai_sorted[i][10][1]) { // [10][0] = full width, [10][1] = full height
-					var changeX = ai_sorted[i][5] * 1.1 - ai_sorted[i][5];
-					var changeY = ai_sorted[i][6] * 1.1 - ai_sorted[i][6];
+					var changeX = ai_sorted[i][5] * 1.15 - ai_sorted[i][5];
+					var changeY = ai_sorted[i][6] * 1.15 - ai_sorted[i][6];
 					
 					ai_sorted[i][5] += changeX;
 					ai_sorted[i][6] += changeY;
@@ -164,17 +164,17 @@ function renderAIs(game) {
 				}
 			} else if(!ai_sorted[i][10] || (ai_sorted[i][10] && typeof ai_sorted[i][10][0] === 'object')) {
 				if(ai_sorted[i][3] < 600 - ai_sorted[i][5] && ai_sorted[i][3] > 0) { // [3] = x position, [5] = width
-					ai_sorted[i][3] += Math.sin(ai_sorted[i][7]); // [7] = rotation
+					ai_sorted[i][3] += Math.sin(ai_sorted[i][7]) * 2; // [7] = rotation
 				}
 				
 				if(ai_sorted[i][4] < 600 - ai_sorted[i][6] && ai_sorted[i][4] > 0) { // [4] = y position, [6] = height
-					ai_sorted[i][4] += Math.cos(ai_sorted[i][7]);
+					ai_sorted[i][4] += Math.cos(ai_sorted[i][7]) * 2;
 				}
 				
-				ai_sorted[i][5] -= ai_sorted[i][5] * 0.0008;
-				ai_sorted[i][3] += ai_sorted[i][5] * 0.0004;
-				ai_sorted[i][6] -= ai_sorted[i][6] * 0.0008;
-				ai_sorted[i][4] += ai_sorted[i][6] * 0.0004;
+				ai_sorted[i][5] -= ai_sorted[i][5] * 0.0016;
+				ai_sorted[i][3] += ai_sorted[i][5] * 0.0008;
+				ai_sorted[i][6] -= ai_sorted[i][6] * 0.0016;
+				ai_sorted[i][4] += ai_sorted[i][6] * 0.0008;
 			}
 			
 			if(ai_sorted[i][3] < 0) {
@@ -391,5 +391,5 @@ $(function() {
 		if(time_alive_sorted.length > 0) {
 			$('#best-thought').html("<strong>Thoughts of the longest survivor:</strong> " + time_alive_sorted[0][1][8].join(" "));
 		}
-	}, 10);
+	}, 20);
 });
