@@ -16,6 +16,36 @@ function spliceStr(str, index, pos) {
 	return str.slice(0, index) + str.slice(pos);
 }
 
+function execNow(raw_code) {
+	while(raw_code.indexOf("__EXENOW(") != -1) {
+		var index = raw_code.indexOf("__EXENOW(");
+		var pos = index + 9; // 9 = "__EXENOW(".length
+		
+		raw_code = spliceStr(raw_code, index, pos); // Removes "__EXENOW("
+		pos -= 9;
+		
+		var codeToExec = "";
+		while(!(raw_code[pos] == "_" && raw_code[pos + 1] == "_")) {
+			codeToExec += raw_code[pos];
+			pos++;
+		}
+		codeToExec = codeToExec.slice(0, codeToExec.length - 1); // Removes ")" from code to execute
+		pos--;
+		
+		raw_code = spliceStr(raw_code, pos, pos + 3); // Removes remaining ")__"
+		
+		try {
+			var new_code = new Function("id", "return " + codeToExec);
+			var new_code_ret = new_code(id);
+			var processed_code = raw_code.replace(codeToExec, new_code_ret);
+			
+			return processed_code;
+		} catch(e) {
+			throw e;
+		}
+	}
+}
+
 function findInput(id) {
 	var randParenthesis = Math.round(Math.random());
 	
@@ -43,33 +73,8 @@ function findInput(id) {
 			} else {
 				var raw_code = "";
 				raw_code = inputs[2][randVar];
-				while(raw_code.indexOf("__EXENOW(") != -1) {
-					var index = raw_code.indexOf("__EXENOW(");
-					var pos = index + 9; // 9 = "__EXENOW(".length
-					
-					raw_code = spliceStr(raw_code, index, pos); // Removes "__EXENOW("
-					pos -= 9;
-					
-					var codeToExec = "";
-					while(!(raw_code[pos] == "_" && raw_code[pos + 1] == "_")) {
-						codeToExec += raw_code[pos];
-						pos++;
-					}
-					codeToExec = codeToExec.slice(0, codeToExec.length - 1); // Removes ")" from code to execute
-					pos--;
-					
-					raw_code = spliceStr(raw_code, pos, pos + 3); // Removes remaining ")__"
-					
-					try {
-						var new_code = new Function("id", "return " + codeToExec);
-						var new_code_ret = new_code(id);
-						raw_code = raw_code.replace(codeToExec, new_code_ret);
-					} catch(e) {
-						throw e;
-					}
-				}
 				
-				return raw_code;
+				return [execNow(raw_code), raw_code];
 			}
 		}
 	}
@@ -118,15 +123,45 @@ function combineConditions(id, cond1, cond2, cond_len1, cond_len2) {
 	
 	for(var i = 0; i < ai[id][9]; i++) {
 		if(i < cond1.length && (i >= cond2.length || Math.round(Math.random()))) {
-			ai[id][8].push(cond1[i]);
+			if(typeof cond1[i] === 'object') {
+				var raw_code = "";
+				raw_code = cond1[i][1];
+				
+				ai[id][8].push([execNow(raw_code), raw_code]);
+			} else {
+				ai[id][8].push(cond1[i]);
+			}
 		} else if(i < cond2.length) {
-			ai[id][8].push(cond2[i]);
+			if(typeof cond2[i] === 'object') {
+				var raw_code = "";
+				raw_code = cond2[i][1];
+				
+				ai[id][8].push([execNow(raw_code), raw_code]);
+			} else {
+				ai[id][8].push(cond2[i]);
+			}
 		} else {
 			if(Math.round(Math.random())) {
 				if(Math.round(Math.random())) {
-					ai[id][8].push(cond1[Math.floor(Math.random() * cond1.length)]);
+					var code = cond1[Math.floor(Math.random() * cond1.length)];
+					if(typeof code === 'object') {
+						var raw_code = "";
+						raw_code = code[1];
+						
+						ai[id][8].push([execNow(raw_code), raw_code]);
+					} else {
+						ai[id][8].push(code);
+					}
 				} else {
-					ai[id][8].push(cond2[Math.floor(Math.random() * cond2.length)]);
+					var code = cond2[Math.floor(Math.random() * cond2.length)];
+					if(typeof code === 'object') {
+						var raw_code = "";
+						raw_code = code[1];
+						
+						ai[id][8].push([execNow(raw_code), raw_code]);
+					} else {
+						ai[id][8].push(code);
+					}
 				}
 			} else {
 				ai[id][8].push(findInput(id));
@@ -196,9 +231,25 @@ function combineGenes(par1, par2) {
 						if(Math.round(Math.random())) {
 							if(Math.floor(Math.random() * (1 / mutation_chance)) == 0) {
 								if(Math.round(Math.random())) {
-									ai[ai.length - 1][8][item] = par1[8][Math.floor(Math.random() * par1[8].length)];
+									var code = par1[8][Math.floor(Math.random() * par1[8].length)];
+									if(typeof code === 'object') {
+										var raw_code = "";
+										raw_code = code[1];
+										
+										ai[ai.length - 1][8][item] = [execNow(raw_code), raw_code];
+									} else {
+										ai[ai.length - 1][8][item] = code;
+									}
 								} else {
-									ai[ai.length - 1][8][item] = par2[8][Math.floor(Math.random() * par2[8].length)];
+									var code = par2[8][Math.floor(Math.random() * par2[8].length)];
+									if(typeof code === 'object') {
+										var raw_code = "";
+										raw_code = code[1];
+										
+										ai[ai.length - 1][8][item] = [execNow(raw_code), raw_code];
+									} else {
+										ai[ai.length - 1][8][item] = code;
+									}
 								}
 							}
 						} else if(Math.floor(Math.random() * (1 / mutation_chance)) == 0) {
@@ -247,9 +298,25 @@ function combineGenes(par1, par2) {
 						if(Math.round(Math.random())) {
 							if(Math.floor(Math.random() * (1 / mutation_chance)) == 0) {
 								if(Math.round(Math.random())) {
-									ai[placeAvailable][8][item] = par1[8][Math.floor(Math.random() * par1[8].length)];
+									var code = par1[8][Math.floor(Math.random() * par1[8].length)];
+									if(typeof code === 'object') {
+										var raw_code = "";
+										raw_code = code[1];
+										
+										ai[placeAvailable][8][item] = [execNow(raw_code), raw_code];
+									} else {
+										ai[placeAvailable][8][item] = code;
+									}
 								} else {
-									ai[placeAvailable][8][item] = par2[8][Math.floor(Math.random() * par2[8].length)];
+									var code = par2[8][Math.floor(Math.random() * par2[8].length)];
+									if(typeof code === 'object') {
+										var raw_code = "";
+										raw_code = code[1];
+										
+										ai[placeAvailable][8][item] = [execNow(raw_code), raw_code];
+									} else {
+										ai[placeAvailable][8][item] = code;
+									}
 								}
 							}
 						} else if(Math.floor(Math.random() * (1 / mutation_chance)) == 0) {
