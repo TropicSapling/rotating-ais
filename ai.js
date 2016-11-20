@@ -37,13 +37,13 @@ function execNow(raw_code, id) {
 		try {
 			var new_code = new Function("id", "return " + codeToExec);
 			var new_code_ret = new_code(id);
-			var processed_code = raw_code.replace(codeToExec, new_code_ret);
-			
-			return processed_code;
+			raw_code = raw_code.replace(codeToExec, new_code_ret);
 		} catch(e) {
 			throw e;
 		}
 	}
+	
+	return raw_code; // Which is now actually processed but no idea in creating a new variable just to rename it so...
 }
 
 function findInput(id) {
