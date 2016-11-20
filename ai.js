@@ -115,7 +115,7 @@ function combineConditions(id, cond1, cond2, cond_len1, cond_len2) {
 		}
 	} while(ai[id][9] % 2 == 0);
 		
-		if(Math.round(Math.random())) {
+	if(Math.round(Math.random())) {
 		ai[id][9] += 2;
 	} else if(ai[id][9] > 2) {
 		ai[id][9] -= 2;
