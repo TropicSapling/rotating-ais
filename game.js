@@ -366,7 +366,9 @@ $(function() {
 			}
 		}
 		
-		time_alive_copy = deepCopy(time_alive);
+		for(i = 0; i < time_alive.length; i++) {
+			time_alive_copy.push(time_alive[i][0]);
+		}
 		
 		if(performance.now() - start_time > 4000) {
 			time_alive_copy = time_alive_copy.sort(function(a,b){return b - a});
