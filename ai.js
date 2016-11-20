@@ -141,14 +141,14 @@ function genRandGenes() {
 	var placeAvailable = ai.indexOf("dead");
 	
 	if(placeAvailable == -1) {
-		ai.push([Math.floor(Math.random() * 256), Math.floor(Math.random() * 256), Math.floor(Math.random() * 256), Math.floor(Math.random() * (600 - width * 1.5) + width / 2), Math.floor(Math.random() * (600 - height * 1.5) + height / 2), 1.1, 1.1, Math.floor(Math.random() * 360)]);
+		ai.push([Math.floor(Math.random() * 256), Math.floor(Math.random() * 256), Math.floor(Math.random() * 256), Math.floor(Math.random() * (600 - width * 1.5) + width / 2), Math.floor(Math.random() * (600 - height * 1.5) + height / 2), 1.15, 1.15, Math.floor(Math.random() * 360)]);
 		genRandCond(ai.length - 1);
 		
 		ai[ai.length - 1].push([width, height]);
 		
 		time_alive.push([0, ai[ai.length - 1], ai.length - 1]);
 	} else {
-		ai[placeAvailable] = [Math.floor(Math.random() * 256), Math.floor(Math.random() * 256), Math.floor(Math.random() * 256), Math.floor(Math.random() * (600 - width * 1.5) + width / 2), Math.floor(Math.random() * (600 - height * 1.5) + height / 2), 1.1, 1.1, Math.floor(Math.random() * 360)];
+		ai[placeAvailable] = [Math.floor(Math.random() * 256), Math.floor(Math.random() * 256), Math.floor(Math.random() * 256), Math.floor(Math.random() * (600 - width * 1.5) + width / 2), Math.floor(Math.random() * (600 - height * 1.5) + height / 2), 1.15, 1.15, Math.floor(Math.random() * 360)];
 		genRandCond(placeAvailable);
 		
 		ai[placeAvailable].push([width, height]);
@@ -168,7 +168,7 @@ function combineGenes(par1, par2) {
 		
 		for(var i = 0; i < par1.length; i++) {
 			if(i == 5 || i == 6) {
-				ai[ai.length - 1].push(1.1);
+				ai[ai.length - 1].push(1.15);
 			} else if(i == 4) {
 				ai[ai.length - 1].push(Math.floor(Math.random() * (600 - height * 1.5) + height / 2));
 			} else if(i == 3) {
@@ -219,7 +219,7 @@ function combineGenes(par1, par2) {
 		
 		for(var i = 0; i < par1.length; i++) {
 			if(i == 5 || i == 6) {
-				ai[placeAvailable].push(1.1);
+				ai[placeAvailable].push(1.15);
 			} else if(i == 4) {
 				ai[placeAvailable].push(Math.floor(Math.random() * (600 - height * 1.5) + height / 2));
 			} else if(i == 3) {
