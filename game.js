@@ -91,7 +91,7 @@ function checkCond(id) {
 				}
 			}
 		} else if(action == true) {
-			ai[id][7] += 0.1;
+			ai[id][7] += 0.2;
 		}
 	} catch(e) {
 		regenCond(id);
