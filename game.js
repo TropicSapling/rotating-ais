@@ -77,6 +77,11 @@ function checkCond(id) {
 						condIsConst = false;
 					}
 				}
+				
+				if(cond.indexOf("<") != -1 || cond.indexOf("<=") != -1 || cond.indexOf(">") != -1 || cond.indexOf(">=") != -1) {
+					condIsConst = false;
+				}
+				
 				repeats++;
 			}
                         
