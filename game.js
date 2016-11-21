@@ -323,7 +323,7 @@ $(function() {
 		game.fillStyle = "#eee";
 		game.fillRect(0, 0, 600, 600); // Background
 		
-		if(total_mass < 10000) {
+		if(total_mass < 20000) {
 			if(ai.length > 1 && performance.now() - start_time > 5000 && Math.floor(Math.random() * (1 / rand_spawn_chance)) > 0) {
 				var par1 = findPar(0);
 				var par2 = findPar(0);
