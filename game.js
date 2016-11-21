@@ -193,29 +193,13 @@ function renderAIs(game) {
 			}
 			
 			if(ai_sorted[i][3] < 0) {
-				if(ai_sorted[i][10]) {
-					ai_sorted[i].splice(10, 0, ["dying", 1.1]);
-				} else {
-					ai_sorted[i].push(["dying", 1.1]);
-				}
+				ai_sorted[i][3] = 0;
 			} else if(ai_sorted[i][3] > 600 - ai_sorted[i][5]) {
-				if(ai_sorted[i][10]) {
-					ai_sorted[i].splice(10, 0, ["dying", 1.1]);
-				} else {
-					ai_sorted[i].push(["dying", 1.1]);
-				}
+				ai_sorted[i][3] = 600 - ai_sorted[i][5];
 			} else if(ai_sorted[i][4] < 0) {
-				if(ai_sorted[i][10]) {
-					ai_sorted[i].splice(10, 0, ["dying", 1.1]);
-				} else {
-					ai_sorted[i].push(["dying", 1.1]);
-				}
+				ai_sorted[i][4] = 0;
 			} else if(ai_sorted[i][4] > 600 - ai_sorted[i][6]) {
-				if(ai_sorted[i][10]) {
-					ai_sorted[i].splice(10, 0, ["dying", 1.1]);
-				} else {
-					ai_sorted[i].push(["dying", 1.1]);
-				}
+				ai_sorted[i][4] = 600 - ai_sorted[i][6];
 			}
 			
 			if(ai_sorted[i][5] * ai_sorted[i][6] < 100 && (!(ai_sorted[i][10]) || (ai_sorted[i][10] && typeof ai_sorted[i][10][0] === 'object'))) {
