@@ -72,14 +72,12 @@ function checkCond(id) {
 				regenCond(id);
 				cond = getCondGene(ai[id][8]).join(" ");
 				
-				for(var i = 0; i < changing_inputs.length; i++) {
-					if(cond.indexOf(changing_inputs[i]) != -1) {
-						condIsConst = false;
-					}
-				}
-				
 				if(cond.indexOf("<") != -1 || cond.indexOf("<=") != -1 || cond.indexOf(">") != -1 || cond.indexOf(">=") != -1) {
-					condIsConst = false;
+					for(var i = 0; i < changing_inputs.length; i++) {
+						if(cond.indexOf(changing_inputs[i]) != -1) {
+							condIsConst = false;
+						}
+					}
 				}
 				
 				repeats++;
