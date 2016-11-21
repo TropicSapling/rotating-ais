@@ -89,7 +89,7 @@ function genRandCond(id) {
 	
 	if(Math.round(Math.random())) {
 		ai[id][9] += 2; // [9] = where the length of condition gene is stored
-	} else if(ai[id][9] > 2) {
+	} else {
 		ai[id][9] -= 2;
 	}
 	
