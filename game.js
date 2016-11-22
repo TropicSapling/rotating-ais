@@ -107,7 +107,7 @@ function cleanAll() {
 		if(!time_alive[i][2]) {
 			var posInTop = 10;
 			for(j = 0; j < time_alive_sorted.length; j++) {
-				if(time_alive_sorted[j][2] == time_alive[i][2]) {
+				if(time_alive_sorted[j][0] == time_alive[i][0]) {
 					posInTop = j;
 					break;
 				}
