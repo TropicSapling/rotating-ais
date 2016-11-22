@@ -102,8 +102,29 @@ function checkCond(id) {
 	}
 }
 
+function cleanAll() {
+	for(i = 0; i < time_alive.length; i++) {
+		if(!time_alive[i][2]) {
+			var posInTop = 10;
+			for(j = 0; j < time_alive_sorted.length; j++) {
+				if(time_alive_sorted[j][2] == time_alive[i][2]) {
+					posInTop = j;
+					break;
+				}
+			}
+			
+			if(posInTop > 10) {
+				time_alive.splice(i, 1);
+			}
+			
+			break;
+		}
+	}
+}
+
 function cleanup(i) {
 	checked_ais.splice(checked_ais.indexOf(i), 1);
+	
 	for(var j = 0; j < time_alive.length; j++) {
 		if(time_alive[j][2] == i) {
 			var posInTop = 10;
@@ -387,6 +408,10 @@ $(function() {
 		total_mass = 0;
 		
 		renderAIs(game);
+		
+		if(time_alive.length > 10) {
+			cleanAll();
+		}
 		
 		if(time_alive_sorted.length > 0) {
 			$('#best-thought').html("<strong>Thoughts of the longest survivor:</strong> " + getCondGene(time_alive_sorted[0][1][8]).join(" "));
