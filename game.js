@@ -116,10 +116,8 @@ function cleanup(i) {
 			
 			if(time_alive.length < 10 || posInTop < 10) {
 				time_alive[j].splice(2, 1);
-				alert("AI kept");
 			} else {
 				time_alive.splice(j, 1);
-				alert("AI DEL");
 			}
 			
 			break;
