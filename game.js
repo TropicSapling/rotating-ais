@@ -105,10 +105,10 @@ function checkCond(id) {
 function kill(ai_arr, i) {
 	ai_arr = "dead";
 	checked_ais.splice(checked_ais.indexOf(i), 1);
-	for(j = 0; j < time_alive.length; j++) {
+	for(var j = 0; j < time_alive.length; j++) {
 		if(time_alive[j][2] == i) {
 			var posInTop = 10;
-			for(k = 0; k < time_alive_sorted.length; k++) {
+			for(var k = 0; k < time_alive_sorted.length; k++) {
 				if(time_alive_sorted[k][2] == i) {
 					posInTop = k;
 					break;
