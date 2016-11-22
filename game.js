@@ -117,8 +117,6 @@ function cleanAll() {
 				time_alive.splice(i, 1);
 				i--;
 			}
-			
-			break;
 		}
 	}
 }
