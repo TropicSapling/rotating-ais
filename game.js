@@ -102,8 +102,7 @@ function checkCond(id) {
 	}
 }
 
-function kill(ai_arr, i) {
-	ai_arr = "dead";
+function cleanup(i) {
 	checked_ais.splice(checked_ais.indexOf(i), 1);
 	for(var j = 0; j < time_alive.length; j++) {
 		if(time_alive[j][2] == i) {
@@ -164,7 +163,8 @@ function renderAIs(game) {
 				ai_sorted[i][3] += change / 2;
 				ai_sorted[i][4] += change / 2;
 			} else {
-				kill(ai_sorted[i], i);
+				ai_sorted[i] = "dead";
+				cleanup(i);
 			}
 		}
 		
@@ -269,7 +269,8 @@ function checkCollisions(game) {
 					var h2 = ai[collidingAIs[i][k]][6];
 					
 					if((x1 - x2 < 10 && x1 + w1 - x2 - w2 > -10 && y1 - y2 < 10 && y1 + h1 - y2 - h2 > -10) && Math.sqrt(size2) / Math.sqrt(size) < 0.9) {
-						kill(ai[collidingAIs[i][k]], collidingAIs[i][k]);
+						ai[collidingAIs[i][k]] = "dead";
+						cleanup(collidingAIs[i][k]);
 						
 						while(ai[collidingAIs[i][j]][5] * ai[collidingAIs[i][j]][6] < size + size2) {
 							ai[collidingAIs[i][j]][5] += 1;
