@@ -188,6 +188,11 @@ function renderAIs(game) {
 				ai_sorted[i][3] += Math.sin(ai_sorted[i][7]) * 2; // [3] = x-pos, [7] = rotation
 				ai_sorted[i][4] += Math.cos(ai_sorted[i][7]) * 2; // [4] = y-pos
 				
+				if(ai_sorted[i][3] < 0 || ai_sorted[i][3] > 600 - ai_sorted[i][5] || ai_sorted[i][4] < 0 || ai_sorted[i][4] > 600 - ai_sorted[i][6]) {
+					ai_sorted[i] = "dead";
+					cleanup(i);
+				}
+				
 				ai_sorted[i][5] -= ai_sorted[i][5] * 0.0016;
 				ai_sorted[i][3] += ai_sorted[i][5] * 0.0008;
 				ai_sorted[i][6] -= ai_sorted[i][6] * 0.0016;
