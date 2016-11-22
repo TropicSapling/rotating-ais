@@ -115,6 +115,7 @@ function cleanAll() {
 			
 			if(posInTop > 10) {
 				time_alive.splice(i, 1);
+				i--;
 			}
 			
 			break;
