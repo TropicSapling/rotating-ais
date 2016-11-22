@@ -102,6 +102,30 @@ function checkCond(id) {
 	}
 }
 
+function kill(ai_arr, i) {
+	ai_arr = "dead";
+	checked_ais.splice(checked_ais.indexOf(i), 1);
+	for(j = 0; j < time_alive.length; j++) {
+		if(time_alive[j][2] == i) {
+			var posInTop = 10;
+			for(k = 0; k < time_alive_sorted.length; k++) {
+				if(time_alive_sorted[k][2] == i) {
+					posInTop = k;
+					break;
+				}
+			}
+			
+			if(time_alive.length < 10 || posInTop < 10) {
+				time_alive[j].splice(2, 1);
+			} else {
+				time_alive.splice(j, 1);
+			}
+			
+			break;
+		}
+	}
+}
+
 function renderAIs(game) {
 	var ai_copy = [];
 	for(i = 0; i < ai.length; i++) {
@@ -140,27 +164,7 @@ function renderAIs(game) {
 				ai_sorted[i][3] += change / 2;
 				ai_sorted[i][4] += change / 2;
 			} else {
-				ai_sorted[i] = "dead";
-				checked_ais.splice(checked_ais.indexOf(i), 1);
-				for(j = 0; j < time_alive.length; j++) {
-					if(time_alive[j][2] == i) {
-						var posInTop = 10;
-						for(k = 0; k < time_alive_sorted.length; k++) {
-							if(time_alive_sorted[k][2] == i) {
-								posInTop = k;
-								break;
-							}
-						}
-						
-						if(time_alive.length < 10 || posInTop < 10) {
-							time_alive[j].splice(2, 1);
-						} else {
-							time_alive.splice(j, 1);
-						}
-						
-						break;
-					}
-				}
+				kill(ai_sorted[i], i);
 			}
 		}
 		
@@ -265,7 +269,7 @@ function checkCollisions(game) {
 					var h2 = ai[collidingAIs[i][k]][6];
 					
 					if((x1 - x2 < 10 && x1 + w1 - x2 - w2 > -10 && y1 - y2 < 10 && y1 + h1 - y2 - h2 > -10) && Math.sqrt(size2) / Math.sqrt(size) < 0.9) {
-						ai[collidingAIs[i][k]] = "dead";
+						kill(ai[collidingAIs[i][k]], collidingAIs[i][k]);
 						
 						while(ai[collidingAIs[i][j]][5] * ai[collidingAIs[i][j]][6] < size + size2) {
 							ai[collidingAIs[i][j]][5] += 1;
