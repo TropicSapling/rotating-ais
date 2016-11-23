@@ -15,3 +15,9 @@
   margin-top: -10px;
   padding: 0;
 }
+
+#save-code {
+  position: absolute;
+  margin: 0;
+  margin-top: -10px;
+}
