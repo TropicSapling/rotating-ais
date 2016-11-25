@@ -16,11 +16,14 @@ function spliceStr(str, index, pos) {
 	return str.slice(0, index) + str.slice(pos);
 }
 
-function getTakenPos() {
+function getTakenPos(getX) {
 	var arr = [];
 	for(var i = 0; i < ai.length; i++) {
-		arr.push(Math.round(ai[i][3] / 30));
-		arr.push(Math.round(ai[i][4] / 30));
+		if(getX) {
+			arr.push(Math.round(ai[i][3] / 30));
+		} else {
+			arr.push(Math.round(ai[i][4] / 30));
+		}
 	}
 	
 	return arr;
@@ -184,11 +187,12 @@ function genRandGenes() {
 	var width = randomBetween(19, 31);
 	var height = width;
 	var placeAvailable = ai.indexOf("dead");
-	var taken_pos = getTakenPos();
+	var taken_x_pos = getTakenPos(true);
+	var taken_y_pos = getTakenPos(false);
 	var x_pos = Math.floor(Math.random() * (600 - width * 1.5) + width / 2);
 	var y_pos = Math.floor(Math.random() * (600 - height * 1.5) + height / 2);
 	
-	while(taken_pos.indexOf(Math.round(x_pos / 30)) != -1 && taken_pos.indexOf(Math.round(y_pos / 30)) != -1) {
+	while(taken_x_pos.indexOf(Math.round(x_pos / 50)) != -1 && taken_y_pos.indexOf(Math.round(y_pos / 50)) != -1) {
 		x_pos = Math.floor(Math.random() * (600 - width * 1.5) + width / 2);
 		y_pos = Math.floor(Math.random() * (600 - height * 1.5) + height / 2);
 	}
@@ -216,10 +220,12 @@ function combineGenes(par1, par2) {
 	var width = randomBetween(19, 31);
 	var height = width;
 	
+	var taken_x_pos = getTakenPos(true);
+	var taken_y_pos = getTakenPos(false);
 	var x_pos = Math.floor(Math.random() * (600 - width * 1.5) + width / 2);
 	var y_pos = Math.floor(Math.random() * (600 - height * 1.5) + height / 2);
 	
-	while(taken_pos.indexOf(Math.round(x_pos / 30)) != -1 && taken_pos.indexOf(Math.round(y_pos / 30)) != -1) {
+	while(taken_x_pos.indexOf(Math.round(x_pos / 50)) != -1 && taken_y_pos.indexOf(Math.round(y_pos / 50)) != -1) {
 		x_pos = Math.floor(Math.random() * (600 - width * 1.5) + width / 2);
 		y_pos = Math.floor(Math.random() * (600 - height * 1.5) + height / 2);
 	}
