@@ -419,5 +419,9 @@ $(function() {
 		if(time_alive_sorted.length > 0) {
 			$('#best-thought').html("<strong>Thoughts of the longest survivor:</strong> " + getCondGene(time_alive_sorted[0][1][8]).join(" "));
 		}
+		
+		if(performance.now() - start_time < 10000000) {
+			mutation_chance = mutation_chance * 0.9999;
+		}
 	}, 20);
 });
