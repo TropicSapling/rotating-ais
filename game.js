@@ -421,7 +421,7 @@ $(function() {
 		}
 		
 		if(performance.now() - start_time < 2000000) {
-			mutation_chance = mutation_chance * 0.9999;
+			mutation_chance = mutation_chance * 0.99999;
 		}
 	}, 20);
 });
