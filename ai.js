@@ -174,16 +174,24 @@ function genRandGenes() {
 	var width = randomBetween(19, 31);
 	var height = width;
 	var placeAvailable = ai.indexOf("dead");
+	var taken_pos = getTakenPos();
+	var x_pos = Math.floor(Math.random() * (600 - width * 1.5) + width / 2);
+	var y_pos = Math.floor(Math.random() * (600 - height * 1.5) + height / 2);
+	
+	while(taken_pos.indexOf(Math.round(x_pos / 50)) && taken_pos.indexOf(Math.round(y_pos / 50))) {
+		x_pos = Math.floor(Math.random() * (600 - width * 1.5) + width / 2);
+		y_pos = Math.floor(Math.random() * (600 - height * 1.5) + height / 2);
+	}
 	
 	if(placeAvailable == -1) {
-		ai.push([Math.floor(Math.random() * 256), Math.floor(Math.random() * 256), Math.floor(Math.random() * 256), Math.floor(Math.random() * (600 - width * 1.5) + width / 2), Math.floor(Math.random() * (600 - height * 1.5) + height / 2), 1.15, 1.15, Math.floor(Math.random() * 360)]);
+		ai.push([Math.floor(Math.random() * 256), Math.floor(Math.random() * 256), Math.floor(Math.random() * 256), x_pos, y_pos, 1.15, 1.15, Math.floor(Math.random() * 360)]);
 		genRandCond(ai.length - 1);
 		
 		ai[ai.length - 1].push([width, height]);
 		
 		time_alive.push([0, ai[ai.length - 1], ai.length - 1]);
 	} else {
-		ai[placeAvailable] = [Math.floor(Math.random() * 256), Math.floor(Math.random() * 256), Math.floor(Math.random() * 256), Math.floor(Math.random() * (600 - width * 1.5) + width / 2), Math.floor(Math.random() * (600 - height * 1.5) + height / 2), 1.15, 1.15, Math.floor(Math.random() * 360)];
+		ai[placeAvailable] = [Math.floor(Math.random() * 256), Math.floor(Math.random() * 256), Math.floor(Math.random() * 256), x_pos, y_pos, 1.15, 1.15, Math.floor(Math.random() * 360)];
 		genRandCond(placeAvailable);
 		
 		ai[placeAvailable].push([width, height]);
@@ -198,16 +206,24 @@ function combineGenes(par1, par2) {
 	var width = randomBetween(19, 31);
 	var height = width;
 	
+	var x_pos = Math.floor(Math.random() * (600 - width * 1.5) + width / 2);
+	var y_pos = Math.floor(Math.random() * (600 - height * 1.5) + height / 2);
+	
+	while(taken_pos.indexOf(Math.round(x_pos / 50)) && taken_pos.indexOf(Math.round(y_pos / 50))) {
+		x_pos = Math.floor(Math.random() * (600 - width * 1.5) + width / 2);
+		y_pos = Math.floor(Math.random() * (600 - height * 1.5) + height / 2);
+	}
+	
 	if(placeAvailable == -1) {
 		ai.push([]);
 		
 		for(var i = 0; i < par1.length; i++) {
 			if(i == 5 || i == 6) {
 				ai[ai.length - 1].push(1.15);
-			} else if(i == 4) {
-				ai[ai.length - 1].push(Math.floor(Math.random() * (600 - height * 1.5) + height / 2));
 			} else if(i == 3) {
-				ai[ai.length - 1].push(Math.floor(Math.random() * (600 - width * 1.5) + width / 2));
+				ai[ai.length - 1].push(x_pos);
+			} else if(i == 4) {
+				ai[ai.length - 1].push(y_pos);
 			} else if(i == 8) {
 				combineConditions(ai.length - 1, par1[8], par2[8], par1[9], par2[9]);
 			} else if(typeof par1[i] === 'number' && i != 9) {
@@ -271,10 +287,10 @@ function combineGenes(par1, par2) {
 		for(var i = 0; i < par1.length; i++) {
 			if(i == 5 || i == 6) {
 				ai[placeAvailable].push(1.15);
-			} else if(i == 4) {
-				ai[placeAvailable].push(Math.floor(Math.random() * (600 - height * 1.5) + height / 2));
 			} else if(i == 3) {
-				ai[placeAvailable].push(Math.floor(Math.random() * (600 - width * 1.5) + width / 2));
+				ai[placeAvailable].push(x_pos);
+			} else if(i == 4) {
+				ai[placeAvailable].push(y_pos);
 			} else if(i == 8) {
 				combineConditions(placeAvailable, par1[8], par2[8], par1[9], par2[9]);
 			} else if(typeof par1[i] === 'number' && i != 9) {
