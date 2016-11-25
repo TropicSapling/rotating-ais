@@ -19,8 +19,8 @@ function spliceStr(str, index, pos) {
 function getTakenPos() {
 	var arr = [];
 	for(var i = 0; i < ai.length; i++) {
-		arr.push(Math.round(ai[i][3] / 50));
-		arr.push(Math.round(ai[i][4] / 50));
+		arr.push(Math.round(ai[i][3] / 30));
+		arr.push(Math.round(ai[i][4] / 30));
 	}
 	
 	return arr;
@@ -188,7 +188,7 @@ function genRandGenes() {
 	var x_pos = Math.floor(Math.random() * (600 - width * 1.5) + width / 2);
 	var y_pos = Math.floor(Math.random() * (600 - height * 1.5) + height / 2);
 	
-	while(taken_pos.indexOf(Math.round(x_pos / 50)) != -1 && taken_pos.indexOf(Math.round(y_pos / 50)) != -1) {
+	while(taken_pos.indexOf(Math.round(x_pos / 30)) != -1 && taken_pos.indexOf(Math.round(y_pos / 30)) != -1) {
 		x_pos = Math.floor(Math.random() * (600 - width * 1.5) + width / 2);
 		y_pos = Math.floor(Math.random() * (600 - height * 1.5) + height / 2);
 	}
@@ -219,7 +219,7 @@ function combineGenes(par1, par2) {
 	var x_pos = Math.floor(Math.random() * (600 - width * 1.5) + width / 2);
 	var y_pos = Math.floor(Math.random() * (600 - height * 1.5) + height / 2);
 	
-	while(taken_pos.indexOf(Math.round(x_pos / 50)) != -1 && taken_pos.indexOf(Math.round(y_pos / 50)) != -1) {
+	while(taken_pos.indexOf(Math.round(x_pos / 30)) != -1 && taken_pos.indexOf(Math.round(y_pos / 30)) != -1) {
 		x_pos = Math.floor(Math.random() * (600 - width * 1.5) + width / 2);
 		y_pos = Math.floor(Math.random() * (600 - height * 1.5) + height / 2);
 	}
