@@ -16,6 +16,16 @@ function spliceStr(str, index, pos) {
 	return str.slice(0, index) + str.slice(pos);
 }
 
+function getTakenPos() {
+	var arr = [];
+	for(var i = 0; i < ai.length; i++) {
+		arr.push(ai[i][3]);
+		arr.push(ai[i][4]);
+	}
+	
+	return arr;
+}
+
 function execNow(raw_code, id) {
 	while(raw_code.indexOf("__EXENOW(") != -1) {
 		var index = raw_code.indexOf("__EXENOW(");
