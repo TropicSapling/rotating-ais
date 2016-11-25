@@ -19,8 +19,8 @@ function spliceStr(str, index, pos) {
 function getTakenPos() {
 	var arr = [];
 	for(var i = 0; i < ai.length; i++) {
-		arr.push(ai[i][3]);
-		arr.push(ai[i][4]);
+		arr.push(Math.round(ai[i][3] / 50));
+		arr.push(Math.round(ai[i][4] / 50));
 	}
 	
 	return arr;
