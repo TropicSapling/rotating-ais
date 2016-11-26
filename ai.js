@@ -200,14 +200,14 @@ function genRandGenes() {
 	}
 	
 	if(placeAvailable == -1) {
-		ai.push([Math.floor(Math.random() * 256), Math.floor(Math.random() * 256), Math.floor(Math.random() * 256), x_pos, y_pos, 1.15, 1.15, Math.floor(Math.random() * 360)]);
+		ai.push([Math.floor(Math.random() * 256), Math.floor(Math.random() * 256), Math.floor(Math.random() * 256), x_pos, y_pos, 1.2, 1.2, Math.floor(Math.random() * 360)]);
 		genRandCond(ai.length - 1);
 		
 		ai[ai.length - 1].push([width, height]);
 		
 		time_alive.push([0, ai[ai.length - 1], ai.length - 1]);
 	} else {
-		ai[placeAvailable] = [Math.floor(Math.random() * 256), Math.floor(Math.random() * 256), Math.floor(Math.random() * 256), x_pos, y_pos, 1.15, 1.15, Math.floor(Math.random() * 360)];
+		ai[placeAvailable] = [Math.floor(Math.random() * 256), Math.floor(Math.random() * 256), Math.floor(Math.random() * 256), x_pos, y_pos, 1.2, 1.2, Math.floor(Math.random() * 360)];
 		genRandCond(placeAvailable);
 		
 		ai[placeAvailable].push([width, height]);
