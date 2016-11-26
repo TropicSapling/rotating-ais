@@ -376,7 +376,7 @@ function getBrowserSpeed() {
 		total_time += time_to_calc[i];
 	}
 	
-	return 1000 * (total_time / time_to_calc.length);
+	return Math.round(1000 * (total_time / time_to_calc.length));
 }
 
 $(function() {
