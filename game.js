@@ -388,6 +388,11 @@ $(function() {
 	
 	setTimeout(function() {
 		var delay = getBrowserSpeed();
+		if(delay < 10) {
+			delay = 10;
+		} else if(delay > 40) {
+			delay = 40;
+		}
 		
 		var start_time = performance.now();
 		
