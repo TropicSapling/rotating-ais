@@ -100,7 +100,7 @@ function checkCond(id) {
 			time_rotating[id] -= 1;
 		}
 		
-		if(time_rotating[id] < 0 || time_rotating[id] > 100) {
+		if(time_rotating[id] < 0 || time_rotating[id] > 200) {
 			if(ai[id][10]) {
 				ai[id].splice(10, 0, ["dying", 1.1]);
 			} else {
