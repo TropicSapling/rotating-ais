@@ -219,12 +219,14 @@ function renderAIs(game) {
 				ai_sorted[i][3] += Math.sin(ai_sorted[i][7]) * 2; // [3] = x-pos, [7] = rotation
 				ai_sorted[i][4] += Math.cos(ai_sorted[i][7]) * 2; // [4] = y-pos
 				
-				if(ai_sorted[i][3] < 0 || ai_sorted[i][3] > 600 - ai_sorted[i][5] || ai_sorted[i][4] < 0 || ai_sorted[i][4] > 600 - ai_sorted[i][6]) {
-					if(ai_sorted[i][10]) {
-						ai_sorted[i].splice(10, 0, ["dying", 1.1]);
-					} else {
-						ai_sorted[i].push(["dying", 1.1]);
-					}
+				if(ai_sorted[i][3] < 0) {
+					ai_sorted[i][3] = 0;
+				} else if(ai_sorted[i][3] > 600 - ai_sorted[i][5]) {
+					ai_sorted[i][3] = 600 - ai_sorted[i][5];
+				} else if(ai_sorted[i][4] < 0) {
+					ai_sorted[i][4] = 0;
+				} else if(ai_sorted[i][4] > 600 - ai_sorted[i][6]) {
+					ai_sorted[i][4] = 600 - ai_sorted[i][6];
 				}
 				
 				ai_sorted[i][5] -= ai_sorted[i][5] * 0.0016;
