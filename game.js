@@ -354,10 +354,9 @@ function findPar() {
 	}
 	
 	var randNumber = Math.floor(Math.random() * total_time_alive);
-	console.log(randNumber);
+	alert(randNumber);
+	alert("[" + par_chance.join("], [") + "]");
 	for(var i = 0; i < par_chance; i++) {
-		console.log(par_chance[i]);
-		console.log(time_alive[i]);
 		if(randNumber >= par_chance[i][0] && randNumber < par_chance[i][1]) {
 			return time_alive[i][1];
 		}
