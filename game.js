@@ -105,7 +105,7 @@ function checkCond(id) {
 
 function cleanAll() {
 	for(i = 0; i < time_alive.length; i++) {
-		if(!time_alive[i][2] || time_alive[i][0] == 0) {
+		if(!time_alive[i][2]) {
 			var posInTop = 10;
 			for(j = 0; j < time_alive_sorted.length; j++) {
 				if(time_alive_sorted[j][0] == time_alive[i][0]) {
