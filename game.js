@@ -383,6 +383,9 @@ $(function() {
 	var canvas = document.getElementById("game");
 	var game = canvas.getContext("2d");
 	
+	game.fillStyle = "#eee";
+	game.fillRect(0, 0, 600, 600);
+	
 	setTimeout(function() {
 		var delay = getBrowserSpeed();
 		
