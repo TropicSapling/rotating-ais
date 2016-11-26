@@ -3,6 +3,7 @@ var checked_ais = [];
 var time_alive_sorted = [];
 var total_mass = 0;
 var rand_spawn_chance = 0.1; // MIN: >0, MAX: 1.
+var thisTickRand = Math.random();
 
 window.onerror = function(msg, url, line, column, error) {
 	alert("An error has occurred. Check console for details.");
@@ -353,6 +354,21 @@ function getRandAIInRange(id) {
 	}
 	
 	if(ais_in_range.length > 0) {
+		return ais_in_range[Math.floor(thisTickRand * ais_in_range.length)];
+	} else {
+		return 0;
+	}
+}
+
+function getNewRandAIInRange(id) {
+	var ais_in_range = [];
+	for(i = 0; i < ai.length; i++) {
+		if((!(ai[i][10]) || (ai[i][10] && typeof ai[i][10][0] === 'object')) && ai[i][3] + ai[i][5] > ai[id][3] - 200 && ai[i][3] < ai[id][3] + ai[id][5] + 200 && ai[i][4] + ai[i][6] > ai[id][4] - 200 && ai[i][4] < ai[id][4] + ai[id][6] + 200) {
+			ais_in_range.push(ai[i]);
+		}
+	}
+	
+	if(ais_in_range.length > 0) {
 		return ais_in_range[Math.floor(Math.random() * ais_in_range.length)];
 	} else {
 		return 0;
@@ -374,6 +390,8 @@ $(function() {
 	var start_time = performance.now();
 	
 	gameLoop = setInterval(function() {
+		var thisTickRand = Math.random();
+		
 		game.clearRect(0, 0, 600, 600);
 		
 		game.fillStyle = "#eee";
