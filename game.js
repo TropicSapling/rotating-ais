@@ -95,10 +95,10 @@ function checkCond(id) {
 			}
 		} else if(action == true) {
 			ai[id][7] += 0.2;
-			ai[id][5] -= ai[id][5] * 0.0008;
-			ai[id][3] += ai[id][5] * 0.0004;
-			ai[id][6] -= ai[id][6] * 0.0008;
-			ai[id][4] += ai[id][6] * 0.0004;
+			ai[id][5] -= ai[id][5] * 0.002;
+			ai[id][3] += ai[id][5] * 0.001;
+			ai[id][6] -= ai[id][6] * 0.002;
+			ai[id][4] += ai[id][6] * 0.001;
 		}
 	} catch(e) {
 		regenCond(id);
