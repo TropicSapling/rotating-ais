@@ -354,7 +354,7 @@ function findPar(n) {
 }
 
 function getBrowserSpeed() {
-	var test = 0;
+	var test = 9.87654321;
 	var s_time = performance.now();
 	var time_to_calc = [];
 	
@@ -362,10 +362,6 @@ function getBrowserSpeed() {
 		var before_calc = performance.now();
 		for(i = 0; i < 1000; i++) {
 			if(Math.round(Math.random())) {
-				test += 1;
-			} else if(Math.round(Math.random())) {
-				test -= 1;
-			} else if(Math.round(Math.random())) {
 				test = test * 0.123456789;
 			} else {
 				test = test / 0.123456789;
@@ -380,7 +376,7 @@ function getBrowserSpeed() {
 		total_time += time_to_calc[i];
 	}
 	
-	return 10 / (total_time / time_to_calc.length);
+	return 100 * (total_time / time_to_calc.length);
 }
 
 $(function() {
