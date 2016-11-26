@@ -360,21 +360,6 @@ function getRandAIInRange(id) {
 	}
 }
 
-function getNewRandAIInRange(id) {
-	var ais_in_range = [];
-	for(i = 0; i < ai.length; i++) {
-		if((!(ai[i][10]) || (ai[i][10] && typeof ai[i][10][0] === 'object')) && ai[i][3] + ai[i][5] > ai[id][3] - 200 && ai[i][3] < ai[id][3] + ai[id][5] + 200 && ai[i][4] + ai[i][6] > ai[id][4] - 200 && ai[i][4] < ai[id][4] + ai[id][6] + 200) {
-			ais_in_range.push(ai[i]);
-		}
-	}
-	
-	if(ais_in_range.length > 0) {
-		return ais_in_range[Math.floor(Math.random() * ais_in_range.length)];
-	} else {
-		return 0;
-	}
-}
-
 function findPar(n) {
 	if(n == time_alive_sorted.length - 1 || Math.round(Math.random())) {
 		return time_alive_sorted[n][1];
