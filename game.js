@@ -394,6 +394,7 @@ $(function() {
 			delay = 40;
 		}
 		
+		var original_mutation_chance = mutation_chance;
 		var start_time = performance.now();
 		
 		gameLoop = setInterval(function() {
@@ -464,7 +465,7 @@ $(function() {
 				$('#best-thought').html("<strong>Thoughts of the longest survivor:</strong> " + getCondGene(time_alive_sorted[0][1][8]).join(" "));
 			}
 			
-			if(performance.now() - start_time < 2000000) {
+			if(mutation_chance > original_mutation_chance / 3 ) {
 				mutation_chance = mutation_chance * 0.99999;
 			}
 		}, delay);
