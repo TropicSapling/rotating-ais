@@ -105,7 +105,7 @@ function checkCond(id) {
 		if(time_rotating[id] < 250) {
 			distance = (250 - time_rotating[id]) / 250;
 		} else {
-			distance = (time_rotating[id] - 250) / 250;
+			distance = (time_rotating[id] - 250) / 500;
 		}
 			
 		ai[id][5] -= ai[id][5] * 0.008 * distance;
