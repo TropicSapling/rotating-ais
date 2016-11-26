@@ -239,7 +239,7 @@ function combineGenes(par1, par2) {
 		
 		for(var i = 0; i < par1.length; i++) {
 			if(i == 5 || i == 6) {
-				ai[ai.length - 1].push(1.15);
+				ai[ai.length - 1].push(1.2);
 			} else if(i == 3) {
 				ai[ai.length - 1].push(x_pos);
 			} else if(i == 4) {
@@ -306,7 +306,7 @@ function combineGenes(par1, par2) {
 		
 		for(var i = 0; i < par1.length; i++) {
 			if(i == 5 || i == 6) {
-				ai[placeAvailable].push(1.15);
+				ai[placeAvailable].push(1.2);
 			} else if(i == 3) {
 				ai[placeAvailable].push(x_pos);
 			} else if(i == 4) {
