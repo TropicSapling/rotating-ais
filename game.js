@@ -353,9 +353,41 @@ function findPar(n) {
 	}
 }
 
+function getBrowserSpeed() {
+	var test = 0;
+	var s_time = performance.now();
+	var time_to_calc = [];
+	
+	while(performance.now() - s_time < 10) {
+		var before_calc = performance.now();
+		for(i = 0; i < 1000; i++) {
+			if(Math.round(Math.random())) {
+				test += 1;
+			} else if(Math.round(Math.random())) {
+				test -= 1;
+			} else if(Math.round(Math.random())) {
+				test = test * 0.123456789;
+			} else {
+				test = test / 0.123456789;
+			}
+		}
+		
+		time_to_calc.push(performance.now() - before_calc);
+	}
+	
+	var total_time = 0;
+	for(i = 0; i < time_to_calc.length; i++) {
+		total_time += time_to_calc[i];
+	}
+	
+	return (total_time / time_to_calc.length) * 3;
+}
+
 $(function() {
 	var canvas = document.getElementById("game");
 	var game = canvas.getContext("2d");
+	
+	var delay = getBrowserSpeed();
 	
 	var start_time = performance.now();
 	
@@ -430,5 +462,5 @@ $(function() {
 		if(performance.now() - start_time < 2000000) {
 			mutation_chance = mutation_chance * 0.99999;
 		}
-	}, 20);
+	}, delay);
 });
