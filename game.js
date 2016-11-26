@@ -358,7 +358,7 @@ function getBrowserSpeed() {
 	var s_time = performance.now();
 	var time_to_calc = [];
 	
-	while(performance.now() - s_time < 100) {
+	while(performance.now() - s_time < 200) {
 		var before_calc = performance.now();
 		for(i = 0; i < 1000; i++) {
 			if(Math.round(Math.random())) {
@@ -383,80 +383,82 @@ $(function() {
 	var canvas = document.getElementById("game");
 	var game = canvas.getContext("2d");
 	
-	var delay = getBrowserSpeed();
-	
-	var start_time = performance.now();
-	
-	gameLoop = setInterval(function() {
-		var thisTickRand = Math.random();
+	setTimeout(function() {
+		var delay = getBrowserSpeed();
 		
-		game.clearRect(0, 0, 600, 600);
+		var start_time = performance.now();
 		
-		game.fillStyle = "#eee";
-		game.fillRect(0, 0, 600, 600); // Background
-		
-		if(total_mass < 20000) {
-			if(ai.length > 1 && performance.now() - start_time > 5000 && Math.floor(Math.random() * (1 / rand_spawn_chance)) > 0) {
-				var par1 = findPar(0);
-				var par2 = findPar(0);
-				
-				combineGenes(par1, par2);
-			} else {
-				genRandGenes();
+		gameLoop = setInterval(function() {
+			var thisTickRand = Math.random();
+			
+			game.clearRect(0, 0, 600, 600);
+			
+			game.fillStyle = "#eee";
+			game.fillRect(0, 0, 600, 600); // Background
+			
+			if(total_mass < 20000) {
+				if(ai.length > 1 && performance.now() - start_time > 5000 && Math.floor(Math.random() * (1 / rand_spawn_chance)) > 0) {
+					var par1 = findPar(0);
+					var par2 = findPar(0);
+					
+					combineGenes(par1, par2);
+				} else {
+					genRandGenes();
+				}
 			}
-		}
-		
-		checkCollisions(game);
-		
-		var time_alive_copy = [];
-		
-		for(id = 0; id < ai.length; id++) {
-			if(ai[id] !== "dead") {
+			
+			checkCollisions(game);
+			
+			var time_alive_copy = [];
+			
+			for(id = 0; id < ai.length; id++) {
+				if(ai[id] !== "dead") {
+					for(i = 0; i < time_alive.length; i++) {
+						if(time_alive[i][2] == id) {
+							time_alive[i][0] += 1;
+							break;
+						}
+					}
+					
+					if(!(ai[id][10]) || (ai[id][10] && typeof ai[id][10][0] === 'object')) {
+						checkCond(id);
+					}
+				}
+			}
+			
+			if(performance.now() - start_time > 4000) {
 				for(i = 0; i < time_alive.length; i++) {
-					if(time_alive[i][2] == id) {
-						time_alive[i][0] += 1;
-						break;
-					}
+					time_alive_copy.push(time_alive[i][0]);
 				}
 				
-				if(!(ai[id][10]) || (ai[id][10] && typeof ai[id][10][0] === 'object')) {
-					checkCond(id);
-				}
-			}
-		}
-		
-		if(performance.now() - start_time > 4000) {
-			for(i = 0; i < time_alive.length; i++) {
-				time_alive_copy.push(time_alive[i][0]);
-			}
-			
-			time_alive_copy = time_alive_copy.sort(function(a,b){return b - a});
-			
-			time_alive_sorted = [];
-			for(i = 0; i < time_alive_copy.length; i++) {
-				for(j = 0; j < time_alive.length; j++) {
-					if(time_alive[j][0] == time_alive_copy[i]) {
-						time_alive_sorted.push(time_alive[j]);
-						break;
+				time_alive_copy = time_alive_copy.sort(function(a,b){return b - a});
+				
+				time_alive_sorted = [];
+				for(i = 0; i < time_alive_copy.length; i++) {
+					for(j = 0; j < time_alive.length; j++) {
+						if(time_alive[j][0] == time_alive_copy[i]) {
+							time_alive_sorted.push(time_alive[j]);
+							break;
+						}
 					}
 				}
 			}
-		}
-		
-		total_mass = 0;
-		
-		renderAIs(game);
-		
-		if(time_alive.length > 10) {
-			cleanAll();
-		}
-		
-		if(time_alive_sorted.length > 0) {
-			$('#best-thought').html("<strong>Thoughts of the longest survivor:</strong> " + getCondGene(time_alive_sorted[0][1][8]).join(" "));
-		}
-		
-		if(performance.now() - start_time < 2000000) {
-			mutation_chance = mutation_chance * 0.99999;
-		}
-	}, delay);
+			
+			total_mass = 0;
+			
+			renderAIs(game);
+			
+			if(time_alive.length > 10) {
+				cleanAll();
+			}
+			
+			if(time_alive_sorted.length > 0) {
+				$('#best-thought').html("<strong>Thoughts of the longest survivor:</strong> " + getCondGene(time_alive_sorted[0][1][8]).join(" "));
+			}
+			
+			if(performance.now() - start_time < 2000000) {
+				mutation_chance = mutation_chance * 0.99999;
+			}
+		}, delay);
+	}, 50);
 });
