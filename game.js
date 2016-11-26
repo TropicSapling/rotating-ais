@@ -100,12 +100,17 @@ function checkCond(id) {
 			time_rotating[id] -= 1;
 		}
 		
-		if(time_rotating[id] < 0 || time_rotating[id] > 200) {
-			ai[id][5] -= ai[id][5] * 0.02;
-			ai[id][3] += ai[id][5] * 0.01;
-			ai[id][6] -= ai[id][6] * 0.02;
-			ai[id][4] += ai[id][6] * 0.01;
+		var distance;
+		if(time_rotating[id] < 100) {
+			distance = (100 - time_rotating[id]) / 100;
+		} else {
+			distance = (time_rotating[id] - 100) / 100;
 		}
+			
+		ai[id][5] -= ai[id][5] * 0.008 * distance;
+		ai[id][3] += ai[id][5] * 0.004 * distance;
+		ai[id][6] -= ai[id][6] * 0.008 * distance;
+		ai[id][4] += ai[id][6] * 0.004 * distance;
 	} catch(e) {
 		regenCond(id);
 		checkCond(id);
