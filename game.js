@@ -388,6 +388,7 @@ $(function() {
 	var game = canvas.getContext("2d");
 	
 	var delay = getBrowserSpeed();
+	alert(delay);
 	
 	var start_time = performance.now();
 	
