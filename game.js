@@ -358,7 +358,7 @@ function getBrowserSpeed() {
 	var s_time = performance.now();
 	var time_to_calc = [];
 	
-	while(performance.now() - s_time < 10) {
+	while(performance.now() - s_time < 100) {
 		var before_calc = performance.now();
 		for(i = 0; i < 1000; i++) {
 			if(Math.round(Math.random())) {
@@ -376,7 +376,7 @@ function getBrowserSpeed() {
 		total_time += time_to_calc[i];
 	}
 	
-	return 100 * (total_time / time_to_calc.length);
+	return 300 * (total_time / time_to_calc.length);
 }
 
 $(function() {
