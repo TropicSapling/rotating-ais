@@ -345,11 +345,19 @@ function getRandAIInRange(id) {
 	}
 }
 
-function findPar(n) {
-	if(n == time_alive_sorted.length - 1 || Math.round(Math.random())) {
-		return time_alive_sorted[n][1];
-	} else {
-		return findPar(n + 1);
+function findPar() {
+	var total_time_alive = 0;
+	var par_chance = [];
+	for(var i = 0; i < time_alive.length; i++) {
+		par_chance.push([total_time_alive, total_time_alive + time_alive[i][0]]);
+		total_time_alive += time_alive[i][0];
+	}
+	
+	var randNumber = Math.floor(Math.random() * total_time_alive);
+	for(var i = 0; i < par_chance; i++) {
+		if(randNumber >= par_chance[i][0] && randNumber < par_chance[i][0]) {
+			return time_alive[i];
+		}
 	}
 }
 
@@ -407,8 +415,8 @@ $(function() {
 			
 			if(total_mass < 20000) {
 				if(ai.length > 1 && performance.now() - start_time > 5000 && Math.floor(Math.random() * (1 / rand_spawn_chance)) > 0) {
-					var par1 = findPar(0);
-					var par2 = findPar(0);
+					var par1 = findPar();
+					var par2 = findPar();
 					
 					combineGenes(par1, par2);
 				} else {
