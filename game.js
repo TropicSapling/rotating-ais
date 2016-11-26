@@ -96,22 +96,7 @@ function checkCond(id) {
 			}
 		} else if(action == true) {
 			ai[id][7] += 0.2;
-			time_rotating[id] += 1;
-		} else {
-			time_rotating[id] -= 1;
 		}
-		
-		var distance;
-		if(time_rotating[id] < 250) {
-			distance = (250 - time_rotating[id]) / 250;
-		} else {
-			distance = (time_rotating[id] - 250) / 500;
-		}
-			
-		ai[id][5] -= ai[id][5] * 0.008 * distance;
-		ai[id][3] += ai[id][5] * 0.004 * distance;
-		ai[id][6] -= ai[id][6] * 0.008 * distance;
-		ai[id][4] += ai[id][6] * 0.004 * distance;
 	} catch(e) {
 		regenCond(id);
 		checkCond(id);
