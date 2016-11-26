@@ -5,7 +5,6 @@ var max_genes = 8; // So that AI doesn't have access to genes #8+
 
 var ai = [];
 var time_alive = [];
-var time_rotating = [];
 var inputs = [["+", "-", "*", "/", "<", "<=", ">=", ">", "&&", "||"], ["(", ")"], ["ai[__EXENOW(id)__][__EXENOW(Math.floor(Math.random() * max_genes))__]", "getRandAIInRange(__EXENOW(id)__)[__EXENOW(Math.floor(Math.random() * max_genes))__]"]];
 var changing_inputs = ["ai[", "getRandAIInRange("]; // Used in game.js to speed up evolution, the first parts of inputs[2] before the '__EXENOW(...)__'
 
@@ -207,7 +206,6 @@ function genRandGenes() {
 		ai[ai.length - 1].push([width, height]);
 		
 		time_alive.push([0, ai[ai.length - 1], ai.length - 1]);
-		time_rotating.push(250);
 	} else {
 		ai[placeAvailable] = [Math.floor(Math.random() * 256), Math.floor(Math.random() * 256), Math.floor(Math.random() * 256), x_pos, y_pos, 1.15, 1.15, Math.floor(Math.random() * 360)];
 		genRandCond(placeAvailable);
@@ -215,7 +213,6 @@ function genRandGenes() {
 		ai[placeAvailable].push([width, height]);
 		
 		time_alive.push([0, ai[placeAvailable], placeAvailable]);
-		time_rotating[placeAvailable] = 250;
 	}
 }
 
@@ -304,7 +301,6 @@ function combineGenes(par1, par2) {
 		}
 		
 		time_alive.push([0, ai[ai.length - 1], ai.length - 1]);
-		time_rotating.push(250);
 	} else {
 		ai[placeAvailable] = [];
 		
@@ -372,6 +368,5 @@ function combineGenes(par1, par2) {
 		}
 		
 		time_alive.push([0, ai[placeAvailable], placeAvailable]);
-		time_rotating[placeAvailable] = 250;
 	}
 }
