@@ -101,11 +101,10 @@ function checkCond(id) {
 		}
 		
 		if(time_rotating[id] < 0 || time_rotating[id] > 200) {
-			if(ai[id][10]) {
-				ai[id].splice(10, 0, ["dying", 1.1]);
-			} else {
-				ai[id].push(["dying", 1.1]);
-			}
+			ai[id][5] -= ai[id][5] * 0.02;
+			ai[id][3] += ai[id][5] * 0.01;
+			ai[id][6] -= ai[id][6] * 0.02;
+			ai[id][4] += ai[id][6] * 0.01;
 		}
 	} catch(e) {
 		regenCond(id);
