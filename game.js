@@ -95,7 +95,7 @@ function checkCond(id) {
 				}
 			}
 		} else if(action == true) {
-			ai[id][7] += 0.2;
+			ai[id][7] += 0.4;
 		}
 	} catch(e) {
 		regenCond(id);
@@ -175,7 +175,7 @@ function renderAIs(game) {
 	for(i = 0; i < ai_sorted.length; i++) {
 		if(ai_sorted[i][10] && ai_sorted[i][10][0] === "dying") {
 			if(ai_sorted[i][5] > 1 && ai_sorted[i][6] > 1) {
-				ai_sorted[i][10][1] = ai_sorted[i][10][1] * 1.15;
+				ai_sorted[i][10][1] = ai_sorted[i][10][1] * 1.2;
 				var change = ai_sorted[i][10][1];
 				
 				ai_sorted[i][5] -= change;
@@ -192,8 +192,8 @@ function renderAIs(game) {
 		if(ai_sorted[i] !== "dead") {
 			if(ai_sorted[i][10] && typeof ai_sorted[i][10][0] === 'number') {
 				if(ai_sorted[i][5] < ai_sorted[i][10][0] || ai_sorted[i][6] < ai_sorted[i][10][1]) { // [10][0] = full width, [10][1] = full height
-					var changeX = ai_sorted[i][5] * 1.15 - ai_sorted[i][5];
-					var changeY = ai_sorted[i][6] * 1.15 - ai_sorted[i][6];
+					var changeX = ai_sorted[i][5] * 1.2 - ai_sorted[i][5];
+					var changeY = ai_sorted[i][6] * 1.2 - ai_sorted[i][6];
 					
 					ai_sorted[i][5] += changeX;
 					ai_sorted[i][6] += changeY;
@@ -206,8 +206,8 @@ function renderAIs(game) {
 					ai_sorted[i].splice(10);
 				}
 			} else if(!ai_sorted[i][10] || (ai_sorted[i][10] && typeof ai_sorted[i][10][0] === 'object')) {
-				ai_sorted[i][3] += Math.sin(ai_sorted[i][7]) * 2; // [3] = x-pos, [7] = rotation
-				ai_sorted[i][4] += Math.cos(ai_sorted[i][7]) * 2; // [4] = y-pos
+				ai_sorted[i][3] += Math.sin(ai_sorted[i][7]) * 3; // [3] = x-pos, [7] = rotation
+				ai_sorted[i][4] += Math.cos(ai_sorted[i][7]) * 3; // [4] = y-pos
 				
 				if(ai_sorted[i][3] < 0) {
 					ai_sorted[i][3] = 0;
@@ -225,10 +225,10 @@ function renderAIs(game) {
 					ai_sorted[i][4] = 600 - ai_sorted[i][6];
 				}
 				
-				ai_sorted[i][5] -= ai_sorted[i][5] * 0.0016;
-				ai_sorted[i][3] += ai_sorted[i][5] * 0.0008;
-				ai_sorted[i][6] -= ai_sorted[i][6] * 0.0016;
-				ai_sorted[i][4] += ai_sorted[i][6] * 0.0008;
+				ai_sorted[i][5] -= ai_sorted[i][5] * 0.002;
+				ai_sorted[i][3] += ai_sorted[i][5] * 0.001;
+				ai_sorted[i][6] -= ai_sorted[i][6] * 0.002;
+				ai_sorted[i][4] += ai_sorted[i][6] * 0.001;
 			}
 			
 			if(ai_sorted[i][5] * ai_sorted[i][6] < 100 && (!(ai_sorted[i][10]) || (ai_sorted[i][10] && typeof ai_sorted[i][10][0] === 'object'))) {
