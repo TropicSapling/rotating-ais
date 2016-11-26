@@ -95,10 +95,17 @@ function checkCond(id) {
 			}
 		} else if(action == true) {
 			ai[id][7] += 0.2;
-			ai[id][5] -= ai[id][5] * 0.002;
-			ai[id][3] += ai[id][5] * 0.001;
-			ai[id][6] -= ai[id][6] * 0.002;
-			ai[id][4] += ai[id][6] * 0.001;
+			time_rotating[id] += 1;
+		} else {
+			time_rotating[id] -= 1;
+		}
+		
+		if(time_rotating[id] < 0 || time_rotating[id] > 100) {
+			if(ai[id][10]) {
+				ai[id].splice(10, 0, ["dying", 1.1]);
+			} else {
+				ai[id].push(["dying", 1.1]);
+			}
 		}
 	} catch(e) {
 		regenCond(id);
@@ -187,8 +194,8 @@ function renderAIs(game) {
 				ai_sorted[i][3] += change / 2;
 				ai_sorted[i][4] += change / 2;
 			} else {
+				cleanup(ai.indexOf(ai_sorted[i]));
 				ai_sorted[i] = "dead";
-				cleanup(i);
 			}
 		}
 		
