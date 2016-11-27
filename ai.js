@@ -192,11 +192,12 @@ function genRandGenes() {
 	var x_pos = Math.floor(Math.random() * (600 - width * 1.5) + width / 2);
 	var y_pos = Math.floor(Math.random() * (600 - height * 1.5) + height / 2);
 	
-	var repeats = 0;
-	while(taken_x_pos.indexOf(Math.round(x_pos / 50)) != -1 && taken_y_pos.indexOf(Math.round(y_pos / 50)) != -1 && repeats < 1000) {
+	var spawn_spread = 100;
+	while(taken_x_pos.indexOf(Math.round(x_pos / spawn_spread)) != -1 && taken_y_pos.indexOf(Math.round(y_pos / spawn_spread)) != -1) {
 		x_pos = Math.floor(Math.random() * (600 - width * 1.5) + width / 2);
 		y_pos = Math.floor(Math.random() * (600 - height * 1.5) + height / 2);
-		repeats++;
+		
+		spawn_spread = spawn_spread * 0.999;
 	}
 	
 	if(placeAvailable == -1) {
@@ -227,11 +228,12 @@ function combineGenes(par1, par2) {
 	var x_pos = Math.floor(Math.random() * (600 - width * 1.5) + width / 2);
 	var y_pos = Math.floor(Math.random() * (600 - height * 1.5) + height / 2);
 	
-	var repeats = 0;
-	while(taken_x_pos.indexOf(Math.round(x_pos / 50)) != -1 && taken_y_pos.indexOf(Math.round(y_pos / 50)) != -1 && repeats < 1000) {
+	var spawn_spread = 100;
+	while(taken_x_pos.indexOf(Math.round(x_pos / spawn_spread)) != -1 && taken_y_pos.indexOf(Math.round(y_pos / spawn_spread)) != -1) {
 		x_pos = Math.floor(Math.random() * (600 - width * 1.5) + width / 2);
 		y_pos = Math.floor(Math.random() * (600 - height * 1.5) + height / 2);
-		repeats++;
+		
+		spawn_spread = spawn_spread * 0.999;
 	}
 	
 	if(placeAvailable == -1) {
