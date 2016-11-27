@@ -16,13 +16,13 @@ function spliceStr(str, index, pos) {
 	return str.slice(0, index) + str.slice(pos);
 }
 
-function getTakenPos(getX) {
+function getTakenPos(getX, spread) {
 	var arr = [];
 	for(var i = 0; i < ai.length; i++) {
 		if(getX) {
-			arr.push(Math.round(ai[i][3] / 30));
+			arr.push(Math.round(ai[i][3] / spread));
 		} else {
-			arr.push(Math.round(ai[i][4] / 30));
+			arr.push(Math.round(ai[i][4] / spread));
 		}
 	}
 	
@@ -198,6 +198,8 @@ function genRandGenes() {
 		y_pos = Math.floor(Math.random() * (600 - height * 1.5) + height / 2);
 		
 		spawn_spread = spawn_spread * 0.999;
+		taken_x_pos = getTakenPos(true);
+		taken_y_pos = getTakenPos(false);
 	}
 	
 	if(placeAvailable == -1) {
@@ -234,6 +236,8 @@ function combineGenes(par1, par2) {
 		y_pos = Math.floor(Math.random() * (600 - height * 1.5) + height / 2);
 		
 		spawn_spread = spawn_spread * 0.999;
+		taken_x_pos = getTakenPos(true);
+		taken_y_pos = getTakenPos(false);
 	}
 	
 	if(placeAvailable == -1) {
