@@ -187,8 +187,8 @@ function genRandGenes() {
 	var width = randomBetween(19, 31);
 	var height = width;
 	var placeAvailable = ai.indexOf("dead");
-	var taken_x_pos = getTakenPos(true);
-	var taken_y_pos = getTakenPos(false);
+	var taken_x_pos = getTakenPos(true, 100);
+	var taken_y_pos = getTakenPos(false, 100);
 	var x_pos = Math.floor(Math.random() * (600 - width * 1.5) + width / 2);
 	var y_pos = Math.floor(Math.random() * (600 - height * 1.5) + height / 2);
 	
@@ -198,8 +198,8 @@ function genRandGenes() {
 		y_pos = Math.floor(Math.random() * (600 - height * 1.5) + height / 2);
 		
 		spawn_spread = spawn_spread * 0.999;
-		taken_x_pos = getTakenPos(true);
-		taken_y_pos = getTakenPos(false);
+		taken_x_pos = getTakenPos(true, spawn_spread);
+		taken_y_pos = getTakenPos(false, spawn_spread);
 	}
 	
 	if(placeAvailable == -1) {
@@ -225,8 +225,8 @@ function combineGenes(par1, par2) {
 	var width = randomBetween(19, 31);
 	var height = width;
 	
-	var taken_x_pos = getTakenPos(true);
-	var taken_y_pos = getTakenPos(false);
+	var taken_x_pos = getTakenPos(true, 100);
+	var taken_y_pos = getTakenPos(false, 100);
 	var x_pos = Math.floor(Math.random() * (600 - width * 1.5) + width / 2);
 	var y_pos = Math.floor(Math.random() * (600 - height * 1.5) + height / 2);
 	
@@ -236,8 +236,8 @@ function combineGenes(par1, par2) {
 		y_pos = Math.floor(Math.random() * (600 - height * 1.5) + height / 2);
 		
 		spawn_spread = spawn_spread * 0.999;
-		taken_x_pos = getTakenPos(true);
-		taken_y_pos = getTakenPos(false);
+		taken_x_pos = getTakenPos(true, spawn_spread);
+		taken_y_pos = getTakenPos(false, spawn_spread);
 	}
 	
 	if(placeAvailable == -1) {
