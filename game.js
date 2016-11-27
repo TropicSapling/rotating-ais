@@ -106,7 +106,7 @@ function checkCond(id) {
 function cleanAll() {
 	for(i = 0; i < time_alive.length; i++) {
 		if(!time_alive[i][2]) {
-			var posInTop = 10;
+			var posInTop = 100;
 			for(j = 0; j < time_alive_sorted.length; j++) {
 				if(time_alive_sorted[j][0] == time_alive[i][0]) {
 					posInTop = j;
@@ -114,7 +114,7 @@ function cleanAll() {
 				}
 			}
 			
-			if(posInTop > 10) {
+			if(posInTop > 100) {
 				time_alive.splice(i, 1);
 				i--;
 			}
@@ -127,7 +127,7 @@ function cleanup(i) {
 	
 	for(var j = 0; j < time_alive.length; j++) {
 		if(time_alive[j][2] == i) {
-			var posInTop = 10;
+			var posInTop = 100;
 			for(var k = 0; k < time_alive_sorted.length; k++) {
 				if(time_alive_sorted[k][2] == i) {
 					posInTop = k;
@@ -135,7 +135,7 @@ function cleanup(i) {
 				}
 			}
 			
-			if(time_alive.length < 10 || posInTop < 10) {
+			if(time_alive.length < 100 || posInTop < 100) {
 				time_alive[j].splice(2, 1);
 			} else {
 				time_alive.splice(j, 1);
