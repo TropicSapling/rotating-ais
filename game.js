@@ -433,7 +433,7 @@ $(function() {
 				if(ai[id] !== "dead") {
 					for(i = 0; i < time_alive.length; i++) {
 						if(time_alive[i][2] == id) {
-							time_alive[i][0] += 1.02;
+							time_alive[i][0] += 1;
 							break;
 						}
 					}
@@ -446,7 +446,6 @@ $(function() {
 			
 			if(performance.now() - start_time > 4000) {
 				for(i = 0; i < time_alive.length; i++) {
-					time_alive[i][0] -= 0.02;
 					time_alive_copy.push(time_alive[i][0]);
 				}
 				
