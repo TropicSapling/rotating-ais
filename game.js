@@ -96,6 +96,9 @@ function checkCond(id) {
 			}
 		} else if(action == true) {
 			ai[id][7] += 0.4;
+			if(ai[id][7] >= 360) {
+				ai[id][7] -= 360;
+			}
 		}
 	} catch(e) {
 		regenCond(id);
