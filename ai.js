@@ -1,11 +1,11 @@
 var op = 0;
 var parenthesis = 0;
 var mutation_chance = 0.25; // MIN: >0, MAX: 1.
-var max_genes = 8; // So that AI doesn't have access to genes #8+
+var available_genes = [3, 4, 5, 6, 7]; // So that AI doesn't have access to all genes
 
 var ai = [];
 var time_alive = [];
-var inputs = [["+", "-", "*", "/", "<", "<=", ">=", ">", "&&", "||"], ["(", ")"], ["ai[__EXENOW(id)__][__EXENOW(Math.floor(Math.random() * max_genes))__]", "getRandAIInRange(__EXENOW(id)__)[__EXENOW(Math.floor(Math.random() * max_genes))__]"]];
+var inputs = [["+", "-", "*", "/", "<", "<=", ">=", ">", "&&", "||"], ["(", ")"], ["ai[__EXENOW(id)__][__EXENOW(available_genes[Math.floor(Math.random() * available_genes.length)])__]", "getRandAIInRange(__EXENOW(id)__)[__EXENOW(available_genes[Math.floor(Math.random() * available_genes.length)])__]", "Math.random()"]];
 var changing_inputs = ["ai[", "getRandAIInRange("]; // Used in game.js to speed up evolution, the first parts of inputs[2] before the '__EXENOW(...)__'
 
 function randomBetween(min, max) {
