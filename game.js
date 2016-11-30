@@ -407,6 +407,7 @@ $(function() {
 		}
 		
 		var original_mutation_chance = mutation_chance;
+		var original_rand_spawn_chance = rand_spawn_chance;
 		var start_time = performance.now();
 		
 		gameLoop = setInterval(function() {
@@ -479,6 +480,10 @@ $(function() {
 			
 			if(mutation_chance > original_mutation_chance / 3 ) {
 				mutation_chance = mutation_chance * 0.99999;
+			}
+			
+			if(rand_spawn_chance > original_rand_spawn_chance / 4) {
+				rand_spawn_chance = rand_spawn_chance * 0.9999;
 			}
 		}, delay);
 	}, 50);
