@@ -337,7 +337,7 @@ function getRandAIInRange(id) {
 	var ais_in_range = [];
 	var vision = ai[id][5] * 3;
 	for(i = 0; i < ai.length; i++) {
-		if((!(ai[i][10]) || (ai[i][10] && typeof ai[i][10][0] === 'object')) && ai[i][3] + ai[i][5] > ai[id][3] - vision && ai[i][3] < ai[id][3] + ai[id][5] + vision && ai[i][4] + ai[i][6] > ai[id][4] - vision && ai[i][4] < ai[id][4] + ai[id][6] + vision) {
+		if(i != id && (!(ai[i][10]) || (ai[i][10] && typeof ai[i][10][0] === 'object')) && ai[i][3] + ai[i][5] > ai[id][3] - vision && ai[i][3] < ai[id][3] + ai[id][5] + vision && ai[i][4] + ai[i][6] > ai[id][4] - vision && ai[i][4] < ai[id][4] + ai[id][6] + vision) {
 			ais_in_range.push(ai[i]);
 		}
 	}
