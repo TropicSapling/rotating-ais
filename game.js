@@ -391,14 +391,6 @@ function getBrowserSpeed() {
 	return Math.round(1000 * (total_time / time_to_calc.length));
 }
 
-function getOldestAI(time_alive_sorted) {
-	for(var i = 0; i < time_alive_sorted.length; i++) {
-		if(time_alive_sorted[i][2]) {
-			return time_alive_sorted[i][1][8];
-		}
-	}
-}
-
 $(function() {
 	var canvas = document.getElementById("game");
 	var game = canvas.getContext("2d");
@@ -416,7 +408,6 @@ $(function() {
 		
 		var original_mutation_chance = mutation_chance;
 		var original_rand_spawn_chance = rand_spawn_chance;
-		var last_update = performance.now();
 		var start_time = performance.now();
 		
 		gameLoop = setInterval(function() {
@@ -483,9 +474,8 @@ $(function() {
 				cleanAll();
 			}
 			
-			if(time_alive_sorted.length > 0 && performance.now() - last_update > 4000) {
-				$('#best-thought').html("<strong>Thoughts of the oldest alive AI:</strong> " + getCondGene(getOldestAI(time_alive_sorted)).join(" "));
-				last_update = performance.now();
+			if(time_alive_sorted.length > 0) {
+				$('#best-thought').html("<strong>Thoughts of the longest survivor:</strong> " + getCondGene(time_alive_sorted[0][1][8]).join(" "));
 			}
 			
 			if(mutation_chance > original_mutation_chance / 3 ) {
