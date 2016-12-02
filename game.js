@@ -416,6 +416,7 @@ $(function() {
 		
 		var original_mutation_chance = mutation_chance;
 		var original_rand_spawn_chance = rand_spawn_chance;
+		var last_update = performance.now();
 		var start_time = performance.now();
 		
 		gameLoop = setInterval(function() {
@@ -482,8 +483,9 @@ $(function() {
 				cleanAll();
 			}
 			
-			if(time_alive_sorted.length > 0) {
+			if(time_alive_sorted.length > 0 && performance.now() - last_update > 4000) {
 				$('#best-thought').html("<strong>Thoughts of the longest survivor:</strong> " + getCondGene(getOldestAI(time_alive_sorted)).join(" "));
+				last_update = performance.now();
 			}
 			
 			if(mutation_chance > original_mutation_chance / 3 ) {
