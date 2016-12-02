@@ -391,6 +391,14 @@ function getBrowserSpeed() {
 	return Math.round(1000 * (total_time / time_to_calc.length));
 }
 
+function getOldestAI(time_alive_sorted) {
+	for(var i = 0; i < time_alive_sorted.length; i++) {
+		if(time_alive_sorted[i][2]) {
+			return time_alive_sorted[i][2][8];
+		}
+	}
+}
+
 $(function() {
 	var canvas = document.getElementById("game");
 	var game = canvas.getContext("2d");
@@ -475,7 +483,7 @@ $(function() {
 			}
 			
 			if(time_alive_sorted.length > 0) {
-				$('#best-thought').html("<strong>Thoughts of the longest survivor:</strong> " + getCondGene(time_alive_sorted[0][1][8]).join(" "));
+				$('#best-thought').html("<strong>Thoughts of the longest survivor:</strong> " + getCondGene(getOldestAI(time_alive_sorted)).join(" "));
 			}
 			
 			if(mutation_chance > original_mutation_chance / 3 ) {
