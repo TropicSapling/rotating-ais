@@ -394,7 +394,7 @@ function getBrowserSpeed() {
 function getOldestAI(time_alive_sorted) {
 	for(var i = 0; i < time_alive_sorted.length; i++) {
 		if(time_alive_sorted[i][2]) {
-			return time_alive_sorted[i][2][8];
+			return time_alive_sorted[i][1][8];
 		}
 	}
 }
