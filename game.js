@@ -484,7 +484,7 @@ $(function() {
 			}
 			
 			if(time_alive_sorted.length > 0 && performance.now() - last_update > 4000) {
-				$('#best-thought').html("<strong>Thoughts of the longest survivor:</strong> " + getCondGene(getOldestAI(time_alive_sorted)).join(" "));
+				$('#best-thought').html("<strong>Thoughts of the oldest alive AI:</strong> " + getCondGene(getOldestAI(time_alive_sorted)).join(" "));
 				last_update = performance.now();
 			}
 			
