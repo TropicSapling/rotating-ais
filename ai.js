@@ -1,5 +1,3 @@
-'use strict';
-
 var op = 0;
 var parenthesis = 0;
 var mutation_chance = 0.25; // MIN: >0, MAX: 1.
@@ -107,7 +105,7 @@ function genRandCond(id) {
 		ai[id][9] -= 2;
 	}
 	
-	for(var i = 0; i < ai[id][9]; i++) {
+	for(i = 0; i < ai[id][9]; i++) {
 		ai[id][8].push(findInput(id));
 		op++;
 	}
