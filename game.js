@@ -1,5 +1,3 @@
-'use strict';
-
 var gameLoop;
 var checked_ais = [];
 var time_alive_sorted = [];
@@ -25,7 +23,7 @@ window.onerror = function(msg, url, line, column, error) {
 function deepCopy(arr) { // Because JS hates me and is just that annoying
 	var out = [];
 	
-	for (var i = 0; i < arr.length; i++) {
+	for (i = 0; i < arr.length; i++) {
 		out.push(arr[i]);
 	}
 	
@@ -43,7 +41,7 @@ function regenCond(id) {
 
 function getCondGene(cond) {
 	var processed_cond = [];
-	for(var part = 0; part < cond.length; part++) {
+	for(part = 0; part < cond.length; part++) {
 		var code = cond[part];
 		if(typeof code === 'object') {
 			processed_cond.push(code[0]);
@@ -109,10 +107,10 @@ function checkCond(id) {
 }
 
 function cleanAll() {
-	for(var i = 0; i < time_alive.length; i++) {
+	for(i = 0; i < time_alive.length; i++) {
 		if(!time_alive[i][2]) {
 			var posInTop = 100;
-			for(var j = 0; j < time_alive_sorted.length; j++) {
+			for(j = 0; j < time_alive_sorted.length; j++) {
 				if(time_alive_sorted[j][0] == time_alive[i][0]) {
 					posInTop = j;
 					break;
@@ -153,7 +151,7 @@ function cleanup(i) {
 
 function renderAIs(game) {
 	var ai_copy = [];
-	for(var i = 0; i < ai.length; i++) {
+	for(i = 0; i < ai.length; i++) {
 		if(ai[i].length > 5) {
 			ai_copy.push(ai[i][5] * ai[i][6]);
 			if(ai[i][10] && typeof ai[i][10][0] === 'number') {
@@ -167,8 +165,8 @@ function renderAIs(game) {
 	ai_copy = ai_copy.sort(function(a,b){return a - b});
 	
 	var ai_sorted = [];
-	for(var i = 0; i < ai_copy.length; i++) {
-		for(var j = 0; j < ai.length; j++) {
+	for(i = 0; i < ai_copy.length; i++) {
+		for(j = 0; j < ai.length; j++) {
 			if(ai[j].length > 5 && ai[j][5] * ai[j][6] == ai_copy[i]) {
 				ai_sorted.push(ai[j]);
 			}
@@ -177,7 +175,7 @@ function renderAIs(game) {
 	
 	var ai_sorted_old = deepCopy(ai_sorted);
 	
-	for(var i = 0; i < ai_sorted.length; i++) {
+	for(i = 0; i < ai_sorted.length; i++) {
 		if(ai_sorted[i][10] && ai_sorted[i][10][0] === "dying") {
 			if(ai_sorted[i][5] > 1 && ai_sorted[i][6] > 1) {
 				ai_sorted[i][10][1] = ai_sorted[i][10][1] * 1.2;
@@ -249,7 +247,7 @@ function renderAIs(game) {
 		}
 	}
 	
-	for(var i = 0; i < ai.length; i++) {
+	for(i = 0; i < ai.length; i++) {
 		if(ai[i].length >= 5) {
 			ai[i] = ai_sorted[ai_sorted_old.indexOf(ai[i])];
 		}
@@ -284,7 +282,7 @@ function checkCollisions(game) {
 	var collidingAIs = [];
 	var takenIDs = [];
 	
-	for(var i = 0; i < ai.length; i++) {
+	for(i = 0; i < ai.length; i++) {
 		if(ai[i] !== "dead" && (!(ai[i][10]) || (ai[i][10] && typeof ai[i][10][0] === 'object'))) {
 			collidingAIs.push(findCollision(i, takenIDs));
 			
@@ -294,16 +292,16 @@ function checkCollisions(game) {
 		}
 	}
 	
-	for(var i = 0; i < collidingAIs.length; i++) {
+	for(i = 0; i < collidingAIs.length; i++) {
 		if(collidingAIs[i].length > 1) {
-			for(var j = 0; j < collidingAIs[i].length; j++) {
+			for(j = 0; j < collidingAIs[i].length; j++) {
 				var size = ai[collidingAIs[i][j]][5] * ai[collidingAIs[i][j]][6];
 				var x1 = ai[collidingAIs[i][j]][3];
 				var y1 = ai[collidingAIs[i][j]][4];
 				var w1 = ai[collidingAIs[i][j]][5];
 				var h1 = ai[collidingAIs[i][j]][6];
 				
-				for(var k = 0; k < collidingAIs[i].length; k++) {
+				for(k = 0; k < collidingAIs[i].length; k++) {
 					var size2 = ai[collidingAIs[i][k]][5] * ai[collidingAIs[i][k]][6];
 					var x2 = ai[collidingAIs[i][k]][3];
 					var y2 = ai[collidingAIs[i][k]][4];
@@ -338,7 +336,7 @@ function checkCollisions(game) {
 function getRandAIInRange(id) {
 	var ais_in_range = [];
 	var vision = ai[id][5] * 3;
-	for(var i = 0; i < ai.length; i++) {
+	for(i = 0; i < ai.length; i++) {
 		if(i != id && (!(ai[i][10]) || (ai[i][10] && typeof ai[i][10][0] === 'object')) && ai[i][3] + ai[i][5] > ai[id][3] - vision && ai[i][3] < ai[id][3] + ai[id][5] + vision && ai[i][4] + ai[i][6] > ai[id][4] - vision && ai[i][4] < ai[id][4] + ai[id][6] + vision) {
 			ais_in_range.push(ai[i]);
 		}
@@ -435,7 +433,7 @@ $(function() {
 			
 			var time_alive_copy = [];
 			
-			for(var id = 0; id < ai.length; id++) {
+			for(id = 0; id < ai.length; id++) {
 				if(ai[id] !== "dead") {
 					for(var i = 0; i < time_alive.length; i++) {
 						if(time_alive[i][2] == id) {
@@ -451,15 +449,15 @@ $(function() {
 			}
 			
 			if(performance.now() - start_time > 4000) {
-				for(var i = 0; i < time_alive.length; i++) {
+				for(i = 0; i < time_alive.length; i++) {
 					time_alive_copy.push(time_alive[i][0]);
 				}
 				
 				time_alive_copy = time_alive_copy.sort(function(a,b){return b - a});
 				
 				time_alive_sorted = [];
-				for(var i = 0; i < time_alive_copy.length; i++) {
-					for(var j = 0; j < time_alive.length; j++) {
+				for(i = 0; i < time_alive_copy.length; i++) {
+					for(j = 0; j < time_alive.length; j++) {
 						if(time_alive[j][0] == time_alive_copy[i]) {
 							time_alive_sorted.push(time_alive[j]);
 							break;
