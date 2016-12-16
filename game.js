@@ -288,7 +288,7 @@ function checkCollisions(game) {
 		if(ai[i] !== "dead" && (!(ai[i][10]) || (ai[i][10] && typeof ai[i][10][0] === 'object'))) {
 			collidingAIs.push(findCollision(i, takenIDs));
 			
-			for(j = 0; j < collidingAIs[collidingAIs.length - 1].length; j++) {
+			for(var j = 0; j < collidingAIs[collidingAIs.length - 1].length; j++) {
 				takenIDs.push(collidingAIs[collidingAIs.length - 1][j]);
 			}
 		}
@@ -437,7 +437,7 @@ $(function() {
 			
 			for(var id = 0; id < ai.length; id++) {
 				if(ai[id] !== "dead") {
-					for(i = 0; i < time_alive.length; i++) {
+					for(var i = 0; i < time_alive.length; i++) {
 						if(time_alive[i][2] == id) {
 							time_alive[i][0] += 1;
 							break;
