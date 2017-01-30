@@ -150,12 +150,16 @@ function genRandConditions(id) {
 
 function combineConditions(id, conditions1, conditions2, conditions_len1, conditions_len2) {
 	ai[id].splice(8, 0, []);
-	do {
-		ai[id].splice(9, 0, randomBetween(Math.min(cond_len1, cond_len2) - 1, Math.max(cond_len1, cond_len2) + 1));
-		if(ai[id][9] % 2 == 0) {
-			ai[id].splice(9, 1);
-		}
-	} while(ai[id][9] % 2 == 0);
+	ai[id].splice(9, 0, []);
+	
+	for(var i = 0; i < 2; i++) {
+		do {
+			ai[id][9].push(randomBetween(Math.min(cond_len1, cond_len2) - 1, Math.max(cond_len1, cond_len2) + 1));
+			if(ai[id][9][i] % 2 == 0) {
+				ai[id][9].splice(i, 1);
+			}
+		} while(ai[id][9][i] % 2 == 0);
+	}
 		
 	if(Math.round(Math.random())) {
 		ai[id][9] += 2;
