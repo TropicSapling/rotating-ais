@@ -55,49 +55,41 @@ function getCondGene(cond) {
 
 function checkCond(id) {
 	try {
-		var condGene = getCondGene(ai[id][8]);
-		func = new Function("return " + condGene.join(" "));
-		var action = func();
+		var condGenes = getCondGenes(ai[id][8]);
+		var rotate = new Function("return " + condGenes[0].join(" "))();
+		var move = new Function("return " + condGenes[1].join(" "))();
+		if(ai[id][10]) {
+			ai[id].splice(10, 0, ["dying", 1.1]);
+		} else {
+			ai[id].push(["dying", 1.1]);
+		}
 		
-		if(checked_ais.indexOf(id) == -1) {
-			var condIsConst = true;
-			var cond = condGene.join(" ");
-			for(var i = 0; i < changing_inputs.length; i++) {
-				if(cond.indexOf(changing_inputs[i]) != -1) {
-					condIsConst = false;
-				}
-			}
-			
-			var repeats = 0;
-			while(condIsConst && repeats < 100) {
-				regenCond(id);
-				cond = getCondGene(ai[id][8]).join(" ");
-				
-				if(cond.indexOf("<") != -1 || cond.indexOf("<=") != -1 || cond.indexOf(">") != -1 || cond.indexOf(">=") != -1) {
-					for(var i = 0; i < changing_inputs.length; i++) {
-						if(cond.indexOf(changing_inputs[i]) != -1) {
-							condIsConst = false;
-						}
-					}
-				}
-				
-				repeats++;
-			}
-                        
-			if(repeats < 100) {
-				checked_ais.push(id);
-				checkCond(id);
-			} else {
-				if(ai[id][10]) {
-					ai[id].splice(10, 0, ["dying", 1.1]);
-				} else {
-					ai[id].push(["dying", 1.1]);
-				}
-			}
-		} else if(action == true) {
+		if(rotate == true) {
 			ai[id][7] += 0.4;
 			if(ai[id][7] >= 360) {
 				ai[id][7] -= 360;
+			}
+		}
+		
+		
+		if(move == true) {
+			ai_sorted[i][3] += Math.sin(ai_sorted[i][7]) * 3; // [3] = x-pos, [7] = rotation
+			ai_sorted[i][4] += Math.cos(ai_sorted[i][7]) * 3; // [4] = y-pos
+			
+			if(ai_sorted[i][3] < 0) {
+				ai_sorted[i][3] = 0;
+			}
+			
+			if(ai_sorted[i][3] > 600 - ai_sorted[i][5]) {
+				ai_sorted[i][3] = 600 - ai_sorted[i][5];
+			}
+			
+			if(ai_sorted[i][4] < 0) {
+				ai_sorted[i][4] = 0;
+			}
+			
+			if(ai_sorted[i][4] > 600 - ai_sorted[i][6]) {
+				ai_sorted[i][4] = 600 - ai_sorted[i][6];
 			}
 		}
 	} catch(e) {
@@ -209,25 +201,6 @@ function renderAIs(game) {
 					ai_sorted[i].splice(10);
 				}
 			} else if(!ai_sorted[i][10] || (ai_sorted[i][10] && typeof ai_sorted[i][10][0] === 'object')) {
-				ai_sorted[i][3] += Math.sin(ai_sorted[i][7]) * 3; // [3] = x-pos, [7] = rotation
-				ai_sorted[i][4] += Math.cos(ai_sorted[i][7]) * 3; // [4] = y-pos
-				
-				if(ai_sorted[i][3] < 0) {
-					ai_sorted[i][3] = 0;
-				}
-				
-				if(ai_sorted[i][3] > 600 - ai_sorted[i][5]) {
-					ai_sorted[i][3] = 600 - ai_sorted[i][5];
-				}
-				
-				if(ai_sorted[i][4] < 0) {
-					ai_sorted[i][4] = 0;
-				}
-				
-				if(ai_sorted[i][4] > 600 - ai_sorted[i][6]) {
-					ai_sorted[i][4] = 600 - ai_sorted[i][6];
-				}
-				
 				ai_sorted[i][5] -= ai_sorted[i][5] * 0.002;
 				ai_sorted[i][3] += ai_sorted[i][5] * 0.001;
 				ai_sorted[i][6] -= ai_sorted[i][6] * 0.002;
