@@ -36,9 +36,6 @@ function deepCopy(arr) { // Because JS hates me and is just that annoying
 }
 
 function regenConditions(id) {
-	alert("[" + getCondGenes(ai[id][8])[0].join("],\n[") + "]");
-	alert("[" + getCondGenes(ai[id][8])[1].join("],\n[") + "]");
-	
 	ai[id].splice(8, 2); // NOTE: After this splice, [8] = old [10]
 	if(ai[id][8]) {
 		combineConditions(id, ai[id][8][0][8], ai[id][8][1][8]);
@@ -69,6 +66,10 @@ function getCondGenes(conditions) {
 function checkConditions(id) {
 	try {
 		var condGenes = getCondGenes(ai[id][8]);
+		if(condGenes.length < 2) {
+			alert(true);
+		}
+		
 		var rotate = new Function("return " + condGenes[0].join(" "))();
 		var move = new Function("return " + condGenes[1].join(" "))();
 		
