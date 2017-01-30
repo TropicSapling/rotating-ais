@@ -289,7 +289,7 @@ function combineGenes(par1, par2) {
 			} else if(i == 4) {
 				ai[ai.length - 1].push(y_pos);
 			} else if(i == 8) {
-				combineConditions(ai.length - 1, par1[8], par2[8], par1[9], par2[9]);
+				combineConditions(ai.length - 1, par1[8], par2[8]);
 			} else if(typeof par1[i] === 'number' && i != 9) {
 				ai[ai.length - 1].push(randomBetween(Math.min(par1[i], par2[i]) - 1, Math.max(par1[i], par2[i]) + 1));
 			}
@@ -356,7 +356,7 @@ function combineGenes(par1, par2) {
 			} else if(i == 4) {
 				ai[placeAvailable].push(y_pos);
 			} else if(i == 8) {
-				combineConditions(placeAvailable, par1[8], par2[8], par1[9], par2[9]);
+				combineConditions(placeAvailable, par1[8], par2[8]);
 			} else if(typeof par1[i] === 'number' && i != 9) {
 				ai[placeAvailable].push(randomBetween(Math.min(par1[i], par2[i]) - 1, Math.max(par1[i], par2[i]) + 1));
 			}
