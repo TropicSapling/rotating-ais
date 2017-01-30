@@ -41,12 +41,15 @@ function regenCond(id) {
 function getCondGene(conditions) {
 	var processed_cond = [];
 	var processed_cond2 = [];
-	for(part = 0; part < cond.length; part++) {
-		var code = cond[part];
-		if(typeof code === 'object') {
-			processed_cond.push(code[0]);
-		} else {
-			processed_cond.push(code);
+	
+	for(var cond = 0; cond < conditions.length; cond++) {
+		for(part = 0; part < conditions[0].length; part++) {
+			var code = conditions[0][part];
+			if(typeof code === 'object') {
+				processed_cond.push(code[0]);
+			} else {
+				processed_cond.push(code);
+			}
 		}
 	}
 	
