@@ -92,7 +92,7 @@ function findInput(id) {
 	}
 }
 
-function genRandCond(id) {
+function genRandConditions(id) {
 	ai[id].push([]); // Add base for condition gene
 	ai[id].push(randomBetween(4, 16)); // Add base for the gene controlling the length of the condition gene
 	while(ai[id][9] % 2 == 0) {
@@ -105,16 +105,20 @@ function genRandCond(id) {
 		ai[id][9] -= 2;
 	}
 	
-	for(i = 0; i < ai[id][9]; i++) {
-		ai[id][8].push(findInput(id));
-		op++;
-	}
-	
-	op = 0;
-	
-	while(parenthesis > 0) {
-		ai[id][8].push(")"); // [8] = where the condition gene is stored
-		parenthesis--;
+	for(var action = 0; action < 2; action++) {
+		ai[id][8].push([]);
+		
+		for(i = 0; i < ai[id][9]; i++) {
+			ai[id][8][action].push(findInput(id));
+			op++;
+		}
+		
+		while(parenthesis > 0) {
+			ai[id][8][action].push(")"); // [8] = where the condition gene is stored
+			parenthesis--;
+		}
+		
+		op = 0;
 	}
 }
 
