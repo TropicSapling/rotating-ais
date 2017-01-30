@@ -60,16 +60,12 @@ function getCondGenes(conditions) {
 		}
 	}
 	
-	return [processed_conditions];
+	return processed_conditions;
 }
 
 function checkConditions(id) {
 	try {
 		var condGenes = getCondGenes(ai[id][8]);
-		if(condGenes.length < 2) {
-			alert(true);
-		}
-		
 		var rotate = new Function("return " + condGenes[0].join(" "))();
 		var move = new Function("return " + condGenes[1].join(" "))();
 		
