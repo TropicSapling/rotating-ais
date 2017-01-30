@@ -148,11 +148,13 @@ function genRandConditions(id) {
 	}
 }
 
-function combineConditions(id, conditions1, conditions2, conditions_len1, conditions_len2) {
+function combineConditions(id, conditions1, conditions2) {
 	ai[id].splice(8, 0, []);
 	ai[id].splice(9, 0, []);
 	
 	for(var p = 0; p < 2; p++) {
+		ai[id][8].push([]);
+		
 		do {
 			ai[id][9].push(randomBetween(Math.min(cond_len1, cond_len2) - 1, Math.max(cond_len1, cond_len2) + 1));
 			if(ai[id][9][p] % 2 == 0) {
@@ -165,52 +167,55 @@ function combineConditions(id, conditions1, conditions2, conditions_len1, condit
 		} else if(ai[id][9][p] > 2) {
 			ai[id][9][p] -= 2;
 		}
-	}
-	
-	for(var i = 0; i < ai[id][9]; i++) {
-		if(i < cond1.length && (i >= cond2.length || Math.round(Math.random()))) {
-			if(typeof cond1[i] === 'object') {
-				var raw_code = "";
-				raw_code = cond1[i][1];
-				
-				ai[id][8].push([execNow(raw_code, id), raw_code]);
-			} else {
-				ai[id][8].push(cond1[i]);
-			}
-		} else if(i < cond2.length) {
-			if(typeof cond2[i] === 'object') {
-				var raw_code = "";
-				raw_code = cond2[i][1];
-				
-				ai[id][8].push([execNow(raw_code, id), raw_code]);
-			} else {
-				ai[id][8].push(cond2[i]);
-			}
-		} else {
-			if(Math.round(Math.random())) {
-				if(Math.round(Math.random())) {
-					var code = cond1[Math.floor(Math.random() * cond1.length)];
-					if(typeof code === 'object') {
-						var raw_code = "";
-						raw_code = code[1];
-						
-						ai[id][8].push([execNow(raw_code, id), raw_code]);
-					} else {
-						ai[id][8].push(code);
-					}
+		
+		var cond1 = conditions1[p];
+		var cond2 = conditions2[p];
+		
+		for(var i = 0; i < ai[id][9][p]; i++) {
+			if(i < cond1.length && (i >= cond2.length || Math.round(Math.random()))) {
+				if(typeof cond1[i] === 'object') {
+					var raw_code = "";
+					raw_code = cond1[i][1];
+					
+					ai[id][8][p].push([execNow(raw_code, id), raw_code]);
 				} else {
-					var code = cond2[Math.floor(Math.random() * cond2.length)];
-					if(typeof code === 'object') {
-						var raw_code = "";
-						raw_code = code[1];
-						
-						ai[id][8].push([execNow(raw_code, id), raw_code]);
-					} else {
-						ai[id][8].push(code);
-					}
+					ai[id][8][p].push(cond1[i]);
+				}
+			} else if(i < cond2.length) {
+				if(typeof cond2[i] === 'object') {
+					var raw_code = "";
+					raw_code = cond2[i][1];
+					
+					ai[id][8][p].push([execNow(raw_code, id), raw_code]);
+				} else {
+					ai[id][8][p].push(cond2[i]);
 				}
 			} else {
-				ai[id][8].push(findInput(id));
+				if(Math.round(Math.random())) {
+					if(Math.round(Math.random())) {
+						var code = cond1[Math.floor(Math.random() * cond1.length)];
+						if(typeof code === 'object') {
+							var raw_code = "";
+							raw_code = code[1];
+							
+							ai[id][8][p].push([execNow(raw_code, id), raw_code]);
+						} else {
+							ai[id][8][p].push(code);
+						}
+					} else {
+						var code = cond2[Math.floor(Math.random() * cond2.length)];
+						if(typeof code === 'object') {
+							var raw_code = "";
+							raw_code = code[1];
+							
+							ai[id][8][p].push([execNow(raw_code, id), raw_code]);
+						} else {
+							ai[id][8][p].push(code);
+						}
+					}
+				} else {
+					ai[id][8][p].push(findInput(id));
+				}
 			}
 		}
 	}
