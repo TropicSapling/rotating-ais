@@ -35,7 +35,7 @@ function deepCopy(arr) { // Because JS hates me and is just that annoying
 	return out;
 }
 
-function regenCond(id) {
+function regenConditions(id) {
 	ai[id].splice(8, 2); // NOTE: After this splice, [8] = old [10]
 	if(ai[id][8]) {
 		combineConditions(id, ai[id][8][0][8], ai[id][8][1][8], ai[id][8][0][9], ai[id][8][1][9]);
@@ -63,7 +63,7 @@ function getCondGenes(conditions) {
 	return [processed_conditions];
 }
 
-function checkCond(id) {
+function checkConditions(id) {
 	try {
 		var condGenes = getCondGenes(ai[id][8]);
 		var rotate = new Function("return " + condGenes[0].join(" "))();
@@ -103,8 +103,8 @@ function checkCond(id) {
 			}
 		}
 	} catch(e) {
-		regenCond(id);
-		checkCond(id);
+		regenConditions(id);
+		checkConditions(id);
 	}
 }
 
@@ -424,7 +424,7 @@ $(function() {
 					}
 					
 					if(!(ai[id][10]) || (ai[id][10] && typeof ai[id][10][0] === 'object')) {
-						checkCond(id);
+						checkConditions(id);
 					}
 				}
 			}
