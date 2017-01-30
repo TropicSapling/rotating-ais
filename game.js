@@ -1,9 +1,14 @@
 var gameLoop;
-var checked_ais = [];
 var time_alive_sorted = [];
 var total_mass = 0;
 var rand_spawn_chance = 0.1; // MIN: >0, MAX: 1.
 var thisTickRand = Math.random();
+
+////////////////////////////////    'time_alive' & 'ai' structures    ////////////////////////////////
+////////                                                                                      ////////
+////////                                  Check file 'ai.js'                                  ////////
+////////                                                                                      ////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////
 
 window.onerror = function(msg, url, line, column, error) {
 	alert("An error has occurred. Check console for details.");
@@ -30,79 +35,76 @@ function deepCopy(arr) { // Because JS hates me and is just that annoying
 	return out;
 }
 
-function regenCond(id) {
+function regenConditions(id) {
 	ai[id].splice(8, 2); // NOTE: After this splice, [8] = old [10]
 	if(ai[id][8]) {
-		combineConditions(id, ai[id][8][0][8], ai[id][8][1][8], ai[id][8][0][9], ai[id][8][1][9]);
+		combineConditions(id, ai[id][8][0][8], ai[id][8][1][8]);
 	} else {
-		genRandCond(id);
+		genRandConditions(id);
 	}
 }
 
-function getCondGene(cond) {
-	var processed_cond = [];
-	for(part = 0; part < cond.length; part++) {
-		var code = cond[part];
-		if(typeof code === 'object') {
-			processed_cond.push(code[0]);
-		} else {
-			processed_cond.push(code);
+function getCondGenes(conditions) {
+	var processed_conditions = [];
+	
+	for(var cond = 0; cond < conditions.length; cond++) {
+		processed_conditions.push([]);
+		
+		for(part = 0; part < conditions[0].length; part++) {
+			var code = conditions[cond][part];
+			if(typeof code === 'object') {
+				processed_conditions[cond].push(code[0]);
+			} else {
+				processed_conditions[cond].push(code);
+			}
 		}
 	}
 	
-	return processed_cond;
+	return [processed_conditions];
 }
 
-function checkCond(id) {
+function checkConditions(id) {
 	try {
-		var condGene = getCondGene(ai[id][8]);
-		func = new Function("return " + condGene.join(" "));
-		var action = func();
+		var condGenes = getCondGenes(ai[id][8]);
+		var rotate = new Function("return " + condGenes[0].join(" "))();
+		var move = new Function("return " + condGenes[1].join(" "))();
 		
-		if(checked_ais.indexOf(id) == -1) {
-			var condIsConst = true;
-			var cond = condGene.join(" ");
-			for(var i = 0; i < changing_inputs.length; i++) {
-				if(cond.indexOf(changing_inputs[i]) != -1) {
-					condIsConst = false;
-				}
-			}
-			
-			var repeats = 0;
-			while(condIsConst && repeats < 100) {
-				regenCond(id);
-				cond = getCondGene(ai[id][8]).join(" ");
-				
-				if(cond.indexOf("<") != -1 || cond.indexOf("<=") != -1 || cond.indexOf(">") != -1 || cond.indexOf(">=") != -1) {
-					for(var i = 0; i < changing_inputs.length; i++) {
-						if(cond.indexOf(changing_inputs[i]) != -1) {
-							condIsConst = false;
-						}
-					}
-				}
-				
-				repeats++;
-			}
-                        
-			if(repeats < 100) {
-				checked_ais.push(id);
-				checkCond(id);
-			} else {
-				if(ai[id][10]) {
-					ai[id].splice(10, 0, ["dying", 1.1]);
-				} else {
-					ai[id].push(["dying", 1.1]);
-				}
-			}
-		} else if(action == true) {
+		if(ai[id][10]) {
+			ai[id].splice(10, 0, ["dying", 1.1]);
+		} else {
+			ai[id].push(["dying", 1.1]);
+		}
+		
+		if(rotate == true) {
 			ai[id][7] += 0.4;
 			if(ai[id][7] >= 360) {
 				ai[id][7] -= 360;
 			}
 		}
+		
+		if(move == true) {
+			ai_sorted[i][3] += Math.sin(ai_sorted[i][7]) * 3; // [3] = x-pos, [7] = rotation
+			ai_sorted[i][4] += Math.cos(ai_sorted[i][7]) * 3; // [4] = y-pos
+			
+			if(ai_sorted[i][3] < 0) {
+				ai_sorted[i][3] = 0;
+			}
+			
+			if(ai_sorted[i][3] > 600 - ai_sorted[i][5]) {
+				ai_sorted[i][3] = 600 - ai_sorted[i][5];
+			}
+			
+			if(ai_sorted[i][4] < 0) {
+				ai_sorted[i][4] = 0;
+			}
+			
+			if(ai_sorted[i][4] > 600 - ai_sorted[i][6]) {
+				ai_sorted[i][4] = 600 - ai_sorted[i][6];
+			}
+		}
 	} catch(e) {
-		regenCond(id);
-		checkCond(id);
+		regenConditions(id);
+		checkConditions(id);
 	}
 }
 
@@ -126,8 +128,6 @@ function cleanAll() {
 }
 
 function cleanup(i) {
-	checked_ais.splice(checked_ais.indexOf(i), 1);
-	
 	for(var j = 0; j < time_alive.length; j++) {
 		if(time_alive[j][2] == i) {
 			var posInTop = 100;
@@ -209,25 +209,6 @@ function renderAIs(game) {
 					ai_sorted[i].splice(10);
 				}
 			} else if(!ai_sorted[i][10] || (ai_sorted[i][10] && typeof ai_sorted[i][10][0] === 'object')) {
-				ai_sorted[i][3] += Math.sin(ai_sorted[i][7]) * 3; // [3] = x-pos, [7] = rotation
-				ai_sorted[i][4] += Math.cos(ai_sorted[i][7]) * 3; // [4] = y-pos
-				
-				if(ai_sorted[i][3] < 0) {
-					ai_sorted[i][3] = 0;
-				}
-				
-				if(ai_sorted[i][3] > 600 - ai_sorted[i][5]) {
-					ai_sorted[i][3] = 600 - ai_sorted[i][5];
-				}
-				
-				if(ai_sorted[i][4] < 0) {
-					ai_sorted[i][4] = 0;
-				}
-				
-				if(ai_sorted[i][4] > 600 - ai_sorted[i][6]) {
-					ai_sorted[i][4] = 600 - ai_sorted[i][6];
-				}
-				
 				ai_sorted[i][5] -= ai_sorted[i][5] * 0.002;
 				ai_sorted[i][3] += ai_sorted[i][5] * 0.001;
 				ai_sorted[i][6] -= ai_sorted[i][6] * 0.002;
@@ -443,7 +424,7 @@ $(function() {
 					}
 					
 					if(!(ai[id][10]) || (ai[id][10] && typeof ai[id][10][0] === 'object')) {
-						checkCond(id);
+						checkConditions(id);
 					}
 				}
 			}
@@ -475,7 +456,8 @@ $(function() {
 			}
 			
 			if(time_alive_sorted.length > 0) {
-				$('#best-thought').html("<strong>Thoughts of the longest survivor:</strong> " + getCondGene(time_alive_sorted[0][1][8]).join(" "));
+				var conditions = getCondGenes(time_alive_sorted[0][1][8]);
+				$('#best-thought').html("<strong>Thoughts of the longest survivor:</strong> " + "[" + conditions[0].join(" ") + "], [" conditions[1].join(" ") + "]");
 			}
 			
 			if(mutation_chance > original_mutation_chance / 3 ) {
