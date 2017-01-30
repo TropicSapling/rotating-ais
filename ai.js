@@ -18,6 +18,14 @@ var ai = [];
 //////////////////////////////////////////////////////////////////////////////////////
 
 var time_alive = [];
+
+////////////////////////////////    'time_alive' structure    ////////////////////////////////
+////////                                                                              ////////
+////////    [0] = Time alive (in game ticks, tick speed varies depending on device)   ////////
+////////    [1] = Genes                                                               ////////
+////////                                                                              ////////
+//////////////////////////////////////////////////////////////////////////////////////////////
+
 var inputs = [["+", "-", "*", "/", "<", "<=", ">=", ">", "&&", "||"], ["(", ")"], ["ai[__EXENOW(id)__][__EXENOW(available_genes[Math.floor(Math.random() * available_genes.length)])__]", "getRandAIInRange(__EXENOW(id)__)[__EXENOW(available_genes[Math.floor(Math.random() * available_genes.length)])__]", "randomBetween(__EXENOW(Math.floor(Math.random() * 100) - 1)__, __EXENOW(Math.floor(Math.random() * 100) + 1)__)", "__EXENOW(Math.floor(Math.random() * 100))__"]];
 var changing_inputs = ["ai[", "getRandAIInRange("]; // Used in game.js to speed up evolution, the first parts of inputs[2] before the '__EXENOW(...)__'
 
