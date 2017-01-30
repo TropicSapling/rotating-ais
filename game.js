@@ -38,8 +38,9 @@ function regenCond(id) {
 	}
 }
 
-function getCondGene(cond) {
+function getCondGene(conditions) {
 	var processed_cond = [];
+	var processed_cond2 = [];
 	for(part = 0; part < cond.length; part++) {
 		var code = cond[part];
 		if(typeof code === 'object') {
@@ -49,7 +50,7 @@ function getCondGene(cond) {
 		}
 	}
 	
-	return processed_cond;
+	return [processed_cond, processed_cond2];
 }
 
 function checkCond(id) {
@@ -57,6 +58,7 @@ function checkCond(id) {
 		var condGenes = getCondGenes(ai[id][8]);
 		var rotate = new Function("return " + condGenes[0].join(" "))();
 		var move = new Function("return " + condGenes[1].join(" "))();
+		
 		if(ai[id][10]) {
 			ai[id].splice(10, 0, ["dying", 1.1]);
 		} else {
@@ -69,7 +71,6 @@ function checkCond(id) {
 				ai[id][7] -= 360;
 			}
 		}
-		
 		
 		if(move == true) {
 			ai_sorted[i][3] += Math.sin(ai_sorted[i][7]) * 3; // [3] = x-pos, [7] = rotation
