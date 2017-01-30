@@ -307,39 +307,41 @@ function combineGenes(par1, par2) {
 						ai[ai.length - 1][i] -= 2;
 					}
 				} else if(i == 8) {
-					for(item = 0; item < ai[ai.length - 1][8].length; item++) {
-						if(Math.round(Math.random())) {
-							if(Math.floor(Math.random() * (1 / mutation_chance)) == 0) {
-								if(Math.round(Math.random())) {
-									var code = par1[8][Math.floor(Math.random() * par1[8].length)];
-									if(typeof code === 'object') {
-										var raw_code = "";
-										raw_code = code[1];
-										
-										ai[ai.length - 1][8][item] = [execNow(raw_code, ai.length - 1), raw_code];
+					for(p = 0; p < 2; p++) {
+						for(item = 0; item < ai[ai.length - 1][8][p].length; item++) {
+							if(Math.round(Math.random())) {
+								if(Math.floor(Math.random() * (1 / mutation_chance)) == 0) {
+									if(Math.round(Math.random())) {
+										var code = par1[8][p][Math.floor(Math.random() * par1[8][p].length)];
+										if(typeof code === 'object') {
+											var raw_code = "";
+											raw_code = code[1];
+											
+											ai[ai.length - 1][8][p][item] = [execNow(raw_code, ai.length - 1), raw_code];
+										} else {
+											ai[ai.length - 1][8][p][item] = code;
+										}
 									} else {
-										ai[ai.length - 1][8][item] = code;
-									}
-								} else {
-									var code = par2[8][Math.floor(Math.random() * par2[8].length)];
-									if(typeof code === 'object') {
-										var raw_code = "";
-										raw_code = code[1];
-										
-										ai[ai.length - 1][8][item] = [execNow(raw_code, ai.length - 1), raw_code];
-									} else {
-										ai[ai.length - 1][8][item] = code;
+										var code = par2[8][p][Math.floor(Math.random() * par2[8][p].length)];
+										if(typeof code === 'object') {
+											var raw_code = "";
+											raw_code = code[1];
+											
+											ai[ai.length - 1][8][p][item] = [execNow(raw_code, ai.length - 1), raw_code];
+										} else {
+											ai[ai.length - 1][8][p][item] = code;
+										}
 									}
 								}
+							} else if(Math.floor(Math.random() * (1 / mutation_chance)) == 0) {
+								ai[ai.length - 1][8][p][item] = findInput(ai.length - 1);
 							}
-						} else if(Math.floor(Math.random() * (1 / mutation_chance)) == 0) {
-							ai[ai.length - 1][8][item] = findInput(ai.length - 1);
+							
+							op++;
 						}
 						
-						op++;
+						op = 0;
 					}
-					
-					op = 0;
 				}
 			}
 		}
@@ -374,39 +376,41 @@ function combineGenes(par1, par2) {
 						ai[placeAvailable][i] -= 2;
 					}
 				} else if(i == 8) {
-					for(item = 0; item < ai[placeAvailable][8].length; item++) {
-						if(Math.round(Math.random())) {
-							if(Math.floor(Math.random() * (1 / mutation_chance)) == 0) {
-								if(Math.round(Math.random())) {
-									var code = par1[8][Math.floor(Math.random() * par1[8].length)];
-									if(typeof code === 'object') {
-										var raw_code = "";
-										raw_code = code[1];
-										
-										ai[placeAvailable][8][item] = [execNow(raw_code, placeAvailable), raw_code];
+					for(p = 0; p < 2; p++) {
+						for(item = 0; item < ai[placeAvailable][8][p].length; item++) {
+							if(Math.round(Math.random())) {
+								if(Math.floor(Math.random() * (1 / mutation_chance)) == 0) {
+									if(Math.round(Math.random())) {
+										var code = par1[8][p][Math.floor(Math.random() * par1[8][p].length)];
+										if(typeof code === 'object') {
+											var raw_code = "";
+											raw_code = code[1];
+											
+											ai[placeAvailable][8][p][item] = [execNow(raw_code, placeAvailable), raw_code];
+										} else {
+											ai[placeAvailable][8][p][item] = code;
+										}
 									} else {
-										ai[placeAvailable][8][item] = code;
-									}
-								} else {
-									var code = par2[8][Math.floor(Math.random() * par2[8].length)];
-									if(typeof code === 'object') {
-										var raw_code = "";
-										raw_code = code[1];
-										
-										ai[placeAvailable][8][item] = [execNow(raw_code, placeAvailable), raw_code];
-									} else {
-										ai[placeAvailable][8][item] = code;
+										var code = par2[8][p][Math.floor(Math.random() * par2[8][p].length)];
+										if(typeof code === 'object') {
+											var raw_code = "";
+											raw_code = code[1];
+											
+											ai[placeAvailable][8][p][item] = [execNow(raw_code, placeAvailable), raw_code];
+										} else {
+											ai[placeAvailable][8][p][item] = code;
+										}
 									}
 								}
+							} else if(Math.floor(Math.random() * (1 / mutation_chance)) == 0) {
+								ai[placeAvailable][8][p][item] = findInput(ai.length - 1);
 							}
-						} else if(Math.floor(Math.random() * (1 / mutation_chance)) == 0) {
-							ai[placeAvailable][8][item] = findInput(placeAvailable);
+							
+							op++;
 						}
 						
-						op++;
+						op = 0;
 					}
-					
-					op = 0;
 				}
 			}
 		}
