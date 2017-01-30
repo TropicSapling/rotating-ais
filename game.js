@@ -122,8 +122,6 @@ function cleanAll() {
 }
 
 function cleanup(i) {
-	checked_ais.splice(checked_ais.indexOf(i), 1);
-	
 	for(var j = 0; j < time_alive.length; j++) {
 		if(time_alive[j][2] == i) {
 			var posInTop = 100;
