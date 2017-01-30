@@ -152,19 +152,19 @@ function combineConditions(id, conditions1, conditions2, conditions_len1, condit
 	ai[id].splice(8, 0, []);
 	ai[id].splice(9, 0, []);
 	
-	for(var i = 0; i < 2; i++) {
+	for(var p = 0; p < 2; p++) {
 		do {
 			ai[id][9].push(randomBetween(Math.min(cond_len1, cond_len2) - 1, Math.max(cond_len1, cond_len2) + 1));
-			if(ai[id][9][i] % 2 == 0) {
-				ai[id][9].splice(i, 1);
+			if(ai[id][9][p] % 2 == 0) {
+				ai[id][9].splice(p, 1);
 			}
-		} while(ai[id][9][i] % 2 == 0);
-	}
+		} while(ai[id][9][p] % 2 == 0);
 		
-	if(Math.round(Math.random())) {
-		ai[id][9] += 2;
-	} else if(ai[id][9] > 2) {
-		ai[id][9] -= 2;
+		if(Math.round(Math.random())) {
+			ai[id][9][p] += 2;
+		} else if(ai[id][9][p] > 2) {
+			ai[id][9][p] -= 2;
+		}
 	}
 	
 	for(var i = 0; i < ai[id][9]; i++) {
