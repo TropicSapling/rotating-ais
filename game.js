@@ -1,5 +1,4 @@
 var gameLoop;
-var checked_ais = [];
 var time_alive_sorted = [];
 var total_mass = 0;
 var rand_spawn_chance = 0.1; // MIN: >0, MAX: 1.
