@@ -4,6 +4,19 @@ var mutation_chance = 0.25; // MIN: >0, MAX: 1.
 var available_genes = [3, 4, 5, 6, 7]; // So that AI doesn't have access to all genes
 
 var ai = [];
+
+////////////////////////////////    'ai' structure    ////////////////////////////////
+////////                                                                      ////////
+////////    [0], [1], [2] = R, G, B                                           ////////
+////////    [3], [4] = X, Y (pos)                                             ////////
+////////    [5], [6] = Width, height                                          ////////
+////////    [7] = Rotation                                                    ////////
+////////    [8] = Conditions; [8][0] = rotation, [8][1] = movement            ////////
+////////    [9] = Length of conditions; [9][0] = rotation, [9][1] = movement  ////////
+////////    [10] = Variates; Parent genes OR other things                     ////////
+////////                                                                      ////////
+//////////////////////////////////////////////////////////////////////////////////////
+
 var time_alive = [];
 var inputs = [["+", "-", "*", "/", "<", "<=", ">=", ">", "&&", "||"], ["(", ")"], ["ai[__EXENOW(id)__][__EXENOW(available_genes[Math.floor(Math.random() * available_genes.length)])__]", "getRandAIInRange(__EXENOW(id)__)[__EXENOW(available_genes[Math.floor(Math.random() * available_genes.length)])__]", "randomBetween(__EXENOW(Math.floor(Math.random() * 100) - 1)__, __EXENOW(Math.floor(Math.random() * 100) + 1)__)", "__EXENOW(Math.floor(Math.random() * 100))__"]];
 var changing_inputs = ["ai[", "getRandAIInRange("]; // Used in game.js to speed up evolution, the first parts of inputs[2] before the '__EXENOW(...)__'
