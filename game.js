@@ -39,21 +39,22 @@ function regenCond(id) {
 }
 
 function getCondGenes(conditions) {
-	var processed_cond = [];
-	var processed_cond2 = [];
+	var processed_conditions = [];
 	
 	for(var cond = 0; cond < conditions.length; cond++) {
+		processed_conditions.push([]);
+		
 		for(part = 0; part < conditions[0].length; part++) {
-			var code = conditions[0][part];
+			var code = conditions[cond][part];
 			if(typeof code === 'object') {
-				processed_cond.push(code[0]);
+				processed_conditions[cond].push(code[0]);
 			} else {
-				processed_cond.push(code);
+				processed_conditions[cond].push(code);
 			}
 		}
 	}
 	
-	return [processed_cond, processed_cond2];
+	return [processed_conditions];
 }
 
 function checkCond(id) {
