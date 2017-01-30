@@ -38,7 +38,7 @@ function regenCond(id) {
 	}
 }
 
-function getCondGene(conditions) {
+function getCondGenes(conditions) {
 	var processed_cond = [];
 	var processed_cond2 = [];
 	
