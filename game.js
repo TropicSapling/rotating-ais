@@ -452,7 +452,8 @@ $(function() {
 			}
 			
 			if(time_alive_sorted.length > 0) {
-				$('#best-thought').html("<strong>Thoughts of the longest survivor:</strong> " + getCondGene(time_alive_sorted[0][1][8]).join(" "));
+				var conditions = getCondGenes(time_alive_sorted[0][1][8]);
+				$('#best-thought').html("<strong>Thoughts of the longest survivor:</strong> " + "[" + conditions[0].join(" ") + "], [" conditions[1].join(" ") + "]");
 			}
 			
 			if(mutation_chance > original_mutation_chance / 3 ) {
