@@ -113,7 +113,7 @@ function genRandConditions(id) {
 	}
 	
 	if(Math.round(Math.random())) {
-		ai[id][9] += 2; // [9] = where the length of condition gene is stored
+		ai[id][9] += 2;
 	} else {
 		ai[id][9] -= 2;
 	}
@@ -127,7 +127,7 @@ function genRandConditions(id) {
 		}
 		
 		while(parenthesis > 0) {
-			ai[id][8][action].push(")"); // [8] = where the condition gene is stored
+			ai[id][8][action].push(")");
 			parenthesis--;
 		}
 		
