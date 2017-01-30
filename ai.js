@@ -135,7 +135,7 @@ function genRandConditions(id) {
 	}
 }
 
-function combineConditions(id, cond1, cond2, cond_len1, cond_len2) {
+function combineConditions(id, conditions1, conditions2, conditions_len1, conditions_len2) {
 	ai[id].splice(8, 0, []);
 	do {
 		ai[id].splice(9, 0, randomBetween(Math.min(cond_len1, cond_len2) - 1, Math.max(cond_len1, cond_len2) + 1));
