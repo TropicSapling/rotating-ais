@@ -119,22 +119,24 @@ function findInput(id) {
 }
 
 function genRandConditions(id) {
-	ai[id].push([]); // Add base for condition gene
-	ai[id].push(randomBetween(4, 16)); // Add base for the gene controlling the length of the condition gene
-	while(ai[id][9] % 2 == 0) {
-		ai[id][9] = randomBetween(4, 16);
-	}
-	
-	if(Math.round(Math.random())) {
-		ai[id][9] += 2;
-	} else {
-		ai[id][9] -= 2;
-	}
+	ai[id].push([]); // Add base for condition genes
+	ai[id].push([]); // Add base for condition length genes
 	
 	for(var action = 0; action < 2; action++) {
+		ai[id][9].push(randomBetween(4, 16));
+		while(ai[id][9][action] % 2 == 0) {
+			ai[id][9][action] = randomBetween(4, 16);
+		}
+		
+		if(Math.round(Math.random())) {
+			ai[id][9][action] += 2;
+		} else {
+			ai[id][9][action] -= 2;
+		}
+		
 		ai[id][8].push([]);
 		
-		for(i = 0; i < ai[id][9]; i++) {
+		for(i = 0; i < ai[id][9][action]; i++) {
 			ai[id][8][action].push(findInput(id));
 			op++;
 		}
