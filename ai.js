@@ -157,8 +157,11 @@ function combineConditions(id, conditions1, conditions2) {
 	for(var p = 0; p < 2; p++) {
 		ai[id][8].push([]);
 		
+		var cond1 = conditions1[p];
+		var cond2 = conditions2[p];
+		
 		do {
-			ai[id][9].push(randomBetween(Math.min(cond_len1, cond_len2) - 1, Math.max(cond_len1, cond_len2) + 1));
+			ai[id][9].push(randomBetween(Math.min(cond1.length, cond2.length) - 1, Math.max(cond1.length, cond2.length) + 1));
 			if(ai[id][9][p] % 2 == 0) {
 				ai[id][9].splice(p, 1);
 			}
@@ -169,9 +172,6 @@ function combineConditions(id, conditions1, conditions2) {
 		} else if(ai[id][9][p] > 2) {
 			ai[id][9][p] -= 2;
 		}
-		
-		var cond1 = conditions1[p];
-		var cond2 = conditions2[p];
 		
 		for(var i = 0; i < ai[id][9][p]; i++) {
 			if(i < cond1.length && (i >= cond2.length || Math.round(Math.random()))) {
