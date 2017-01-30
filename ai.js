@@ -123,9 +123,9 @@ function genRandConditions(id) {
 	ai[id].push([]); // Add base for condition length genes
 	
 	for(var action = 0; action < 2; action++) {
-		ai[id][9].push(randomBetween(4, 16));
+		ai[id][9].push(randomBetween(4, 8));
 		while(ai[id][9][action] % 2 == 0) {
-			ai[id][9][action] = randomBetween(4, 16);
+			ai[id][9][action] = randomBetween(4, 8);
 		}
 		
 		if(Math.round(Math.random())) {
