@@ -69,12 +69,6 @@ function checkConditions(id) {
 		var rotate = new Function("return " + condGenes[0].join(" "))();
 		var move = new Function("return " + condGenes[1].join(" "))();
 		
-		if(ai[id][10]) {
-			ai[id].splice(10, 0, ["dying", 1.1]);
-		} else {
-			ai[id].push(["dying", 1.1]);
-		}
-		
 		if(rotate == true) {
 			ai[id][7] += 0.4;
 			if(ai[id][7] >= 360) {
