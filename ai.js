@@ -169,7 +169,7 @@ function combineConditions(id, conditions1, conditions2) {
 		
 		if(Math.round(Math.random())) {
 			ai[id][9][p] += 2;
-		} else if(ai[id][9][p] > 2) {
+		} else if(ai[id][9][p] > 4) {
 			ai[id][9][p] -= 2;
 		}
 		
