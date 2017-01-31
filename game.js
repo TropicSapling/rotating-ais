@@ -177,7 +177,7 @@ function renderAIs(game) {
 					ai_sorted[i][6] = ai_sorted[i][10][1];
 					ai_sorted[i].splice(10, 1);
 				}
-			} else if(!ai_sorted[i][10] || (ai_sorted[i][10] && typeof ai_sorted[i][10][0] === 'object')) {
+			} else if(!ai_sorted[i][10] || typeof ai_sorted[i][10][0] === 'object') {
 				var side_len = ai_sorted[i][5];
 				var new_mass = side_len * side_len - 2;
 				var new_side_len = Math.sqrt(new_mass);
@@ -188,7 +188,7 @@ function renderAIs(game) {
 				ai_sorted[i][6] = new_side_len;
 			}
 			
-			if(ai_sorted[i][5] * ai_sorted[i][6] < 100 && (!(ai_sorted[i][10]) || (ai_sorted[i][10] && typeof ai_sorted[i][10][0] === 'object'))) {
+			if(ai_sorted[i][5] * ai_sorted[i][6] < 100 && (!(ai_sorted[i][10]) || typeof ai_sorted[i][10][0] === 'object')) {
 				if(ai_sorted[i][10]) {
 					ai_sorted[i].splice(10, 0, ["dying", 1.1]);
 				} else {
@@ -213,7 +213,7 @@ function findCollision(id, taken) {
 	var i = 0;
 	
 	for(i = id; i < ai.length; i++) {
-		if(ai[i] !== "dead" && (!(ai[i][10]) || (ai[i][10] && typeof ai[i][10][0] === 'object'))) {
+		if(ai[i] !== "dead" && (!(ai[i][10]) || typeof ai[i][10][0] === 'object')) {
 			var x1 = ai[id][3];
 			var x2 = ai[i][3];
 			var y1 = ai[id][4];
@@ -237,7 +237,7 @@ function checkCollisions(game) {
 	var takenIDs = [];
 	
 	for(i = 0; i < ai.length; i++) {
-		if(ai[i] !== "dead" && (!(ai[i][10]) || (ai[i][10] && typeof ai[i][10][0] === 'object'))) {
+		if(ai[i] !== "dead" && (!(ai[i][10]) || typeof ai[i][10][0] === 'object')) {
 			collidingAIs.push(findCollision(i, takenIDs));
 			
 			for(j = 0; j < collidingAIs[collidingAIs.length - 1].length; j++) {
@@ -291,7 +291,7 @@ function getRandAIInRange(id) {
 	var ais_in_range = [];
 	var vision = ai[id][5] * 3;
 	for(i = 0; i < ai.length; i++) {
-		if(i != id && (!(ai[i][10]) || (ai[i][10] && typeof ai[i][10][0] === 'object')) && ai[i][3] + ai[i][5] > ai[id][3] - vision && ai[i][3] < ai[id][3] + ai[id][5] + vision && ai[i][4] + ai[i][6] > ai[id][4] - vision && ai[i][4] < ai[id][4] + ai[id][6] + vision) {
+		if(i != id && (!(ai[i][10]) || typeof ai[i][10][0] === 'object') && ai[i][3] + ai[i][5] > ai[id][3] - vision && ai[i][3] < ai[id][3] + ai[id][5] + vision && ai[i][4] + ai[i][6] > ai[id][4] - vision && ai[i][4] < ai[id][4] + ai[id][6] + vision) {
 			ais_in_range.push(ai[i]);
 		}
 	}
@@ -396,7 +396,7 @@ $(function() {
 						}
 					}
 					
-					if(!(ai[id][10]) || (ai[id][10] && typeof ai[id][10][0] === 'object')) {
+					if(!(ai[id][10]) || typeof ai[id][10][0] === 'object') {
 						checkConditions(id);
 					}
 				}
