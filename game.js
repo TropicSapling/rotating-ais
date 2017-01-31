@@ -109,25 +109,6 @@ function checkConditions(id) {
 	}
 }
 
-function cleanAll() {
-	for(i = 0; i < time_alive.length; i++) {
-		if(!time_alive[i][2]) {
-			var posInTop = 100;
-			for(j = 0; j < time_alive_sorted.length; j++) {
-				if(time_alive_sorted[j][0] == time_alive[i][0]) {
-					posInTop = j;
-					break;
-				}
-			}
-			
-			if(posInTop > 100) {
-				time_alive.splice(i, 1);
-				i--;
-			}
-		}
-	}
-}
-
 function cleanup(i) {
 	for(var j = 0; j < time_alive.length; j++) {
 		if(time_alive[j][2] == i) {
@@ -442,10 +423,6 @@ $(function() {
 			total_mass = 0;
 			
 			renderAIs(game);
-			
-			if(time_alive.length > 10) {
-				cleanAll();
-			}
 			
 			if(time_alive_sorted.length > 0) {
 				var conditions = getCondGenes(time_alive_sorted[0][1][8]);
