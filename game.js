@@ -420,7 +420,7 @@ $(function() {
 			var time_alive_copy = [];
 			
 			for(id = 0; id < ai.length; id++) {
-				if(ai[id] !== "dead") {
+				if(ai[id] !== "dead" && (!(ai[id][10]) || ai[id][10][0] === "dying")) {
 					for(i = 0; i < time_alive.length; i++) {
 						if(time_alive[i][2] == id) {
 							time_alive[i][0] += 1;
