@@ -214,6 +214,7 @@ function renderAIs(game) {
 				var new_mass = side_len * side_len - 2;
 				var new_side_len = Math.sqrt(new_mass);
 				
+				console.log((new_side_len - side_len) / 2);
 				ai_sorted[i][3] += (new_side_len - side_len) / 2;
 				ai_sorted[i][4] += (new_side_len - side_len) / 2;
 				ai_sorted[i][5] = new_side_len;
