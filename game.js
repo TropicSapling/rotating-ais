@@ -64,10 +64,10 @@ function getCondGenes(conditions) {
 }
 
 function checkConditions(id) {
+	var condGenes = getCondGenes(ai[id][8]);
+	
 	try {
-		var condGenes = getCondGenes(ai[id][8]);
 		var rotate = new Function("return " + condGenes[0].join(" "))();
-		var move = new Function("return " + condGenes[1].join(" "))();
 		
 		if(rotate == true) {
 			ai[id][7] += 0.4;
@@ -75,6 +75,13 @@ function checkConditions(id) {
 				ai[id][7] -= 360;
 			}
 		}
+	} catch(e) {
+		regenConditions(id);
+		checkConditions(id);
+	}
+	
+	try {
+		var move = new Function("return " + condGenes[1].join(" "))();
 		
 		if(move == true) {
 			ai_sorted[i][3] += Math.sin(ai_sorted[i][7]) * 3; // [3] = x-pos, [7] = rotation
