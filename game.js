@@ -210,7 +210,8 @@ function renderAIs(game) {
 					ai_sorted[i].splice(10);
 				}
 			} else if(!ai_sorted[i][10] || (ai_sorted[i][10] && typeof ai_sorted[i][10][0] === 'object')) {
-				var side_len = ai_sorted[i][5];
+				var side_len = 0;
+				side_len = ai_sorted[i][5];
 				var new_mass = side_len * side_len - 2;
 				var new_side_len = Math.sqrt(new_mass);
 				
