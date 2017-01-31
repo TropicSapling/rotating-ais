@@ -210,10 +210,10 @@ function renderAIs(game) {
 					ai_sorted[i].splice(10);
 				}
 			} else if(!ai_sorted[i][10] || (ai_sorted[i][10] && typeof ai_sorted[i][10][0] === 'object')) {
-				ai_sorted[i][5] -= ai_sorted[i][5] * 0.002;
-				ai_sorted[i][3] += ai_sorted[i][5] * 0.001;
-				ai_sorted[i][6] -= ai_sorted[i][6] * 0.002;
-				ai_sorted[i][4] += ai_sorted[i][6] * 0.001;
+				ai_sorted[i][5] -= 0.04;
+				ai_sorted[i][3] += 0.02;
+				ai_sorted[i][6] -= 0.04;
+				ai_sorted[i][4] += 0.02;
 			}
 			
 			if(ai_sorted[i][5] * ai_sorted[i][6] < 100 && (!(ai_sorted[i][10]) || (ai_sorted[i][10] && typeof ai_sorted[i][10][0] === 'object'))) {
