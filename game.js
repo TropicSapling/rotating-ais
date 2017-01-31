@@ -68,7 +68,6 @@ function checkConditions(id) {
 	
 	try {
 		var rotate = new Function("return " + condGenes[0].join(" "))();
-		alert(rotate);
 		
 		if(rotate == true) {
 			ai[id][7] += 0.4;
@@ -83,7 +82,6 @@ function checkConditions(id) {
 	
 	try {
 		var move = new Function("return " + condGenes[1].join(" "))();
-		alert(move);
 		
 		if(move == true) {
 			ai_sorted[i][3] += Math.sin(ai_sorted[i][7]) * 3; // [3] = x-pos, [7] = rotation
