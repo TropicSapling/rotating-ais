@@ -175,7 +175,7 @@ function renderAIs(game) {
 				} else {
 					ai_sorted[i][5] = ai_sorted[i][10][0];
 					ai_sorted[i][6] = ai_sorted[i][10][1];
-					ai_sorted[i].splice(10);
+					ai_sorted[i].splice(10, 1);
 				}
 			} else if(!ai_sorted[i][10] || (ai_sorted[i][10] && typeof ai_sorted[i][10][0] === 'object')) {
 				var side_len = ai_sorted[i][5];
