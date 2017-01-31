@@ -131,20 +131,7 @@ function cleanAll() {
 function cleanup(i) {
 	for(var j = 0; j < time_alive.length; j++) {
 		if(time_alive[j][2] == i) {
-			var posInTop = 100;
-			for(var k = 0; k < time_alive_sorted.length; k++) {
-				if(time_alive_sorted[k][2] == i) {
-					posInTop = k;
-					break;
-				}
-			}
-			
-			if(time_alive.length < 100 || posInTop < 100) {
-				time_alive[j].splice(2, 1);
-			} else {
-				time_alive.splice(j, 1);
-			}
-			
+			time_alive.splice(j, 1);
 			break;
 		}
 	}
