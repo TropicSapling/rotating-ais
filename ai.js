@@ -237,7 +237,7 @@ function genRandGenes() {
 		x_pos = Math.floor(Math.random() * (600 - width * 1.5) + width / 2);
 		y_pos = Math.floor(Math.random() * (600 - height * 1.5) + height / 2);
 		
-		spawn_spread = spawn_spread * 0.999;
+		spawn_spread = spawn_spread * 0.9999;
 		taken_x_pos = getTakenPos(true, spawn_spread);
 		taken_y_pos = getTakenPos(false, spawn_spread);
 	}
@@ -275,7 +275,7 @@ function combineGenes(par1, par2) {
 		x_pos = Math.floor(Math.random() * (600 - width * 1.5) + width / 2);
 		y_pos = Math.floor(Math.random() * (600 - height * 1.5) + height / 2);
 		
-		spawn_spread = spawn_spread * 0.999;
+		spawn_spread = spawn_spread * 0.9999;
 		taken_x_pos = getTakenPos(true, spawn_spread);
 		taken_y_pos = getTakenPos(false, spawn_spread);
 	}
