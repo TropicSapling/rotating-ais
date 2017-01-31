@@ -210,10 +210,14 @@ function renderAIs(game) {
 					ai_sorted[i].splice(10);
 				}
 			} else if(!ai_sorted[i][10] || (ai_sorted[i][10] && typeof ai_sorted[i][10][0] === 'object')) {
-				ai_sorted[i][5] -= 0.04;
-				ai_sorted[i][3] += 0.02;
-				ai_sorted[i][6] -= 0.04;
-				ai_sorted[i][4] += 0.02;
+				var side_len = ai_sorted[i][5];
+				var new_mass = side_len * side_len - 2;
+				var new_side_len = Math.sqrt(new_mass);
+				
+				ai_sorted[i][5] = new_side_len;
+				ai_sorted[i][3] += (new_side_len - side_len) / 2;
+				ai_sorted[i][6] = new_side_len;
+				ai_sorted[i][4] += (new_side_len - side_len) / 2;
 			}
 			
 			if(ai_sorted[i][5] * ai_sorted[i][6] < 100 && (!(ai_sorted[i][10]) || (ai_sorted[i][10] && typeof ai_sorted[i][10][0] === 'object'))) {
@@ -400,7 +404,7 @@ $(function() {
 			game.fillStyle = "#eee";
 			game.fillRect(0, 0, 600, 600); // Background
 			
-			if(total_mass < 15000) {
+			if(total_mass < 10000) {
 				if(ai.length > 1 && performance.now() - start_time > 5000 && Math.floor(Math.random() * (1 / rand_spawn_chance)) > 0) {
 					var par1 = findPar();
 					var par2 = findPar();
