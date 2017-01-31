@@ -13,7 +13,8 @@ var ai = [];
 ////////    [7] = Rotation                                                    ////////
 ////////    [8] = Conditions; [8][0] = rotation, [8][1] = movement            ////////
 ////////    [9] = Length of conditions; [9][0] = rotation, [9][1] = movement  ////////
-////////    [10] = Variates; Parent genes OR other things                     ////////
+////////    [10] = Variates; Parent genes OR [width, height] OR other things  ////////
+////////    [11] = Variates; Parent genes OR undefined                        ////////
 ////////                                                                      ////////
 //////////////////////////////////////////////////////////////////////////////////////
 
