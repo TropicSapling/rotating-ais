@@ -84,23 +84,23 @@ function checkConditions(id) {
 		var move = new Function("return " + condGenes[1].join(" "))();
 		
 		if(move == true) {
-			ai_sorted[i][3] += Math.sin(ai_sorted[i][7]) * 3; // [3] = x-pos, [7] = rotation
-			ai_sorted[i][4] += Math.cos(ai_sorted[i][7]) * 3; // [4] = y-pos
+			ai[id][3] += Math.sin(ai[id][7]) * 3; // [3] = x-pos, [7] = rotation
+			ai[id][4] += Math.cos(ai[id][7]) * 3; // [4] = y-pos
 			
-			if(ai_sorted[i][3] < 0) {
-				ai_sorted[i][3] = 0;
+			if(ai[id][3] < 0) {
+				ai[id][3] = 0;
 			}
 			
-			if(ai_sorted[i][3] > 600 - ai_sorted[i][5]) {
-				ai_sorted[i][3] = 600 - ai_sorted[i][5];
+			if(ai[id][3] > 600 - ai[id][5]) {
+				ai[id][3] = 600 - ai[id][5];
 			}
 			
-			if(ai_sorted[i][4] < 0) {
-				ai_sorted[i][4] = 0;
+			if(ai[id][4] < 0) {
+				ai[id][4] = 0;
 			}
 			
-			if(ai_sorted[i][4] > 600 - ai_sorted[i][6]) {
-				ai_sorted[i][4] = 600 - ai_sorted[i][6];
+			if(ai[id][4] > 600 - ai[id][6]) {
+				ai[id][4] = 600 - ai[id][6];
 			}
 		}
 	} catch(e) {
