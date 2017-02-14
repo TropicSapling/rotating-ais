@@ -109,9 +109,42 @@ function checkConditions(id) {
 	}
 }
 
+function cleanAll() {
+	for(i = 0; i < time_alive.length; i++) {
+		if(!time_alive[i][2]) {
+			var posInTop = 100;
+			for(j = 0; j < time_alive_sorted.length; j++) {
+				if(time_alive_sorted[j][0] == time_alive[i][0]) {
+					posInTop = j;
+					break;
+				}
+			}
+			
+			if(posInTop > 100) {
+				time_alive.splice(i, 1);
+				i--;
+			}
+		}
+	}
+}
+
 function cleanup(i) {
 	for(var j = 0; j < time_alive.length; j++) {
 		if(time_alive[j][2] == i) {
+			var posInTop = 100;
+			for(var k = 0; k < time_alive_sorted.length; k++) {
+				if(time_alive_sorted[k][2] == i) {
+					posInTop = k;
+					break;
+				}
+			}
+			
+			if(time_alive.length < 100 || posInTop < 100) {
+				time_alive[j].splice(2, 1);
+			} else {
+				time_alive.splice(j, 1);
+			}
+			
 			time_alive.splice(j, 1);
 			break;
 		}
@@ -404,6 +437,10 @@ $(function() {
 			
 			if(performance.now() - start_time > 4000) {
 				for(i = 0; i < time_alive.length; i++) {
+					if(time_alive[i].length < 3) {
+						time_alive[i][0] = time_alive[i][0] * 0.9999;
+					}
+					
 					time_alive_copy.push(time_alive[i][0]);
 				}
 				
@@ -423,6 +460,10 @@ $(function() {
 			total_mass = 0;
 			
 			renderAIs(game);
+			
+			if(time_alive.length > 10) {
+				cleanAll();
+			}
 			
 			if(time_alive_sorted.length > 0) {
 				var conditions = getCondGenes(time_alive_sorted[0][1][8]);
