@@ -141,7 +141,6 @@ function cleanup(i) {
 			
 			if(time_alive.length < 100 || posInTop < 100) {
 				time_alive[j].splice(2, 1);
-				time_alive[j][1].splice(10);
 			} else {
 				time_alive.splice(j, 1);
 			}
