@@ -461,7 +461,7 @@ $(function() {
 			
 			renderAIs(game);
 			
-			if(time_alive.length > 10) {
+			if(time_alive.length > 100) {
 				cleanAll();
 			}
 			
