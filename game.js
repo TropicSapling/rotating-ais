@@ -145,7 +145,6 @@ function cleanup(i) {
 				time_alive.splice(j, 1);
 			}
 			
-			time_alive.splice(j, 1);
 			break;
 		}
 	}
