@@ -50,7 +50,7 @@ function getCondGenes(conditions) {
 	for(var cond = 0; cond < conditions.length; cond++) {
 		processed_conditions.push([]);
 		
-		for(part = 0; part < conditions[0].length; part++) {
+		for(part = 0; part < conditions[cond].length; part++) {
 			var code = conditions[cond][part];
 			if(typeof code === 'object') {
 				processed_conditions[cond].push(code[0]);
