@@ -166,7 +166,7 @@ function combineConditions(id, conditions1, conditions2) {
 			if(ai[id][9][p] % 2 == 0) {
 				ai[id][9].splice(p, 1);
 			}
-		} while(ai[id][9][p] % 2 == 0);
+		} while(typeof ai[id][9][p] === 'undefined');
 		
 		if(Math.round(Math.random())) {
 			ai[id][9][p] += 2;
