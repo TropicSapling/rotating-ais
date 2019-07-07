@@ -151,9 +151,9 @@ function genRandConditions(id) {
 	}
 }
 
-function getAcceptedTypes(prev_type, conditions) {
+function getAcceptedTypes(prev_type, conditions, last_pos) {
 	if(prev_type == 0) {
-		return [1, 3];
+		return last_pos ? [3] : [1, 3];
 	} else if(prev_type == 1) {
 		return [3];
 	} else if(prev_type == 2) {
@@ -200,7 +200,7 @@ function combineConditions(id, conditions1, conditions2) {
 		
 		var accepted_types = [1, 3];
 		var type;
-		for(var i = 0; i < ai[id][9][p]; accepted_types = getAcceptedTypes(type, [cond1, cond2]), i++) {
+		for(var i = 0; i < ai[id][9][p]; i++, accepted_types = getAcceptedTypes(type, [cond1, cond2], i + 1 >= ai[id][9][p])) {
 			if(i < cond1.length && (i >= cond2.length || Math.round(Math.random()))) {
 				type = getType(cond1[i]);
 				if(accepted_types.includes(type)) {
