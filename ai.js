@@ -199,10 +199,11 @@ function combineConditions(id, conditions1, conditions2) {
 		}
 		
 		var accepted_types = [1, 3];
-		var prev_type;
-		for(var i = 0; i < ai[id][9][p]; i++) {
+		var type;
+		for(var i = 0; i < ai[id][9][p]; accepted_types = getAcceptedTypes(type, [cond1, cond2]), i++) {
 			if(i < cond1.length && (i >= cond2.length || Math.round(Math.random()))) {
-				if(accepted_types.includes(getType(cond1[i]))) {
+				type = getType(cond1[i]));
+				if(accepted_types.includes(type) {
 					if(typeof cond1[i] === 'object') {
 						var raw_code = ""; // is there any point in doing this?
 						raw_code = cond1[i][1];
@@ -217,7 +218,8 @@ function combineConditions(id, conditions1, conditions2) {
 			}
 			
 			if(i < cond2.length) {
-				if(accepted_types.includes(getType(cond2[i]))) {
+				type = getType(cond2[i]));
+				if(accepted_types.includes(type) {
 					if(typeof cond2[i] === 'object') {
 						var raw_code = ""; // is there any point in doing this?
 						raw_code = cond2[i][1];
@@ -235,13 +237,9 @@ function combineConditions(id, conditions1, conditions2) {
 				var code;
 				var matching = false;
 				while(!matching) {
-					if(Math.round(Math.random())) {
-						code = cond1[Math.floor(Math.random() * cond1.length)];
-						matching = accepted_types.includes(getType(code));
-					} else {
-						code = cond2[Math.floor(Math.random() * cond2.length)];
-						matching = accepted_types.includes(getType(code));
-					}
+					code = Math.round(Math.random()) ? cond1[Math.floor(Math.random() * cond1.length)] : cond2[Math.floor(Math.random() * cond2.length)];
+					type = getType(code);
+					matching = accepted_types.includes(type);
 				}
 						
 				if(typeof code === 'object') {
@@ -254,10 +252,10 @@ function combineConditions(id, conditions1, conditions2) {
 				}
 			} else {
 				op = accepted_types.includes(0) ? 1 : 0;
-				ai[id][8][p].push(findInput(id, i + 2 < ai[id][9][p]));
+				new_input = findInput(id, i + 2 < ai[id][9][p]);
+				ai[id][8][p].push(new_input);
+				type = getType(new_input);
 			}
-			
-			accepted_types = getAcceptedTypes(prev_type, [cond1, cond2]);
 		}
 	}
 }
