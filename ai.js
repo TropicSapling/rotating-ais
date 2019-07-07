@@ -151,28 +151,15 @@ function genRandConditions(id) {
 	}
 }
 
-function getAcceptedType(prev_type, conditions) {
-	var has_parens = false;
-	for(var cond = 0; cond < conditions.length; cond++) {
-		has_parens = has_parens ? has_parens : conditions[cond].indexOf("(") != -1;
-	}
-	
+function getAcceptedTypes(prev_type, conditions) {
 	if(prev_type == 0) {
-		if(has_parens && Math.round(Math.random())) {
-			return 1;
-		} else {
-			return 3;
-		}
+		return [1, 3];
 	} else if(prev_type == 1) {
-		return 3;
+		return [3];
 	} else if(prev_type == 2) {
-		return 0;
+		return [0];
 	} else {
-		if(has_parens && Math.round(Math.random())) {
-			return 2;
-		} else {
-			return 0;
-		}
+		return [0, 2];
 	}
 }
 
@@ -199,13 +186,12 @@ function combineConditions(id, conditions1, conditions2) {
 			ai[id][9][p] -= 2;
 		}
 		
-		var accepted_type = 3;
+		var accepted_types = [0, 1, 2, 3];
+		var prev_type;
 		for(var i = 0; i < ai[id][9][p]; i++) {
-			accepted_type = getAcceptedType(accepted_type, [cond1, cond2]);
-			
 			if(i < cond1.length && (i >= cond2.length || Math.round(Math.random()))) {
 				if(typeof cond1[i] === 'object') {
-					var raw_code = "";
+					var raw_code = ""; // is there any point in doing this?
 					raw_code = cond1[i][1];
 					
 					ai[id][8][p].push([execNow(raw_code, id), raw_code]);
@@ -248,6 +234,8 @@ function combineConditions(id, conditions1, conditions2) {
 					ai[id][8][p].push(findInput(id, i + 2 < ai[id][9][p]));
 				}
 			}
+			
+			accepted_types = getAcceptedTypes(prev_type, [cond1, cond2]);
 		}
 	}
 }
