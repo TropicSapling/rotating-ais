@@ -163,6 +163,18 @@ function getAcceptedTypes(prev_type, conditions) {
 	}
 }
 
+function getType(item) {
+	if(typeof item === 'object') {
+		return 3;
+	} else if(item == "(") {
+		return 1;
+	} else if(item == ")") {
+		return 2;
+	} else {
+		return 0;
+	}
+}
+
 function combineConditions(id, conditions1, conditions2) {
 	ai[id].splice(8, 0, []);
 	ai[id].splice(9, 0, []);
