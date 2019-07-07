@@ -57,7 +57,7 @@ function getTakenPos(getX, spread) {
 }
 
 function execNow(raw_code, id) {
-	while(raw_code.indexOf("__EXENOW(") != -1) {
+	while(raw_code.includes("__EXENOW(")) {
 		var index = raw_code.indexOf("__EXENOW(");
 		var pos = index + 9; // 9 = "__EXENOW(".length
 		
@@ -110,7 +110,7 @@ function findInput(id, allow_paren) {
 			var raw_code = "";
 			raw_code = inputs[2][randVar];
 			
-			if(raw_code.indexOf("__EXENOW(") == -1) {
+			if(!raw_code.includes("__EXENOW(")) {
 				return raw_code;
 			} else {
 				return [execNow(raw_code, id), raw_code];
@@ -190,49 +190,58 @@ function combineConditions(id, conditions1, conditions2) {
 		var prev_type;
 		for(var i = 0; i < ai[id][9][p]; i++) {
 			if(i < cond1.length && (i >= cond2.length || Math.round(Math.random()))) {
-				if(typeof cond1[i] === 'object') {
-					var raw_code = ""; // is there any point in doing this?
-					raw_code = cond1[i][1];
+				if(accepted_types.includes(getType(cond1[i]))) {
+					if(typeof cond1[i] === 'object') {
+						var raw_code = ""; // is there any point in doing this?
+						raw_code = cond1[i][1];
+
+						ai[id][8][p].push([execNow(raw_code, id), raw_code]);
+					} else {
+						ai[id][8][p].push(cond1[i]);
+					}
 					
-					ai[id][8][p].push([execNow(raw_code, id), raw_code]);
-				} else {
-					ai[id][8][p].push(cond1[i]);
+					continue;
 				}
-			} else if(i < cond2.length) {
-				if(typeof cond2[i] === 'object') {
-					var raw_code = "";
-					raw_code = cond2[i][1];
+			}
+			
+			if(i < cond2.length) {
+				if(accepted_types.includes(getType(cond2[i]))) {
+					if(typeof cond2[i] === 'object') {
+						var raw_code = ""; // is there any point in doing this?
+						raw_code = cond2[i][1];
+
+						ai[id][8][p].push([execNow(raw_code, id), raw_code]);
+					} else {
+						ai[id][8][p].push(cond2[i]);
+					}
 					
+					continue;
+				}
+			}
+			
+			if(Math.round(Math.random())) {
+				var code;
+				var matching = false;
+				while(!matching) {
+					if(Math.round(Math.random())) {
+						code = cond1[Math.floor(Math.random() * cond1.length)];
+						matching = accepted_types.includes(getType(code));
+					} else {
+						code = cond2[Math.floor(Math.random() * cond2.length)];
+						matching = accepted_types.includes(getType(code));
+					}
+				}
+						
+				if(typeof code === 'object') {
+					var raw_code = "";
+					raw_code = code[1];
+
 					ai[id][8][p].push([execNow(raw_code, id), raw_code]);
 				} else {
-					ai[id][8][p].push(cond2[i]);
+					ai[id][8][p].push(code);
 				}
 			} else {
-				if(Math.round(Math.random())) {
-					if(Math.round(Math.random())) {
-						var code = cond1[Math.floor(Math.random() * cond1.length)];
-						if(typeof code === 'object') {
-							var raw_code = "";
-							raw_code = code[1];
-							
-							ai[id][8][p].push([execNow(raw_code, id), raw_code]);
-						} else {
-							ai[id][8][p].push(code);
-						}
-					} else {
-						var code = cond2[Math.floor(Math.random() * cond2.length)];
-						if(typeof code === 'object') {
-							var raw_code = "";
-							raw_code = code[1];
-							
-							ai[id][8][p].push([execNow(raw_code, id), raw_code]);
-						} else {
-							ai[id][8][p].push(code);
-						}
-					}
-				} else {
-					ai[id][8][p].push(findInput(id, i + 2 < ai[id][9][p]));
-				}
+				ai[id][8][p].push(findInput(id, i + 2 < ai[id][9][p]));
 			}
 			
 			accepted_types = getAcceptedTypes(prev_type, [cond1, cond2]);
@@ -250,7 +259,7 @@ function genRandGenes() {
 	var y_pos = Math.floor(Math.random() * (600 - height * 1.5) + height / 2);
 	
 	var spawn_spread = 100;
-	while(taken_x_pos.indexOf(Math.round(x_pos / spawn_spread)) != -1 && taken_y_pos.indexOf(Math.round(y_pos / spawn_spread)) != -1) {
+	while(taken_x_pos.includes(Math.round(x_pos / spawn_spread)) && taken_y_pos.includes(Math.round(y_pos / spawn_spread))) {
 		x_pos = Math.floor(Math.random() * (600 - width * 1.5) + width / 2);
 		y_pos = Math.floor(Math.random() * (600 - height * 1.5) + height / 2);
 		
@@ -288,7 +297,7 @@ function combineGenes(par1, par2) {
 	var y_pos = Math.floor(Math.random() * (600 - height * 1.5) + height / 2);
 	
 	var spawn_spread = 100;
-	while(taken_x_pos.indexOf(Math.round(x_pos / spawn_spread)) != -1 && taken_y_pos.indexOf(Math.round(y_pos / spawn_spread)) != -1) {
+	while(taken_x_pos.includes(Math.round(x_pos / spawn_spread)) && taken_y_pos.includes(Math.round(y_pos / spawn_spread))) {
 		x_pos = Math.floor(Math.random() * (600 - width * 1.5) + width / 2);
 		y_pos = Math.floor(Math.random() * (600 - height * 1.5) + height / 2);
 		
