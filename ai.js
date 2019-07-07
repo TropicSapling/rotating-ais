@@ -137,7 +137,7 @@ function genRandConditions(id) {
 		
 		ai[id][8].push([]);
 		
-		for(i = 0; i < ai[id][9][action]; i++) {
+		for(i = 0; i + parenthesis < ai[id][9][action]; i++) {
 			ai[id][8][action].push(findInput(id));
 			op++;
 		}
