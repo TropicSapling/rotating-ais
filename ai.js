@@ -202,7 +202,7 @@ function combineConditions(id, conditions1, conditions2) {
 		
 		var accepted_types = [1, 3];
 		var type;
-		for(var i = 0; i + parenthesis < ai[id][9][p]; i++, type == 1 ? parenthesis++ : (type == 2 ? parenthesis-- : 0), accepted_types = getAcceptedTypes(type, [cond1, cond2], i + parenthesis + 1 >= ai[id][9][p], parenthesis)) {
+		for(var i = 0; i + parenthesis < ai[id][9][p]; i++, type == 1 ? parenthesis++ : (type == 2 ? parenthesis-- : 0), accepted_types = getAcceptedTypes(type, [cond1, cond2], i + parenthesis + 2 >= ai[id][9][p], parenthesis)) {
 			if(i < cond1.length && (i >= cond2.length || Math.round(Math.random()))) {
 				type = getType(cond1[i]);
 				if(accepted_types.includes(type)) {
