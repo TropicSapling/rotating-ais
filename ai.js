@@ -163,7 +163,7 @@ function getAcceptedType(prev_type, conditions) {
 		} else {
 			return 3;
 		}
-	} else if prev_type == 1
+	} else if prev_type == 1 {
 		return 3;
 	} else if prev_type == 2 {
 		return 0;
