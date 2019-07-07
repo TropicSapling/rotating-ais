@@ -36,7 +36,7 @@ function deepCopy(arr) { // Because JS hates me and is just that annoying
 }
 
 function regenConditions(id) {
-	console.log("REGEN:", ai[id]);
+	console.log("REGEN:", deepCopy(ai[id]));
 	ai[id].splice(8, 2); // NOTE: After this splice, [8] = old [10]
 	if(ai[id][8]) {
 		combineConditions(id, ai[id][8][0], ai[id][8][1]);
