@@ -151,7 +151,7 @@ function genRandConditions(id) {
 	}
 }
 
-function getAcceptedTypes(prev_type, conditions, last_pos) {
+function getAcceptedTypes(prev_type, conditions, last_pos, parens) {
 	if(prev_type == 0) {
 		return last_pos ? [3] : [1, 3];
 	} else if(prev_type == 1) {
@@ -159,7 +159,7 @@ function getAcceptedTypes(prev_type, conditions, last_pos) {
 	} else if(prev_type == 2) {
 		return [0];
 	} else {
-		return [0, 2];
+		return parens > 0 ? [0, 2] : [0];
 	}
 }
 
@@ -198,9 +198,10 @@ function combineConditions(id, conditions1, conditions2) {
 			ai[id][9][p] -= 2;
 		}
 		
+		var parentheses = 0;
 		var accepted_types = [1, 3];
 		var type;
-		for(var i = 0; i < ai[id][9][p]; i++, accepted_types = getAcceptedTypes(type, [cond1, cond2], i + 1 >= ai[id][9][p])) {
+		for(var i = 0; i + parentheses < ai[id][9][p]; i++, type == 1 ? parentheses++ : (type == 2 ? parentheses-- : 0), accepted_types = getAcceptedTypes(type, [cond1, cond2], i + parentheses + 1 >= ai[id][9][p], parentheses)) {
 			if(i < cond1.length && (i >= cond2.length || Math.round(Math.random()))) {
 				type = getType(cond1[i]);
 				if(accepted_types.includes(type)) {
@@ -256,6 +257,11 @@ function combineConditions(id, conditions1, conditions2) {
 				ai[id][8][p].push(new_input);
 				type = getType(new_input);
 			}
+		}
+		
+		while(parentheses > 0) {
+			ai[id][8][p].push(")");
+			parentheses--;
 		}
 	}
 }
