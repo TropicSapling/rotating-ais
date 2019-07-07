@@ -253,6 +253,7 @@ function combineConditions(id, conditions1, conditions2) {
 					ai[id][8][p].push(code);
 				}
 			} else {
+				op = accepted_types.includes(0) ? 1 : 0;
 				ai[id][8][p].push(findInput(id, i + 2 < ai[id][9][p]));
 			}
 			
