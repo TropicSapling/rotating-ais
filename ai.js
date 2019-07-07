@@ -240,10 +240,11 @@ function combineConditions(id, conditions1, conditions2) {
 				var matching = false;
 				while(!matching) {
 					code = Math.round(Math.random()) ? cond1[Math.floor(Math.random() * cond1.length)] : cond2[Math.floor(Math.random() * cond2.length)];
-					type = getType(code);
-					matching = accepted_types.includes(type);
+					matching = accepted_types.includes(getType(code));
 				}
-						
+				
+				type = getType(code);
+				
 				if(typeof code === 'object') {
 					var raw_code = "";
 					raw_code = code[1];
