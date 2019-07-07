@@ -202,7 +202,7 @@ function combineConditions(id, conditions1, conditions2) {
 		var type;
 		for(var i = 0; i < ai[id][9][p]; accepted_types = getAcceptedTypes(type, [cond1, cond2]), i++) {
 			if(i < cond1.length && (i >= cond2.length || Math.round(Math.random()))) {
-				type = getType(cond1[i]));
+				type = getType(cond1[i]);
 				if(accepted_types.includes(type) {
 					if(typeof cond1[i] === 'object') {
 						var raw_code = ""; // is there any point in doing this?
@@ -218,7 +218,7 @@ function combineConditions(id, conditions1, conditions2) {
 			}
 			
 			if(i < cond2.length) {
-				type = getType(cond2[i]));
+				type = getType(cond2[i]);
 				if(accepted_types.includes(type) {
 					if(typeof cond2[i] === 'object') {
 						var raw_code = ""; // is there any point in doing this?
