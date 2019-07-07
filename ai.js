@@ -155,24 +155,23 @@ function getAcceptedType(prev_type, conditions) {
 	var has_parens = false;
 	for(var cond = 0; cond < conditions.length; cond++) {
 		has_parens = has_parens ? has_parens : conditions[cond].indexOf("(") != -1;
-		has_parens = has_parens ? has_parens : conditions[cond].indexOf(")") != -1;
 	}
 	
 	if prev_type == 0 {
-		if(has_parens1 && Math.round(Math.random())) {
+		if(has_parens && Math.round(Math.random())) {
 			return 1;
 		} else {
 			return 3;
 		}
-	} else if prev_type == 1 {
+	} else if prev_type == 1
 		return 3;
 	} else if prev_type == 2 {
 		return 0;
 	} else {
-		if(Math.round(Math.random())) {
-			return 0;
-		} else {
+		if(has_parens && Math.round(Math.random())) {
 			return 2;
+		} else {
+			return 0;
 		}
 	}
 }
