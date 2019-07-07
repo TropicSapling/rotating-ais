@@ -309,6 +309,7 @@ function genRandGenes() {
 	}
 }
 
+// TODO: Fix mutations so they follow accepted stuff instead of messing up everything
 function combineGenes(par1, par2) {
 	var placeAvailable = ai.indexOf("dead");
 	
