@@ -151,6 +151,32 @@ function genRandConditions(id) {
 	}
 }
 
+function getAcceptedType(prev_type, conditions) {
+	var has_parens = false;
+	for(var cond = 0; cond < conditions.length; cond++) {
+		has_parens = has_parens ? has_parens : conditions[cond].indexOf("(") != -1;
+		has_parens = has_parens ? has_parens : conditions[cond].indexOf(")") != -1;
+	}
+	
+	if prev_type == 0 {
+		if(has_parens1 && Math.round(Math.random())) {
+			return 1;
+		} else {
+			return 3;
+		}
+	} else if prev_type == 1 {
+		return 3;
+	} else if prev_type == 2 {
+		return 0;
+	} else {
+		if(Math.round(Math.random())) {
+			return 0;
+		} else {
+			return 2;
+		}
+	}
+}
+
 function combineConditions(id, conditions1, conditions2) {
 	ai[id].splice(8, 0, []);
 	ai[id].splice(9, 0, []);
@@ -174,7 +200,10 @@ function combineConditions(id, conditions1, conditions2) {
 			ai[id][9][p] -= 2;
 		}
 		
+		var accepted_type;
 		for(var i = 0; i < ai[id][9][p]; i++) {
+			accepted_type = getAcceptedType(accepted_type, [cond1, cond2]);
+			
 			if(i < cond1.length && (i >= cond2.length || Math.round(Math.random()))) {
 				if(typeof cond1[i] === 'object') {
 					var raw_code = "";
