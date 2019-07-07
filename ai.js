@@ -199,7 +199,7 @@ function combineConditions(id, conditions1, conditions2) {
 			ai[id][9][p] -= 2;
 		}
 		
-		var accepted_type;
+		var accepted_type = 3;
 		for(var i = 0; i < ai[id][9][p]; i++) {
 			accepted_type = getAcceptedType(accepted_type, [cond1, cond2]);
 			
