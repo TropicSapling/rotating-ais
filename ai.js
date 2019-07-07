@@ -157,15 +157,15 @@ function getAcceptedType(prev_type, conditions) {
 		has_parens = has_parens ? has_parens : conditions[cond].indexOf("(") != -1;
 	}
 	
-	if prev_type == 0 {
+	if(prev_type == 0) {
 		if(has_parens && Math.round(Math.random())) {
 			return 1;
 		} else {
 			return 3;
 		}
-	} else if prev_type == 1 {
+	} else if(prev_type == 1) {
 		return 3;
-	} else if prev_type == 2 {
+	} else if(prev_type == 2) {
 		return 0;
 	} else {
 		if(has_parens && Math.round(Math.random())) {
