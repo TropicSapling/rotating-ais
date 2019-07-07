@@ -79,7 +79,6 @@ function execNow(raw_code, id) {
 			var new_code_ret = new_code(id);
 			raw_code = raw_code.replace(codeToExec, new_code_ret);
 		} catch(e) {
-			console.log(raw_code, id);
 			throw e;
 		}
 	}
