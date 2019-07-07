@@ -238,26 +238,32 @@ function combineConditions(id, conditions1, conditions2) {
 			if(Math.round(Math.random())) {
 				var code;
 				var matching = false;
-				while(!matching) {
+				var tries = 0;
+				while(!matching && tries < 255) {
 					code = Math.round(Math.random()) ? cond1[Math.floor(Math.random() * cond1.length)] : cond2[Math.floor(Math.random() * cond2.length)];
 					type = getType(code);
 					matching = accepted_types.includes(type);
+					tries++;
 				}
 				
-				if(typeof code === 'object') {
-					var raw_code = "";
-					raw_code = code[1];
+				if(matching) {
+					if(typeof code === 'object') {
+						var raw_code = "";
+						raw_code = code[1];
 
-					ai[id][8][p].push([execNow(raw_code, id), raw_code]);
-				} else {
-					ai[id][8][p].push(code);
+						ai[id][8][p].push([execNow(raw_code, id), raw_code]);
+					} else {
+						ai[id][8][p].push(code);
+					}
+					
+					continue;
 				}
-			} else {
-				op = accepted_types.includes(0) ? 1 : 0;
-				new_input = findInput(id, i + 2 < ai[id][9][p]);
-				ai[id][8][p].push(new_input);
-				type = getType(new_input);
 			}
+			
+			op = accepted_types.includes(0) ? 1 : 0;
+			rand_input = findInput(id, i + 2 < ai[id][9][p]);
+			ai[id][8][p].push(rand_input);
+			type = getType(rand_input);
 		}
 		
 		while(parenthesis > 0) {
