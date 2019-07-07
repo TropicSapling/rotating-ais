@@ -86,7 +86,7 @@ function execNow(raw_code, id) {
 	return raw_code; // Which is now actually processed but no idea in creating a new variable just to rename it so...
 }
 
-function findInput(id) {
+function findInput(id, allow_paren) {
 	var randParenthesis = Math.round(Math.random());
 	
 	if(op % 2) {
@@ -102,7 +102,7 @@ function findInput(id) {
 	} else {
 		var randVar = Math.floor(Math.random() * (inputs[2].length));
 		
-		if(randParenthesis == inputs[1].indexOf("(") && Math.round(Math.random())) {
+		if(allow_paren && randParenthesis == inputs[1].indexOf("(") && Math.round(Math.random())) {
 			parenthesis++;
 			op--;
 			return inputs[1][randParenthesis];
@@ -138,7 +138,7 @@ function genRandConditions(id) {
 		ai[id][8].push([]);
 		
 		for(i = 0; i + parenthesis < ai[id][9][action]; i++) {
-			ai[id][8][action].push(findInput(id));
+			ai[id][8][action].push(findInput(id, i + parenthesis + 2 < ai[id][9][action]));
 			op++;
 		}
 		
@@ -217,7 +217,7 @@ function combineConditions(id, conditions1, conditions2) {
 						}
 					}
 				} else {
-					ai[id][8][p].push(findInput(id));
+					ai[id][8][p].push(findInput(id, i + 2 < ai[id][9][p]));
 				}
 			}
 		}
@@ -337,7 +337,7 @@ function combineGenes(par1, par2) {
 									}
 								}
 							} else if(Math.floor(Math.random() * (1 / mutation_chance)) == 0) {
-								ai[ai.length - 1][8][p][item] = findInput(ai.length - 1);
+								ai[ai.length - 1][8][p][item] = findInput(ai.length - 1, item + 2 < ai[ai.length - 1][8][p].length);
 							}
 							
 							op++;
@@ -406,7 +406,7 @@ function combineGenes(par1, par2) {
 									}
 								}
 							} else if(Math.floor(Math.random() * (1 / mutation_chance)) == 0) {
-								ai[placeAvailable][8][p][item] = findInput(ai.length - 1);
+								ai[placeAvailable][8][p][item] = findInput(ai.length - 1, item + 2 < ai[placeAvailable][8][p].length);
 							}
 							
 							op++;
