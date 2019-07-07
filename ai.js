@@ -198,7 +198,7 @@ function combineConditions(id, conditions1, conditions2) {
 			ai[id][9][p] -= 2;
 		}
 		
-		var accepted_types = [0, 1, 2, 3];
+		var accepted_types = [1, 3];
 		var prev_type;
 		for(var i = 0; i < ai[id][9][p]; i++) {
 			if(i < cond1.length && (i >= cond2.length || Math.round(Math.random()))) {
